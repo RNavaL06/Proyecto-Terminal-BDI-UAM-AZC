@@ -1,0 +1,44 @@
+{
+  "name": "bdi-server-final",
+  "version": "1.0.0",
+  "description": "Backend unificado del Botiquín Digital Inteligente (BDI)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "bdi",
+    "salud",
+    "recetas",
+    "nlp",
+    "cie10",
+    "farmacias"
+  ],
+  "author": "UAM Azcapotzalco - CBI",
+  "license": "ISC",
+  "dependencies": {
+    "@google/genai": "^2.19.0",
+    "@google/generative-ai": "^0.24.1",
+    "@nlpjs/lang-es": "^5.0.0-alpha.5",
+    "axios": "^1.19.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.2",
+    "google-auth-library": "^11.0.2",
+    "groq-sdk": "^1.5.0",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.11.0",
+    "mysql2": "^3.23.4",
+    "node-cron": "^4.6.0",
+    "node-nlp": "^5.0.0-alpha.5",
+    "nodemailer": "^9.0.5",
+    "serpapi": "^2.2.1",
+    "sharp": "^0.35.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
