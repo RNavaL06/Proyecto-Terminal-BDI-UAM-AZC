@@ -1,0 +1,294 @@
+{
+  "botiquin": [
+    {
+      "Field": "id_botiquin",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "id_usuario",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "id_catalogo",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "id_receta",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "cantidad_disponible",
+      "Type": "int"
+    },
+    {
+      "Field": "unidad",
+      "Type": "varchar(50)"
+    },
+    {
+      "Field": "fecha_caducidad",
+      "Type": "date"
+    },
+    {
+      "Field": "lote",
+      "Type": "varchar(100)"
+    },
+    {
+      "Field": "codigo_barras",
+      "Type": "varchar(100)"
+    },
+    {
+      "Field": "notas",
+      "Type": "text"
+    },
+    {
+      "Field": "estado",
+      "Type": "enum('vigente','por_vencer','caducado')"
+    },
+    {
+      "Field": "created_at",
+      "Type": "timestamp"
+    },
+    {
+      "Field": "updated_at",
+      "Type": "timestamp"
+    }
+  ],
+  "busquedas_precios": [
+    {
+      "Field": "id_busqueda",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "id_usuario",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "medicamento_nombre",
+      "Type": "varchar(255)"
+    },
+    {
+      "Field": "resultados",
+      "Type": "json"
+    },
+    {
+      "Field": "fuente",
+      "Type": "varchar(100)"
+    },
+    {
+      "Field": "created_at",
+      "Type": "timestamp"
+    }
+  ],
+  "catalogo_cie10": [
+    {
+      "Field": "id_diagnostico",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "codigo_cie10",
+      "Type": "varchar(10)"
+    },
+    {
+      "Field": "termino_medico",
+      "Type": "varchar(255)"
+    },
+    {
+      "Field": "capitulo",
+      "Type": "varchar(150)"
+    },
+    {
+      "Field": "keywords",
+      "Type": "json"
+    },
+    {
+      "Field": "fecha_registro",
+      "Type": "timestamp"
+    },
+    {
+      "Field": "fecha_actualizacion",
+      "Type": "timestamp"
+    }
+  ],
+  "catalogo_medicamentos": [
+    {
+      "Field": "id_catalogo",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "nombre_comercial",
+      "Type": "varchar(150)"
+    },
+    {
+      "Field": "sustancia_activa",
+      "Type": "varchar(150)"
+    },
+    {
+      "Field": "formato",
+      "Type": "varchar(100)"
+    },
+    {
+      "Field": "laboratorio",
+      "Type": "varchar(100)"
+    },
+    {
+      "Field": "fecha_registro",
+      "Type": "timestamp"
+    }
+  ],
+  "medicos": [
+    {
+      "Field": "id_medico",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "nombre_medico",
+      "Type": "varchar(150)"
+    },
+    {
+      "Field": "cedula_profesional",
+      "Type": "varchar(50)"
+    },
+    {
+      "Field": "especialidad",
+      "Type": "varchar(100)"
+    },
+    {
+      "Field": "telefono_contacto",
+      "Type": "varchar(50)"
+    },
+    {
+      "Field": "fecha_registro",
+      "Type": "timestamp"
+    }
+  ],
+  "recetas": [
+    {
+      "Field": "id_receta",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "id_usuario",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "id_medico",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "paciente_nombre",
+      "Type": "varchar(150)"
+    },
+    {
+      "Field": "fecha_expedicion",
+      "Type": "date"
+    },
+    {
+      "Field": "diagnostico",
+      "Type": "varchar(255)"
+    },
+    {
+      "Field": "codigo_cie10",
+      "Type": "varchar(10)"
+    },
+    {
+      "Field": "indicaciones",
+      "Type": "text"
+    },
+    {
+      "Field": "imagen_base64",
+      "Type": "longtext"
+    },
+    {
+      "Field": "estado",
+      "Type": "enum('pendiente','procesada','error')"
+    },
+    {
+      "Field": "created_at",
+      "Type": "timestamp"
+    },
+    {
+      "Field": "updated_at",
+      "Type": "timestamp"
+    }
+  ],
+  "recetas_detalles": [
+    {
+      "Field": "id_receta_detalle",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "id_receta",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "id_catalogo",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "dosis",
+      "Type": "varchar(100)"
+    },
+    {
+      "Field": "instrucciones_uso",
+      "Type": "text"
+    },
+    {
+      "Field": "frecuencia",
+      "Type": "varchar(100)"
+    },
+    {
+      "Field": "duracion",
+      "Type": "varchar(100)"
+    },
+    {
+      "Field": "created_at",
+      "Type": "timestamp"
+    }
+  ],
+  "usuarios": [
+    {
+      "Field": "id_usuario",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "google_id",
+      "Type": "varchar(255)"
+    },
+    {
+      "Field": "correo_electronico",
+      "Type": "varchar(255)"
+    },
+    {
+      "Field": "nombre_completo",
+      "Type": "varchar(150)"
+    },
+    {
+      "Field": "foto_perfil",
+      "Type": "varchar(500)"
+    },
+    {
+      "Field": "rol",
+      "Type": "enum('paciente','admin')"
+    },
+    {
+      "Field": "notif_activas",
+      "Type": "tinyint(1)"
+    },
+    {
+      "Field": "notif_umbral_dias",
+      "Type": "int unsigned"
+    },
+    {
+      "Field": "estado_cuenta",
+      "Type": "tinyint(1)"
+    },
+    {
+      "Field": "fecha_registro",
+      "Type": "timestamp"
+    },
+    {
+      "Field": "fecha_ultimo_acceso",
+      "Type": "timestamp"
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply font-sans bg-[#c9d6f0] text-slate-800;
+  }
+}
+
+/* --- CLASES DE ACCESIBILIDAD --- */
+/* Tamaños de Letra Dinámicos */
+html.font-size-grande {
+  font-size: 115%;
+}
+html.font-size-extragrande {
+  font-size: 130%;
+}
+
+/* Modo Alto Contraste */
+html.theme-high-contrast body {
+  background-color: black;
+  color: white;
+}
+html.theme-high-contrast .card,
+html.theme-high-contrast .bg-white,
+html.theme-high-contrast .bg-slate-50,
+html.theme-high-contrast .bg-blue-50,
+html.theme-high-contrast .bg-emerald-50,
+html.theme-high-contrast .bg-rose-50,
+html.theme-high-contrast .bg-amber-50 {
+  background-color: #121212 !important;
+  border-color: #4b5563 !important;
+  color: white !important;
+}
+html.theme-high-contrast p,
+html.theme-high-contrast span,
+html.theme-high-contrast h1,
+html.theme-high-contrast h2,
+html.theme-high-contrast h3,
+html.theme-high-contrast h4,
+html.theme-high-contrast label,
+html.theme-high-contrast div {
+  color: white !important;
+}
+html.theme-high-contrast .text-slate-400,
+html.theme-high-contrast .text-slate-500,
+html.theme-high-contrast .text-slate-600 {
+  color: #d1d5db !important; /* gray-300 */
+}
+html.theme-high-contrast button {
+  border: 2px solid white !important;
+}
+html.theme-high-contrast .btn-primary {
+  background-color: white !important;
+  color: black !important;
+  border: none !important;
+}
+html.theme-high-contrast .btn-primary:hover {
+  background-color: #e5e7eb !important; /* gray-200 */
+}
+html.theme-high-contrast .btn-secondary {
+  background-color: transparent !important;
+  color: white !important;
+  border-color: white !important;
+}
+html.theme-high-contrast .btn-secondary:hover {
+  background-color: white !important;
+  color: black !important;
+}
+/* -------------------------------- */
+
+/* Clases de componentes utilitarios */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-6 py-3.5 bg-[#f27a71] text-white font-bold rounded-full shadow-md shadow-rose-200/50 hover:bg-[#e8655c] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98];
+}
+
+.btn-rose {
+  @apply inline-flex items-center justify-center px-6 py-3.5 bg-[#f27a71] text-white font-bold rounded-full shadow-md shadow-rose-200/50 hover:bg-[#e8655c] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98];
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-5 py-3 bg-white text-slate-700 font-bold border border-slate-200 rounded-full shadow-sm hover:bg-slate-50 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98];
+}
+
+.btn-danger {
+  @apply inline-flex items-center justify-center px-5 py-3 bg-rose-500 text-white font-bold rounded-full shadow-sm hover:bg-rose-600 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98];
+}
+
+.card {
+  @apply bg-white rounded-3xl border border-slate-100 shadow-sm p-5 sm:p-6;
+}
+
+.pb-safe {
+  padding-bottom: max(env(safe-area-inset-bottom, 16px), 16px);
+}
+
+/* Badges de caducidad */
+.badge-vigente {
+  @apply bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold px-2.5 py-1 rounded-full;
+}
+
+.badge-por_vencer {
+  @apply bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold px-2.5 py-1 rounded-full;
+}
+
+.badge-caducado {
+  @apply bg-rose-50 text-rose-700 border border-rose-200 text-xs font-bold px-2.5 py-1 rounded-full;
+}
+
+/* Estilos de pines interactivos para Leaflet */
+.custom-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* --- ESTILOS DE MAPA Y TOOLTIPS (PROYECTO TERMINAL RICARDO) --- */
+/* Quita el triángulo/flecha de los tooltips de Leaflet para estilo Google Maps */
+.leaflet-tooltip.etiqueta-sin-flecha::before {
+  display: none !important;
+}
+
+/* Sobrescribir estilos por defecto de Leaflet para Tooltips transparentes con halo blanco */
+.tooltip-transparente {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  /* Halo blanco alrededor del texto para que resalte nítidamente sobre las calles */
+  text-shadow: -1.5px -1.5px 0 #ffffff, 1.5px -1.5px 0 #ffffff, -1.5px 1.5px 0 #ffffff, 1.5px 1.5px 0 #ffffff !important;
+}
+
+/* Ocultar la flechita (caret) en todas las direcciones */
+.tooltip-transparente::before,
+.tooltip-transparente::after {
+  display: none !important;
+}
+
+/* --- ESTILOS POPUP GOOGLE MAPS --- */
+.popup-google .leaflet-popup-content-wrapper {
+  padding: 0 !important;
+  overflow: hidden;
+  border-radius: 1.25rem !important; /* Bordes suaves redondeados */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.popup-google .leaflet-popup-content {
+  margin: 0 !important;
+  width: 260px !important; /* Ancho fijo de la tarjeta Google Maps */
+  line-height: normal;
+}
+
+.popup-google .leaflet-popup-close-button {
+  color: white !important; /* Cruz blanca para contrastar con la imagen de cabecera */
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important;
+  font-size: 18px !important;
+  padding: 6px 8px 0 0 !important;
+  z-index: 20;
+}
