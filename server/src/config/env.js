@@ -6,6 +6,7 @@ module.exports = {
   nodeEnv: process.env.NODE_ENV || 'development',
 
   db: {
+    uri: process.env.DB_URI || '',
     host: process.env.DB_HOST || 'localhost',
     port: parseInt(process.env.DB_PORT || '3306', 10),
     user: process.env.DB_USER || 'root',

@@ -67,7 +67,6 @@ export function AuthProvider({ children }) {
         localStorage.setItem('bdi_user', JSON.stringify(res.usuario));
         setToken(res.token);
         setUser(res.usuario);
-        toast.success('Sesión iniciada en Modo Demostración');
         return true;
       }
     } catch (err) {

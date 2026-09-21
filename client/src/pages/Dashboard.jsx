@@ -91,36 +91,50 @@ export default function Dashboard() {
         />
 
         {/* Último Diagnóstico */}
-        <div className="bg-white rounded-[2rem] p-6 sm:p-8 border border-slate-100 shadow-sm flex flex-col relative overflow-hidden group">
-          <div className="absolute right-0 top-0 w-48 h-48 bg-[#f27a71]/5 rounded-full blur-3xl group-hover:bg-[#f27a71]/10 transition-colors pointer-events-none"></div>
-          
-          <div className="flex items-center justify-between mb-6 relative z-10">
-            <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-[#f27a71]/10 flex items-center justify-center">
-                <Stethoscope className="w-4 h-4 text-[#f27a71]" />
+        {ultimoDiagnostico ? (
+          <div className="bg-white rounded-[2rem] p-6 sm:p-8 border border-slate-100 shadow-sm flex flex-col relative overflow-hidden group">
+            <div className="absolute right-0 top-0 w-48 h-48 bg-[#f27a71]/5 rounded-full blur-3xl group-hover:bg-[#f27a71]/10 transition-colors pointer-events-none"></div>
+            
+            <div className="flex items-center justify-between mb-6 relative z-10">
+              <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full bg-[#f27a71]/10 flex items-center justify-center">
+                  <Stethoscope className="w-4 h-4 text-[#f27a71]" />
+                </div>
+                Último Diagnóstico
+              </h3>
+              <span className="text-[10px] font-bold text-slate-400 bg-slate-50 px-2.5 py-1.5 rounded-full">{ultimoDiagnostico.fecha}</span>
+            </div>
+            
+            <div className="flex-1 flex flex-col justify-center relative z-10 space-y-4">
+              <div>
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Síntomas reportados</p>
+                <p className="text-sm font-medium text-slate-600 italic">"{ultimoDiagnostico.sintomas}"</p>
               </div>
-              Último Diagnóstico
-            </h3>
-            <span className="text-[10px] font-bold text-slate-400 bg-slate-50 px-2.5 py-1.5 rounded-full">{ultimoDiagnostico.fecha}</span>
+              <div className="pt-4 border-t border-slate-100">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Posible Afección</p>
+                <div className="flex items-center gap-2">
+                  <Activity className="w-5 h-5 text-[#f27a71]" />
+                  <h4 className="text-base sm:text-lg font-black text-slate-800">{ultimoDiagnostico.diagnostico}</h4>
+                </div>
+              </div>
+              <Link to="/sintomas-voz" className="mt-4 w-full py-3.5 bg-[#f27a71]/10 text-[#f27a71] font-bold text-xs text-center rounded-xl hover:bg-[#f27a71] hover:text-white transition-colors">
+                Iniciar Nueva Consulta
+              </Link>
+            </div>
           </div>
-          
-          <div className="flex-1 flex flex-col justify-center relative z-10 space-y-4">
-            <div>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Síntomas reportados</p>
-              <p className="text-sm font-medium text-slate-600 italic">"{ultimoDiagnostico.sintomas}"</p>
+        ) : (
+          <div className="bg-white rounded-[2rem] p-6 sm:p-8 border border-slate-100 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden group">
+            <div className="absolute right-0 top-0 w-48 h-48 bg-slate-100/50 rounded-full blur-3xl transition-colors pointer-events-none"></div>
+            <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mb-4 relative z-10">
+              <Stethoscope className="w-8 h-8 text-slate-300" />
             </div>
-            <div className="pt-4 border-t border-slate-100">
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Posible Afección</p>
-              <div className="flex items-center gap-2">
-                <Activity className="w-5 h-5 text-[#f27a71]" />
-                <h4 className="text-base sm:text-lg font-black text-slate-800">{ultimoDiagnostico.diagnostico}</h4>
-              </div>
-            </div>
-            <Link to="/sintomas-voz" className="mt-4 w-full py-3.5 bg-[#f27a71]/10 text-[#f27a71] font-bold text-xs text-center rounded-xl hover:bg-[#f27a71] hover:text-white transition-colors">
-              Iniciar Nueva Consulta
+            <h3 className="text-lg font-bold text-slate-800 mb-2 relative z-10">Sin diagnósticos previos</h3>
+            <p className="text-sm text-slate-500 mb-6 max-w-[250px] relative z-10">Aún no has realizado ninguna consulta de síntomas. ¿Te sientes mal?</p>
+            <Link to="/sintomas-voz" className="w-full py-3.5 bg-[#f27a71] text-white font-bold text-xs text-center rounded-xl shadow-md hover:bg-[#e06960] transition-colors relative z-10">
+              Iniciar Primera Consulta
             </Link>
           </div>
-        </div>
+        )}
 
       </div>
 

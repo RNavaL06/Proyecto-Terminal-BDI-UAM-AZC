@@ -14,12 +14,7 @@ export const useDashboard = () => {
   const [loadingTomas, setLoadingTomas] = useState(true);
   const [pushStatus, setPushStatus] = useState(Notification.permission);
 
-  const ultimoDiagnostico = {
-    fecha: 'Hace 2 días',
-    sintomas: 'Dolor de cabeza intenso, sensibilidad a la luz',
-    diagnostico: 'Migraña sin aura (G43.0)',
-    gravedad: 'media'
-  };
+  const ultimoDiagnostico = null; // Sin diagnósticos previos para cuentas nuevas
 
   const tipsDeSalud = [
     "Recuerda que los antibióticos deben tomarse por el ciclo completo, incluso si ya te sientes bien.",

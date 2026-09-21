@@ -266,9 +266,24 @@ export default function EscanerReceta() {
         /* VISTA: ESCANEAR RECETA */
         !datosExtraidos ? (
           <div className="bg-white rounded-3xl border border-slate-100 shadow-sm max-w-xl mx-auto space-y-6 text-center p-6 sm:p-8">
-            
-            {imagenSeleccionada ? (
-              <div className="space-y-4">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-50 text-[#4f83f5] flex items-center justify-center mx-auto shadow-sm">
+              <Camera className="w-8 h-8 sm:w-10 sm:h-10" />
+            </div>
+
+            <div>
+              <h2 className="text-xl font-bold text-slate-800">Digitalizar Receta Médica</h2>
+              <p className="text-xs sm:text-sm text-slate-500 max-w-xs mx-auto mt-1">
+                Toma una foto de tu receta o selecciona un archivo de tu galería.
+              </p>
+            </div>
+
+            {analizando ? (
+              <div className="py-8 flex flex-col items-center justify-center space-y-3">
+                <RefreshCw className="w-8 h-8 text-[#4f83f5] animate-spin" />
+                <p className="text-xs font-bold text-slate-600">Extrayendo datos de la receta con IA...</p>
+              </div>
+            ) : imagenSeleccionada ? (
+              <div className="space-y-4 pt-2">
                 <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-900 max-h-[400px] flex items-center justify-center">
                   <img
                     src={imagenSeleccionada}
@@ -281,24 +296,14 @@ export default function EscanerReceta() {
                   <button
                     type="button"
                     onClick={handleAnalizar}
-                    disabled={analizando}
                     className="btn-rose w-full sm:w-auto py-3.5 px-8 text-sm shadow-md"
                   >
-                    {analizando ? (
-                      <>
-                        <RefreshCw className="w-4 h-4 animate-spin mr-2" /> Analizando receta con IA...
-                      </>
-                    ) : (
-                      <>
-                        <Sparkles className="w-4 h-4 mr-2" /> Procesar Receta con IA
-                      </>
-                    )}
+                    <Sparkles className="w-4 h-4 mr-2" /> Procesar Receta con IA
                   </button>
 
                   <button
                     type="button"
                     onClick={() => setImagenSeleccionada(null)}
-                    disabled={analizando}
                     className="btn-secondary w-full sm:w-auto text-xs py-3"
                   >
                     Cambiar Imagen
@@ -307,17 +312,6 @@ export default function EscanerReceta() {
               </div>
             ) : (
               <div className="space-y-5">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-50 text-[#4f83f5] flex items-center justify-center mx-auto shadow-sm">
-                  <Camera className="w-8 h-8 sm:w-10 sm:h-10" />
-                </div>
-
-                <div>
-                  <h2 className="text-xl font-bold text-slate-800">Digitalizar Receta Médica</h2>
-                  <p className="text-xs sm:text-sm text-slate-500 max-w-xs mx-auto mt-1">
-                    Toma una foto de tu receta o selecciona un archivo de tu galería.
-                  </p>
-                </div>
-
                 <div className="flex flex-col gap-2.5 max-w-xs mx-auto pt-2">
                   <button
                     type="button"
@@ -346,7 +340,6 @@ export default function EscanerReceta() {
                 </p>
               </div>
             )}
-
           </div>
         ) : (
           /* Formulario de Validación de Receta */

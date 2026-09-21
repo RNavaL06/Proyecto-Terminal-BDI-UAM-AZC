@@ -23,7 +23,6 @@ export default function Login() {
   const handleDemoClick = async () => {
     try {
       await loginDemo();
-      toast.success('Sesión de demostración iniciada.');
       navigate('/');
     } catch (err) {
       console.error(err);
