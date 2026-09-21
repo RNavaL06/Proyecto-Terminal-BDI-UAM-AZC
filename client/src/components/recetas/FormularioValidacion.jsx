@@ -101,6 +101,19 @@ export default function FormularioValidacion({
           <Pill className="w-5 h-5 text-[#4f83f5]" /> Datos Generales de la Receta
         </h3>
 
+        {/* Advertencia si falta el médico o cédula */}
+        {(!formData.medico_nombre || !formData.medico_cedula) && (
+          <div className="bg-amber-50/80 border border-amber-200/80 rounded-2xl p-4 flex items-start gap-3 mt-4 mb-4">
+            <AlertCircle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+            <div>
+              <h4 className="text-sm font-bold text-amber-800">Datos del médico incompletos</h4>
+              <p className="text-xs text-amber-700 mt-0.5 leading-relaxed">
+                No logramos detectar el <strong>nombre del médico</strong> o su <strong>cédula profesional</strong> en la imagen. Por tu seguridad y para un mejor seguimiento, te sugerimos llenarlos manualmente si los conoces.
+              </p>
+            </div>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-bold text-slate-600 mb-1.5 uppercase tracking-wider">
@@ -337,7 +350,7 @@ export default function FormularioValidacion({
           {isSaving ? (
             <span className="inline-flex items-center gap-2">
               <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin"></span>
-              Guardando en 3NF...
+              Guardando receta...
             </span>
           ) : (
             <span className="inline-flex items-center gap-2">
