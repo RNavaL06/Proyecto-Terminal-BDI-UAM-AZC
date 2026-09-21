@@ -68,7 +68,6 @@ const buscarSugerenciasDireccion = async (texto) => {
   try {
     const response = await axios.get(url, { timeout: 6000 });
     const features = response.data?.features || [];
-
     return features.map((f) => ({
       id: f.properties.place_id || String(Math.random()),
       direccionFormateada: f.properties.formatted,
@@ -81,7 +80,71 @@ const buscarSugerenciasDireccion = async (texto) => {
   }
 };
 
+/**
+ * Obtiene la dirección legible a partir de coordenadas geográficas (Reverse Geocoding).
+ * Utiliza Geoapify con fallback a Nominatim (OpenStreetMap).
+ * 
+ * @param {number} lat - Latitud
+ * @param {number} lng - Longitud
+ */
+const obtenerDireccionPorCoordenadas = async (lat, lng) => {
+  if (lat === undefined || lng === undefined || lat === null || lng === null) return null;
+
+  if (API_KEY) {
+    const url = `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lng}&lang=es&apiKey=${API_KEY}`;
+    try {
+      const response = await axios.get(url, { timeout: 6000 });
+      const feature = response.data?.features?.[0];
+
+      if (feature && feature.properties) {
+        const p = feature.properties;
+        const direccion = p.formatted || [p.address_line1, p.address_line2].filter(Boolean).join(', ') || `${p.street || ''} ${p.housenumber || ''}, ${p.city || ''}`.trim();
+        return {
+          id: p.place_id || String(Math.random()),
+          direccionFormateada: direccion,
+          calle: p.street || null,
+          numero: p.housenumber || null,
+          colonia: p.neighbourhood || p.suburb || null,
+          ciudad: p.city || p.county || null,
+          estado: p.state || null,
+          codigoPostal: p.postcode || null,
+          lat: p.lat || Number(lat),
+          lng: p.lon || Number(lng),
+        };
+      }
+    } catch (error) {
+      console.warn('[Geoapify Reverse Geocoding Warning]:', error.message);
+    }
+  }
+
+  // Fallback a OpenStreetMap Nominatim
+  try {
+    const nominatimUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`;
+    const nomRes = await axios.get(nominatimUrl, {
+      timeout: 5000,
+      headers: { 'User-Agent': 'BotiquinDigitalInteligente-UAM/1.0' }
+    });
+    if (nomRes.data && nomRes.data.display_name) {
+      return {
+        id: String(nomRes.data.place_id || Math.random()),
+        direccionFormateada: nomRes.data.display_name,
+        lat: Number(lat),
+        lng: Number(lng),
+      };
+    }
+  } catch (nomErr) {
+    console.warn('[Nominatim Reverse Fallback Warning]:', nomErr.message);
+  }
+
+  return {
+    direccionFormateada: `Ubicación GPS (${Number(lat).toFixed(4)}, ${Number(lng).toFixed(4)})`,
+    lat: Number(lat),
+    lng: Number(lng),
+  };
+};
+
 module.exports = {
   buscarFarmaciasCercanas,
   buscarSugerenciasDireccion,
+  obtenerDireccionPorCoordenadas,
 };

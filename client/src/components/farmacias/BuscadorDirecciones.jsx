@@ -9,8 +9,8 @@ import { Search, Loader2, MapPin, Mic, MicOff, X } from 'lucide-react';
  * Permite buscar direcciones en México con autocompletado en tiempo real (debounced),
  * ejecución por botón "Buscar", ejecución con tecla Enter, y dictado por voz (Speech-to-Text).
  */
-export default function BuscadorDirecciones({ onSeleccion, cargandoExterno = false }) {
-  const [query, setQuery] = useState('');
+export default function BuscadorDirecciones({ onSeleccion, cargandoExterno = false, direccionActual = '' }) {
+  const [query, setQuery] = useState(direccionActual && direccionActual !== 'UAM Azcapotzalco / CDMX' ? direccionActual : '');
   const [resultados, setResultados] = useState([]);
   const [cargando, setCargando] = useState(false);
   const [mostrarDropdown, setMostrarDropdown] = useState(false);
@@ -26,6 +26,14 @@ export default function BuscadorDirecciones({ onSeleccion, cargandoExterno = fal
     resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
+
+  // Sincronizar campo cuando la dirección cambie por GPS o selección externa
+  useEffect(() => {
+    if (direccionActual && direccionActual !== 'UAM Azcapotzalco / CDMX') {
+      ignorarBusqueda.current = true;
+      setQuery(direccionActual);
+    }
+  }, [direccionActual]);
 
   // Actualizar el query cuando se detecte voz
   useEffect(() => {
@@ -148,7 +156,7 @@ export default function BuscadorDirecciones({ onSeleccion, cargandoExterno = fal
   };
 
   // Alternar dictado por voz
-  const toggleDictadoVoz = async () => {
+  const toggleDictadoVoz = () => {
     if (!browserSupportsSpeechRecognition) {
       toast.error('Tu navegador no soporta reconocimiento de voz nativo. Utiliza Google Chrome o Microsoft Edge.');
       return;
@@ -157,19 +165,12 @@ export default function BuscadorDirecciones({ onSeleccion, cargandoExterno = fal
     if (listening) {
       SpeechRecognition.stopListening();
     } else {
-      try {
-        await navigator.mediaDevices.getUserMedia({ audio: true });
-        setPermisoVozDenegado(false);
-        resetTranscript();
-        setQuery('');
-        setResultados([]);
-        SpeechRecognition.startListening({ continuous: false, language: 'es-MX' });
-        toast('Escuchando tu dirección...', { icon: '🎙️' });
-      } catch (err) {
-        console.warn('Acceso a micrófono denegado:', err);
-        setPermisoVozDenegado(true);
-        toast.error('Permiso de micrófono denegado en tu navegador.');
-      }
+      setPermisoVozDenegado(false);
+      resetTranscript();
+      setQuery('');
+      setResultados([]);
+      SpeechRecognition.startListening({ continuous: false, language: 'es-MX' });
+      toast('Escuchando tu dirección...', { icon: '🎙️' });
     }
   };
 

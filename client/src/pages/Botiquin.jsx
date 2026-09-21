@@ -1,10 +1,11 @@
-import CameraCapture from '../components/recetas/CameraCapture';
+import { useNavigate } from 'react-router-dom';
 import { useBotiquin } from '../hooks/useBotiquin';
 import BotiquinFormModal from '../components/botiquin/BotiquinFormModal';
 import InventarioList from '../components/botiquin/InventarioList';
 import { Pill, Plus, Camera, Search, Box } from 'lucide-react';
 
 export default function Botiquin() {
+  const navigate = useNavigate();
   const {
     inventario,
     resumen,
@@ -14,8 +15,6 @@ export default function Botiquin() {
     setBusqueda,
     loading,
     modalAgregar,
-    modalEscanerCaja,
-    setModalEscanerCaja,
     formMed,
     setFormMed,
     editId,
@@ -23,8 +22,7 @@ export default function Botiquin() {
     cerrarModalAgregar,
     handleGuardarMedicamento,
     handleEditar,
-    handleEliminar,
-    handleEscanearCaja
+    handleEliminar
   } = useBotiquin();
 
   return (
@@ -45,7 +43,7 @@ export default function Botiquin() {
         <div className="flex flex-wrap gap-2">
           <button
             type="button"
-            onClick={() => setModalEscanerCaja(true)}
+            onClick={() => navigate('/escanear-receta', { state: { tab: 'caja' } })}
             className="btn-rose py-2.5 px-4 text-xs font-bold flex items-center gap-1.5 shadow-sm"
           >
             <Camera className="w-4 h-4" /> Escanear Caja
@@ -135,7 +133,7 @@ export default function Botiquin() {
           <div className="flex flex-wrap gap-2.5 justify-center">
             <button
               type="button"
-              onClick={() => setModalEscanerCaja(true)}
+              onClick={() => navigate('/escanear-receta', { state: { tab: 'caja' } })}
               className="btn-rose text-xs sm:text-sm py-3 px-6 shadow-md"
             >
               <Camera className="w-4 h-4 mr-1.5" /> Escanear Caja
@@ -147,18 +145,6 @@ export default function Botiquin() {
             >
               <Plus className="w-4 h-4 mr-1.5" /> Agregar Manual
             </button>
-          </div>
-        </div>
-      )}
-
-      {/* Modales */}
-      {modalEscanerCaja && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="max-w-2xl w-full">
-            <CameraCapture
-              onCapture={handleEscanearCaja}
-              onCancel={() => setModalEscanerCaja(false)}
-            />
           </div>
         </div>
       )}

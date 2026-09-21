@@ -87,6 +87,7 @@ const analizarCajaMedicamento = async (rawBase64) => {
         sustancia_activa: 'Ibuprofeno',
         gramaje: '400mg',
         formato: 'Tabletas',
+        cantidad: 10,
         fecha_caducidad: null,
       }
     };
@@ -104,6 +105,7 @@ const analizarCajaMedicamento = async (rawBase64) => {
       "sustancia_activa": "Nombre de la sustancia o principio activo",
       "gramaje": "Concentración (ej. 500mg, 10ml)",
       "formato": "Tabletas, Jarabe, Cápsulas, Gel, etc.",
+      "cantidad": "Cantidad total de unidades numéricas en la caja (ej. 30, 20, 1). Si es un inhalador, tubo o frasco y no dice unidades exactas, devuelve 1.",
       "fecha_caducidad": "YYYY-MM-DD o null si no es visible"
     }
     Si algún dato no es visible, pon null. No incluyas ningún texto fuera del JSON.`;

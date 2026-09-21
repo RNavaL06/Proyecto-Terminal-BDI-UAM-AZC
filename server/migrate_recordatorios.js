@@ -29,9 +29,11 @@ async function runMigration() {
         frecuencia_horas INT NOT NULL COMMENT 'Cada cuántas horas',
         fecha_inicio DATETIME NOT NULL,
         fecha_fin DATETIME NOT NULL,
+        id_receta_detalle INT UNSIGNED NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
-        FOREIGN KEY (id_catalogo) REFERENCES catalogo_medicamentos(id_catalogo) ON DELETE SET NULL
+        FOREIGN KEY (id_catalogo) REFERENCES catalogo_medicamentos(id_catalogo) ON DELETE SET NULL,
+        FOREIGN KEY (id_receta_detalle) REFERENCES recetas_detalles(id_receta_detalle) ON DELETE SET NULL
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     `);
     console.log('Tabla recordatorios verificada/creada.');

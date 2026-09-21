@@ -37,20 +37,15 @@ export default function DictadorVoz({ onAnalizarSintomas, isLoading = false }) {
     );
   }
 
-  const toggleEscucha = async () => {
+  const toggleEscucha = () => {
     if (listening) {
       SpeechRecognition.stopListening();
     } else {
-      try {
-        await navigator.mediaDevices.getUserMedia({ audio: true });
-        setPermisoDenegado(false);
-        resetTranscript();
-        setTextoManual('');
-        SpeechRecognition.startListening({ continuous: true, language: 'es-MX' });
-      } catch (err) {
-        console.warn('Acceso a micrófono denegado:', err);
-        setPermisoDenegado(true);
-      }
+      setPermisoDenegado(false);
+      resetTranscript();
+      setTextoManual('');
+      // Iniciar directamente sin await para evitar perder el contexto de interacción en móviles
+      SpeechRecognition.startListening({ continuous: true, language: 'es-MX' });
     }
   };
 

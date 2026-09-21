@@ -12,8 +12,6 @@ export const useBotiquin = () => {
 
   // Modales
   const [modalAgregar, setModalAgregar] = useState(false);
-  const [modalEscanerCaja, setModalEscanerCaja] = useState(false);
-  const [escanerLoading, setEscanerLoading] = useState(false);
 
   // Formulario
   const [editId, setEditId] = useState(null);
@@ -115,28 +113,7 @@ export const useBotiquin = () => {
     }
   };
 
-  const handleEscanearCaja = async (dataUrl) => {
-    setEscanerLoading(true);
-    try {
-      const res = await api.post('/inventario/analizar', { imageBase64: dataUrl });
-      if (res.data) {
-        setFormMed((prev) => ({
-          ...prev,
-          nombre_medicamento: res.data.nombre_medicamento || '',
-          sustancia_activa: res.data.sustancia_activa || '',
-          formato: res.data.formato || 'Tabletas',
-          fecha_caducidad: res.data.fecha_caducidad || '',
-        }));
-        setModalEscanerCaja(false);
-        setModalAgregar(true);
-        toast.success('¡Datos de la caja extraídos con éxito!');
-      }
-    } catch (err) {
-      toast.error(err.message || 'Error al analizar caja con IA.');
-    } finally {
-      setEscanerLoading(false);
-    }
-  };
+  // handleEscanearCaja se eliminó ya que ahora se navega a /escanear
 
   const abrirModalNuevo = () => {
     setEditId(null);
@@ -176,9 +153,6 @@ export const useBotiquin = () => {
     setBusqueda,
     loading,
     modalAgregar,
-    modalEscanerCaja,
-    setModalEscanerCaja,
-    escanerLoading,
     formMed,
     setFormMed,
     editId,
@@ -186,7 +160,6 @@ export const useBotiquin = () => {
     cerrarModalAgregar,
     handleGuardarMedicamento,
     handleEditar,
-    handleEliminar,
-    handleEscanearCaja
+    handleEliminar
   };
 };

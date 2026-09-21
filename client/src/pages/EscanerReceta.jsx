@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import CameraCapture from '../components/recetas/CameraCapture';
 import FormularioValidacion from '../components/recetas/FormularioValidacion';
 import api from '../services/api';
@@ -19,7 +19,8 @@ import {
 
 export default function EscanerReceta() {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('receta'); // 'receta' o 'caja'
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(location.state?.tab || 'receta'); // 'receta' o 'caja'
   const [modoCamara, setModoCamara] = useState(false);
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null);
   const [analizando, setAnalizando] = useState(false);
@@ -71,10 +72,22 @@ export default function EscanerReceta() {
         setDatosExtraidos(res.datos_clinicos);
         toast.success('¡Receta analizada con éxito! Revisa los datos.');
       } else {
-        toast.error('No se pudieron extraer datos de la receta.');
+        await Swal.fire({
+          title: 'Receta no legible',
+          text: 'No logramos detectar los medicamentos en la imagen. Por favor toma otra foto donde el texto médico sea más claro.',
+          icon: 'warning',
+          confirmButtonColor: '#4f83f5',
+          customClass: { container: 'font-sans' }
+        });
       }
     } catch (err) {
-      toast.error(err.message || 'Error al procesar la imagen con IA.');
+      await Swal.fire({
+        title: 'Imagen no procesada',
+        text: 'Hubo un problema y no pudimos leer los datos de tu receta médica. Por favor, asegúrate de que el texto sea claro, evita sombras y vuelve a intentarlo.',
+        icon: 'warning',
+        confirmButtonColor: '#4f83f5',
+        customClass: { container: 'font-sans' }
+      });
     } finally {
       setAnalizando(false);
     }
@@ -98,10 +111,22 @@ export default function EscanerReceta() {
         setCajaData(res.data);
         toast.success('¡Datos de la caja extraídos con éxito!');
       } else {
-        toast.error('No se pudieron extraer datos del empaque.');
+        await Swal.fire({
+          title: 'Empaque no reconocido',
+          text: 'No logramos leer el nombre del medicamento en la caja. Por favor, asegúrate de que el frente del empaque se vea claramente.',
+          icon: 'warning',
+          confirmButtonColor: '#4f83f5',
+          customClass: { container: 'font-sans' }
+        });
       }
     } catch (err) {
-      toast.error(err.message || 'Error al procesar la caja con IA.');
+      await Swal.fire({
+        title: 'Imagen no reconocida',
+        text: 'No logramos procesar tu medicamento. Por favor asegúrate de enfocar bien el nombre comercial, evitar el desenfoque y tomar la foto con buena iluminación.',
+        icon: 'warning',
+        confirmButtonColor: '#4f83f5',
+        customClass: { container: 'font-sans' }
+      });
     } finally {
       setAnalizando(false);
     }
@@ -219,18 +244,25 @@ export default function EscanerReceta() {
         </button>
       </div>
 
-      {/* Selector de Modo de Captura o Cámara en Vivo */}
-      {modoCamara ? (
-        <CameraCapture
-          onCapture={(dataUrl) => {
-            handleCameraCapture(dataUrl);
-            if (activeTab === 'caja') {
-              handleAnalizarCaja(dataUrl);
-            }
-          }}
-          onCancel={() => setModoCamara(false)}
-        />
-      ) : activeTab === 'receta' ? (
+      {/* Modal de Cámara en Vivo */}
+      {modoCamara && (
+        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="max-w-2xl w-full">
+            <CameraCapture
+              onCapture={(dataUrl) => {
+                handleCameraCapture(dataUrl);
+                if (activeTab === 'caja') {
+                  handleAnalizarCaja(dataUrl);
+                }
+              }}
+              onCancel={() => setModoCamara(false)}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Vistas Principales */}
+      {activeTab === 'receta' ? (
         /* VISTA: ESCANEAR RECETA */
         !datosExtraidos ? (
           <div className="bg-white rounded-3xl border border-slate-100 shadow-sm max-w-xl mx-auto space-y-6 text-center p-6 sm:p-8">
@@ -287,7 +319,16 @@ export default function EscanerReceta() {
                 </div>
 
                 <div className="flex flex-col gap-2.5 max-w-xs mx-auto pt-2">
-                  <label className="btn-rose w-full py-3.5 px-4 text-xs sm:text-sm font-bold shadow-md cursor-pointer flex items-center justify-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setModoCamara(true)}
+                    className="btn-rose w-full py-3 px-4 text-xs sm:text-sm font-bold flex items-center justify-center gap-2"
+                  >
+                    <Camera className="w-4 h-4" />
+                    Abrir Cámara en Vivo
+                  </button>
+                  
+                  <label className="btn-secondary w-full py-3.5 px-4 text-xs sm:text-sm font-bold shadow-md cursor-pointer flex items-center justify-center gap-2">
                     <input
                       type="file"
                       accept="image/*"
@@ -298,15 +339,6 @@ export default function EscanerReceta() {
                     <ImageIcon className="w-5 h-5" />
                     Seleccionar de Galería
                   </label>
-
-                  <button
-                    type="button"
-                    onClick={() => setModoCamara(true)}
-                    className="btn-secondary w-full py-3 px-4 text-xs sm:text-sm font-bold flex items-center justify-center gap-2"
-                  >
-                    <Camera className="w-4 h-4 text-[#4f83f5]" />
-                    Abrir Cámara en Vivo
-                  </button>
                 </div>
 
                 <p className="text-[11px] text-slate-400 pt-2">

@@ -21,19 +21,19 @@ export const useFarmacias = () => {
   const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition();
 
   useEffect(() => {
-    if (listening && transcript) {
+    if (seccionActiva === 'precios' && listening && transcript) {
       setTerminoPrecios(transcript);
     }
-  }, [transcript, listening]);
+  }, [transcript, listening, seccionActiva]);
 
   useEffect(() => {
-    if (!listening && transcript && terminoPrecios === transcript) {
+    if (seccionActiva === 'precios' && !listening && transcript && terminoPrecios === transcript) {
       handleCotizarPrecios(transcript);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [listening]);
+  }, [listening, seccionActiva]);
 
-  const toggleVoz = async () => {
+  const toggleVoz = () => {
     if (!browserSupportsSpeechRecognition) {
       toast.error('Tu navegador no soporta reconocimiento de voz.');
       return;
@@ -41,13 +41,8 @@ export const useFarmacias = () => {
     if (listening) {
       SpeechRecognition.stopListening();
     } else {
-      try {
-        await navigator.mediaDevices.getUserMedia({ audio: true });
-        resetTranscript();
-        SpeechRecognition.startListening({ continuous: false, language: 'es-MX' });
-      } catch (err) {
-        toast.error('Permiso de micrófono denegado');
-      }
+      resetTranscript();
+      SpeechRecognition.startListening({ continuous: false, language: 'es-MX' });
     }
   };
 
@@ -86,22 +81,88 @@ export const useFarmacias = () => {
       return;
     }
 
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const nuevasCoords = {
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude,
-          nombre: 'Tu ubicación GPS actual'
-        };
-        setCoords(nuevasCoords);
-        cargarFarmacias(nuevasCoords.lat, nuevasCoords.lng);
-        toast.success('Ubicación GPS obtenida con éxito.');
-      },
-      () => {
-        toast.error('No se pudo obtener la ubicación GPS. Puedes buscar por dirección.');
-      },
-      { enableHighAccuracy: true, timeout: 8000 }
-    );
+    const toastId = toast.loading('Obteniendo ubicación GPS precisa...');
+
+    const obtenerPosicion = (opts) =>
+      new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject, opts);
+      });
+
+    (async () => {
+      let pos;
+      try {
+        // Intento 1: Alta precisión sin usar caché obsoleta
+        pos = await obtenerPosicion({ enableHighAccuracy: true, timeout: 9000, maximumAge: 0 });
+      } catch (errHigh) {
+        console.warn('GPS alta precisión falló o demoró, intentando precisión estándar...', errHigh);
+        try {
+          // Intento 2: Precisión estándar (adecuada para navegadores en PC/Laptop por Wi-Fi o IP)
+          pos = await obtenerPosicion({ enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 });
+        } catch (errFallback) {
+          throw errFallback;
+        }
+      }
+
+      const lat = pos.coords.latitude;
+      const lng = pos.coords.longitude;
+      const accuracy = pos.coords.accuracy;
+
+      let direccionLegible = `Ubicación GPS (${lat.toFixed(4)}, ${lng.toFixed(4)})`;
+      try {
+        const res = await api.get(`/farmacias/reversa?lat=${lat}&lng=${lng}`);
+        if (res.data?.direccionFormateada) {
+          direccionLegible = res.data.direccionFormateada;
+        }
+      } catch (e) {
+        console.warn('Error en reverse geocoding:', e);
+      }
+
+      const nuevasCoords = {
+        lat,
+        lng,
+        nombre: direccionLegible,
+      };
+
+      setCoords(nuevasCoords);
+      cargarFarmacias(lat, lng);
+
+      if (accuracy && accuracy > 800) {
+        toast.success(
+          `GPS aproximado (~${Math.round(accuracy)}m). Puedes afinar haciendo clic en el mapa.`,
+          { id: toastId, duration: 6000 }
+        );
+      } else {
+        toast.success('Ubicación GPS detectada con éxito.', { id: toastId });
+      }
+    })().catch((error) => {
+      console.error('Error al obtener GPS:', error);
+      let msg = 'No se pudo obtener la ubicación GPS.';
+      if (error?.code === 1) {
+        msg = 'Permiso de ubicación denegado en tu navegador. Puedes escribir tu dirección en el buscador.';
+      } else if (error?.code === 2) {
+        msg = 'Señal de ubicación no disponible. Puedes buscar tu colonia o alcaldía en la barra.';
+      } else if (error?.code === 3) {
+        msg = 'Tiempo de espera de GPS agotado. Escribe tu calle o colonia para localizar farmacias.';
+      }
+      toast.error(msg, { id: toastId, duration: 6000 });
+    });
+  };
+
+  const handleMoverUbicacion = async (lat, lng) => {
+    let direccionLegible = `Ubicación ajustada (${lat.toFixed(4)}, ${lng.toFixed(4)})`;
+    try {
+      const res = await api.get(`/farmacias/reversa?lat=${lat}&lng=${lng}`);
+      if (res.data?.direccionFormateada) {
+        direccionLegible = res.data.direccionFormateada;
+      }
+    } catch (e) {
+      console.warn('Error en reverse geocoding al mover:', e);
+    }
+
+    const nuevasCoords = { lat, lng, nombre: direccionLegible };
+    setCoords(nuevasCoords);
+    cargarFarmacias(lat, lng);
+    toast.success('Ubicación actualizada en el mapa.');
   };
 
   const handleSeleccionarUbicacion = (lat, lng, direccion) => {
@@ -149,6 +210,7 @@ export const useFarmacias = () => {
     listening,
     toggleVoz,
     handleUsarGPS,
+    handleMoverUbicacion,
     handleSeleccionarUbicacion,
     handleCotizarPrecios
   };

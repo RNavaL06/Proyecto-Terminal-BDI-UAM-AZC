@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, Tooltip, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Tooltip, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
-import { MapPin, Navigation, Star, Clock, Phone, Store } from 'lucide-react';
+import { MapPin, Navigation, Star, Clock, Phone, Store, Crosshair } from 'lucide-react';
 import BuscadorDirecciones from './BuscadorDirecciones';
 
 const svgUsuario = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" fill="#3b82f6" fill-opacity="0.3" stroke="#3b82f6" stroke-width="1" /><circle cx="12" cy="12" r="6" fill="#3b82f6" stroke="white" stroke-width="2" /></svg>`;
 const iconoUsuario = new L.divIcon({
   className: 'bg-transparent',
-  html: `<div style="width: 28px; height: 28px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">${svgUsuario}</div>`,
+  html: `<div style="width: 28px; height: 28px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); cursor: grab;">${svgUsuario}</div>`,
   iconSize: [28, 28],
   iconAnchor: [14, 14],
   popupAnchor: [0, -14]
@@ -32,10 +32,22 @@ function ChangeMapView({ coords }) {
   return null;
 }
 
+function MapEventsHandler({ onMapClick }) {
+  useMapEvents({
+    click(e) {
+      if (onMapClick) {
+        onMapClick(e.latlng.lat, e.latlng.lng);
+      }
+    },
+  });
+  return null;
+}
+
 export default function MapaFarmacias({
   coords,
   farmacias,
   handleUsarGPS,
+  handleMoverUbicacion,
   handleSeleccionarUbicacion,
   cargandoFarmacias
 }) {
@@ -52,7 +64,7 @@ export default function MapaFarmacias({
         <button
           type="button"
           onClick={handleUsarGPS}
-          className="btn-secondary py-2 px-3.5 text-xs font-bold self-start sm:self-auto flex items-center gap-1.5"
+          className="btn-secondary py-2 px-3.5 text-xs font-bold self-start sm:self-auto flex items-center gap-1.5 shadow-sm hover:border-blue-400 transition-colors"
         >
           <Navigation className="w-3.5 h-3.5 text-[#4f83f5]" /> Usar mi GPS
         </button>
@@ -61,22 +73,43 @@ export default function MapaFarmacias({
       <BuscadorDirecciones
         onSeleccion={handleSeleccionarUbicacion}
         cargandoExterno={cargandoFarmacias}
+        direccionActual={coords.nombre}
       />
+
+      <div className="flex items-center justify-between text-[11px] text-slate-500 px-1">
+        <span className="flex items-center gap-1.5">
+          <Crosshair className="w-3.5 h-3.5 text-blue-500 flex-shrink-0" />
+          <span>Haz clic en el mapa o arrastra el marcador azul para ajustar tu ubicación exacta si el GPS no es preciso.</span>
+        </span>
+      </div>
 
       <div className="relative z-0 rounded-3xl overflow-hidden border border-slate-200 h-[380px] sm:h-[480px] shadow-lg">
         <MapContainer
           center={[coords.lat, coords.lng]}
           zoom={14}
           scrollWheelZoom={false}
-          className="w-full h-full"
+          className="w-full h-full cursor-crosshair"
         >
           <ChangeMapView coords={coords} />
+          <MapEventsHandler onMapClick={handleMoverUbicacion} />
           <TileLayer
             attribution='&copy; OpenStreetMap &copy; Geoapify'
             url={`https://maps.geoapify.com/v1/tile/positron/{z}/{x}/{y}.png?apiKey=${import.meta.env.VITE_GEOAPIFY_API_KEY || '5d49805e7b124e2f915289c504e631de'}`}
           />
 
-          <Marker position={[coords.lat, coords.lng]} icon={iconoUsuario}>
+          <Marker 
+            position={[coords.lat, coords.lng]} 
+            icon={iconoUsuario}
+            draggable={true}
+            eventHandlers={{
+              dragend(e) {
+                const { lat, lng } = e.target.getLatLng();
+                if (handleMoverUbicacion) {
+                  handleMoverUbicacion(lat, lng);
+                }
+              },
+            }}
+          >
             <Tooltip
               permanent
               direction="right"
@@ -92,6 +125,7 @@ export default function MapaFarmacias({
                 {coords.nombre && (
                   <p className="text-[11px] text-[#4f83f5] font-medium pt-1 border-t border-slate-100">{coords.nombre}</p>
                 )}
+                <span className="text-[10px] text-slate-400 block pt-1 italic">Arrastra este marcador o haz clic en cualquier lugar para moverlo.</span>
               </div>
             </Popup>
           </Marker>

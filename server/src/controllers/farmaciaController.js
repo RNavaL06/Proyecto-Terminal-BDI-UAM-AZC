@@ -1,6 +1,10 @@
 const pool = require('../config/db');
 const { buscarPreciosMedicamento, buscarFarmaciasCercanas: buscarFarmaciasCercanasSerpApi } = require('../services/serpapiService');
-const { buscarFarmaciasCercanas: buscarFarmaciasCercanasGeoapify, buscarSugerenciasDireccion } = require('../services/geoapifyService');
+const { 
+  buscarFarmaciasCercanas: buscarFarmaciasCercanasGeoapify, 
+  buscarSugerenciasDireccion, 
+  obtenerDireccionPorCoordenadas 
+} = require('../services/geoapifyService');
 
 /**
  * Cotiza ofertas comerciales con SerpApi (Google Shopping México) y guarda en historial.
@@ -113,9 +117,29 @@ const autocompletarDireccion = async (req, res, next) => {
   }
 };
 
+/**
+ * Geocodificación inversa: obtiene la dirección postal formateada a partir de coordenadas GPS.
+ */
+const obtenerDireccionReversa = async (req, res, next) => {
+  const lat = parseFloat(req.query.lat ?? req.body.lat);
+  const lng = parseFloat(req.query.lng ?? req.query.lon ?? req.body.lng ?? req.body.lon);
+
+  if (Number.isNaN(lat) || Number.isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+    return res.status(400).json({ exito: false, error: 'Coordenadas latitud y longitud inválidas.' });
+  }
+
+  try {
+    const data = await obtenerDireccionPorCoordenadas(lat, lng);
+    res.status(200).json({ exito: true, data });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   buscarPrecios,
   historialBusquedas,
   obtenerFarmaciasCercanas,
   autocompletarDireccion,
+  obtenerDireccionReversa,
 };

@@ -44,5 +44,11 @@ module.exports = {
     cronEnabled: process.env.NOTIF_CRON_ENABLED === 'true',
   },
 
+  vapid: {
+    publicKey: process.env.VAPID_PUBLIC_KEY || '',
+    privateKey: process.env.VAPID_PRIVATE_KEY || '',
+    subject: process.env.VAPID_SUBJECT || 'mailto:soporte@bdi.salud',
+  },
+
   clientUrl: process.env.CLIENT_URL || 'http://localhost:5173',
 };

@@ -20,6 +20,7 @@ export default function Farmacias() {
     listening,
     toggleVoz,
     handleUsarGPS,
+    handleMoverUbicacion,
     handleSeleccionarUbicacion,
     handleCotizarPrecios
   } = useFarmacias();
@@ -87,6 +88,7 @@ export default function Farmacias() {
           farmacias={farmacias}
           cargandoFarmacias={cargandoFarmacias}
           handleUsarGPS={handleUsarGPS}
+          handleMoverUbicacion={handleMoverUbicacion}
           handleSeleccionarUbicacion={handleSeleccionarUbicacion}
         />
       )}

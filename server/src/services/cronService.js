@@ -5,11 +5,21 @@ const emailService = require('./emailService');
 const { computeEstado, calcularDiasRestantes } = require('../utils/expirationLogic');
 const webpush = require('web-push');
 
-webpush.setVapidDetails(
-  process.env.VAPID_SUBJECT || 'mailto:example@yourdomain.org',
-  process.env.VAPID_PUBLIC_KEY,
-  process.env.VAPID_PRIVATE_KEY
-);
+const vapidPublicKey = config.vapid.publicKey;
+const vapidPrivateKey = config.vapid.privateKey;
+const vapidSubject = config.vapid.subject;
+
+let pushConfigured = false;
+if (vapidPublicKey && vapidPrivateKey) {
+  try {
+    webpush.setVapidDetails(vapidSubject, vapidPublicKey, vapidPrivateKey);
+    pushConfigured = true;
+  } catch (err) {
+    console.warn('[Push Notificaciones Advertencia] Error al configurar VAPID:', err.message);
+  }
+} else {
+  console.warn('[Push Notificaciones Advertencia] VAPID_PUBLIC_KEY o VAPID_PRIVATE_KEY no configuradas en .env. Notificaciones Web Push desactivadas.');
+}
 
 /**
  * Ejecuta el barrido de revisión de medicamentos y envío de correos preventivos.
@@ -95,7 +105,10 @@ const iniciarCronNotificaciones = () => {
   }
 
   // Cron para Recordatorios (Notificaciones Web Push) - Corre cada minuto
-  cron.schedule('* * * * *', async () => {
+  if (!pushConfigured) {
+    console.log('[Cron Recordatorios] Notificaciones Push deshabilitadas (faltan llaves VAPID en .env).');
+  } else {
+    cron.schedule('* * * * *', async () => {
     try {
       // Buscar tomas pendientes programadas para los próximos 5 minutos que no hayan sido notificadas
       // NOTA: Para simplificar, buscamos tomas cuya hora coincida en este minuto exacto (o esté en el pasado sin tomar).
@@ -161,7 +174,8 @@ const iniciarCronNotificaciones = () => {
     }
   });
 
-  console.log('[Cron Recordatorios] Tarea push registrada (ejecución cada minuto).');
+    console.log('[Cron Recordatorios] Tarea push registrada (ejecución cada minuto).');
+  }
 };
 
 module.exports = {

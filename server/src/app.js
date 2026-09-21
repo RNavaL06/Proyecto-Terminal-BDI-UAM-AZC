@@ -24,7 +24,7 @@ app.use(helmet({
 }));
 
 app.use(cors({
-  origin: config.clientUrl || '*',
+  origin: config.nodeEnv === 'development' ? true : (config.clientUrl || true),
   credentials: true,
 }));
 

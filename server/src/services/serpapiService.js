@@ -37,38 +37,49 @@ const buscarPreciosMedicamento = async (medicamentoNombre) => {
     ];
   }
 
-  return new Promise((resolve, reject) => {
-    getJson(
-      {
+  try {
+    const axios = require('axios');
+    const { data } = await axios.get('https://serpapi.com/search.json', {
+      params: {
         api_key: apiKey,
         engine: 'google_shopping',
-        q: medicamentoNombre,
+        q: `${medicamentoNombre} medicamento farmacia`,
         gl: 'mx',
         hl: 'es',
         google_domain: 'google.com.mx',
         num: 15,
       },
-      (data) => {
-        if (!data) {
-          return reject(new Error('Respuesta vacía de SerpApi'));
-        }
-        if (data.error) {
-          return reject(new Error(`Error de SerpApi: ${data.error}`));
-        }
+      timeout: 15000 // 15 segundos máximo
+    });
 
-        const items = data.shopping_results || [];
-        const resultados = items.map((item) => ({
-          title: item.title,
-          price: item.price || item.extracted_price ? `$${item.extracted_price}` : 'Consultar tienda',
-          store: item.source || item.merchant?.name || 'Farmacia en línea',
-          link: item.link || item.product_link || '#',
-          thumbnail: item.thumbnail || null,
-        }));
-
-        resolve(resultados);
+    if (!data) {
+      throw new Error('Respuesta vacía de SerpApi');
+    }
+    if (data.error) {
+      if (data.error.includes("Google hasn't returned any results")) {
+        return []; // Retorna lista vacía en lugar de lanzar error
       }
-    );
-  });
+      throw new Error(`Error de SerpApi: ${data.error}`);
+    }
+
+    const items = data.shopping_results || [];
+    const resultados = items.map((item) => ({
+      title: item.title,
+      price: item.price || item.extracted_price ? `$${item.extracted_price}` : 'Consultar tienda',
+      store: item.source || item.merchant?.name || 'Farmacia en línea',
+      link: item.link || item.product_link || '#',
+      thumbnail: item.thumbnail || null,
+    }));
+
+    return resultados;
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.error) {
+       const apiError = error.response.data.error;
+       if (apiError.includes("Google hasn't returned any results")) return [];
+       throw new Error(`Error de SerpApi: ${apiError}`);
+    }
+    throw new Error(error.message || 'Error al conectar con SerpApi');
+  }
 };
 
 /**
@@ -105,9 +116,10 @@ const buscarFarmaciasCercanas = async (lat, lng) => {
     return [];
   }
 
-  return new Promise((resolve) => {
-    getJson(
-      {
+  try {
+    const axios = require('axios');
+    const { data } = await axios.get('https://serpapi.com/search.json', {
+      params: {
         engine: 'google_maps',
         q: 'farmacias',
         ll: `@${lat},${lng},14z`,
@@ -115,42 +127,45 @@ const buscarFarmaciasCercanas = async (lat, lng) => {
         hl: 'es',
         api_key: apiKey,
       },
-      (data) => {
-        if (!data || data.error) {
-          if (data?.error) console.warn('[SerpApi Google Maps Warning]:', data.error);
-          return resolve([]);
-        }
+      timeout: 15000
+    });
 
-        const items = data.local_results || [];
-        const farmacias = items
-          .filter((r) => r.title && r.gps_coordinates?.latitude && r.gps_coordinates?.longitude)
-          .map((r) => {
-            const fLat = r.gps_coordinates.latitude;
-            const fLng = r.gps_coordinates.longitude;
-            const dist = calcularDistanciaMetros(lat, lng, fLat, fLng);
+    if (!data || data.error) {
+      if (data?.error) console.warn('[SerpApi Google Maps Warning]:', data.error);
+      return [];
+    }
 
-            return {
-              id: r.place_id || r.data_id || String(Math.random()),
-              nombre: r.title,
-              direccion: r.address || 'Dirección no especificada',
-              lat: fLat,
-              lng: fLng,
-              rating: typeof r.rating === 'number' ? r.rating : null,
-              reviews: typeof r.reviews === 'number' ? r.reviews : null,
-              telefono: r.phone || null,
-              abierto: r.open_state || r.hours || null,
-              horario: r.open_state || r.hours || 'Consulta horario',
-              distanciaMetros: dist,
-              thumbnail: r.thumbnail || null,
-              website: r.website || null,
-            };
-          });
+    const items = data.local_results || [];
+    const farmacias = items
+      .filter((r) => r.title && r.gps_coordinates?.latitude && r.gps_coordinates?.longitude)
+      .map((r) => {
+        const fLat = r.gps_coordinates.latitude;
+        const fLng = r.gps_coordinates.longitude;
+        const dist = calcularDistanciaMetros(lat, lng, fLat, fLng);
 
-        farmacias.sort((a, b) => (a.distanciaMetros || 0) - (b.distanciaMetros || 0));
-        resolve(farmacias);
-      }
-    );
-  });
+        return {
+          id: r.place_id || r.data_id || String(Math.random()),
+          nombre: r.title,
+          direccion: r.address || 'Dirección no especificada',
+          lat: fLat,
+          lng: fLng,
+          rating: typeof r.rating === 'number' ? r.rating : null,
+          reviews: typeof r.reviews === 'number' ? r.reviews : null,
+          telefono: r.phone || null,
+          abierto: r.open_state || r.hours || null,
+          horario: r.open_state || r.hours || 'Consulta horario',
+          distanciaMetros: dist,
+          thumbnail: r.thumbnail || null,
+          website: r.website || null,
+        };
+      });
+
+    farmacias.sort((a, b) => (a.distanciaMetros || 0) - (b.distanciaMetros || 0));
+    return farmacias;
+  } catch (error) {
+    console.warn('[SerpApi Google Maps Error]:', error.message);
+    return [];
+  }
 };
 
 module.exports = { 

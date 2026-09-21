@@ -11,5 +11,7 @@ router.get('/historial', authMiddleware, farmaciaController.historialBusquedas);
 router.post('/cercanas', farmaciaController.obtenerFarmaciasCercanas);
 router.get('/cercanas', farmaciaController.obtenerFarmaciasCercanas);
 router.get('/autocompletar', farmaciaController.autocompletarDireccion);
+router.get('/reversa', farmaciaController.obtenerDireccionReversa);
+router.post('/reversa', farmaciaController.obtenerDireccionReversa);
 
 module.exports = router;
