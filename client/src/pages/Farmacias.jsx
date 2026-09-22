@@ -82,7 +82,7 @@ export default function Farmacias() {
       )}
 
       {/* SECCIÓN 2: Mapa y Geolocalización */}
-      {seccionActiva === 'mapa' && (
+      {seccionActiva === 'mapa' && coords && (
         <MapaFarmacias 
           coords={coords}
           farmacias={farmacias}
@@ -91,6 +91,13 @@ export default function Farmacias() {
           handleMoverUbicacion={handleMoverUbicacion}
           handleSeleccionarUbicacion={handleSeleccionarUbicacion}
         />
+      )}
+      {seccionActiva === 'mapa' && !coords && (
+        <div className="flex flex-col items-center justify-center p-12 bg-white rounded-3xl border border-slate-100 shadow-sm min-h-[400px]">
+          <div className="w-10 h-10 border-4 border-slate-200 border-t-[#4f83f5] rounded-full animate-spin mb-4"></div>
+          <p className="text-slate-500 font-bold text-sm">Obteniendo ubicación GPS...</p>
+          <p className="text-slate-400 text-xs mt-1">Por favor, acepta los permisos de ubicación en tu navegador.</p>
+        </div>
       )}
     </div>
   );

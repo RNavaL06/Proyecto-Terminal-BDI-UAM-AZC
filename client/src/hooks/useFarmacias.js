@@ -7,7 +7,21 @@ export const useFarmacias = () => {
   const [seccionActiva, setSeccionActiva] = useState('precios');
   
   // Estado del Mapa
-  const [coords, setCoords] = useState({ lat: 19.5033, lng: -99.1878, nombre: 'UAM Azcapotzalco / CDMX' });
+  const [coords, setCoords] = useState(() => {
+    const savedCoords = localStorage.getItem('bdi_last_location');
+    if (savedCoords) {
+      try {
+        return JSON.parse(savedCoords);
+      } catch (e) {
+        // Ignorar error de parseo
+      }
+    }
+    return null;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('bdi_last_location', JSON.stringify(coords));
+  }, [coords]);
   const [farmacias, setFarmacias] = useState([]);
   const [cargandoFarmacias, setCargandoFarmacias] = useState(false);
 
@@ -70,14 +84,12 @@ export const useFarmacias = () => {
     }
   };
 
-  useEffect(() => {
-    cargarFarmacias(coords.lat, coords.lng);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const handleUsarGPS = () => {
     if (!navigator.geolocation) {
       toast.error('Geolocalización no soportada por el navegador.');
+      const fallback = { lat: 19.4326, lng: -99.1332, nombre: 'Ciudad de México (Centro)' };
+      setCoords(fallback);
+      cargarFarmacias(fallback.lat, fallback.lng);
       return;
     }
 
@@ -91,12 +103,10 @@ export const useFarmacias = () => {
     (async () => {
       let pos;
       try {
-        // Intento 1: Alta precisión sin usar caché obsoleta
         pos = await obtenerPosicion({ enableHighAccuracy: true, timeout: 9000, maximumAge: 0 });
       } catch (errHigh) {
         console.warn('GPS alta precisión falló o demoró, intentando precisión estándar...', errHigh);
         try {
-          // Intento 2: Precisión estándar (adecuada para navegadores en PC/Laptop por Wi-Fi o IP)
           pos = await obtenerPosicion({ enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 });
         } catch (errFallback) {
           throw errFallback;
@@ -145,8 +155,24 @@ export const useFarmacias = () => {
         msg = 'Tiempo de espera de GPS agotado. Escribe tu calle o colonia para localizar farmacias.';
       }
       toast.error(msg, { id: toastId, duration: 6000 });
+      
+      // Fallback
+      const fallback = { lat: 19.4326, lng: -99.1332, nombre: 'Ciudad de México (Centro)' };
+      setCoords(fallback);
+      cargarFarmacias(fallback.lat, fallback.lng);
     });
   };
+
+  useEffect(() => {
+    if (coords) {
+      cargarFarmacias(coords.lat, coords.lng);
+    } else {
+      handleUsarGPS();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
 
   const handleMoverUbicacion = async (lat, lng) => {
     let direccionLegible = `Ubicación ajustada (${lat.toFixed(4)}, ${lng.toFixed(4)})`;
