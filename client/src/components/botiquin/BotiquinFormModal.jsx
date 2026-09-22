@@ -60,7 +60,7 @@ export default function BotiquinFormModal({
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block font-bold text-slate-700 mb-1">Cantidad *</label>
               <input
@@ -71,22 +71,6 @@ export default function BotiquinFormModal({
                 onChange={(e) => setFormMed({ ...formMed, cantidad_disponible: parseInt(e.target.value, 10) || 0 })}
                 className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#4f83f5]"
               />
-            </div>
-
-            <div>
-              <label className="block font-bold text-slate-700 mb-1">Unidad</label>
-              <select
-                value={formMed.unidad}
-                onChange={(e) => setFormMed({ ...formMed, unidad: e.target.value })}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#4f83f5]"
-              >
-                <option value="piezas">piezas</option>
-                <option value="tabletas">tabletas</option>
-                <option value="capsulas">cápsulas</option>
-                <option value="sobres">sobres</option>
-                <option value="ml">ml</option>
-                <option value="frascos">frascos</option>
-              </select>
             </div>
 
             <div>

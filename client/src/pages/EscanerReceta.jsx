@@ -143,7 +143,7 @@ export default function EscanerReceta() {
         sustancia_activa: cajaData.sustancia_activa || '',
         formato: cajaData.formato || 'Tabletas',
         fecha_caducidad: cajaData.fecha_caducidad || '',
-        cantidad_disponible: 10,
+        cantidad_disponible: parseInt(cajaData.cantidad_disponible, 10) || 1,
         unidad: 'piezas',
       });
       await Swal.fire({
@@ -434,13 +434,24 @@ export default function EscanerReceta() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-3 gap-3">
                 <div>
                   <label className="block text-xs font-bold text-slate-600 mb-1">Presentación</label>
                   <input
                     type="text"
                     value={cajaData.formato || 'Tabletas'}
                     onChange={(e) => setCajaData({ ...cajaData, formato: e.target.value })}
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#4f83f5]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-600 mb-1">Cantidad *</label>
+                  <input
+                    type="number"
+                    min="1"
+                    required
+                    value={cajaData.cantidad_disponible || cajaData.cantidad || 1}
+                    onChange={(e) => setCajaData({ ...cajaData, cantidad_disponible: e.target.value })}
                     className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#4f83f5]"
                   />
                 </div>
