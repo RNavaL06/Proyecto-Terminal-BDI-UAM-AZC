@@ -2,7 +2,7 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const config = require('../config/env');
 const { optimizarImagenBase64 } = require('./imageService');
 
-const GEMINI_MODEL = 'gemini-2.5-flash';
+const GEMINI_MODEL = 'gemini-3.5-flash';
 
 /**
  * Función auxiliar para intentar procesar la imagen rotando entre las API Keys disponibles.
@@ -14,18 +14,18 @@ const procesarConGemini = async (prompt, imagePart) => {
 
   let lastError;
   const startIndex = Math.floor(Math.random() * keys.length);
-  
+
   for (let i = 0; i < keys.length; i++) {
     const keyIndex = (startIndex + i) % keys.length;
     const currentKey = keys[keyIndex];
-    
+
     try {
       const genAI = new GoogleGenerativeAI(currentKey);
       const model = genAI.getGenerativeModel({
         model: GEMINI_MODEL,
         generationConfig: { responseMimeType: 'application/json' },
       });
-      
+
       const result = await model.generateContent([prompt, imagePart]);
       return result.response.text();
     } catch (err) {
@@ -33,7 +33,7 @@ const procesarConGemini = async (prompt, imagePart) => {
       lastError = err;
     }
   }
-  
+
   throw lastError || new Error('No se pudo procesar la imagen con ninguna API Key disponible.');
 };
 
@@ -87,7 +87,7 @@ const analizarImagenReceta = async (rawBase64) => {
 
   const responseText = await procesarConGemini(prompt, imagePart);
   const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
-  
+
   return {
     datosClinicos: JSON.parse(cleanJson),
     imagenOptimizada
@@ -131,7 +131,7 @@ const analizarCajaMedicamento = async (rawBase64) => {
   const imagePart = { inlineData: { data: cleanBase64, mimeType: 'image/jpeg' } };
   const responseText = await procesarConGemini(prompt, imagePart);
   const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
-  
+
   return {
     datosExtraidos: JSON.parse(cleanJson)
   };

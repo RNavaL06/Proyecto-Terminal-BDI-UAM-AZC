@@ -117,8 +117,8 @@ const googleLogin = async (req, res, next) => {
     console.error('[Auth Error] Error en googleLogin:', error.message);
     res.status(401).json({
       exito: false,
-      error: 'Credencial de Google inválida o expirada.',
-      detalles: error.message,
+      error: error.message || 'Credencial de Google inválida o expirada.',
+      detalles: error.stack,
     });
   }
 };
