@@ -35,12 +35,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
               },
               success: {
+                duration: 4000,
                 iconTheme: {
                   primary: '#4f83f5',
                   secondary: '#ffffff',
                 },
               },
               error: {
+                duration: 4000,
                 iconTheme: {
                   primary: '#f27a71',
                   secondary: '#ffffff',

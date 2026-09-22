@@ -81,7 +81,7 @@ export function AuthProvider({ children }) {
     localStorage.removeItem('bdi_user');
     setToken(null);
     setUser(null);
-    toast.success('Sesión cerrada correctamente');
+    toast.success('Sesión cerrada correctamente', { duration: 4000 });
   };
 
   return (
