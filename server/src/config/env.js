@@ -24,7 +24,12 @@ module.exports = {
   },
 
   ai: {
-    geminiKey: process.env.GEMINI_API_KEY || '',
+    geminiKeys: [
+      process.env.GEMINI_API_KEY,
+      process.env.GEMINI_API_KEY_2,
+      process.env.GEMINI_API_KEY_3,
+      process.env.GEMINI_API_KEY_4
+    ].filter(Boolean),
     groqKey: process.env.GROQ_API_KEY || '',
   },
 

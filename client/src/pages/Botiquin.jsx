@@ -41,20 +41,24 @@ export default function Botiquin() {
         </div>
 
         <div className="flex flex-wrap gap-2">
-          <button
-            type="button"
-            onClick={() => navigate('/escanear-receta', { state: { tab: 'caja' } })}
-            className="btn-rose py-2.5 px-4 text-xs font-bold flex items-center gap-1.5 shadow-sm"
-          >
-            <Camera className="w-4 h-4" /> Escanear Caja
-          </button>
-          <button
-            type="button"
-            onClick={abrirModalNuevo}
-            className="btn-primary py-2.5 px-4 text-xs font-bold flex items-center gap-1.5 shadow-sm"
-          >
-            <Plus className="w-4 h-4" /> Agregar Manual
-          </button>
+          {resumen?.total > 0 && (
+            <>
+              <button
+                type="button"
+                onClick={() => navigate('/escanear-receta', { state: { tab: 'caja' } })}
+                className="btn-rose py-2.5 px-4 text-xs font-bold flex items-center gap-1.5 shadow-sm"
+              >
+                <Camera className="w-4 h-4" /> Escanear Caja
+              </button>
+              <button
+                type="button"
+                onClick={abrirModalNuevo}
+                className="btn-primary py-2.5 px-4 text-xs font-bold flex items-center gap-1.5 shadow-sm"
+              >
+                <Plus className="w-4 h-4" /> Agregar Manual
+              </button>
+            </>
+          )}
         </div>
       </div>
 

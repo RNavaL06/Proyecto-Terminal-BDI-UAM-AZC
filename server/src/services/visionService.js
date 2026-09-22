@@ -2,9 +2,40 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const config = require('../config/env');
 const { optimizarImagenBase64 } = require('./imageService');
 
-const genAI = config.ai.geminiKey ? new GoogleGenerativeAI(config.ai.geminiKey) : null;
-// Usaremos el modelo más reciente solicitado por el usuario
-const GEMINI_MODEL = 'gemini-3.5-flash-lite';
+const GEMINI_MODEL = 'gemini-2.5-flash';
+
+/**
+ * Función auxiliar para intentar procesar la imagen rotando entre las API Keys disponibles.
+ * Inicia con una llave al azar (balanceo de carga) y si falla, intenta con la siguiente (fallback).
+ */
+const procesarConGemini = async (prompt, imagePart) => {
+  const keys = config.ai.geminiKeys;
+  if (!keys || keys.length === 0) return null;
+
+  let lastError;
+  const startIndex = Math.floor(Math.random() * keys.length);
+  
+  for (let i = 0; i < keys.length; i++) {
+    const keyIndex = (startIndex + i) % keys.length;
+    const currentKey = keys[keyIndex];
+    
+    try {
+      const genAI = new GoogleGenerativeAI(currentKey);
+      const model = genAI.getGenerativeModel({
+        model: GEMINI_MODEL,
+        generationConfig: { responseMimeType: 'application/json' },
+      });
+      
+      const result = await model.generateContent([prompt, imagePart]);
+      return result.response.text();
+    } catch (err) {
+      console.warn(`[Vision Service] Fallo con la API Key ${keyIndex + 1}/${keys.length}. Intentando con la siguiente... Error:`, err.message);
+      lastError = err;
+    }
+  }
+  
+  throw lastError || new Error('No se pudo procesar la imagen con ninguna API Key disponible.');
+};
 
 /**
  * Analiza la imagen de una receta médica y extrae sus datos clínicos.
@@ -15,20 +46,13 @@ const analizarImagenReceta = async (rawBase64) => {
   const imagenOptimizada = await optimizarImagenBase64(rawBase64, 1280, 80);
   const cleanBase64 = imagenOptimizada.replace(/^data:image\/[a-zA-Z+]+;base64,/, '');
 
-  if (!genAI) {
+  if (!config.ai.geminiKeys || config.ai.geminiKeys.length === 0) {
     console.warn('[Vision Service] GEMINI_API_KEY no configurada. Devolviendo mock.');
     return {
       datosClinicos: _getMockReceta(),
       imagenOptimizada
     };
   }
-
-  const model = genAI.getGenerativeModel({
-    model: GEMINI_MODEL,
-    generationConfig: {
-      responseMimeType: 'application/json',
-    },
-  });
 
   const prompt = `Eres un asistente clínico experto en digitalización de recetas médicas.
     Analiza la imagen adjunta y extrae la información clínica estrictamente en este esquema JSON:
@@ -61,8 +85,7 @@ const analizarImagenReceta = async (rawBase64) => {
     },
   };
 
-  const result = await model.generateContent([prompt, imagePart]);
-  const responseText = result.response.text();
+  const responseText = await procesarConGemini(prompt, imagePart);
   const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
   
   return {
@@ -80,7 +103,7 @@ const analizarCajaMedicamento = async (rawBase64) => {
   const imagenOptimizada = await optimizarImagenBase64(rawBase64, 1280, 80);
   const cleanBase64 = imagenOptimizada.replace(/^data:image\/[a-zA-Z+]+;base64,/, '');
 
-  if (!genAI) {
+  if (!config.ai.geminiKeys || config.ai.geminiKeys.length === 0) {
     return {
       datosExtraidos: {
         nombre_medicamento: 'Ibuprofeno Genérico',
@@ -92,11 +115,6 @@ const analizarCajaMedicamento = async (rawBase64) => {
       }
     };
   }
-
-  const model = genAI.getGenerativeModel({
-    model: GEMINI_MODEL,
-    generationConfig: { responseMimeType: 'application/json' },
-  });
 
   const prompt = `Analiza esta imagen de una caja o empaque de medicamento.
     Extrae la siguiente información y devuélvela ESTRICTAMENTE en este formato JSON:
@@ -110,12 +128,9 @@ const analizarCajaMedicamento = async (rawBase64) => {
     }
     Si algún dato no es visible, pon null. No incluyas ningún texto fuera del JSON.`;
 
-  const result = await model.generateContent([
-    prompt,
-    { inlineData: { data: cleanBase64, mimeType: 'image/jpeg' } },
-  ]);
-
-  const cleanJson = result.response.text().replace(/```json/g, '').replace(/```/g, '').trim();
+  const imagePart = { inlineData: { data: cleanBase64, mimeType: 'image/jpeg' } };
+  const responseText = await procesarConGemini(prompt, imagePart);
+  const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
   
   return {
     datosExtraidos: JSON.parse(cleanJson)
