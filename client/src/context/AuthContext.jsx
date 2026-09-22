@@ -81,11 +81,6 @@ export function AuthProvider({ children }) {
     localStorage.removeItem('bdi_user');
     setToken(null);
     setUser(null);
-    const toastId = toast.success('Sesión cerrada correctamente', { duration: 4000 });
-    // Forzar el cierre en móviles donde el evento touch puede pausar el temporizador del toast
-    setTimeout(() => {
-      toast.dismiss(toastId);
-    }, 4000);
   };
 
   return (
