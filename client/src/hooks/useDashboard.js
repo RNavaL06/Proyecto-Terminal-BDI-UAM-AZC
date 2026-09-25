@@ -11,6 +11,7 @@ export const useDashboard = () => {
   const [loading, setLoading] = useState(true);
 
   const [tomasDeHoy, setTomasDeHoy] = useState([]);
+  const [tomasPendientesAyer, setTomasPendientesAyer] = useState([]);
   const [loadingTomas, setLoadingTomas] = useState(true);
   const [pushStatus, setPushStatus] = useState(Notification.permission);
 
@@ -30,15 +31,21 @@ export const useDashboard = () => {
   useEffect(() => {
     const cargarDashboard = async () => {
       try {
-        const [recRes, altRes, tomasRes] = await Promise.all([
+        const [recRes, altRes, tomasRes, pendientesRes] = await Promise.all([
           api.get('/recetas?page=1&limit=4'),
           api.get('/inventario/alertas?dias=30'),
-          api.get('/recordatorios/hoy')
+          api.get('/recordatorios/hoy'),
+          api.get('/recordatorios/pendientes')
         ]);
 
         if (recRes && recRes.data) setRecetasRecientes(recRes.data);
         if (altRes && altRes.data) setAlertasCaducidad(altRes.data);
         if (tomasRes && tomasRes.tomas) setTomasDeHoy(tomasRes.tomas);
+        if (pendientesRes && pendientesRes.data?.tomas) {
+          setTomasPendientesAyer(pendientesRes.data.tomas);
+        } else if (pendientesRes && pendientesRes.tomas) {
+          setTomasPendientesAyer(pendientesRes.tomas);
+        }
       } catch (err) {
         console.error('Error cargando datos del dashboard:', err);
       } finally {
@@ -54,9 +61,20 @@ export const useDashboard = () => {
     try {
       await api.put(`/recordatorios/toma/${idToma}/completar`);
       setTomasDeHoy(prev => prev.map(t => t.id === idToma ? { ...t, estado: 'tomado' } : t));
+      setTomasPendientesAyer(prev => prev.filter(t => t.id !== idToma));
       toast.success('¡Toma registrada! Buen trabajo.', { icon: '✅' });
     } catch (err) {
-      toast.error('Error al registrar toma.');
+      toast.error(err.response?.data?.mensaje || 'Error al registrar toma.');
+    }
+  };
+
+  const handleOmitirToma = async (idToma) => {
+    try {
+      await api.put(`/recordatorios/toma/${idToma}/omitir`);
+      setTomasPendientesAyer(prev => prev.filter(t => t.id !== idToma));
+      toast.success('Toma marcada como omitida.', { icon: '❌' });
+    } catch (err) {
+      toast.error('Error al omitir toma.');
     }
   };
 
@@ -80,7 +98,9 @@ export const useDashboard = () => {
     ultimoDiagnostico,
     tipActual,
     pushStatus,
+    tomasPendientesAyer,
     handleMarcarTomado,
+    handleOmitirToma,
     handleActivarNotificaciones
   };
 };

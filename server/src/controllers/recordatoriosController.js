@@ -6,6 +6,15 @@ const getTomasHoy = async (req, res, next) => {
   try {
     const idUsuario = req.usuario.id_usuario;
 
+    // Auto-marcar como omitidas las tomas pendientes con más de 48 horas de antigüedad
+    await pool.query(`
+      UPDATE tomas_diarias 
+      SET estado = 'omitido' 
+      WHERE id_usuario = ? 
+        AND estado = 'pendiente' 
+        AND fecha_hora_programada < DATE_SUB(NOW(), INTERVAL 48 HOUR)
+    `, [idUsuario]);
+
     // Buscar tomas de hoy, ordenadas por hora
     const [tomas] = await pool.query(`
       SELECT 
@@ -44,9 +53,16 @@ const marcarToma = async (req, res, next) => {
     const idUsuario = req.usuario.id_usuario;
     const { id_toma } = req.params;
 
-    const [toma] = await pool.query('SELECT estado FROM tomas_diarias WHERE id_toma = ? AND id_usuario = ?', [id_toma, idUsuario]);
+    const [toma] = await pool.query('SELECT estado, fecha_hora_programada FROM tomas_diarias WHERE id_toma = ? AND id_usuario = ?', [id_toma, idUsuario]);
     if (toma.length === 0) {
       return res.status(404).json({ exito: false, mensaje: 'Toma no encontrada o no autorizada' });
+    }
+
+    const fechaHoraProgramada = new Date(toma[0].fecha_hora_programada);
+    const ahora = new Date();
+
+    if (fechaHoraProgramada > ahora) {
+      return res.status(400).json({ exito: false, mensaje: 'Aún no es hora de tomar este medicamento' });
     }
 
     await pool.query(
@@ -55,6 +71,64 @@ const marcarToma = async (req, res, next) => {
     );
 
     res.status(200).json({ exito: true, mensaje: 'Toma marcada como completada' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Marcar una toma como omitida
+const omitirToma = async (req, res, next) => {
+  try {
+    const idUsuario = req.usuario.id_usuario;
+    const { id_toma } = req.params;
+
+    const [toma] = await pool.query('SELECT estado FROM tomas_diarias WHERE id_toma = ? AND id_usuario = ?', [id_toma, idUsuario]);
+    if (toma.length === 0) {
+      return res.status(404).json({ exito: false, mensaje: 'Toma no encontrada o no autorizada' });
+    }
+
+    await pool.query(
+      "UPDATE tomas_diarias SET estado = 'omitido' WHERE id_toma = ?",
+      [id_toma]
+    );
+
+    res.status(200).json({ exito: true, mensaje: 'Toma marcada como omitida' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Obtener tomas pendientes de ayer
+const getTomasPendientesAyer = async (req, res, next) => {
+  try {
+    const idUsuario = req.usuario.id_usuario;
+
+    const [tomas] = await pool.query(`
+      SELECT 
+        td.id_toma,
+        td.fecha_hora_programada,
+        td.estado,
+        r.medicamento_nombre,
+        r.formato
+      FROM tomas_diarias td
+      JOIN recordatorios r ON td.id_recordatorio = r.id_recordatorio
+      WHERE td.id_usuario = ? 
+        AND td.estado = 'pendiente'
+        AND DATE(td.fecha_hora_programada) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)
+      ORDER BY td.fecha_hora_programada ASC
+    `, [idUsuario]);
+
+    res.status(200).json({
+      exito: true,
+      tomas: tomas.map(t => ({
+        id: t.id_toma,
+        medicamento: t.medicamento_nombre,
+        tipo: t.formato,
+        hora: new Date(t.fecha_hora_programada).toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }),
+        horaReal: t.fecha_hora_programada,
+        estado: t.estado
+      }))
+    });
   } catch (error) {
     next(error);
   }
@@ -218,7 +292,9 @@ const toggleRecordatorioReceta = async (req, res, next) => {
 
 module.exports = {
   getTomasHoy,
+  getTomasPendientesAyer,
   marcarToma,
+  omitirToma,
   crearRecordatorio,
   getRecordatoriosPorReceta,
   toggleRecordatorioReceta

@@ -1,13 +1,15 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDashboard } from '../hooks/useDashboard';
 import TomasDeHoy from '../components/dashboard/TomasDeHoy';
 import AlertasInventario from '../components/dashboard/AlertasInventario';
-import { 
   FileText, 
   ArrowRight,
   Lightbulb,
   Stethoscope,
-  Activity
+  Activity,
+  AlertCircle,
+  X
 } from 'lucide-react';
 
 export default function Dashboard() {
@@ -21,9 +23,13 @@ export default function Dashboard() {
     ultimoDiagnostico,
     tipActual,
     pushStatus,
+    tomasPendientesAyer,
     handleMarcarTomado,
+    handleOmitirToma,
     handleActivarNotificaciones
   } = useDashboard();
+
+  const [showModalPendientes, setShowModalPendientes] = useState(false);
 
   const fechaActual = new Date().toLocaleDateString('es-MX', { 
     weekday: 'long', 
@@ -62,6 +68,22 @@ export default function Dashboard() {
           </span>
         </div>
       </div>
+
+      {/* Pendientes Banner */}
+      {tomasPendientesAyer?.length > 0 && !showModalPendientes && (
+        <div className="bg-amber-50 border border-amber-200 rounded-[1.5rem] p-4 flex items-center justify-between shadow-sm animate-fade-in">
+          <div className="flex items-center gap-3 text-amber-800">
+            <AlertCircle className="w-5 h-5 text-amber-500" />
+            <span className="text-sm font-bold">Tienes {tomasPendientesAyer.length} toma(s) sin registrar de ayer.</span>
+          </div>
+          <button 
+            onClick={() => setShowModalPendientes(true)}
+            className="text-xs font-bold text-amber-700 bg-amber-100 hover:bg-amber-200 px-4 py-2 rounded-xl transition-colors"
+          >
+            Revisar
+          </button>
+        </div>
+      )}
 
       {/* Tip de Salud del Día */}
       <div className="bg-gradient-to-r from-[#4f83f5] to-[#7a9df8] rounded-[1.5rem] p-5 sm:p-6 text-white shadow-md relative overflow-hidden flex items-center gap-4">
@@ -185,6 +207,64 @@ export default function Dashboard() {
 
       </div>
 
+    </div>
+
+      {/* Modal de Tomas Pendientes de Ayer */}
+      {showModalPendientes && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white rounded-3xl w-full max-w-sm overflow-hidden shadow-2xl">
+            <div className="p-4 sm:p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+              <h3 className="font-bold text-slate-800 flex items-center gap-2">
+                <AlertCircle className="w-5 h-5 text-amber-500" />
+                Tomas de ayer
+              </h3>
+              <button onClick={() => setShowModalPendientes(false)} className="w-8 h-8 flex items-center justify-center rounded-full bg-white text-slate-400 hover:text-slate-600 shadow-sm">
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            
+            <div className="p-4 sm:p-6 max-h-[50vh] overflow-y-auto space-y-4">
+              {tomasPendientesAyer.length === 0 ? (
+                <p className="text-center text-sm text-slate-500 py-4">Todo al día.</p>
+              ) : (
+                tomasPendientesAyer.map(toma => (
+                  <div key={toma.id} className="bg-slate-50 rounded-2xl p-4 flex flex-col gap-3 border border-slate-100">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <span className="text-[#4f83f5] text-xs font-bold">{toma.hora}</span>
+                        <h4 className="text-sm font-bold text-slate-800">{toma.medicamento}</h4>
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <button 
+                        onClick={() => handleMarcarTomado(toma.id)}
+                        className="flex-1 py-2 bg-emerald-100 text-emerald-700 font-bold text-xs rounded-xl hover:bg-emerald-200 transition-colors"
+                      >
+                        ✅ Tomado
+                      </button>
+                      <button 
+                        onClick={() => handleOmitirToma(toma.id)}
+                        className="flex-1 py-2 bg-slate-200 text-slate-700 font-bold text-xs rounded-xl hover:bg-slate-300 transition-colors"
+                      >
+                        ❌ Omitido
+                      </button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+            
+            <div className="p-4 bg-slate-50 border-t border-slate-100">
+              <button 
+                onClick={() => setShowModalPendientes(false)}
+                className="w-full py-3 bg-white border border-slate-200 text-slate-700 font-bold text-sm rounded-xl hover:bg-slate-100 transition-colors shadow-sm"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
