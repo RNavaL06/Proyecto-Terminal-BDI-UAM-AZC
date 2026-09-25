@@ -64,7 +64,8 @@ export const useDashboard = () => {
       setTomasPendientesAyer(prev => prev.filter(t => t.id !== idToma));
       toast.success('¡Toma registrada! Buen trabajo.', { icon: '✅' });
     } catch (err) {
-      toast.error(err.response?.data?.mensaje || 'Error al registrar toma.');
+      console.error('Error capturado al marcar toma:', err.message);
+      toast.error(err.message || 'Error al registrar toma.');
     }
   };
 

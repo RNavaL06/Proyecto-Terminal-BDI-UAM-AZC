@@ -31,7 +31,7 @@ api.interceptors.response.use(
         window.location.href = '/login';
       }
     }
-    const errorMsg = error.response?.data?.error || error.message || 'Error de conexión con el servidor';
+    const errorMsg = error.response?.data?.mensaje || error.response?.data?.error || error.message || 'Error de conexión con el servidor';
     return Promise.reject(new Error(errorMsg));
   }
 );

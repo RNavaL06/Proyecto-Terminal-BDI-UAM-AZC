@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDashboard } from '../hooks/useDashboard';
 import TomasDeHoy from '../components/dashboard/TomasDeHoy';
 import AlertasInventario from '../components/dashboard/AlertasInventario';
+import {
   FileText, 
   ArrowRight,
   Lightbulb,
@@ -50,7 +51,8 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen w-full font-sans animate-fade-in pt-4 pb-24 sm:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+    <>
+      <div className="min-h-screen w-full font-sans animate-fade-in pt-4 pb-24 sm:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
       
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-2 mb-2">
@@ -265,6 +267,6 @@ export default function Dashboard() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

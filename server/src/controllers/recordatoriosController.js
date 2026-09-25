@@ -36,7 +36,7 @@ const getTomasHoy = async (req, res, next) => {
         id: t.id_toma,
         medicamento: t.medicamento_nombre,
         tipo: t.formato,
-        hora: new Date(t.fecha_hora_programada).toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }),
+        hora: new Date(t.fecha_hora_programada).toLocaleTimeString('es-MX', { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit' }),
         horaReal: t.fecha_hora_programada,
         estado: t.estado
       }))
@@ -121,7 +121,7 @@ const getTomasPendientesAyer = async (req, res, next) => {
         id: t.id_toma,
         medicamento: t.medicamento_nombre,
         tipo: t.formato,
-        hora: new Date(t.fecha_hora_programada).toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }),
+        hora: new Date(t.fecha_hora_programada).toLocaleTimeString('es-MX', { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit' }),
         horaReal: t.fecha_hora_programada,
         estado: t.estado
       }))

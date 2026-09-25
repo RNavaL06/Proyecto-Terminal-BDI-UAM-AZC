@@ -2,7 +2,7 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const config = require('../config/env');
 const { optimizarImagenBase64 } = require('./imageService');
 
-const GEMINI_MODEL = 'gemini-3.5-flash';
+const GEMINI_MODEL = 'gemini-3.5-flash-lite';
 
 /**
  * Función auxiliar para intentar procesar la imagen rotando entre las API Keys disponibles.
