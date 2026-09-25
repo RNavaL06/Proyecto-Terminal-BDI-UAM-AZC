@@ -37,7 +37,8 @@ VALUES
 ('L29.9', 'Prurito, no especificado', 'Enfermedades de la piel', '["comezon", "picazon", "rascar", "urticaria", "ronchas", "piquiña"]'),
 ('K59.0', 'Estreñimiento', 'Síntomas del aparato digestivo', '["estreñimiento", "tapado", "no puedo obrar", "baño", "constipacion", "duro del estomago"]'),
 ('R30.0', 'Disuria', 'Síntomas del aparato urinario', '["orinar", "ardor al orinar", "pipi", "mal de orin", "dolor en vejiga"]'),
-('H10.9', 'Conjuntivitis, no especificada', 'Enfermedades del ojo', '["ojo rojo", "ojos", "lagañas", "irritado", "comezon en los ojos", "lagrimeo"]')
+('H10.9', 'Conjuntivitis, no especificada', 'Enfermedades del ojo', '["ojo rojo", "ojos", "lagañas", "irritado", "comezon en los ojos", "lagrimeo"]'),
+('I87.2', 'Insuficiencia venosa', 'Enfermedades del sistema circulatorio', '["pesadez en las piernas", "piernas pesadas", "calambres", "tobillos hinchados", "varices", "mala circulacion", "arañitas", "dolor de piernas", "piernas cansadas"]')
 ON DUPLICATE KEY UPDATE 
     termino_medico = VALUES(termino_medico),
     capitulo = VALUES(capitulo),

@@ -50,7 +50,7 @@ const marcarToma = async (req, res, next) => {
     }
 
     await pool.query(
-      'UPDATE tomas_diarias SET estado = "tomado", fecha_hora_toma = NOW() WHERE id_toma = ?',
+      "UPDATE tomas_diarias SET estado = 'tomado', fecha_hora_toma = NOW() WHERE id_toma = ?",
       [id_toma]
     );
 
