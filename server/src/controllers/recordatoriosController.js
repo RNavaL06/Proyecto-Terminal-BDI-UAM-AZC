@@ -53,15 +53,12 @@ const marcarToma = async (req, res, next) => {
     const idUsuario = req.usuario.id_usuario;
     const { id_toma } = req.params;
 
-    const [toma] = await pool.query('SELECT estado, fecha_hora_programada FROM tomas_diarias WHERE id_toma = ? AND id_usuario = ?', [id_toma, idUsuario]);
+    const [toma] = await pool.query('SELECT estado, (fecha_hora_programada > NOW()) as is_future FROM tomas_diarias WHERE id_toma = ? AND id_usuario = ?', [id_toma, idUsuario]);
     if (toma.length === 0) {
       return res.status(404).json({ exito: false, mensaje: 'Toma no encontrada o no autorizada' });
     }
 
-    const fechaHoraProgramada = new Date(toma[0].fecha_hora_programada);
-    const ahora = new Date();
-
-    if (fechaHoraProgramada > ahora) {
+    if (toma[0].is_future) {
       return res.status(400).json({ exito: false, mensaje: 'Aún no es hora de tomar este medicamento' });
     }
 
