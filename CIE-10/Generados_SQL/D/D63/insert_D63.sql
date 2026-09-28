@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: D63
--- Aquí se insertarán los códigos que empiecen con D63
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D63.0', 'Anemia en enfermedad neoplásica', 'Sin especificar', '["anemia por cáncer", "anemia oncológica", "falta de hierro por cáncer", "sangre débil", "pálido", "fatiga extrema", "cansancio crónico", "anemia secundaria a neoplasia", "anemia tumoral", "bajón de defensas", "anemia de enfermedades malignas", "hematocrito bajo", "falta de sangre", "decaimiento", "palidez", "anemia en pacientes con tumores", "anemia citotóxica"]'),
+('D63.1', 'Anemia en enfermedad renal crónica', 'Sin especificar', '["anemia renal", "anemia por insuficiencia renal", "falta de eritropoyetina", "sangre pobre por riñones", "anemia en diálisis", "cansancio renal", "palidez por fallo renal", "hemoglobina baja renal", "anemia nefropática", "insuficiencia renal crónica y anemia", "bajón de energía renal", "sangre aguada", "debilidad por riñones", "anemia del enfermo renal", "anemia hipoproliferativa renal", "falta de glóbulos rojos por riñones"]'),
+('D63.8', 'Anemia en otras enfermedades crónicas clasificadas bajo otro concepto', 'Sin especificar', '["anemia por enfermedad crónica", "anemia inflamatoria", "anemia de los procesos crónicos", "sangre pesada", "deficiencia de hierro por inflamación", "anemia secundaria a enfermedad", "malestar general", "anemia por artritis", "anemia autoinmune crónica", "agotamiento", "falta de vitalidad", "anemia por infecciones prolongadas", "anemia por enfermedad reumática", "anemia refractaria al hierro", "sangre cansada", "anemia de enfermedades sistémicas"]');

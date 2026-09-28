@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: E53
--- Aquí se insertarán los códigos que empiecen con E53
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('E53.0', 'Carencia de riboflavina', 'Sin especificar', '["falta de vitamina B2", "deficiencia de riboflavina", "boqueras", "queilitis angular", "grietas en la boca", "llagas en las comisuras", "glositis", "lengua inflamada", "ojos rojos", "fotofobia", "dermatitis seborreica", "falta de vitaminas", "anemia nutricional", "inflamación bucal", "carencia vitamínica", "boca agrietada", "vitaminosis B2"]'),
+('E53.1', 'Carencia de piridoxina', 'Sin especificar', '["falta de vitamina B6", "deficiencia de piridoxina", "hormigueo en manos", "entumecimiento", "anemia sideroblástica", "convulsiones", "irritabilidad", "depresión", "cansancio extremo", "debilidad muscular", "dermatitis", "lengua roja", "confusion mental", "falta de energía", "neuropatía periférica", "problemas nerviosos", "vitaminosis B6"]'),
+('E53.8', 'Carencia de otras vitaminas del grupo B especificadas', 'Sin especificar', '["deficiencia complejo B", "falta de vitaminas B", "carencia de biotina", "falta de ácido pantoténico", "deficiencia de niacina", "pelagra", "carencia de vitaminas del grupo B", "problemas metabólicos", "falta de energía", "debilidad general", "problemas de piel", "caída de pelo", "fatiga crónica", "trastornos nutricionales", "desnutrición", "vitaminosis"]'),
+('E53.9', 'Carencia de vitamina B, no especificada', 'Sin especificar', '["falta de vitaminas del complejo B", "deficiencia de complejo B", "carencia vitamínica", "anemia por vitaminas", "me falta energía", "cansancio constante", "debilidad", "fatiga", "desnutrición", "mala nutrición", "vitaminosis", "falta de nutrientes", "decaimiento", "problemas por mala alimentación", "carencia de B", "baja de vitaminas"]');

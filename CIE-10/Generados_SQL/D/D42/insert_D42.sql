@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: D42
--- Aquí se insertarán los códigos que empiecen con D42
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D42.0', 'Neoplasia de comportamiento incierto de meninges cerebrales', 'Sin especificar', '["tumor cerebral", "bola en la cabeza", "masa en el cerebro", "crecimiento en las meninges", "meningioma incierto", "dolor de cabeza persistente", "mareos constantes", "problemas de visión", "convulsiones", "debilidad en el cuerpo", "tumor en la cabeza", "masa intracraneal", "lesión cerebral", "problemas neurológicos", "presión en la cabeza", "cefalalgia intensa"]'),
+('D42.1', 'Neoplasia de comportamiento incierto de meninges espinales', 'Sin especificar', '["tumor en la columna", "masa en la médula", "bolita en la espalda", "dolor de espalda crónico", "entumecimiento en piernas", "debilidad en las piernas", "tumor espinal", "crecimiento en el canal espinal", "problemas de movilidad", "hormigueo en extremidades", "lesión en la columna", "dolor que baja por la pierna", "masa medular", "compresión nerviosa", "dificultad para caminar", "dolor dorsal"]'),
+('D42.9', 'Neoplasia de comportamiento incierto de meninges, localización no especificada', 'Sin especificar', '["tumor en las meninges", "masa de origen desconocido", "crecimiento anormal", "tumor incierto", "lesión en las capas del cerebro", "masa sospechosa", "problemas del sistema nervioso", "tumor de comportamiento incierto", "bulto en la cabeza o espalda", "dolor neurológico", "hallazgo en resonancia", "masa tumoral", "neoplasia meníngea", "tumor en el sistema nervioso central", "crecimiento no clasificado", "enfermedad de las meninges"]');

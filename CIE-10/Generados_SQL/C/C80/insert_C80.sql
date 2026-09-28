@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: C80
--- Aquí se insertarán los códigos que empiecen con C80
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('C80.0', 'Neoplasia maligna diseminada, no especificada', 'Sin especificar', '["cáncer generalizado", "metástasis", "cáncer avanzado", "cáncer en todo el cuerpo", "cáncer terminal", "enfermedad maligna extendida", "tumor maligno diseminado", "cáncer con metástasis", "cáncer que hizo metástasis", "cáncer esparcido", "cáncer por todos lados", "carcinomatosis", "cáncer sistémico", "cáncer en fase terminal", "neoplasia avanzada", "tumor invadiendo órganos"]'),
+('C80.1', 'Neoplasia maligna (primaria), no especificada', 'Sin especificar', '["cáncer", "tumor maligno", "neoplasia", "tumor", "cáncer primario", "cáncer sin especificar", "bulto sospechoso", "carcinoma", "masa maligna", "cáncer de origen desconocido", "mal", "la enfermedad", "neoplasia maligna", "cáncer primario oculto", "tumor canceroso", "nódulo maligno"]'),
+('C80.2', 'Neoplasia maligna asociada a órgano trasplantado', 'Sin especificar', '["cáncer tras trasplante", "cáncer por inmunosupresores", "tumor post-trasplante", "cáncer en órgano donado", "neoplasia post-trasplante", "cáncer por medicamentos de trasplante", "rechazo crónico con tumor", "linfoma post-trasplante", "complicaciones trasplante", "cáncer del donante", "tumor en órgano trasplantado", "cáncer debido a inmunosupresión", "neoplasia asociada al trasplante", "tumor tras cirugía de trasplante"]');

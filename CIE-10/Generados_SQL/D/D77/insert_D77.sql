@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: D77
--- Aquí se insertarán los códigos que empiecen con D77
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D77', 'Otros trastornos de la sangre y órganos hematopoyéticos en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["anemia", "problemas de la sangre", "sangre débil", "leucemia", "anemia ferropénica", "baja de defensas", "problemas en la médula", "deficiencia de hierro", "anemia perniciosa", "sangre aguada", "trastorno hematológico", "enfermedad de la sangre", "falta de glóbulos rojos", "cansancio crónico", "palidez", "mala circulación", "sangre espesa", "hemoglobina baja", "anemia megaloblástica", "trastornos de coagulación"]');

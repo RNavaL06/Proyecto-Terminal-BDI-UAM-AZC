@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: E35
--- Aquí se insertarán los códigos que empiecen con E35
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('E35', 'Trastornos de glándulas endocrinas en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["problemas hormonales", "desajuste de hormonas", "fallo endocrino", "glándulas mal", "tiroides afectada", "descontrol glandular", "enfermedad metabólica", "problemas de glándulas", "desequilibrio endocrino", "trastorno de las glándulas", "hormonas locas", "falla en el sistema endocrino", "problema de metabolismo", "patología glandular", "alteración endocrinológica", "glándulas inflamadas", "disfunción hormonal", "desorden endocrino"]');

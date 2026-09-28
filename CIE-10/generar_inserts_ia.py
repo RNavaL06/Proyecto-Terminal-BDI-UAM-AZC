@@ -5,7 +5,6 @@ import time
 import google.generativeai as genai
 
 # --- CONFIGURACIÓN ---
-
 EXCEL_PATH = 'Data/Diagnosticos_Tabla_Referencia_CIE10ES_2026.xlsx'
 SHEET_NAME = 'ES2026 Finales'
 BASE_OUTPUT_DIR = 'Generados_SQL'

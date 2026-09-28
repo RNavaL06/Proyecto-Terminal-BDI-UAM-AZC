@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: E44
--- Aquí se insertarán los códigos que empiecen con E44
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('E44.0', 'Malnutrición calórico-proteica moderada', 'Sin especificar', '["desnutrición moderada", "falta de nutrientes", "mal comer", "estar bajo de peso", "flaqueza extrema", "pérdida de masa muscular", "deficiencia alimentaria", "desnutrido", "no comer bien", "falta de proteínas", "adelgazamiento excesivo", "hambre crónica", "malnutrición", "cuerpo débil", "poca energía por falta de comida", "estancamiento de peso", "desnutrición proteico-calórica"]'),
+('E44.1', 'Malnutrición calórico-proteica leve', 'Sin especificar', '["desnutrición leve", "poca alimentación", "bajos nutrientes", "bajar de peso sin querer", "falta de apetito", "mal comer", "dieta deficiente", "estar desganado", "debilidad pasajera", "falta de vitaminas", "desnutrición incipiente", "peso bajo", "no subir de peso", "nutrición insuficiente", "carencia alimenticia", "poca proteína", "cansancio por mala alimentación"]');

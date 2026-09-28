@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: D66
--- Aquí se insertarán los códigos que empiecen con D66
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D66', 'Déficit hereditario del factor VIII', 'Sin especificar', '["hemofilia A", "enfermedad de la sangre", "sangrado excesivo", "problemas de coagulacion", "no coagula la sangre", "herencia genetica sangre", "trastorno de coagulacion", "hemorragias constantes", "deficiencia de factor 8", "hematomas faciles", "moretones sin razon", "sangrado en articulaciones", "enfermedad de los reyes", "problema de plaquetas", "defecto de coagulacion", "sangrado espontaneo", "defecto en la sangre", "enfermedad hematologica hereditaria"]');

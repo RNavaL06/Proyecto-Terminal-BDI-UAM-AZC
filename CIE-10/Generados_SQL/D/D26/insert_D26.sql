@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: D26
--- Aquí se insertarán los códigos que empiecen con D26
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D26.0', 'Otras neoplasias benignas de cuello de útero', 'Sin especificar', '["mioma en el cuello", "fibroma cervical", "bolita en el cuello del útero", "tumor benigno cérvix", "polipo cervical", "quiste en la matriz", "manchado intermenstrual", "dolor en la zona baja", "dolor al tener relaciones", "excrecencia en el útero", "neoplasia benigna cervical", "cervicitis crónica", "sangrado anormal", "chequeo ginecológico", "anormalidad en el PAP"]'),
+('D26.1', 'Otras neoplasias benignas de cuerpo de útero', 'Sin especificar', '["mioma uterino", "fibroma en la matriz", "bolas en la panza", "tumor benigno en el cuerpo del útero", "miomatosis uterina", "sangrado abundante", "dolor pélvico", "útero crecido", "masa en el vientre", "presión en la vejiga", "menstruación dolorosa", "dismenorrea", "cólicos fuertes", "fibrioma", "tumor que no es cáncer"]'),
+('D26.7', 'Otras neoplasias benignas de otras partes de útero', 'Sin especificar', '["tumor benigno en el útero", "masa uterina", "crecimiento anormal matriz", "fibromas varios", "nódulos en el útero", "dolor bajito", "hinchazón abdominal", "quistes uterinos", "mioma subseroso", "mioma intramural", "mioma submucoso", "molestia en la zona íntima", "bulto en la pelvis", "neoplasia útero", "problemas de matriz"]'),
+('D26.9', 'Otras neoplasias benignas de útero, localización no especificada', 'Sin especificar', '["tumor en la matriz", "bolita en la matriz", "problemas de útero", "masa pélvica benigna", "crecimiento en el aparato reproductor", "dolor abdominal bajo", "sangrado irregular", "chequeo de matriz", "tumor benigno sin especificar", "anormalidad ginecológica", "mioma sin clasificar", "diagnóstico en el útero", "bulto pélvico", "tengo algo en la matriz", "neoplasia uterina"]');

@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: D74
--- Aquí se insertarán los códigos que empiecen con D74
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D74.0', 'Metahemoglobinemia congénita', 'Sin especificar', '["sangre azul", "enfermedad de la sangre azul", "cianosis hereditaria", "piel azulada de nacimiento", "deficiencia de citocromo b5 reductasa", "síndrome del bebé azul", "alteración genética de la hemoglobina", "problemas de oxigenación en sangre", "anemia por metahemoglobina", "bebés con piel morada", "enfermedad genética de los Fugas", "trastorno congénito del transporte de oxígeno", "cianosis persistente", "defecto hereditario de la sangre", "síndrome de la piel azulada"]'),
+('D74.8', 'Otras metahemoglobinemias', 'Sin especificar', '["metahemoglobinemia adquirida", "intoxicación por nitratos", "sangre color chocolate", "cianosis por medicamentos", "methemoglobina alta", "baja oxigenación sanguínea", "intoxicación por benzocaína", "cianosis por químicos", "problemas por exposición a nitritos", "sangre que no oxigena", "dificultad para respirar por químicos", "piel grisácea", "palidez azulada", "toxicidad por fármacos", "anemia metahemoglobinémica"]'),
+('D74.9', 'Metahemoglobinemia, no especificada', 'Sin especificar', '["sangre azulada", "cianosis de causa desconocida", "niveles altos de metahemoglobina", "mala oxigenación", "piel de color extraño", "defecto en la sangre", "problema de hemoglobina", "anoxia sanguínea", "cambio de color de piel y sangre", "cianosis sin causa clara", "saturación de oxígeno baja", "problema con el hierro de la sangre", "síntomas de cianosis", "diagnóstico de sangre azul", "trastorno metabólico de la sangre"]');

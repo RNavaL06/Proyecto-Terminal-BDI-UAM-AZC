@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: E32
--- Aquí se insertarán los códigos que empiecen con E32
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('E32.0', 'Hiperplasia del timo persistente', 'Sin especificar', '["timo agrandado", "timo inflamado", "hiperplasia tímica", "timo grande", "problemas del timo", "timo persistente", "crecimiento del timo", "timo hiperplásico", "dolor en el pecho timo", "masa en el pecho", "timo que no encoge", "hipertrofia del timo", "trastorno del timo"]'),
+('E32.1', 'Absceso de timo', 'Sin especificar', '["infección en el timo", "pus en el timo", "absceso tímico", "infección del timo", "bulto con pus en el pecho", "dolor torácico infeccioso", "flemón en el timo", "inflamación purulenta timo", "colección en el timo", "infección mediastínica", "dolor agudo en el pecho", "fiebre y dolor de pecho", "timo infectado"]'),
+('E32.8', 'Otras enfermedades del timo', 'Sin especificar', '["enfermedades tímicas", "problemas del timo", "patología del timo", "timo enfermo", "dolencias del timo", "disfunción tímica", "timo atrófico", "timo inflamado", "inmunidad y timo", "timo con problemas", "alteración del timo", "condiciones del timo", "dolor detrás del esternón", "enfermedades del sistema linfático"]'),
+('E32.9', 'Enfermedad del timo, no especificada', 'Sin especificar', '["problema del timo", "mal del timo", "dolencia tímica", "timo no especificado", "algo en el timo", "timo extraño", "diagnóstico de timo", "timo con síntomas", "enfermedad rara del timo", "dolor en el pecho timo", "revisión del timo", "timo que duele", "qué es el timo", "afección tímica desconocida"]');

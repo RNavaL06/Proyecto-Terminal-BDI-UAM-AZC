@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: D24
--- Aquí se insertarán los códigos que empiecen con D24
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D24.1', 'Neoplasia benigna de mama derecha', 'Sin especificar', '["bolita en el seno derecho", "nódulo mamario derecho", "tumor benigno pecho derecho", "masa en la teta derecha", "quiste mamario derecho", "bulto en el busto derecho", "fibroadenoma mama derecha", "bolita en la pechuga derecha", "dolor de seno derecho", "bulto en el pecho derecho", "bola en la teta derecha", "nódulo en la mama derecha", "tumoración benigna mama derecha", "crecimiento en el seno derecho", "inflamación seno derecho"]'),
+('D24.2', 'Neoplasia benigna de mama izquierda', 'Sin especificar', '["bolita en el seno izquierdo", "nódulo mamario izquierdo", "tumor benigno pecho izquierdo", "masa en la teta izquierda", "quiste mamario izquierdo", "bulto en el busto izquierdo", "fibroadenoma mama izquierda", "bolita en la pechuga izquierda", "dolor de seno izquierdo", "bulto en el pecho izquierdo", "bola en la teta izquierda", "nódulo en la mama izquierda", "tumoración benigna mama izquierda", "crecimiento en el seno izquierdo", "inflamación seno izquierdo"]'),
+('D24.9', 'Neoplasia benigna de mama no especificada', 'Sin especificar', '["bolita en el pecho", "bulto en el seno", "tumor mamario", "masa en el pecho", "quiste en el busto", "nódulo en la mama", "bola en la teta", "fibroadenoma", "bulto en la pechuga", "masa en la mama", "bolita en la glándula mamaria", "tumor benigno en el busto", "nódulo de mama", "bulto mamario", "crecimiento en el pecho"]');

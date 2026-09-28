@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: D71
--- Aquí se insertarán los códigos que empiecen con D71
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D71', 'Trastornos funcionales de neutrófilos polimorfonucleares', 'Sin especificar', '["defensa baja", "inmunodeficiencia", "problemas de glóbulos blancos", "neutrófilos alterados", "infecciones recurrentes", "bajonazo de defensas", "sistema inmune débil", "células blancas que no funcionan", "neutropenia funcional", "problemas de inmunidad", "pus en heridas", "mala respuesta a bacterias", "deficiencias hematológicas", "trastorno de los leucocitos", "falta de defensas", "infecciones constantes", "enfermedad de los neutrófilos"]');

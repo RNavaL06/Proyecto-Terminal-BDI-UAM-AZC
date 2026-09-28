@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: D50
--- Aquí se insertarán los códigos que empiecen con D50
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D50.0', 'Anemia ferropénica secundaria a pérdida de sangre (crónica)', 'Sin especificar', '["anemia por falta de hierro", "anemia crónica", "sangrado crónico", "pérdida de sangre", "palidez", "cansancio extremo", "fatiga", "debilidad", "ojeras", "mareos", "anemia por sangrado", "carencia de hierro", "falta de hemoglobina", "anemia ferropénica", "bajones de energía", "decaimiento"]'),
+('D50.1', 'Disfagia sideropénica', 'Sin especificar', '["dificultad para tragar", "nudo en la garganta", "bola en la garganta", "esófago obstruido", "problemas al pasar la comida", "disfagia", "síndrome de Plummer-Vinson", "garganta cerrada", "dolor al comer", "trago difícil", "obstrucción esofágica", "desnutrición", "atrofia de la mucosa", "esofagitis", "sentir que la comida se atora", "atragantamiento frecuente"]'),
+('D50.8', 'Otras anemias por carencia de hierro', 'Sin especificar', '["falta de hierro", "anemia ferropénica", "hierro bajo", "anemia nutricional", "sangre débil", "anemia por mala alimentación", "pica", "antojos raros", "hielo", "tierra", "uñas quebradizas", "caída de cabello", "anemia", "deficiencia de hierro", "cansancio", "pálida", "palidez de piel"]'),
+('D50.9', 'Anemia ferropénica, no especificada', 'Sin especificar', '["anemia", "falta de hierro", "sangre delgada", "cansancio inexplicable", "anemia leve", "anemia severa", "malestar general", "falta de fuerzas", "desgano", "mareo al levantarse", "anemia ferropénica", "baja de hemoglobina", "tengo la sangre baja", "deficiencia ferrosa", "palidez", "fatiga crónica", "agotamiento"]');

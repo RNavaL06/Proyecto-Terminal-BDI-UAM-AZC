@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: D76
--- Aquí se insertarán los códigos que empiecen con D76
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D76.1', 'Linfohistiocitosis hemofagocítica', 'Sin especificar', '["LHH", "tormenta de citoquinas", "fiebre persistente", "inflamación sistémica", "hígado inflamado", "bazo grande", "esplenomegalia", "anemia severa", "células blancas bajas", "fagocitosis de células sanguíneas", "enfermedad rara de la sangre", "linfoma relacionado", "fiebre de origen desconocido", "ganglios inflamados", "trastorno histiocítico", "fallo multiorgánico"]'),
+('D76.2', 'Síndrome hemofagocítico, asociado a infección', 'Sin especificar', '["lhh secundaria", "síndrome hemofagocítico infeccioso", "infección y fiebre alta", "virus y fatiga extrema", "choque séptico", "cuerpo destruyendo sus células", "infección grave", "defensas bajas", "linfohistiocitosis por virus", "fiebre por infección", "inflamación por microbios", "bazo crecido", "problemas de médula ósea", "sangrado anormal", "inmunodeficiencia aguda", "infección sistémica"]'),
+('D76.3', 'Otros síndromes de histiocitosis', 'Sin especificar', '["histiocitosis", "enfermedad de células histiocíticas", "nódulos en la piel", "lesiones óseas", "problemas de histiocitos", "histiocitosis de células de Langerhans", "enfermedad de Rosai-Dorfman", "xantogranuloma", "acumulación de células inmunes", "nódulos subcutáneos", "dolor en los huesos", "afección de la piel", "trastorno del sistema reticuloendotelial", "tumor benigno de histiocitos", "inflamación crónica", "problemas de tejido conectivo"]');

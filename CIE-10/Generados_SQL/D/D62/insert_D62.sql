@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: D62
--- Aquí se insertarán los códigos que empiecen con D62
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D62', 'Anemia poshemorrágica aguda', 'Sin especificar', '["anemia por desangramiento", "falta de sangre tras hemorragia", "anemia aguda", "anemia por pérdida de sangre", "bajón de sangre", "pálido por desangre", "debilidad por hemorragia", "mareos por falta de sangre", "anemia repentina", "descompensación sanguínea", "palidez extrema", "cansancio extremo por hemorragia", "pérdida de glóbulos rojos", "anemia tras cirugía o accidente", "anemia postquirúrgica", "choque hipovolémico", "deficiencia de hierro aguda", "sentirse desmayado por sangrado"]');

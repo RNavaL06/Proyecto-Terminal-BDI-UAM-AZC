@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: D11
--- Aquí se insertarán los códigos que empiecen con D11
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D11.0', 'Neoplasia benigna de glándula parótida', 'Sin especificar', '["bulto en la mejilla", "bolita frente al oído", "inflamación parótida", "tumor benigno cara", "parotiditis crónica", "quiste en la cara", "hinchazón cerca de la oreja", "nódulo en la mejilla", "dolor mandibular", "bolita bajo el lóbulo", "tumoración indolora cara", "adenoma pleomorfo", "bulto en el cachete", "crecimiento en la mandíbula", "inflamación glandular", "bulto cerca del trago", "tumor benigno glándula salival"]'),
+('D11.7', 'Neoplasia benigna de otras glándulas salivales mayores', 'Sin especificar', '["tumor glándula submandibular", "bolita debajo de la lengua", "bulto en el cuello", "inflamación sublingual", "tumor benigno boca", "nódulo en la mandíbula", "quiste salival", "bulto en la garganta", "problemas al salivar", "inflamación glándula salival", "tumor submaxilar", "bolita en la base de la lengua", "hinchazón cuello", "adenoma glándulas mayores", "nódulo en el piso de la boca", "crecimiento benigno cuello", "masa bajo la mandíbula"]'),
+('D11.9', 'Neoplasia benigna de glándula salival mayor, no especificada', 'Sin especificar', '["bolita en la boca", "tumor boca", "nódulo en la cara o cuello", "bulto glándula salival", "hinchazón mejilla", "problemas de saliva", "quiste en la boca", "tumoración salival", "bolita bajo la piel cara", "nódulo benigno salival", "inflamación boca", "masa en el cuello", "crecimiento en la boca", "bulto en la mejilla o cuello", "tumor glandular", "bolita indolora boca", "problemas en las glándulas", "hinchazón de cara"]');

@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: D20
--- Aquí se insertarán los códigos que empiecen con D20
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D20.0', 'Neoplasia benigna de tejidos blandos de retroperitoneo', 'Sin especificar', '["bolita en la espalda", "bulto en el abdomen", "tumor no canceroso", "masa abdominal", "quiste en el vientre", "inflamación interna", "dolor lumbar profundo", "bolita atrás de la panza", "masa retroperitoneal", "crecimiento anormal", "tumor benigno", "bulto en la guata", "bolita en el abdomen", "molestia en la espalda baja", "tumor de tejidos blandos", "masa en la parte de atrás del vientre"]'),
+('D20.1', 'Neoplasia benigna de tejidos blandos de peritoneo', 'Sin especificar', '["tumor en la panza", "bulto en la barriga", "bolita en el estómago", "masa en el peritoneo", "quiste abdominal", "dolor en la guata", "masa benigna", "tumor que no es cáncer", "bulto intestinal", "inflamación en el abdomen", "crecimiento benigno", "bolita debajo de la piel del abdomen", "masa en el vientre", "tumores abdominales", "dolor abdominal recurrente", "bulto en la cavidad abdominal"]');

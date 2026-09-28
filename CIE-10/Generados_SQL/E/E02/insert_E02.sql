@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: E02
--- Aquí se insertarán los códigos que empiecen con E02
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('E02', 'Hipotiroidismo subclínico por carencia de yodo', 'Sin especificar', '["tiroides lenta", "falta de yodo", "hipotiroidismo leve", "cansancio extremo", "bocio", "tiroides perezosa", "metabolismo lento", "falta de energía", "hinchazón de cuello", "hipotiroidismo no diagnosticado", "nudo en la garganta", "aumento de peso inexplicable", "caída de pelo por tiroides", "tiroides descompensada", "déficit de yodo", "bocio endémico", "poca actividad tiroidea", "problemas de tiroides", "tiroides inflamada", "fatiga crónica tiroidea"]');
