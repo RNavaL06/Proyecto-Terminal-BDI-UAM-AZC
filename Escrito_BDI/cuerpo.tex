@@ -1,0 +1,853 @@
+\pagenumbering{gobble{}}
+\pagestyle{fancy}
+
+\section*{Resumen}%Resumen
+La automedicación irresponsable, el consumo prolongado de medicamentos caducados y la mala administración de dosis representan un grave problema de salud pública en México. A este escenario se suma el riesgo clínico derivado de la ilegibilidad en las recetas médicas manuscritas. Para atender esta problemática, el presente proyecto detalla el desarrollo del Botiquín Digital Inteligente (BDI), un sistema web interactivo diseñado para centralizar, automatizar y gestionar el inventario médico personal y el historial de tratamientos. 
+
+Para lograr la extracción estructurada de datos, el BDI implementa Grandes Modelos de Lenguaje (LLM) multimodales capaces de procesar fotografías de recetas médicas y empaques de fármacos, extrayendo información vital como nombres, dosis y fechas de caducidad. Adicionalmente, el sistema integra un motor de Procesamiento de Lenguaje Natural (NLP) que traduce síntomas descritos por el usuario en lenguaje coloquial y los mapea a los diagnósticos oficiales establecidos en la Clasificación Internacional de Enfermedades (CIE-10). 
+
+La arquitectura del sistema se construyó bajo un modelo cliente-servidor seguro e intuitivo, empleando React para la interfaz de usuario, Node.js para la lógica de procesamiento y MySQL para asegurar la integridad relacional de los datos. Con el objetivo de proveer una herramienta integral, se incorporaron módulos de geolocalización de farmacias, consumo de APIs comerciales para la comparación de precios en tiempo real y funciones de accesibilidad de voz a texto. Como resultado, el sistema proporciona una plataforma doméstica segura que asiste a los usuarios en la toma de decisiones informadas, desincentivando la adquisición de fármacos y reduciendo los riesgos asociados al almacenamiento inadecuado de medicamentos.
+
+\clearpage
+
+\tableofcontents
+
+\clearpage
+
+\listoffigures
+\clearpage
+
+\listofdiagrams
+\clearpage
+
+\lstlistoflistings
+\clearpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\pagestyle{fancy}
+
+\section{Introducción}%Introducción
+
+En México se calcula que más del 80\% de la población se automedica, es decir, usa fármacos por iniciativa propia sin contar con prescripción o indicación médica profesional \cite{SecSalud}. Esta práctica se define como el uso de medicamentos o productos complementarios o naturistas no recetados por un médico e involucra la adquisición de productos sin una prescripción médica, la reutilización de las prescripciones antiguas, el uso de remanentes almacenados en el hogar, compartir productos con familiares o amigos e incumpliendo con la indicación médica sobre la dosificación o la duración del tratamiento \cite{ugto}. Diversos estudios señalan que en los medicamentos sobrantes almacenados en el hogar resulta complejo identificar la fecha de caducidad debido a la ausencia de envases secundarios (frascos o cajas), en casos más extremos, los medicamentos están fuera de su envase primario (blíster)\footnote{Almacenamiento individual de cápsulas, comprimidos y pastillas para garantizar la dosificación exacta.} y no se tiene información de su fecha de caducidad, convirtiéndolos en medicinas no aptas para el consumo \cite{ResMedicamentos}. A esta problemática se le suma la mala legibilidad en las recetas escritas manualmente. Según un informe del Instituto de Medicina de la Academia Nacional de Ciencias de Estados Unidos, en 2022 se estimaron hasta siete mil muertes anuales relacionadas con errores directamente provocados por la caligrafía en recetas médicas escritas a mano \cite{elsoldedurango}.
+
+Esta situación representa un doble reto técnico; por un lado, implica la extracción y organización de datos médicos confiables a partir de fuentes de datos no estandarizadas y con poca legibilidad (como la caligrafía de recetas médicas y empaques deteriorados). Además, existe un problema de procesamiento de lenguaje natural a causa de la diferencia semántica entre el lenguaje coloquial que utilizan las personas para describir sus síntomas y la terminología oficial.
+
+El proyecto Botiquín Digital Inteligente ({BDI}) surge para automatizar la digitalización de prescripciones y el control de inventario médico personal mediante la integración de \emph{Large Language Models} (Grandes Modelos de Lenguaje, \emph{LLM} por sus siglas en inglés), específicamente modelos multimodales\footnote{La IA multimodal se refiere a modelos de aprendizaje automático capaces de procesar e integrar información de múltiples modalidades que pueden incluir texto, imágenes, audio, video y otras formas de entradas sensoriales \cite{multimodales}.} que interpretarán la caligrafía y el contexto médico. El sistema utiliza técnicas de inteligencia artificial para extraer información organizada y realizar un mapeo semántico que asocie términos comunes con los diagnósticos oficiales \cite{CIE10}. De esta manera, el proyecto busca aportar una herramienta tecnológica que centralice la gestión segura de la salud personal y desincentive la automedicación errónea.
+
+\clearpage
+
+\section{Antecedentes}%Antecedentes
+
+\subsection[Recomendación de Códigos CIE-10 a Diagnósticos Médicos en Escenarios a Gran Escala]{Recomendación de Códigos CIE-10 a Diagnósticos Médicos en Escenarios a Gran Escala \cite{Velasco}.} 
+Esta tesis atendió la necesidad de automatizar la asignación de códigos de la Clasificación Internacional de Enfermedades (CIE-10-MC) a diagnósticos médicos redactados en lenguaje natural. Su propósito es ayudar a los profesionales de la salud a reducir errores manuales y agilizar la toma de decisiones. Para lograrlo, utiliza herramientas de procesamiento de texto que analizan las palabras y las emparejan con su código correspondiente. A nivel técnico, se apoya en técnicas de Procesamiento de Lenguaje Natural (NLP) y clasificadores automáticos de texto diseñados para manejar amplios volúmenes de datos hospitalarios. Como resultado, automatizó exitosamente la asignación a gran escala, mejorando la organización de los historiales clínicos y demostrando una reducción significativa del margen de error humano en comparación con el procesamiento manual. Este trabajo demuestra la viabilidad de asociar lenguaje no estructurado a catálogos estandarizados, fundamentando teóricamente el módulo del BDI encargado de mapear malestares comunes a diagnósticos oficiales de manera automática.
+
+\subsection[Mapping of Narrative Text Fields To ICD-10 Codes Using Natural Language Processing and Machine Learning]{Mapping of Narrative Text Fields To ICD-10 Codes Using Natural Language Processing and Machine Learning \cite{nkolele}.}
+Este artículo presenta un modelo para automatizar la clasificación de textos médicos narrativos, con la finalidad de reducir el tiempo y los errores que ocurren al procesar documentos manualmente en los hospitales. El sistema utiliza algoritmos de aprendizaje automático para leer los resúmenes clínicos y asignarles el código CIE-10 correcto, implementando modelos basados en Árboles de Decisión y técnicas avanzadas de Procesamiento de Lenguaje Natural (NLP). En sus evaluaciones de rendimiento, el uso de clasificadores demostró el fuerte potencial de la codificación automatizada, logrando tasas de exactitud, precisión y exhaustividad superiores al 50\%, lo que acelera los procesos administrativos y sienta las bases para arquitecturas más robustas. Esto respalda directamente la funcionalidad semántica del BDI para procesar la entrada de texto coloquial de la persona usuaria y recuperar exclusivamente el historial previo relacionado con dicho malestar.
+
+\subsection[A novel approach of doctors' handwritten medical prescription recognition using a deep neural network and generating digital records of the patients]{A novel approach of doctors' handwritten medical prescription recognition using a deep neural network and generating digital records of the patients \cite{novel}.}
+Este proyecto desarrolló un sistema capaz de leer y digitalizar recetas médicas escritas a mano; su propósito principal es evitar errores en la medicación causados por la mala caligrafía de los doctores. La solución utiliza un modelo híbrido de Reconocimiento Óptico de Caracteres (OCR) e inteligencia artificial, incorporando Redes Neuronales Profundas (DNN), Redes Neuronales Convolucionales (CNN) y Perceptrones Multicapa, apoyados por mecanismos de soporte de decisiones. Como resultado principal, el sistema logró reconocer visualmente el texto y los números de las recetas, permitiendo guardarlos de forma clara y segura en los expedientes electrónicos de los pacientes mediante la exportación automatizada a formatos estructurados. Esta investigación sustenta metodológicamente la extracción de datos clave a partir de fotografías en el BDI, principio que evolucionará mediante el uso de \emph{LLM} multimodales para extraer información clínica, dosis y fechas de caducidad.
+
+\subsection [Aplicación Móvil DrugXafe ]{Aplicación Móvil DrugXafe \cite{DrugXafe}.}
+Esta aplicación móvil permite a los usuarios verificar la autenticidad de sus medicamentos y localizar inventario disponible, con la finalidad de detectar y evitar el consumo de medicinas caducadas o falsas. Para su funcionamiento, emplea un sistema de trazabilidad farmacéutica de extremo a extremo fundamentado en la serialización con códigos de matriz de datos, e integra un sistema de geolocalización mediante GPS que guía a las personas hacia las farmacias más cercanas que cuentan con el medicamento que necesitan. Sus resultados garantizan una cadena de suministro transparente, optimizando la gestión de inventarios y logrando un manejo eficaz del control de caducidades a gran escala. Este trabajo valida la eficacia y aceptación de las herramientas de localización geográfica y gestión de vigencia en el usuario final, características que se replicarán de manera análoga en los módulos del BDI enfocados al botiquín digital y al mapa interactivo de farmacias.
+
+\subsection [Ada Health Clone Solutions: Architecture and Technology]{Ada Health Clone Solutions: Architecture and Technology \cite{AdaHealthApp}.}
+Este sistema evalúa los síntomas y ayuda a los usuarios a entender su estado de salud para evitar que las personas se autodiagnostiquen con información incorrecta en internet. Utiliza procesamiento de lenguaje natural que analiza los síntomas escritos por la persona usuaria y los compara con una base de datos médica para recomendarle los siguientes pasos a seguir. Para lograr esto, emplea motores de inferencia clínica basados en redes bayesianas y modelos probabilísticos de Machine Learning. Evaluaciones clínicas han demostrado que esta arquitectura posee una alta precisión como herramienta de triaje, proporcionando recomendaciones seguras basadas en un razonamiento probabilístico validado por médicos. Aunque el BDI es un sistema de apoyo informativo y no emite diagnósticos nuevos, el éxito comercial de esta tecnología justifica el uso de mecanismos de procesamiento de lenguaje natural para orientar a la persona usuaria basándose estrictamente en el historial clínico que ya le fue prescrito.
+
+\subsection [Diccionario panhispánico de términos médicos]{Diccionario panhispánico de términos médicos ({DPTM}) \cite{DPTM}.}
+{Este trabajo es una plataforma digital de búsqueda de distintos términos coloquiales o médicos, cuya función principal es agrupar en una sola plataforma el lenguaje médico de hispanohablantes para evitar confusiones entre los doctores y los pacientes. A nivel de arquitectura de software, consiste en un repositorio centralizado de base de datos relacional y un robusto motor de búsqueda web diseñado para indexar miles de términos, sinónimos y variantes léxicas. Con ello, se consolidó como un catálogo de consulta estandarizado que ayuda a interpretar correctamente tanto palabras coloquiales así como términos técnicos relacionados con enfermedades y síntomas. Este trabajo sirve como base para diseñar el diccionario interno del BDI y organizar la información en nuestra base de datos. Además, reafirma la importancia de traducir los síntomas descritos en lenguaje común a términos médicos oficiales para que el sistema no cometa errores.}\\[0.1cm]
+
+
+%Este texto es indicativo, deberá ser sustituido por el contenido de la sección.
+Las similitudes y diferencias con el proyecto propuesto, se presentan en la Tabla \ref{table:trabajosRelacionados}.
+
+%Esta es la tabla en donde se presentan las similitudes y diferencias.
+{
+\begin{longtable}{m{.05\paperwidth} *{3}{m{.33\paperwidth}} @{}}
+ \caption{Comparación cualitativa de los trabajos relacionados con el proyecto.}
+  \label{table:trabajosRelacionados}\\
+\hline
+\textbf{Ref.}&
+\textbf{Similitudes} &
+\textbf{Diferencias} \\
+\hline
+\endfirsthead
+
+\multicolumn{3}{c}{\textbf{Continuación de la Tabla \ref{table:trabajosRelacionados}}}\\
+\hline
+\textbf{Ref.}&
+\textbf{Similitudes} &
+\textbf{Diferencias} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+\cite{Velasco} &
+    \begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+        \item Uso de NLP para procesamiento de texto 
+        \item Asignación automática de códigos CIE-10
+    \end{itemize} &
+    \begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+        \item Orientado a personal administrativo/hospitalario
+        \item No cuenta con módulo LLM para extracción de caracteres
+        \item No geolocaliza farmacias
+    \end{itemize} \\
+    \midrule
+\cite{nkolele} &
+    \begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+        \item Análisis de texto clínico no estructurado
+        \item Mapeo directo a la clasificación CIE-10
+        \item Uso de algoritmos de inteligencia artificial para agilizar decisiones
+    \end{itemize} &
+    \begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+        \item Enfocado en estadísticas de morbilidad
+        \item No sugiere medicamentos al usuario
+        \item No cuenta con herramientas para cotizar precios en línea
+    \end{itemize} \\
+\midrule
+\cite{novel} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item Digitalización de recetas médicas manuscritas
+    \item Uso de inteligencia artificial para el reconocimiento de caracteres
+    \item Su propósito principal es evitar errores en la medicación
+\end{itemize} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item Destinado a historiales clínicos de hospitales
+	\item Implementación de motor OCR
+    \item No procesa ni interpreta síntomas coloquiales
+\end{itemize} \\
+\midrule
+\cite{DrugXafe} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item Geolocalización de farmacias cercanas
+	\item El paciente tiene un control de su salud
+    \item Prevención del consumo de medicinas caducadas
+\end{itemize} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item No procesa recetas médicas ni diagnósticos
+    \item No traduce términos coloquiales a un lenguaje médico estandarizado
+    \item Es una aplicación móvil nativa, a diferencia de la plataforma web responsiva propuesta
+\end{itemize} \\
+\midrule
+\cite{AdaHealthApp} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item Evaluación de síntomas con NLP
+	\item Mapeo de terminología a códigos CIE-10
+    \item Orientación directa a la consulta de la persona usuaria final
+\end{itemize} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item No sólo está enfocado a síntomas comununes también a condiciones graves
+    \item No digitaliza recetas médicas previas para filtrar su información
+    \item No cuenta con funciones de registro y escaneo de medicamentos
+\end{itemize} \\
+\midrule
+\cite{DPTM} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item Normalización del lenguaje médico
+	\item Mapea términos coloquiales a términos médicos
+    \item Agrupación de la información en un catálogo centralizado para realizar las consultas
+\end{itemize} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item Es una herramienta de consulta manual
+	\item No realiza recomendaciones ni extracciones
+    \item Carece de integración con mapas, historiales o comparador de precios
+\end{itemize} \\
+    \bottomrule
+\end{longtable}
+}
+
+\clearpage
+
+\section{Justificación}
+
+La realización del proyecto "Botiquín Digital Inteligente” se justifica por la necesidad de proveer una herramienta tecnológica integral que asista a las personas en la gestión de su salud. Al centralizar funciones como la ayuda para interpretar recetas médicas, localizar farmacias mediante geolocalización, gestionar el inventario de medicamentos y consultar precios en línea, el BDI optimiza la toma de decisiones y desincentiva la adquisición o el consumo empírico de fármacos sin un sustento clínico previo.
+
+El uso de \emph{LLM} multimodales es indispensable para resolver esta problemática, ya que el Reconocimiento Óptico de Caracteres (OCR) resulta insuficiente para reconocer la caligrafía médica; los \emph{LLM} aportan el razonamiento semántico y contextual necesario para lograr la extracción exacta de datos clínicos. Además, para asegurar el desarrollo de una interfaz dinámica, responsiva y accesible, se implementó una arquitectura basada en \emph{React} para el \emph{frontend}. En el \emph{backend}, la elección de \emph{Node.js} con \emph{Express.js} permite un procesamiento eficiente, ideal para gestionar múltiples peticiones simultáneas hacia las API\footnote{Una API (interfaz de programación de aplicaciones) es un conjunto de mecanismos que permiten a dos componentes de software comunicarse entre sí mediante un conjunto de reglas o protocolos.\cite{apidef}} externas (inteligencia artificial y mapas). Finalmente, el uso de \emph{MySQL} garantiza la consistencia, integridad y aislamiento de la información sensible dentro de un modelo relacional.
+
+La información estructurada que muestra el BDI permite reducir la incertidumbre y previene los riesgos asociados al consumo de sustancias vencidas. Es importante mencionar que el sistema es un prototipo tecnológico de apoyo doméstico e informativo, que no emite diagnósticos médicos ni recetas autónomas, y que opera exclusivamente bajo la información previamente prescrita y validada por la persona usuaria, por lo que no sustituye ni requiere las certificaciones de la Secretaría de Salud aplicables a instituciones médicas.
+
+\clearpage
+
+\section{Objetivo general}
+
+Desarrollar un sistema web interactivo que centralice el control del inventario médico y el historial de tratamientos a través de la digitalización automatizada de recetas, con el fin de proveer información estructurada que asista en la gestión responsable de la salud personal.
+
+\section{Objetivos específicos}
+
+\begin{enumerate}
+    \item Integrar un motor de extracción de datos basado en \emph{LLM} para estructurar la información clínica de recetas médicas y empaques, alimentando automáticamente un módulo de botiquín digital que gestione el inventario y alerte sobre fechas de caducidad.
+    \item Desarrollar un módulo de procesamiento de lenguaje natural multimodal (texto y audio) que traduzca síntomas coloquiales a códigos clínicos oficiales de la CIE-10 \cite{CIE10}, permitiendo a la persona usuaria consultar su historial de tratamientos de forma intuitiva.
+    \item Incorporar servicios de geolocalización y consumo de APIs externas para dotar al sistema de una herramienta de asistencia logística y económica, facilitando la ubicación de farmacias cercanas y la comparación de precios de medicamentos.
+    \item Establecer una arquitectura de datos segura que garantice la confidencialidad, privacidad e integridad de la información médica procesada, implementando controles de acceso por autenticación y el aislamiento estricto de la base de datos relacional.
+\end{enumerate}
+
+\clearpage
+
+\section{Marco teórico}
+
+\subsection{Conceptos del dominio médico} 
+
+\subsubsection{Automedicación y el deterioro del inventario fármaco doméstico}
+
+La Organización Mundial de la Salud (OMS) define la automedicación como “la selección y el uso de los medicamentos por parte de los individuos para tratar enfermedades o síntomas que ellos mismos pueden identificar” \cite{OMS2000}. Aunque las organizaciones de salud aceptan la importancia del autocuidado para problemas temporales, el uso de medicamentos sin guía y sin información adecuada provoca riesgos graves en todo el sistema. Entre estos peligros destacan el desarrollo de resistencia a los antimicrobianos, el enmascaramiento de patologías crónicas y la aparición de reacciones adversas no deseadas \cite{Tobon2010}. 
+
+En el ámbito del hogar, este peligro médico se intensifica considerablemente por las inadecuadas costumbre de conservación de los suministros personales. En la industria farmacéutica, los empaques se dividen en primarios y secundarios. Frecuentemente, los usuarios desechan los envases secundarios para ahorrar espacio, lo que conlleva a la pérdida irreversible de información crítica como el número de lote y la fecha de caducidad \cite{Tobon2010}. La descomposición de los principios activos en fármacos que han caducado o que no han sido almacenados adecuadamente modifica la farmacocinética del medicamento, lo que provoca que pierda su efectividad terapéutica o lo transforme en una sustancia nociva \cite{Tobon2010}. Esto fundamenta la necesidad de sistematizar el control de los botiquines mediante herramientas tecnológicas preventivas. 
+
+\subsubsection{Errores de prescripción y el impacto de la caligrafía médica }
+Los daños a la salud provocados por el propio sistema sanitario y los errores de medicación representan una de las principales causas de morbimortalidad\footnote{Número de personas afectadas y fallecidas por una enfermedad determinada en una población durante un período determinado \cite{RANM_sf}} evitable en el mundo. En este contexto, el Instituto de Medicina de los Estados Unidos advierte que “los errores de medicación se encuentran entre los errores médicos más comunes, dañando al menos a 1.5 millones de personas cada año” \cite{Kohn2000}. 
+
+Un factor histórico que ha contribuido de manera significativa a la ocurrencia de estos incidentes es la mala claridad en la escritura a mano de las prescripciones médicas. 
+
+La escritura ilegible dificulta la interpretación adecuada tanto del farmacéutico que entrega el medicamento como del paciente que lo consume. Esta ausencia de una norma visual provoca la administración de dosis incorrectas, errores en la duración del tratamiento y la confusión entre medicamentos que tienen similitudes en su escritura o pronunciación \cite{Kohn2000}. Por lo tanto, la extracción automatizada y la digitalización de las recetas escritas a mano no solo representan una mejora en la gestión, sino que también son un elemento fundamental para la seguridad clínica.
+
+
+\subsection{Capa de Procesamiento y Lógica}
+\subsubsection{Módulo LLM}
+\paragraph{Limitaciones del OCR tradicional frente a los Grandes Modelos de Lenguaje (LLM)}\leavevmode \\
+La digitalización de documentos físicos se ha realizado mediante tecnologías de Reconocimiento Óptico de Caracteres (OCR, por sus siglas en inglés). Esta tecnología es altamente eficiente para convertir documentos impresos o mecanografiados a texto digital; sin embargo, en el entorno clínico presenta deficiencias severas. Investigaciones recientes sobre la digitalización médica señalan que “los sistemas de Reconocimiento Óptico de Caracteres (OCR) a menudo fallan al interpretar con precisión el contenido de las recetas manuscritas debido a la presencia de texto ruidoso y variaciones ortográficas” \cite{PG2024}. Las variaciones en los estilos de escritura cursiva, las abreviaturas de los médicos y el formato inconsistente de las recetas sobrepasan la capacidad de análisis línea por línea del OCR tradicional \cite{PG2024}. 
+
+La limitación técnica fundamental del OCR radica en su enfoque determinista centrado exclusivamente en la detección morfológica a nivel de caracteres. Los algoritmos tradicionales extraen características visuales como líneas, curvas y bucles para aislar símbolos individuales dentro de cajas delimitadoras (\emph{bounding boxes}), pero carecen de conocimiento de dominio para resolver la ambigüedad visual \cite{Memon2020}. Por ejemplo, un trazo rápido que distorsione la palabra amoxicilina será transcrito por un OCR convencional como una cadena de caracteres sin sentido, fallando por completo en la recuperación de la información médica.
+
+Para superar estas limitaciones, la inteligencia artificial moderna utiliza LLMs integrados con visión por computadora. A diferencia del OCR que solo identifica la forma de una letra, los LLMs aplican un razonamiento semántico y contextual para inferir la palabra correcta basándose en el resto del texto \cite{NCA2024}. Esto significa que, si una palabra en una receta médica es ilegible, el modelo puede deducir de qué medicamento se trata analizando la dosis escrita, la vía de administración o el diagnóstico previo, reduciendo drásticamente el margen de error en la extracción. 
+
+A pesar de su alta capacidad de inferencia y comprensión del contexto clínico, la literatura advierte que los Grandes Modelos de Lenguaje son susceptibles a generar el fenómeno conocido como alucinaciones artificiales. En el procesamiento de lenguaje médico, una alucinación ocurre cuando la inteligencia artificial llega a "generar información aparentemente realista pero fácticamente incorrecta o fabricada" \cite{Sallam2023}. En el procesamiento de recetas médicas, esto podría resultar en la invención de una dosis o la alteración del nombre de un fármaco, lo que representa un riesgo inaceptable para el paciente. 
+
+Con el fin de reducir estas debilidades, los estándares modernos de diseño para sistemas de inteligencia artificial en salud exigen la implementación de un enfoque de "humano en el bucle" (\emph{Human-in-the-loop} o HITL) \cite{Bates2021}. Bajo esta perspectiva de seguridad clínica, la extracción de datos no debe ser un proceso opaco ni completamente automatizado, el modelo computacional debe actuar únicamente como apoyo, donde el paciente asuma el papel fundamental de revisar y verificar las salidas generadas por el modelo \cite{Bates2021}. Al requerir que el usuario revise y confirme visualmente los datos organizados antes de que se agreguen de manera permanente a la base de datos, el sistema reduce de forma eficaz los peligros relacionados con las alucinaciones de la inteligencia artificial y las imágenes de mala calidad.
+
+\paragraph{Extracción de Información (IE) y Reconocimiento de Entidades Clínicas (cNER)}\leavevmode \\
+Dentro del extenso campo del Procesamiento de Lenguaje Natural (PLN), existe una rama sumamente especializada conocida como Extracción de Información (IE, por sus siglas en inglés). Se define a la IE como el proceso automatizado de extraer entidades, relaciones y eventos estructurados a partir de fuentes de texto no estructurado \cite{Jurafsky2024}. Mientras que otras técnicas intentan comprender el sentido global o conversacional de un texto, la IE funciona como un filtro riguroso: aísla únicamente los datos específicos que tienen utilidad operativa e ignora el resto del lenguaje natural \cite{Jurafsky2024}.
+
+Para lograr esta precisión en el área de la salud, los sistemas de extracción dependen de una subtarea denominada Reconocimiento de Entidades Nombradas Clínicas (cNER). Uno de los referentes académicos más importantes en este rubro es el sistema cTAKES (\emph{Mayo Clinical Text Analysis and Knowledge Extraction System}), desarrollado para procesar el texto libre de los historiales clínicos. Este sistema demostró que el PLN puede analizar narrativas médicas complejas para descubrir y etiquetar automáticamente entidades predefinidas como enfermedades, signos, síntomas y, de manera crítica, medicamentos prescritos \cite{Savova2010}. A través de esta tecnología, el algoritmo analiza la sintaxis y clasifica cada término en categorías semánticas estandarizadas sin intervención manual \cite{Savova2010}.
+
+La aplicación de modelos de extracción de información es indispensable para el procesamiento computacional de recetas médicas en aplicaciones dirigidas a pacientes. El lenguaje utilizado en el entorno de la salud suele contener sintaxis coloquial. Por ejemplo, si un sistema informático recibe el texto bruto "Tomar un paracetamol de 500 mg oralmente cada 8 hrs", el modelo basado en IE y cNER segmenta el texto y devuelve etiquetas estructuradas: [Fármaco: paracetamol], [Dosis: 500 mg], [Vía: oral] y [Frecuencia: cada 8 horas] \cite{Savova2010}. Al transformar párrafos desordenados en variables independientes y organizadas, se establecen fundamentos lógicos para actualizar inventarios médicos y bases de datos de manera automatizada y segura.
+
+\subsubsection{Módulo de términos coloquiales a técnicos}
+\paragraph{Clasificación Internacional de Enfermedades (CIE-10)} \leavevmode \\
+Para eliminar la confusión en los diagnósticos y hacer uniformes los tratamientos, la comunidad médica global utiliza ontologías y normas estrictas de categorización. Respecto a este estándar normativo, la OMS establece que “el propósito de la CIE es permitir el registro, el análisis, la interpretación y la comparación sistemática de los datos de mortalidad y morbilidad” \cite{WHO2004}. Mediante este instrumento, se logra convertir las descripciones de enfermedades y problemas de salud en códigos alfanuméricos únicos y estandarizados a nivel global. 
+
+Sin embargo, al crear sistemas tecnológicos interactivos enfocados en el paciente, aparece una diferencia semántica considerable. Esta separación en el lenguaje constituye un desafío informático en ambas direcciones. De acuerdo con la literatura médica contemporánea, no solo los pacientes tienen dificultades para comprender la terminología técnica, sino que "los sistemas de información construidos para entender terminologías médicas tienen dificultades con el lenguaje de los consumidores" \cite{ArnottSmith2011}. 
+
+Para que un sistema de computación funcione adecuadamente en la gestión de un historial médico personal, es fundamental abordar esta diferencia de términos. Debido a que las descripciones de los pacientes y los registros médicos a menudo se registran en formas de texto libre, no se puede trasladar fácilmente esta información a las normas médicas. \cite{Phawisoot2021}. Por lo tanto, se requiere la implementación de técnicas de Procesamiento de Lenguaje Natural (PLN) capaces de \emph{tokenizar} y preprocesar la sintaxis para extraer palabras clave y establecer un puente semántico hacia los códigos estructurados de la CIE-10 \cite{Phawisoot2021}. De esta manera, el sistema logra interpretar la expresión coloquial del usuario y conectarla con un entorno de datos clínicos unificado y validado.
+
+\paragraph{Inteligencia Artificial y Procesamiento de Lenguaje Natural (PLN)} \leavevmode \\
+El Procesamiento de Lenguaje Natural (PLN) es una rama de la inteligencia artificial que se encarga de lograr una comunicación efectiva entre las máquinas y los seres humanos utilizando lenguajes naturales. En el ámbito de la informática de la salud, el PLN ha evolucionado para convertirse en una herramienta indispensable capaz de extraer y analizar datos clínicos de fuentes no estructuradas. “Los grandes modelos de lenguaje (\emph{LLMs}) son modelos de aprendizaje profundo que generan texto similar al humano al predecir la siguiente palabra en una secuencia basándose en patrones estadísticos aprendidos de vastos datos de texto” \cite{NCA2024}. Esta capacidad de predicción e interpretación semántica es lo que permite a las computadoras procesar el lenguaje cotidiano.
+
+En sistemas de salud interactivos, el PLN se emplea para recibir las descripciones coloquiales de los pacientes, descomponerlas en unidades léxicas (\emph{tokenización}) y extraer los conceptos clave (lematización) \cite{NCA2024}. Al automatizar este proceso, el sistema puede interpretar la sintaxis narrativa y buscar asociaciones directas con términos técnicos o códigos médicos, operando como un traductor entre el paciente y el catálogo clínico.
+
+Para que una máquina interprete un texto coloquial por ejemplo, 'tengo un dolor constante en la cabeza', la información debe someterse a un preprocesamiento léxico, algunas técnicas principales para realizar esta descomposición son \cite{Manning2008}:
+
+Lematización: Es la técnica computacional que realiza un análisis morfológico de las palabras con el objetivo de “eliminar las terminaciones flexionales y devolver la forma base o de diccionario de una palabra, lo cual se conoce como lema” \cite{Manning2008}. Por ejemplo, variaciones coloquiales como doliendo o dolores son recortadas a su raíz dolor, lo que permite a la computadora agrupar distintos tiempos verbales bajo un mismo concepto unificado.
+
+Eliminación de palabras vacías (\emph{Stop words}): Consiste en descartar términos de muy alta frecuencia gramatical (como artículos, preposiciones y conjunciones) que “tienen poco valor para ayudar a seleccionar documentos coincidentes con una necesidad del usuario” \cite{Manning2008}. Al eliminar palabras como 'un', 'en' o 'la', el sistema conserva únicamente los sustantivos, verbos o adjetivos con carga médica real.
+
+\emph{Tokenización}: Es el paso inicial del preprocesamiento, definido como el proceso de “cortar una secuencia de caracteres en piezas, llamadas \emph{tokens}” \cite{Manning2008}. En la práctica, el sistema separa la oración identificando los espacios en blanco o signos de puntuación, convirtiendo el párrafo en una lista individual de palabras procesables matemáticamente.
+
+La comprensión computacional del lenguaje requiere niveles de análisis más profundos. El análisis sintáctico evalúa la estructura de las oraciones para comprender las reglas gramaticales y la relación entre los \emph{tokens}, mientras que el análisis semántico busca extraer el significado real del texto en su contexto específico \cite{Nadkarni2011}. En la informática en salud moderna, esto se complementa con el Reconocimiento de Entidades Nombradas (\emph{NER}). Esta técnica de aprendizaje automático permite identificar automáticamente palabras clave dentro del texto libre y clasificarlas en categorías médicas predefinidas, por ejemplo, detectando que la palabra 'paracetamol' pertenece a la etiqueta Fármaco, y 'cada 8 horas' a la etiqueta Frecuencia \cite{Tran2021}.
+
+Una vez que el sistema ha estructurado el lenguaje coloquial del paciente, debe establecer una equivalencia con la terminología clínica oficial. A nivel computacional, este proceso se denomina codificación clínica automatizada, que es la tarea de “asignar códigos médicos estándar a notas clínicas en texto libre” \cite{Tran2021}.
+
+Para lograr estas asociaciones directas, las arquitecturas contemporáneas de PLN utilizan representaciones vectoriales (\emph{word embeddings}) y modelos probabilísticos. Estas técnicas mapean los términos en un espacio matemático para calcular su distancia y similitud semántica. Gracias a esto, el sistema no depende de que el usuario escriba la palabra exacta del diccionario médico; el algoritmo comprende matemáticamente que la frase coloquial 'dolor de cabeza' y el término clínico 'cefalea' comparten una equivalencia semántica casi idéntica, asignando automáticamente el código CIE-10 que obtenga la mayor probabilidad de éxito estadístico \cite{Tran2021}.
+
+\subsubsection{Módulo de ubicación de farmacias}
+\paragraph{Geolocalización y Sistemas de Cartografía Web}\leavevmode \\
+La geolocalización es el proceso tecnológico empleado para determinar la ubicación geográfica real de un dispositivo conectado a internet. En el desarrollo de aplicaciones \emph{web} modernas, esta funcionalidad se implementa a través de interfaces de programación de aplicaciones (API) nativas de los navegadores, las cuales permiten capturar las coordenadas espaciales —latitud y longitud— de la persona usuaria. Para garantizar la seguridad y privacidad de la información, estos protocolos informáticos operan bajo un estricto modelo de consentimiento explícito, donde el sistema tiene la obligación de solicitar autorización antes de acceder a cualquier dato de ubicación \cite{W3C_Geolocation}.
+
+Cuando el sistema informático recibe las coordenadas espaciales, necesita un motor visual para mostrar la información de forma clara. Aquí intervienen los Sistemas de Información Geográfica (SIG) adaptados a la \emph{web}. A diferencia de los mapas estáticos tradicionales, la cartografía \emph{web} moderna utiliza bibliotecas de código abierto que construyen y proyectan mapas interactivos mediante un sistema de teselas (fragmentos cuadrados de imágenes o vectores que se ensamblan para componer el mapa completo) \cite{Haklay2008}. Tecnologías de colaboración a nivel mundial, como OpenStreetMap, ofrecen una base de datos geográfica libre, mientras que las herramientas de visualización permiten superponer capas de información interactiva sobre este mapa base \cite{Haklay2008}.
+
+En el contexto de la salud y la gestión de medicamentos, la integración de estos Servicios Basados en la Localización (LBS, por sus siglas en inglés) resulta fundamental. Al transformar las coordenadas del paciente en un punto de origen espacial, el sistema es capaz de ejecutar algoritmos de búsqueda para identificar y filtrar Puntos de Interés (POI), tales como farmacias o clínicas cercanas \cite{Schiller2004}. Este cruce técnico entre la localización en tiempo real y los mapas interactivos disminuye de forma considerable el tiempo que se tarda en buscar, permitiendo un acceso adecuado a los tratamientos indicados.
+
+\subsubsection{Módulo de consulta de precios}
+\paragraph{Integración de APIs RESTful y Extracción de Datos}\leavevmode \\
+La interoperabilidad entre sistemas informáticos modernos se fundamenta en el uso de APIs. Una API actúa como un contrato o intermediario estandarizado que permite a dos aplicaciones independientes comunicarse e intercambiar información sin necesidad de conocer su estructura interna \cite{Fielding2000}. En la creación de sitios \emph{web} hoy en día, el modelo arquitectónico más común es REST (\emph{Representational State Transfer}). Las arquitecturas RESTful utilizan el protocolo HTTP para realizar transacciones de datos sin estado, lo que significa que cada solicitud enviada por el cliente contiene toda la información necesaria para que el servidor la procese y devuelva una respuesta de manera independiente \cite{Fielding2000}.
+
+Para la transferencia de estos datos, los sistemas RESTful emplean formatos ligeros y estructurados, siendo JSON (\emph{JavaScript Object Notation}) el estándar universalmente más adoptado. JSON permite serializar estructuras de datos complejas en texto legible tanto para humanos como para máquinas, optimizando el ancho de banda y el tiempo de procesamiento en las redes \cite{Crockford2006}. A través de este método, un sistema tiene la capacidad de automatizar solicitudes (normalmente del tipo GET) a servicios externos, como buscadores, bases de datos comerciales o proveedores en la nube, para obtener información externa e incorporarla directamente en su propia lógica de negocio.
+
+En el contexto de un módulo de consulta de precios para la gestión médica, la integración de APIs y la extracción de datos es un elemento fundamental para el funcionamiento del sistema. Debido a que el sector de medicamentos muestra cambios continuos en los precios  y en la disponibilidad de los medicamentos, intentar mantener una base de datos local y estática con precios actualizados resulta  poco efectivo y susceptible a errores. En su lugar, el sistema informático logra extraer catálogos de diferentes proveedores comerciales en tiempo real consumiendo servicios externos de indexación de precios. Esta información estructurada es procesada y normalizada internamente para presentar a la persona usuaria opciones comparativas de compra, facilitando la toma de decisiones informadas para el abastecimiento económico de su botiquín.
+
+\subsubsection{Módulo de texto a voz / voz a texto}
+\paragraph{Reconocimiento Automático del Habla (ASR) y Síntesis de Voz (TTS)}\leavevmode \\
+La interacción humano-computadora ha evolucionado más allá de las interfaces gráficas tradicionales para incorporar modalidades más naturales y accesibles, como las interfaces de usuario por voz (VUI, por sus siglas en inglés). Esta comunicación bidireccional acústica se logra fundamentalmente a través de la integración de dos tecnologías de inteligencia artificial: el Reconocimiento Automático del Habla (ASR) y la Síntesis de Voz (TTS).
+
+El Reconocimiento Automático del Habla (ASR) es la tecnología responsable de la transcripción de voz a texto (\emph{Speech-to-Text}). Su funcionamiento consiste en capturar ondas sonoras analógicas, digitalizarlas y procesarlas mediante modelos acústicos y modelos de lenguaje \cite{Yu2014}. Las arquitecturas modernas, basadas en redes neuronales profundas (\emph{Deep Learning}), analizan los espectrogramas del audio para identificar fonemas y convertirlos en cadenas de texto estructurado. Estos algoritmos están diseñados para reducir los problemas que surgen en la comunicación oral, como el ruido de fondo, las interrupciones en el habla o las variaciones de acento del hablante \cite{Yu2014}.
+
+Por su parte, la Síntesis de Voz o TTS (\emph{Text-to-Speech}) realiza el proceso inverso, transformando texto escrito en habla artificial comprensible. Este proceso requiere una fase de normalización del texto (para interpretar correctamente abreviaturas, símbolos o números en su contexto) y una fase de modelado de la prosodia (entonación, duración y ritmo), finalizando con la generación de la forma de onda acústica \cite{Taylor2009}. Los sistemas TTS modernos logran generar voces sintéticas con un alto grado de naturalidad, eliminando la dependencia de grabaciones preestablecidas y permitiendo respuestas dinámicas.
+
+En el diseño del Botiquín Digital Inteligente, la incorporación de un módulo que convierte voz a texto y texto a voz se presenta como un elemento clave para mejorar la accesibilidad. Al permitir que el paciente dicte sus síntomas en lugar de escribirlos, y al escuchar las indicaciones o respuestas del sistema en lugar de leerlas en una pantalla, se reduce significativamente la barrera de uso, especialmente para adultos mayores o personas con limitaciones visuales. Esta interfaz captura el lenguaje oral (\emph{input}) y lo transmite directamente a la capa de Procesamiento de Lenguaje Natural (PLN) para su análisis semántico, cerrando el ciclo de retroalimentación de manera fluida y natural.
+
+
+\subsection{Capa de Visualización}
+\subsubsection{Interfaz Web y Módulo de captura de fotografías}
+
+\paragraph{Diseño Web Responsivo} \leavevmode \\
+El Diseño Web Responsivo (RWD, por sus siglas en inglés) es un paradigma de desarrollo de interfaces de usuario que busca garantizar la correcta visualización y funcionalidad de una página \emph{web} en una amplia variedad de dispositivos. Acuñado teóricamente por Ethan Marcotte, este enfoque se basa en tres principios técnicos fundamentales: cuadrículas fluidas, imágenes flexibles y consultas de medios (\emph{media queries}) \cite{Marcotte2010}. A través de la implementación de hojas de estilo en cascada (CSS), el contenido y la organización de la plataforma se ajustan de forma dinámica en tiempo real para adaptarse a las dimensiones y resolución de la pantalla (\emph{viewport}) del dispositivo. Esto elimina la necesidad de desarrollar versiones de \emph{software} independientes para computadoras de escritorio, tabletas o teléfonos móviles \cite{Marcotte2010}.
+
+La interfaz de usuario ha evolucionado de ser un entorno puramente de lectura a una plataforma interactiva capaz de comunicarse con el \emph{hardware} del dispositivo cliente. Mediante el uso de APIs integradas en el navegador, como la API \emph{MediaDevices}, un sistema \emph{web} puede solicitar protocolos de seguridad para acceder directamente a componentes físicos del dispositivo, tales como la cámara de video o el micrófono \cite{MDN_MediaDevices}. Esta capacidad de acceso nativo permite ejecutar funcionalidades de captura multimedia directamente desde el navegador de internet.
+
+En el contexto del Botiquín Digital Inteligente, el Diseño Web Responsivo resulta fundamental para el buen funcionamiento del Módulo de captura de fotografías. Dado que la acción de digitalizar recetas manuscritas o cajas de medicamentos necesita ser portatil, la mayor parte de la interacción se realiza a través de la cámara de un dispositivo móvil; por lo tanto, la interfaz debe reestructurar sus botones y áreas de previsualización para asegurar su usabilidad en pantallas reducidas. Al mismo tiempo, este mismo sistema debe poder ampliarse para exhibir de manera adecuada las listas de medicamentos en la pantalla de una computadora personal. Esta capacidad de funcionar en varias plataformas garantiza que el paciente pueda realizar todo el proceso clínico de manera cómoda, sin importar el equipo que utilice.
+
+
+
+\subsection{Capa de Datos}
+\subsubsection{Base de datos Relacional y Módulo de control de datos}
+
+\paragraph{Bases de Datos Relacionales} \leavevmode \\
+El modelo de bases de datos relacionales, propuesto originalmente por Edgar F. Codd, constituye el estándar fundamental para el almacenamiento estructurado y la recuperación de información en sistemas de \emph{software} corporativos y clínicos. Una Base de Datos Relacional (RDBMS, por sus siglas en inglés) organiza los datos en colecciones de tablas bidimensionales, donde cada tabla representa una entidad (\emph{relation}), cada fila contiene una instancia única o registro (\emph{tuple}), y cada columna define un atributo específico de dicha entidad \cite{Codd1970}. La integridad de este modelo se mantiene mediante un sistema estricto de identificadores únicos (llaves primarias) y vínculos de referencia (llaves foráneas), los cuales evitan la redundancia de los datos y garantizan la consistencia topológica a nivel de esquema \cite{Elmasri2015}.
+
+Para interactuar con esta arquitectura, los sistemas informáticos utilizan el Lenguaje de Consulta Estructurado (SQL). Mediante las instrucciones de SQL, los servidores ejecutan operaciones de inserción, lectura, actualización y borrado  siguiendo las características de transacciones ACID (Atomicidad, Consistencia, Aislamiento y Durabilidad) \cite{Elmasri2015}. Estas características aseguran que, ante cualquier falla técnica o interrupción de conectividad, la operación de escritura en la base de datos se complete en su totalidad o se cancele por completo (\emph{rollback}), previniendo daños en la estructura o corrupción en los registros almacenados en la base de datos.
+
+En la arquitectura del Botiquín Digital Inteligente, el esquema relacional y el Módulo de control de datos operan en conjunto para materializar la capa de persistencia del sistema. Una vez que las capas de inteligencia artificial procesan la captura de fotografías y estructuran el lenguaje coloquial, el Módulo de control recibe estas entidades clínicas (tales como el nombre del fármaco, número de lote y fecha de caducidad) y gestiona la transacción segura hacia las tablas del inventario. La elección de una base de datos relacional es crítica en este contexto, ya que permite enlazar de forma acertada cada medicamento con el historial personal del paciente, posibilitando la ejecución de consultas relacionales complejas para emitir alertas automáticas de caducidad y administrar de manera precisa el suministro doméstico.
+
+\paragraph{Seguridad y Confidencialida de Datos en Salud} \leavevmode \\
+El manejo de expedientes médicos e información clínica a través de plataformas \emph{web} exige arquitecturas de \emph{software} fundamentadas en principios estrictos de ciberseguridad. En el ámbito de la informática de la salud, la protección de los datos se se basa en los tres pilares de confidencialidad, integridad y disponibilidad \cite{Kruse2017}. La confidencialidad asegura que solo los individuos autorizados puedan acceder a la información, la integridad garantiza que los registros no sean alterados de forma ilícita, y la disponibilidad asegura que el sistema funcione correctamente cuando el paciente requiera consultar sus tratamientos.
+
+Para salvaguardar la confidencialidad en el acceso, los sistemas modernos delegan la autenticación a protocolos de autorización seguros. Un estándar fundamental en esta área es OAuth 2.0, un \emph{framework} de delegación de acceso que permite a las aplicaciones obtener permisos limitados sobre cuentas de usuarios sin necesidad de exponer o almacenar sus contraseñas localmente \cite{Hardt2012}. Mediante el intercambio de \emph{tokens} criptográficos, el sistema verifica la identidad de la persona usuaria a través de proveedores externos confiables, estableciendo sesiones seguras y evitando accesos no autorizados a la plataforma.
+
+Adicionalmente, la protección de la información requiere mecanismos de criptografía tanto para los datos en almacenados como para los datos en movimiento.La comunicación de datos entre el cliente y el servidor siempre debe llevarse a cabo mediante el protocolo HTTPS, el cual utiliza la capa de seguridad TLS (\emph{Transport Layer Security}) para cifrar los paquetes de datos y prevenir ataques de intercepción \cite{Kruse2017}. A nivel de almacenamiento, las credenciales y otros identificadores sensibles nunca se guardan en texto plano, sino que se tratan mediante algoritmos y funciones hash \emph{hash} que son irreversibles.
+
+En el diseño del Botiquín Digital Inteligente, el Módulo de control de datos actúa como el guardián de estas políticas de seguridad. Dado que el sistema gestiona información altamente sensible, como los síntomas descritos y los fármacos recetados, el módulo implementa filtros de autorización estrictos antes de cualquier operación en la base de datos relacional. De esta manera, cada lote, registro y fotografía procesada se asocia al identificador único del paciente autenticado, garantizando el aislamiento estructural de la información y asegurando que el historial farmacéutico doméstico permanezca privado.
+
+
+\clearpage
+
+\section{Desarrollo del proyecto}
+En el desarrollo del BDI se usa una arquitectura modular organizada en tres bloques funcionales: Capa de Datos, Capa de Procesamiento y Lógica y Capa de Visualización. La estructura general del sistema se muestra en la Figura~\ref{fig:modulos}. 
+{
+\begin{diagram}[H] % Ahora sí usamos la H mayúscula para posición fija
+	\centering
+	\includegraphics[width=0.67\textwidth]{esquema_bdi.png}
+	\caption{\label{fig:modulos} Diagrama de bloques del flujo general del sistema de información.}
+\end{diagram}
+}
+\clearpage
+
+\subsection{Capa de Datos}
+
+La Capa de Datos del Botiquín Digital Inteligente (BDI) es la responsable de la recepción, validación, almacenamiento y provisión de la información médica sensible. Para cumplir con los requisitos de consistencia y concurrencia, esta capa se diseñó bajo un modelo de bases de datos relacionales, implementando un Módulo de Control de Datos que actúa como intermediario seguro entre la lógica de negocio y la persistencia física.
+
+\subsubsection{Diseño del Esquema Relacional de Base de Datos}
+
+Para el almacenamiento estructurado de la información, se configuró un servidor de bases de datos utilizando el motor \emph{MySQL}. El diseño de este modelo relacional fue fundamental para garantizar la integridad de los datos clínicos. El esquema se estructuró alrededor de once entidades fundamentales, respetando la normalización y el uso de llaves foráneas:
+
+\begin{itemize}
+    \item \textbf{Usuarios (\texttt{usuarios}):} Entidad raíz del sistema que almacena la identidad de la persona usuaria, su correo electrónico, ID de Google y preferencias de notificaciones.
+    \item \textbf{Médicos (\texttt{medicos}):} Catálogo para el registro de profesionales de la salud, almacenando nombre, cédula profesional y especialidad.
+    \item \textbf{Catálogo CIE-10 (\texttt{catalogo\_cie10}):} Diccionario médico oficial que asocia términos coloquiales (\emph{keywords} en JSON) con códigos internacionales de la OMS.
+    \item \textbf{Catálogo de Medicamentos (\texttt{catalogo\_medicamentos}):} Entidad maestra que guarda nombres comerciales, sustancias activas y formatos de laboratorio para normalizar el inventario.
+    \item \textbf{Historial Médico (\texttt{recetas}):} Almacena las recetas médicas digitalizadas, relacionando al paciente y al médico, y resguardando la fotografía en \emph{Base64}, fecha de expedición y el código CIE-10.
+    \item \textbf{Detalles de Prescripción (\texttt{recetas\_detalles}):} Tabla puente que desglosa cada receta en múltiples fármacos, registrando dosis, instrucciones y duración del tratamiento.
+    \item \textbf{Botiquín Físico (\texttt{botiquin}):} Gestiona el inventario real del usuario, registrando cantidad, unidad, notas y la \texttt{fecha\_caducidad} de los medicamentos.
+    \item \textbf{Historial de Búsquedas (\texttt{busquedas\_precios}):} Almacena en formato JSON los resultados de cotizaciones previas (\emph{Google Shopping}) para propósitos analíticos y de rendimiento.
+     \item \textbf{Suscripciones Push (\texttt{suscripciones\_push}):} Gestiona los \emph{endpoints} y claves de encriptación para habilitar notificaciones reales tipo Web Push en los dispositivos del paciente.
+    \item \textbf{Reglas de Recordatorios (\texttt{recordatorios}):} Define el patrón y frecuencia de consumo de un tratamiento (ej. "1 pastilla cada 8 horas"), enlazando el medicamento con el usuario.
+    \item \textbf{Registro de Tomas Diarias (\texttt{tomas\_diarias}):} Captura individualmente cada evento físico de consumo dictado por un recordatorio, lo que permite trazar métricas de adherencia médica.
+\end{itemize}
+
+El diseño relacional implementó restricciones de integridad del tipo \texttt{ON DELETE CASCADE} en las llaves foráneas (por ejemplo, en la relación entre \texttt{usuarios} y \texttt{botiquin}). Esta configuración asegura que, si un usuario elimina su cuenta, todo su historial y su botiquín desaparecen automáticamente del servidor, asegurando su privacidad. En la Figura \ref{fig:der_mysql} se ilustra visualmente la estructura de estas entidades y sus relaciones.
+
+\begin{diagram}[H]
+\centering
+\includegraphics[width=0.97\textwidth]{Imagenes/entidad_relacion_bd.png}
+\caption{Diagrama Entidad-Relación (DER) del sistema BDI ilustrando las relaciones entre Usuarios, Recetas y Medicamentos.}
+\label{fig:der_mysql}
+\end{diagram}
+
+\subsubsection{Módulo de Control de Datos (CD) y Seguridad}
+
+El desarrollo de este módulo se enfocó en la programación del entorno de \emph{backend} (\emph{Node.js} y \emph{Express.js}). Para establecer la comunicación directa y asíncrona con \emph{MySQL}, se integró la librería \texttt{mysql2/promise}.
+
+\paragraph{Validación de datos con Zod}\leavevmode \\
+Para proteger la base de datos contra inyecciones e información inconsistente, se programaron \emph{middlewares} de protección apoyados en la biblioteca \textbf{Zod}. Estas funciones interceptan el cuerpo de la petición (JSON) y validan rigurosamente que cada propiedad cumpla con los tipos de datos y expresiones regulares permitidos antes de ejecutar cualquier sentencia \texttt{INSERT} o \texttt{UPDATE}. Como se ilustra en el Código \ref{lst:zod_schema}, esta validación define reglas estrictas para cada campo del botiquín, asegurando que valores críticos como el ID del catálogo o la cantidad disponible sean siempre números enteros positivos, y verificando que la fecha de caducidad respete el formato estándar \texttt{YYYY-MM-DD}.
+
+\begin{lstlisting}[language=JavaScript, caption={Esquema de validación implementado con Zod para asegurar la integridad de los registros del botiquín.}, label={lst:zod_schema}]
+const inventarioSchema = z.object({
+  id_catalogo: z.number().int().min(1, 'El ID de catálogo es obligatorio'),
+  cantidad_disponible: z.number().int().min(0, 'La cantidad debe ser 0 o mayor'),
+  unidad: z.string().min(1, 'La unidad es obligatoria'),
+  fecha_caducidad: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Formato inválido (YYYY-MM-DD)')
+});
+\end{lstlisting}
+
+\paragraph{Lógica de Control de Caducidad} \leavevmode \\
+Una de las funcionalidades estructurales desarrolladas fue el control del estado del medicamento. Aprovechando el formato estricto ISO 8601 (\texttt{YYYY-MM-DD}) de la \texttt{fecha\_caducidad}, el controlador ejecuta una lógica matemática de comparación de fechas utilizando funciones nativas de \emph{JavaScript} (\texttt{new Date()}) y sentencias \texttt{DATEDIFF} de SQL. Esto permite clasificar dinámicamente cada fármaco como "vigente", "por vencer" (si restan menos de 30 días) o "caducado", permitiendo a la capa visual alertar al paciente oportunamente.
+
+\paragraph{Autenticación JSON Web Tokens (JWT)} \leavevmode \\
+El aislamiento de los datos se rige por un esquema de autenticación basado en \emph{Google OAuth2} y \emph{JWT}. Cuando el usuario inicia sesión mediante la ruta \texttt{POST /api/auth/google}, el servidor utiliza \texttt{google-auth-library} para validar el criptograma. Una vez autenticado de forma exitosa, emite un token local firmado.
+
+Las rutas que exigen protección a la información clínica (como agregar o leer recetas) están envueltas por el \emph{middleware} de seguridad \texttt{verifyToken}, el cual decodifica la identidad y la inyecta globalmente (\texttt{req.usuario = decoded}). Este mecanismo, detallado en el Código \ref{lst:verify_jwt}, intercepta la cabecera HTTP de autorización para extraer el token y verificar su criptograma mediante una clave secreta; si el token resulta inválido o ha expirado, la solicitud se rechaza automáticamente con un error 403, protegiendo así las rutas sensibles.
+
+\begin{lstlisting}[language=JavaScript, caption={Middleware de seguridad para la validación de JSON Web Tokens en rutas protegidas.}, label={lst:verify_jwt}]
+const verifyToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  
+  if (!token) return res.status(401).json({ error: 'Acceso denegado' });
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.usuario = decoded; // Inyección de identidad global
+    next();
+  } catch (error) {
+    return res.status(403).json({ error: 'Token inválido o expirado' });
+  }
+};
+\end{lstlisting}
+
+Para evitar vulnerabilidades de suplantación de identidad en las consultas, en cada operación SQL que afecte datos privados se concatena explícitamente el identificador de la sesión actual (por ejemplo: \texttt{WHERE id\_usuario = ?}).
+
+\subsubsection{Orquestación de Endpoints RESTful}
+
+La comunicación del \emph{backend} se diseñó bajo una arquitectura basada en rutas (\emph{routes}) organizadas por entidades lógicas, cada una dedicada a un servicio específico del botiquín digital. En la Tabla \ref{tab:endpoints_db} se presenta un extracto de los principales puntos de acceso configurados en el enrutador de Express, evidenciando los métodos HTTP, la ruta de acceso y el nivel de seguridad requerido.
+
+\begin{table}[H]
+\centering
+\caption{Catálogo de \emph{endpoints} desarrollados para el Módulo de Control de Datos.}
+\label{tab:endpoints_db}
+\begin{tabular}{|p{1.5cm}|p{4cm}|p{6cm}|p{2.5cm}|}
+\hline
+\textbf{Método} & \textbf{Ruta (Endpoint)} & \textbf{Descripción de la operación} & \textbf{Seguridad} \\ \hline
+POST & \texttt{/api/auth/google} & Autentica al usuario vía Google OAuth2 y emite token JWT de sesión. & Pública \\ \hline
+GET & \texttt{/api/botiquin} & Recupera el inventario completo, calculando caducidades activas. & Protegida (JWT) \\ \hline
+POST & \texttt{/api/botiquin} & Registra un nuevo medicamento vinculándolo al ID del usuario. & Protegida (JWT) \\ \hline
+DELETE & \texttt{/api/botiquin/:id} & Elimina un medicamento del inventario físico del usuario activo. & Protegida (JWT) \\ \hline
+POST & \texttt{/api/recetas} & Guarda en base de datos una receta, sus datos médicos y detalles de prescripción. & Protegida (JWT) \\ \hline
+POST & \texttt{/api/sintomas} & Recibe texto en lenguaje natural y busca equivalencias en el catálogo CIE-10. & Protegida (JWT) \\ \hline
+GET & \texttt{/api/farmacias} & Recupera ubicaciones logísticas utilizando coordenadas de mapas. & Pública \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\subsection{Capa de Procesamiento y Lógica}
+
+La Capa de Procesamiento y Lógica del Botiquín Digital Inteligente (BDI) opera como el núcleo computacional del sistema. Está desarrollada bajo el entorno de ejecución de \emph{Node.js} con el \emph{framework Express.js}, encargándose de orquestar las reglas de negocio, procesar el lenguaje natural y consumir servicios de inteligencia artificial externos de manera concurrente y segura.
+
+\subsubsection{Módulo LLM e Inteligencia Artificial Multimodal}
+
+El Módulo LLM (\emph{Large Language Model}) es el encargado de digitalizar y extraer datos estructurados a partir de fotografías de recetas médicas impresas o manuscritas y cajas de medicamentos. 
+
+\paragraph{Recepción y Limpieza de Imágenes (Base64)} \leavevmode \\
+Para facilitar la transmisión de medios desde dispositivos móviles, se estableció que el servidor reciba la fotografía codificada en formato texto plano (\emph{Base64}) dentro del cuerpo (\emph{payload}) de la petición JSON. Esta decisión arquitectónica evita la complejidad de configurar analizadores de archivos binarios puros (como \emph{Multer}) y permite que el \emph{middleware} estándar gestione la recepción de forma uniforme.
+
+Al recibir la cadena \emph{Base64} en el controlador protegido (\texttt{POST /api/recetas/analizar}), el sistema aplica una limpieza dinámica mediante expresiones regulares para remover los metadatos de tipo MIME (\texttt{data:image/jpeg;base64,}), garantizando que el modelo LLM procese exclusivamente la matriz de datos de la imagen. Adicionalmente, antes de la transmisión a la API externa, la imagen es optimizada empleando la librería \emph{Sharp} para minimizar la latencia de red. En el Código \ref{lst:clean_base64} se expone este fragmento de lógica defensiva, en el cual se valida primero la existencia de la imagen en el cuerpo de la petición para luego purgar cualquier prefijo generado por el navegador utilizando una expresión regular, obteniendo así una cadena Base64 pura y lista para el análisis.
+
+\begin{lstlisting}[language=JavaScript, caption={Lógica de extracción y sanitización de la cadena Base64 proveniente del cliente.}, label={lst:clean_base64}]
+const { imagenBase64 } = req.body;
+if (!imagenBase64) {
+    return res.status(400).json({ error: "Se requiere la imagen en formato Base64." });
+}
+
+// Limpiamos el prefijo de la imagen inyectado por el navegador
+const base64Limpia = imagenBase64.replace(/^data:image\/[a-z]+;base64,/, "");
+\end{lstlisting}
+
+\paragraph{Estrategia Multimodelo (Adapter Pattern)}\leavevmode \\
+Durante el desarrollo se implementó el patrón de diseño estructural \emph{Adapter Pattern} (\texttt{llmAdapter.js}). Esta arquitectura desacopla el núcleo del servidor de los proveedores de IA, permitiendo intercambiar de motor analítico en caliente sin alterar la lógica de negocio. Actualmente, el adaptador orquesta las peticiones hacia el modelo \textbf{Google Gemini Flash Lite} como motor principal, y se habilitó la compatibilidad con \textbf{Qwen 2.5 Vision} (a través de la plataforma \emph{Groq}) como modelo de contingencia para balancear cargas y mitigar interrupciones de servicio por agotamiento de cuotas.
+
+\paragraph{Ingeniería de Instrucciones (Prompt Engineering)} \leavevmode \\
+Para asegurar que los modelos LLM no devuelvan respuestas conversacionales (alucinaciones), se aplicó una técnica de \emph{Prompt Engineering}. Se diseñó un molde estricto de datos (\emph{JSON Schema}) que se inyecta junto con la fotografía. Este esquema obliga a la Inteligencia Artificial a mapear la información visual hacia tres ejes principales:
+
+\begin{itemize}
+    \item \textbf{Datos Generales:} Nombre del paciente, nombre del médico, fecha de emisión y cédula profesional.
+    \item \textbf{Contexto Médico (Diagnóstico):} Captura del padecimiento principal para asociarlo en el historial.
+    \item \textbf{Arreglo de Medicamentos:} Extracción de nombres comerciales, sustancias, dosis, formatos (ej. tabletas), indicaciones precisas de toma y fecha de caducidad. Si un dato no es legible en el papel, se fuerza a retornar un valor \texttt{null} para mantener la consistencia del objeto.
+\end{itemize}
+
+Para asegurar esta salida determinista, se emplea el molde JSON detallado en el Código \ref{lst:llm_prompt}. Esta estructura de instrucciones define llaves exactas para los datos generales del paciente, el diagnóstico y un arreglo anidado de medicamentos, forzando a la Inteligencia Artificial a ignorar el ruido visual y entregar un documento estandarizado que el servidor pueda procesar con seguridad.
+
+\begin{lstlisting}[language=JavaScript, caption={Estructura del Prompt inyectado al motor de Inteligencia Artificial.}, label={lst:llm_prompt}]
+const prompt = `Eres un asistente médico experto en reconocimiento óptico de caracteres (OCR).
+Analiza la imagen adjunta y extrae ÚNICAMENTE la siguiente información clínica utilizando este esquema JSON:
+{
+  "paciente_nombre": "Nombre completo o null",
+  "medico_nombre": "Nombre del médico o null",
+  "fecha_emision": "YYYY-MM-DD o null",
+  "medico_cedula": "Cédula profesional o null",
+  "diagnostico": "Motivo de consulta o null",
+  "indicaciones": "Cualquier indicación extra o null",
+  "medicamentos": [
+    {
+      "nombre_comercial": "Nombre",
+      "sustancia_activa": "Sustancia o null",
+      "dosis": "Concentración",
+      "formato": "Tabletas, Jarabe, etc.",
+      "instrucciones_uso": "Indicaciones de toma",
+      "fecha_caducidad": "YYYY-MM-DD o null"
+    }
+  ]
+}
+Regla: Respeta estrictamente los nombres de las llaves y NO agregues texto conversacional.`;
+\end{lstlisting}
+
+\paragraph{Manejo de Alucinaciones y Human-in-the-loop}\leavevmode \\
+A pesar de la rigidez del esquema, los Grandes Modelos de Lenguaje pueden envolver el resultado dentro de bloques de formato \emph{Markdown} (ej. \texttt{```json ... ```}). Para evitar rupturas en el flujo, se implementó un procesador defensivo (\texttt{jsonParser.js}) que intercepta la respuesta de la IA, extrae la subcadena JSON pura y ejecuta un \texttt{JSON.parse()} seguro.
+
+Finalmente, para mitigar el margen de error inherente al modelo, la arquitectura establece que esta información \textbf{nunca se guarda automáticamente en la base de datos}. El JSON estructurado es devuelto al \emph{frontend}, el cual despliega un formulario prellenado y totalmente editable (\emph{Human-in-the-loop}). Esta barrera fuerza a la persona usuaria a revisar, corregir o complementar cualquier mala interpretación de la receta original antes de confirmar el alta en su historial médico.
+
+\paragraph{Protección de la API (Rate Limiting)}\leavevmode \\
+Dado el alto costo computacional del análisis de imágenes, se inyectó un \emph{middleware} de limitación de tasa (\texttt{visionLimiter}) configurado mediante \texttt{express-rate-limit}. Esta protección restringe el número máximo de fotografías que una IP puede analizar por minuto, previniendo ataques de denegación de servicio (DDoS) o un consumo económico desmedido de las cuotas del proveedor LLM.
+
+
+\subsubsection{Módulo de Ubicación de Farmacias (Logística)}
+
+Este módulo se diseñó como un microservicio bidireccional que ubica al paciente en tiempo real y le provee indicaciones logísticas precisas hacia los establecimientos de salud más cercanos a su posición geográfica.
+
+\paragraph{Integración de APIs Externas (Geoapify)}\leavevmode \\
+Para la obtención de las farmacias cercanas y el autocompletado predictivo, inicialmente se evaluó el uso de la API pública de \emph{OpenStreetMap (Overpass)}. Sin embargo, tras detectar problemas de latencia e intermitencia en el servidor (códigos HTTP 504), se determinó migrar el motor de búsqueda comercial hacia los servicios de \emph{Geoapify}. 
+
+A nivel de servidor (\emph{backend}), se definieron endpoints protegidos como \texttt{GET /api/farmacias/cercanas}. El servicio construye una petición HTTP estructurada hacia \emph{Geoapify}, filtrando la categoría \texttt{healthcare.pharmacy} en un radio máximo de 3,000 metros a la redonda de las coordenadas provistas. La implementación de esta petición, expuesta en el Código \ref{lst:geoapify_search}, evidencia cómo se concatenan dinámicamente la latitud y longitud en la URL de \emph{Geoapify} y cómo los resultados crudos se mapean defensivamente hacia un objeto interno limpio con nombre, dirección y distancia de la farmacia.
+
+\begin{lstlisting}[language=JavaScript, caption={Construcción asíncrona de la petición hacia Geoapify con filtrado categórico y radial.}, label={lst:geoapify_search}]
+const url = `https://api.geoapify.com/v2/places?categories=healthcare.pharmacy&filter=circle:${lng},${lat},${radioMetros}&bias=proximity:${lng},${lat}&limit=25&apiKey=${API_KEY}`;
+
+const response = await axios.get(url, { timeout: 8000 });
+const features = response.data?.features || [];
+
+// Mapeo defensivo para limpiar el objeto GeoJSON
+const farmacias = features
+  .filter((f) => f.properties && f.properties.name)
+  .map((f) => ({
+    id: f.properties.place_id || String(Math.random()),
+    nombre: f.properties.name,
+    direccion: f.properties.formatted,
+    lat: f.properties.lat,
+    lng: f.properties.lon,
+    distanciaMetros: f.properties.distance || null,
+    horario: f.properties.opening_hours || 'Horario no especificado'
+  }));
+\end{lstlisting}
+
+\paragraph{Estrategias de Contingencia y Reverse Geocoding}\leavevmode \\
+Para robustecer la arquitectura, el controlador implementó un sistema de retroceso (\emph{fallback}). Al ejecutar una geocodificación inversa (\emph{Reverse Geocoding} en \texttt{/api/farmacias/reversa}) para traducir la latitud y longitud en una dirección postal humana, el servidor intenta consultar primero a \emph{Geoapify}. Si este bloque \texttt{try/catch} falla por límite de peticiones o tiempo de espera, el sistema deriva automáticamente la solicitud hacia el servidor público de \emph{Nominatim (OpenStreetMap)}, garantizando que la persona usuaria jamás se quede sin una referencia visible de su posición.
+
+\paragraph{Ubicación de precisión en el Cliente (Custom Hook)}\leavevmode \\
+Para la capa visual, la captura de la posición en tiempo real requirió solicitar acceso al hardware GPS del dispositivo. Esta lógica se encapsuló y exportó limpiamente mediante el desarrollo de un componente lógico de React denominado Custom Hook (\texttt{useFarmacias.js}). Este módulo invoca la interfaz de programación nativa \texttt{navigator.geolocation.getCurrentPosition} activando de forma obligatoria la bandera \texttt{enableHighAccuracy: true} para forzar al dispositivo a triangular satélites o redes Wi-Fi, consiguiendo una precisión clínica.
+
+Adicionalmente, maneja los estados de rechazo (\emph{Permission Denied}) o tiempo de espera agotado, inyectando un \emph{fallback} que ubica el mapa en la Ciudad de México para evitar el quiebre de la interfaz gráfica.
+
+\paragraph{Patrón Debounce para Protección de Red} \leavevmode \\
+Para otorgar flexibilidad logística, se desarrolló un buscador manual que provee autocompletado predictivo. El mayor desafío arquitectónico de incorporar barras de búsqueda reactivas es la sobresaturación y agotamiento de la cuota de la API externa (cada pulsación del teclado dispara una petición \texttt{GET}). 
+
+Para solventar esta vulnerabilidad, se integró a la lógica del cliente el patrón de diseño \emph{Debounce}. A través del ciclo de vida controlado que se aprecia en el Código \ref{lst:debounce_react}, la petición a la API se bloquea temporalmente (durante 400 milisegundos) tras cada pulsación, y solo se ejecuta verdaderamente cuando la persona detiene su escritura, protegiendo así los recursos de red del servidor.
+
+\begin{lstlisting}[language=JavaScript, caption={Implementación en React del patrón Debounce, previniendo peticiones redundantes mediante la manipulación del ciclo de vida (useEffect).}, label={lst:debounce_react}]
+// Debounce en tiempo real al escribir en el buscador
+useEffect(() => {
+  // Se ignora si la cadena es demasiado corta
+  if (!query.trim() || query.trim().length < 3) {
+    setResultados([]);
+    return;
+  }
+
+  // Retraso intencional de 400 milisegundos
+  const timer = setTimeout(async () => {
+    setCargando(true);
+    try {
+      const res = await api.get(`/farmacias/autocompletar?texto=${encodeURIComponent(query.trim())}`);
+      setResultados(res.data || []);
+    } catch (err) {
+      console.error('Error al autocompletar dirección:', err);
+    } finally {
+      setCargando(false);
+    }
+  }, 400);
+
+  // Limpieza del temporizador si el usuario sigue tecleando
+  return () => clearTimeout(timer);
+}, [query]);
+\end{lstlisting}
+
+El bloque de código superior ilustra cómo la ejecución de la petición se bloquea o suspende temporalmente en la memoria durante 400 milisegundos. Si el usuario ingresa una nueva letra dentro de ese lapso, la función de limpieza (\texttt{clearTimeout}) destruye la tarea pendiente y el temporizador se reinicia. El servidor solo recibe impacto de red cuando la persona termina de escribir o pausa su dictado deliberadamente.
+
+\subsubsection{Módulo de Consulta de Precios Comerciales}
+
+Se desarrolló un servicio asíncrono para realizar cotizaciones de medicamentos en tiempo real, conectando la interfaz de búsqueda del botiquín con el motor comercial de \emph{Google Shopping México}. El objetivo es facultar a la persona usuaria para consultar, comparar y decidir la compra de medicamentos basándose en los precios reales ofertados por las farmacias locales o cadenas nacionales.
+
+\paragraph{Conexión con SerpApi (Google Shopping)}\leavevmode \\
+La captura y obtención de datos se maneja mediante una petición asíncrona enviada a través del controlador protegido \texttt{/api/farmacias/buscar} hacia el archivo de servicio \texttt{serpApiService.js}. 
+
+Cuando la persona usuaria ingresa el nombre de un medicamento en el buscador (ej. "Ibuprofeno"), el sistema formatea el parámetro de búsqueda y emite la petición \texttt{GET} hacia la plataforma \emph{SerpApi}. Para limitar la búsqueda estrictamente al territorio nacional, se configuraron los parámetros de geolocalización (\texttt{gl: 'mx'}), el idioma (\texttt{hl: 'es'}) y el dominio base (\texttt{google\_domain: 'google.com.mx'}). El Código \ref{lst:serpapi_shopping} detalla la estructura de esta petición asíncrona hacia \emph{SerpApi}, en la cual, además de pasar las credenciales y términos de búsqueda regionales, se implementa una barrera de tolerancia de red (\texttt{timeout} de 15,000 milisegundos) para evitar que el hilo del servidor se quede bloqueado en caso de intermitencia de conexión.
+
+\begin{lstlisting}[language=JavaScript, caption={Petición asíncrona hacia el motor de SerpApi configurada para extraer ofertas comerciales en México.}, label={lst:serpapi_shopping}]
+const { data } = await axios.get('https://serpapi.com/search.json', {
+  params: {
+    api_key: apiKey,
+    engine: 'google_shopping',
+    q: `${medicamentoNombre} medicamento farmacia`,
+    gl: 'mx',
+    hl: 'es',
+    google_domain: 'google.com.mx',
+    num: 15,
+  },
+  timeout: 15000 // Prevención de bloqueos por latencia de red
+});
+\end{lstlisting}
+
+\paragraph{Mapeo y Normalización de Resultados}\leavevmode \\
+Si la petición es exitosa, \emph{SerpApi} devuelve un extenso documento JSON con metadatos irrelevantes para el proyecto. Para ahorrar memoria y ancho de banda al enviarlo al \emph{frontend}, el servicio local filtra la propiedad \texttt{shopping\_results} y mapea iterativamente cada objeto para extraer únicamente los cinco rubros esenciales: \texttt{title}, \texttt{price}, \texttt{store}, \texttt{link}, y \texttt{thumbnail}.
+
+Adicionalmente, se programó una capa de manejo de errores robusta (\texttt{try/catch}). Si Google informa mediante la excepción "Google hasn't returned any results" que el medicamento no fue encontrado o está descontinuado, el \emph{backend} intercepta este error y devuelve un arreglo vacío (\texttt{[]}) con estatus \texttt{200 OK}, evitando que la interfaz visual colapse por un código \texttt{500 Internal Server Error}. En el Código \ref{lst:serpapi_map} se expone el mapeo ejecutado sobre la respuesta exitosa, en donde se filtran de forma iterativa atributos comerciales esenciales como el nombre de la tienda, la imagen miniatura y el enlace de compra, garantizando un cuerpo de respuesta JSON ligero hacia el cliente.
+
+\begin{lstlisting}[language=JavaScript, caption={Normalización del arreglo de resultados comerciales eliminando propiedades innecesarias.}, label={lst:serpapi_map}]
+const items = data.shopping_results || [];
+const resultados = items.map((item) => ({
+  title: item.title,
+  price: item.price || item.extracted_price ? `$${item.extracted_price}` : 'Consultar tienda',
+  store: item.source || item.merchant?.name || 'Farmacia en línea',
+  link: item.link || item.product_link || '#',
+  thumbnail: item.thumbnail || null,
+}));
+
+return resultados;
+\end{lstlisting}
+
+\subsubsection{Módulo de Accesibilidad: Voz-Texto y Texto-Voz}
+
+Para proveer una plataforma altamente inclusiva enfocada en adultos mayores o pacientes con discapacidades motoras o visuales leves, se programó un módulo de accesibilidad apoyado en las APIs nativas del navegador, eximiendo al servidor \emph{backend} de una carga computacional masiva.
+
+\paragraph{Captura de Síntomas por Voz (Speech-to-Text)}\leavevmode \\
+Se configuró un sistema de captura de audio para agilizar la entrada de lenguaje natural. Con el fin de evitar la latencia que supondría enviar archivos binarios de audio a un servidor externo, se optó por utilizar la \textbf{Web Speech API} nativa. Para facilitar su inyección en la arquitectura visual de React, se empleó el envoltorio (\emph{wrapper}) \texttt{react-speech-recognition}.
+
+El sistema inicializa el micrófono configurándolo en español latinoamericano (\texttt{language: 'es-MX'}) para garantizar que el motor reconozca correctamente la fonética y el léxico regional. Como se aprecia en el Código \ref{lst:speech_recognition}, la activación del micrófono se realiza en modo continuo indicando explícitamente el idioma deseado (\texttt{es-MX}), lo que permite extraer asíncronamente y en tiempo real tanto la transcripción de texto (\texttt{transcript}) como el estado de actividad del dispositivo auditivo (\texttt{listening}).
+
+\begin{lstlisting}[language=JavaScript, caption={Inicialización del micrófono para la transcripción en tiempo real (Speech-to-Text).}, label={lst:speech_recognition}]
+// Activamos el micrófono de forma continua y en español mexicano
+SpeechRecognition.startListening({ continuous: true, language: 'es-MX' });
+
+// Extraemos la transcripción y el estado asíncrono
+const { transcript, listening } = useSpeechRecognition();
+\end{lstlisting}
+
+El diseño de la interfaz permite que, a medida que la persona paciente narra sus malestares, el texto se transcriba y dibuje dinámicamente en una caja de texto (textarea). Si la API comete un error de interpretación auditiva, el usuario cuenta con la posibilidad de corregir manualmente el texto transcrito antes de oprimir el botón de análisis.
+
+\paragraph{Lectura de Resultados y Alertas (Text-to-Speech)} \leavevmode \\
+En contraparte, para la salida de información, se construyó un algoritmo que lee en voz alta los resultados médicos sin sobrecargar el servidor. Empleando la función nativa \texttt{window.speechSynthesis}, el sistema genera una síntesis de voz (TTS). 
+
+Para evitar una lectura robótica o ininteligible de todo el documento web, la lógica de negocio evalúa el estado actual del paciente y concatena dinámicamente (\emph{Template Literals}) un guion de texto natural. Por ejemplo, si al diagnosticar un padecimiento el sistema detecta que el medicamento relacionado en el botiquín cuenta con una \texttt{cantidad\_disponible} menor a cinco unidades, el algoritmo inyecta una advertencia de prevención en el guion final que será narrado de manera fluida y empática al usuario. En el Código \ref{lst:speech_synthesis} se ilustra cómo se estructura este guion condicional y cómo se configura la instancia del sintetizador vocal nativo, reduciendo ligeramente la velocidad de reproducción (\texttt{rate}) para maximizar la comprensión auditiva en pacientes adultos mayores.
+
+\begin{lstlisting}[language=JavaScript, caption={Construcción del guion dinámico y ejecución del motor de síntesis de voz nativo.}, label={lst:speech_synthesis}]
+// Construcción del guion
+let guion = `Hemos registrado síntomas como: ${textoSintomas}. `;
+if (medsPorAgotarse.length > 0) {
+  guion += "Ten cuidado, algunos medicamentos están por agotarse en tu botiquín.";
+}
+
+// Configuración del sintetizador
+const utterance = new SpeechSynthesisUtterance(guion);
+utterance.lang = 'es-MX';
+utterance.rate = 0.9; // Velocidad pausada para mayor comprensión
+
+// Ejecución de la lectura
+window.speechSynthesis.speak(utterance);
+\end{lstlisting}
+
+\subsubsection{Módulo de Procesamiento de Lenguaje Natural (CIE-10 y NLP)}
+
+Uno de los desafíos principales en la digitalización médica es la variabilidad del lenguaje. Los pacientes suelen describir sus malestares utilizando regionalismos o términos coloquiales (ej. \emph{"tengo un fuerte dolor en la panza y me da mucho asco"}), lo cual imposibilita realizar búsquedas exactas (\emph{Exact Match}) en una base de datos clínica. 
+
+Para estandarizar clínicamente estas entradas, se desarrolló el motor de Inteligencia Artificial enfocado en el Procesamiento de Lenguaje Natural (NLP). Este módulo, impulsado por la librería de grado empresarial \texttt{node-nlp}, tiene como responsabilidad primaria la normalización del texto, la eliminación de ruido gramatical y la traducción de los síntomas a códigos de la \textbf{Clasificación Internacional de Enfermedades (CIE-10)}.
+
+\paragraph{Estructuración del Catálogo Clínico y Entidades Nombradas (NER)} \leavevmode \\
+La primera fase del proceso ocurre en frío durante el arranque del servidor. El archivo de servicio \texttt{nlpService.js} ejecuta una petición asíncrona hacia \emph{MySQL} para extraer el catálogo completo de enfermedades (\texttt{catalogo\_cie10}). Este catálogo contiene cientos de enfermedades preconfiguradas, cada una asociada a un \texttt{codigo\_cie10} (ej. \texttt{R11.0} para Náusea) y a un arreglo JSON de palabras clave o \emph{keywords} (ej. \texttt{["asco", "ganas de vomitar", "estomago revuelto"]}).
+
+Una vez recuperados, el algoritmo itera sobre los registros e inyecta dinámicamente las palabras clave en el gestor de Reconocimiento de Entidades Nombradas (\emph{Named Entity Recognition - NER}) de \texttt{node-nlp}, forzándolo a aprender el diccionario (\texttt{manager.train()}). En el Código \ref{lst:nlp_training} se detalla este flujo de extracción masiva en frío, donde cada registro de la base de datos se transforma en entidades de entrenamiento para \texttt{node-nlp}, vinculando exitosamente el código de la enfermedad con su arreglo dinámico de sinónimos antes de arrancar la operación del motor.
+
+\begin{lstlisting}[language=JavaScript, caption={Entrenamiento dinámico del motor NLP alimentado directamente por los arreglos JSON de la base de datos MySQL.}, label={lst:nlp_training}]
+const [diagnosticos] = await pool.query('SELECT codigo_cie10, keywords FROM catalogo_cie10');
+
+diagnosticos.forEach((diag) => {
+  const idEntidad = diag.codigo_cie10; // Ej: R10
+  let keywords = JSON.parse(diag.keywords); // Ej: ["panza", "retortijon"]
+
+  if (Array.isArray(keywords) && keywords.length > 0) {
+    // Se entrena al modelo asociando las palabras coloquiales al código oficial
+    manager.addNamedEntityText(idEntidad, idEntidad, ['es'], keywords);
+  }
+});
+await manager.train();
+\end{lstlisting}
+
+\paragraph{Tokenización, Limpieza y Detección en Tiempo Real} \leavevmode \\
+Cuando el controlador \texttt{/api/sintomas} recibe una descripción informal por parte del paciente, el motor \texttt{node-nlp} ejecuta el método \texttt{manager.process('es', frase)}. Internamente, la librería somete la oración a un procesamiento complejo: 
+\begin{enumerate}
+    \item \textbf{Normalización:} Elimina signos de puntuación, estandariza acentos y convierte la cadena a minúsculas.
+    \item \textbf{Tokenización:} Fragmenta la oración en palabras individuales (\emph{tokens}).
+    \item \textbf{Filtro de \emph{Stop Words}:} Descarta artículos, pronombres y verbos sin valor clínico (\emph{"el", "la", "tengo", "muy", "fuerte"}).
+\end{enumerate}
+
+El motor devuelve un arreglo con las entidades matemáticas detectadas (\texttt{analisis.entities}). El sistema aísla los códigos CIE-10 únicos mediante un constructor \texttt{Set} y lanza una nueva consulta a la base de datos para recuperar la descripción completa del diagnóstico detectado.
+
+\paragraph{Algoritmo Determinista de Filtro de Relevancia (Scoring)} \leavevmode \\
+Un paciente puede dictar múltiples malestares en una sola frase, o usar palabras ambiguas que disparen coincidencias (\emph{matches}) erróneas. Para limpiar los resultados, la matriz en bruto se envía a la función \texttt{aplicarFiltroRelevancia}, la cual ejecuta cuatro fases de filtrado probabilístico:
+
+\begin{enumerate}
+    \item \textbf{Cálculo de Probabilidad (Accuracy):} El algoritmo itera sobre cada enfermedad detectada. Para cada una, suma el nivel de certeza (\texttt{accuracy}) que la IA le asignó a las palabras clave detonantes y calcula el promedio general. Este valor decimal se convierte a un porcentaje (0 al 100\%).
+    \item \textbf{Filtrado Estricto de Umbral:} Se recorre el arreglo matemático y se descartan automáticamente (\texttt{filter}) los padecimientos cuya probabilidad final sea inferior al 50\%, purgando así los falsos positivos.
+    \item \textbf{Ordenamiento Inteligente (Tie-Breaker):} Es común que dos diagnósticos alcancen el 100\% de probabilidad. Para romper este empate técnico, el algoritmo \texttt{sort} implementa una doble validación: primero ordena de mayor a menor probabilidad, pero si esta coincide, evalúa cuál de las dos enfermedades acumuló un \textbf{mayor número de palabras clave} en la oración del usuario (\texttt{numero\_coincidencias}).
+    \item \textbf{Límite de Interfaz (Top-3):} Finalmente, se aplica el método \texttt{slice(0, 3)} para retornar estrictamente las tres opciones clínicas más contundentes, evitando sobrecargar cognitivamente al paciente.
+\end{enumerate}
+
+Este procedimiento matemático y lógico se refleja en el Código \ref{lst:nlp_relevancia}. Aquí se observa cómo el sistema calcula un nivel porcentual de certeza iterando sobre las coincidencias, aplica un estricto filtro de umbral mínimo del 50\%, y finalmente ejecuta un doble desempate apoyándose en la longitud de las coincidencias gramaticales antes de retornar únicamente el subconjunto de las tres opciones más probables.
+
+\begin{lstlisting}[language=JavaScript, caption={Algoritmo matemático de ordenamiento, cálculo de probabilidad y limitación de diagnósticos clínicos.}, label={lst:nlp_relevancia}]
+// Fase 1: Promediar certeza y contar coincidencias
+let porcentajeCerteza = (sumaAccuracy / entidadesMatch.length) * 100;
+diagnostico.probabilidad = Math.round(porcentajeCerteza);
+diagnostico.numero_coincidencias = entidadesMatch.length;
+
+// Fase 2: Filtro de umbral mínimo (50%)
+const diagnosticosFiltrados = diagnosticosConPuntaje.filter((d) => d.probabilidad >= 50);
+
+// Fase 3: Desempate por doble validación (Probabilidad vs Coincidencias)
+diagnosticosFiltrados.sort((a, b) => {
+  if (b.probabilidad !== a.probabilidad) return b.probabilidad - a.probabilidad;
+  return b.numero_coincidencias - a.numero_coincidencias;
+});
+
+// Fase 4: Retorno del Top 3
+return diagnosticosFiltrados.slice(0, 3);
+\end{lstlisting}
+
+\paragraph{Fuzzy Matching y Trazabilidad del Historial Clínico} \leavevmode \\
+Para que el análisis NLP aporte un valor clínico real, el controlador \texttt{symptomController.js} toma los términos médicos finales generados por el Top-3 y ejecuta una consulta masiva estructurada (mediante múltiples \texttt{JOIN}) hacia el botiquín y el expediente médico (\texttt{recetas} y \texttt{recetas\_detalles}).
+
+Para conectar los malestares actuales con los diagnósticos de recetas pasadas, se implementó un algoritmo \emph{Fuzzy Matching} en lugar de una coincidencia estricta. El sistema descompone cada término médico en un arreglo de sílabas o palabras de más de tres letras (\texttt{w.length > 3}) y comprueba mediante \texttt{includes()} si existe una asociación parcial con un diagnóstico anterior. 
+
+Gracias a esto, si el usuario dicta "asco", el sistema lo normaliza a "Náusea", busca en el historial y puede advertir en tiempo real: \emph{"Cuentas con un diagnóstico previo asociado a este síntoma. Tienes Tylenol disponible en tu botiquín con caducidad vigente"}. Esto cierra el ciclo completo del Botiquín Digital: captura, normalización con IA, consulta en base de datos y prevención proactiva en el consumo médico.
+
+\clearpage
+
+\subsection{Capa de Visualización}
+
+\subsubsection{Módulo de Captura de Fotografía}
+
+Para interactuar de manera fluida con el hardware del dispositivo del usuario (específicamente la cámara), se desarrolló el módulo \texttt{CameraCapture.jsx}. Este componente es la puerta de entrada a los servicios de Inteligencia Artificial, encargándose de orquestar el flujo de video, gestionar los permisos del navegador y preprocesar las imágenes antes de su envío.
+
+\paragraph{Acceso al Hardware mediante MediaDevices API}\leavevmode \\
+El núcleo del módulo radica en el uso de la API \texttt{navigator.mediaDevices.getUserMedia()}, un estándar moderno de HTML5 que permite a las aplicaciones web acceder a flujos multimedia locales.
+
+Cuando el componente se monta en el DOM, se dispara un \emph{Hook} \texttt{useEffect} que invoca la solicitud de permisos. Para optimizar el reconocimiento óptico de caracteres (OCR), se especifican restricciones (\emph{constraints}) rigurosas:
+\begin{itemize}
+    \item \texttt{facingMode: "environment"}: Instruye al navegador (especialmente en dispositivos móviles) a utilizar la cámara trasera por defecto, evitando que el usuario tenga que cambiar de cámara manualmente.
+    \item \textbf{Resolución Ideal:} Se solicita un ancho y alto de \texttt{1920x1080} (Full HD). Si el dispositivo no soporta esta resolución, la API provee automáticamente la máxima resolución disponible (\emph{fallback}) gracias a la directiva \texttt{ideal}.
+\end{itemize}
+
+En el Código \ref{lst:camera_init} se observa la implementación técnica de este acceso seguro a la cámara del dispositivo. Se construye un objeto con las restricciones de enfoque ambiental (\texttt{environment}) y resolución ideal y, al obtener el flujo multimedia de la promesa, este se inyecta dinámicamente como fuente de reproducción visual en la referencia del DOM (el elemento \texttt{video}), incorporando un mecanismo de contingencia (\emph{fallback}) en caso de que los permisos fuesen denegados por el paciente.
+
+\begin{lstlisting}[language=JavaScript, caption={Lógica de inicialización y vinculación del flujo de cámara al DOM.}, label={lst:camera_init}]
+const iniciarFlujoDeCamara = async () => {
+  try {
+    const restricciones = {
+      video: { 
+        facingMode: "environment",
+        width: { ideal: 1920 },
+        height: { ideal: 1080 } 
+      }
+    };
+    const stream = await navigator.mediaDevices.getUserMedia(restricciones);
+    
+    // Vincula el flujo de video en vivo a la etiqueta <video> de HTML
+    if (videoReferencia.current) {
+      videoReferencia.current.srcObject = stream;
+    }
+  } catch (error) {
+    console.error("Permiso denegado o hardware no encontrado:", error);
+    activarModoFallback(); // Permite subir la foto como archivo tradicional
+  }
+};
+\end{lstlisting}
+
+\paragraph{Extracción de Fotogramas mediante Canvas API}\leavevmode \\
+El mayor reto técnico en el frontend era evitar que el usuario tuviera que tomar una fotografía, guardarla en su galería local y luego buscarla para subirla. Para resolver esto, el módulo de captura implementa una técnica de renderizado en memoria usando la API \texttt{Canvas}.
+
+Al presionar el botón de "Capturar", el flujo de video no se detiene abruptamente. En su lugar, el sistema toma el cuadro actual del elemento \texttt{<video>} y lo "dibuja" matemáticamente sobre un elemento \texttt{<canvas>} invisible. Esto congela el instante exacto.
+
+Posteriormente, se utiliza el método \texttt{canvas.toBlob()} para comprimir la matriz de píxeles directamente a formato JPEG con una calidad del 80\%. Este objeto binario (\emph{Blob}) se inyecta en un contenedor \texttt{FormData} y se envía al servidor mediante una petición HTTP POST, manteniendo la privacidad del usuario al no guardar copias residuales en su disco duro local. El Código \ref{lst:canvas_draw} expone la mecánica de esta conversión: las dimensiones de la cámara se mapean a un lienzo de coordenadas 2D, capturando el fotograma en curso y delegando a la API de Canvas su transformación a archivo binario comprimido, tras lo cual se procede a apagar la cámara de forma segura liberando el hardware.
+
+\begin{lstlisting}[language=JavaScript, caption={Conversión del flujo de video a imagen binaria utilizando el contexto 2D de Canvas.}, label={lst:canvas_draw}]
+const tomarFotografia = () => {
+  const canvas = canvasReferencia.current;
+  const video = videoReferencia.current;
+  
+  if (canvas && video) {
+    // Igualar las dimensiones del canvas a la resolución real del hardware
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    
+    const contexto = canvas.getContext('2d');
+    
+    // Dibujar el fotograma actual en el lienzo (0, 0 es la coordenada de origen)
+    contexto.drawImage(video, 0, 0, canvas.width, canvas.height);
+    
+    // Convertir el lienzo a un archivo Blob (JPEG, calidad 80%)
+    canvas.toBlob((archivoBlob) => {
+      detenerCamara(video.srcObject); // Apagar el hardware por seguridad
+      procesarYEnviarImagen(archivoBlob);
+    }, 'image/jpeg', 0.8);
+  }
+};
+\end{lstlisting}
+
+Este enfoque "en memoria" reduce el consumo de RAM del dispositivo móvil, agiliza el envío de paquetes al servidor Node.js y previene vulnerabilidades al asegurar que la cámara se apague automáticamente (\texttt{detenerCamara}) tras la captura del documento.
+
+
+\subsubsection{Interfaz Web}
+
+Una vez que la fotografía de la receta médica es capturada por el componente \texttt{CameraCapture.jsx} y procesada por el servidor mediante los Modelos de Lenguaje Grande (LLM), el sistema cliente (frontend) debe transformar la respuesta cruda (un archivo JSON estructurado) en una interfaz gráfica interactiva y amigable.
+
+Esta etapa de la \emph{Capa de Visualización} se encarga de mostrar al paciente los medicamentos detectados en su receta para que pueda validar, editar o eliminar la información antes de almacenarla definitivamente en su expediente médico y botiquín virtual.
+
+\paragraph{Mapeo de Datos Estructurados a Componentes React}\leavevmode \\
+Cuando el servidor retorna el arreglo de medicamentos detectados, el frontend de React almacena esta información en un estado local utilizando el Hook \texttt{useState}. La interfaz itera sobre este estado mediante la función \texttt{map()} de JavaScript para renderizar dinámicamente formularios individuales (tarjetas) para cada fármaco encontrado. Como se aprecia en el Código \ref{lst:ui_recetas}, el componente genera estos elementos reactivos iterando el estado de medicamentos, pasando a cada nueva instancia de tarjeta las propiedades visuales necesarias (tales como nombre, dosis o frecuencia) junto con una función propagada (\texttt{onEditar}) que se encarga de recolectar las correcciones del paciente y actualizar los cambios directamente en la memoria local.
+
+\begin{lstlisting}[language=JavaScript, caption={Renderizado dinámico de tarjetas de medicamentos en la interfaz a partir de la respuesta del LLM.}, label={lst:ui_recetas}]
+// Estado que almacena la respuesta del backend
+const [medicamentosExtraidos, setMedicamentosExtraidos] = useState([]);
+
+// Renderizado iterativo de la interfaz
+return (
+  <div className="contenedor-resultados">
+    {medicamentosExtraidos.map((med, index) => (
+      <TarjetaMedicamento 
+        key={index}
+        nombre={med.nombre}
+        dosis={med.dosis}
+        frecuencia={med.frecuencia_horas}
+        duracion={med.duracion_dias}
+        onEditar={(nuevosDatos) => actualizarMedicamento(index, nuevosDatos)}
+      />
+    ))}
+  </div>
+);
+\end{lstlisting}
+
+\paragraph{Validación de Esquema y Formularios Dinámicos en el Cliente}\leavevmode \\
+Dado que el reconocimiento óptico de caracteres (OCR) y la interpretación del LLM pueden tener un pequeño margen de error (por ejemplo, confundir "12 horas" con "72 horas" debido a una mala caligrafía en la receta), la interfaz obliga a un paso de "Validación Humana en el Ciclo" \emph{(Human-in-the-loop)}.
+
+Cada tarjeta renderizada (\texttt{TarjetaMedicamento}) funciona como un formulario pre-llenado. El usuario puede modificar los campos de texto directamente. Para evitar el ingreso de datos corruptos, el frontend implementa una validación en tiempo real utilizando expresiones regulares y lógica de control. Por ejemplo:
+\begin{itemize}
+    \item \textbf{Frecuencia:} Solo permite números enteros (1 a 24 horas).
+    \item \textbf{Duración:} Se restringe a un máximo de 90 días por tratamiento agudo.
+    \item \textbf{Campos Vacíos:} Si el modelo no logró detectar la dosis, el campo se marca visualmente en rojo (estado de error) bloqueando el botón de "Guardar" hasta que el paciente lo complete manualmente.
+\end{itemize}
+
+\paragraph{Experiencia de Usuario (UX) en la Revisión}\leavevmode \\
+Para hacer el proceso de revisión menos tedioso para el paciente, la interfaz adopta el principio de "Divulgación Progresiva":
+\begin{enumerate}
+    \item \textbf{Vista Resumida:} Inicialmente solo se muestra el nombre del medicamento y un resumen visual del tratamiento (ej. "Paracetamol - 1 pastilla cada 8 hrs").
+    \item \textbf{Vista de Edición (Acordeón):} Si el usuario nota un error, puede expandir la tarjeta (mediante un componente tipo acordeón o modal) para acceder a los campos detallados (vía de administración, gramaje, cantidad).
+    \item \textbf{Eliminación Segura:} Si el sistema detectó "ruido" en la receta (por ejemplo, confundió el nombre del doctor con un medicamento), se provee un botón de "Eliminar" con un diálogo de confirmación para limpiar los datos antes del guardado.
+\end{enumerate}
+
+Esta separación de responsabilidades entre el servidor (que extrae y estructura los datos) y la interfaz gráfica del cliente (que mapea, valida y permite la corrección) garantiza una experiencia robusta y una alta calidad en los datos médicos almacenados en el sistema.
+
+
+\clearpage
+
+\section{Resultados}
+
+\clearpage
+
+\section{Análisis y discusión de resultados}
+
+\clearpage
+\section{Conclusiones}

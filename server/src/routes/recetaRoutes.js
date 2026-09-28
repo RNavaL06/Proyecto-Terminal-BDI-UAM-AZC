@@ -2,15 +2,18 @@ const express = require('express');
 const router = express.Router();
 const recetaController = require('../controllers/recetaController');
 const authMiddleware = require('../middlewares/authMiddleware');
+const validateSchema = require('../middlewares/validateSchema');
+const { recetaSchema } = require('../validators/recetaSchema');
+const { visionLimiter } = require('../middlewares/rateLimiter');
 
 // Todas las rutas de recetas requieren token JWT
 router.use(authMiddleware);
 
 // POST /api/recetas/analizar -> Analiza imagen con IA y Sharp
-router.post('/analizar', recetaController.analizarReceta);
+router.post('/analizar', visionLimiter, recetaController.analizarReceta);
 
 // POST /api/recetas/guardar -> Guarda receta validada transaccionalmente en 3NF
-router.post('/guardar', recetaController.guardarReceta);
+router.post('/guardar', validateSchema(recetaSchema), recetaController.guardarReceta);
 
 // GET /api/recetas -> Historial paginado de recetas
 router.get('/', recetaController.listarRecetas);

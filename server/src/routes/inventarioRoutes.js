@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const inventarioController = require('../controllers/inventarioController');
 const authMiddleware = require('../middlewares/authMiddleware');
+const validateSchema = require('../middlewares/validateSchema');
+const { inventarioSchema, inventarioBatchSchema } = require('../validators/inventarioSchema');
+const { visionLimiter } = require('../middlewares/rateLimiter');
 
 router.use(authMiddleware);
 
@@ -12,13 +15,13 @@ router.get('/', inventarioController.listarInventario);
 router.get('/alertas', inventarioController.obtenerAlertas);
 
 // POST /api/inventario/analizar -> OCR caja de medicamento
-router.post('/analizar', inventarioController.analizarCajaMedicamento);
+router.post('/analizar', visionLimiter, inventarioController.analizarCajaMedicamento);
 
 // POST /api/inventario -> Agregar medicamento individual
-router.post('/', inventarioController.agregarMedicamento);
+router.post('/', validateSchema(inventarioSchema), inventarioController.agregarMedicamento);
 
 // POST /api/inventario/batch -> Agregar lote de medicamentos
-router.post('/batch', inventarioController.agregarBatch);
+router.post('/batch', validateSchema(inventarioBatchSchema), inventarioController.agregarBatch);
 
 // PUT /api/inventario/:id -> Actualizar medicamento
 router.put('/:id', inventarioController.actualizarMedicamento);

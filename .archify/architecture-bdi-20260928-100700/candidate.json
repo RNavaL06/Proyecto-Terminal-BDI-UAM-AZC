@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Arquitectura de Botiquín Digital Inteligente",
+    "output": "bdi.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    { "id": "user", "type": "external", "label": "Paciente", "sublabel": "Móvil / Web", "pos": [40, 300], "size": [120, 60] },
+    { "id": "client", "type": "frontend", "label": "Aplicación Cliente", "sublabel": "React + Vite", "pos": [250, 300], "size": [140, 60], "tag": "Camera & Geolocation" },
+    { "id": "api", "type": "backend", "label": "Servidor Node.js", "sublabel": "Express API", "pos": [500, 300], "size": [140, 60] },
+    { "id": "nlp", "type": "backend", "label": "Motor NLP", "sublabel": "node-nlp", "pos": [500, 150], "size": [130, 60], "tag": "CIE-10" },
+    { "id": "db", "type": "database", "label": "Base de Datos", "sublabel": "MySQL", "pos": [750, 300], "size": [130, 60] },
+    { "id": "llm", "type": "cloud", "label": "Vision LLM", "sublabel": "Extracción OCR", "pos": [750, 150], "size": [130, 60] },
+    { "id": "geo", "type": "cloud", "label": "Geoapify API", "sublabel": "Geocodificación", "pos": [750, 450], "size": [130, 60] },
+    { "id": "serp", "type": "cloud", "label": "SerpApi", "sublabel": "Google Shopping", "pos": [500, 450], "size": [130, 60] }
+  ],
+  "boundaries": [
+    { "kind": "security-group", "label": "Backend BDI", "wraps": ["api", "nlp"] }
+  ],
+  "connections": [
+    { "id": "user-to-client", "from": "user", "to": "client", "label": "Interacción UX" },
+    { "id": "client-to-api", "from": "client", "to": "api", "label": "HTTP REST" },
+    { "id": "api-to-db", "from": "api", "to": "db", "label": "Consultas SQL" },
+    { "id": "api-to-nlp", "from": "api", "to": "nlp", "label": "Tokenización", "fromSide": "top", "toSide": "bottom" },
+    { "id": "api-to-llm", "from": "api", "to": "llm", "label": "Imágenes (Base64)", "variant": "dashed" },
+    { "id": "api-to-serp", "from": "api", "to": "serp", "label": "Cotizaciones", "variant": "dashed", "fromSide": "bottom", "toSide": "top" },
+    { "id": "api-to-geo", "from": "api", "to": "geo", "label": "Coordenadas", "variant": "dashed" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "Capa Cliente", "items": ["React para UI reactiva", "MediaDevices y Canvas API para cámara", "Geolocalización en navegador"] },
+    { "dot": "emerald", "title": "Motor de Inteligencia", "items": ["Validación de esquemas (validateSchema)", "Filtrado probabilístico CIE-10 (node-nlp)", "Fuzzy Matching para recetas"] },
+    { "dot": "rose", "title": "Integraciones Externas", "items": ["SerpApi para buscar precios en tiempo real", "Modelos de Visión LLM para extraer recetas médicas"] }
+  ]
+}

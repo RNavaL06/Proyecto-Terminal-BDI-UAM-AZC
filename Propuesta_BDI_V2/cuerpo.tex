@@ -1,0 +1,570 @@
+ %Este comando hace que la página que contiene la introducción sea la número uno
+\setcounter{page}{1}
+\pagestyle{fancy}
+
+\section{Introducción}%Introducción
+
+En México se calcula que más del 80\% de la población se automedica, es decir, usa fármacos por iniciativa propia sin contar con prescripción o indicación médica profesional \cite{SecSalud}. Esta práctica se define como el uso de medicamentos o productos complementarios o naturistas no recetados por un médico e involucra la adquisición de productos sin una prescripción médica, la reutilización de las prescripciones antiguas, el uso de remanentes almacenados en el hogar, compartir productos con familiares o amigos e incumpliendo con la indicación médica sobre la dosificación o la duración del tratamiento \cite{ugto}. Diversos estudios señalan que en los medicamentos sobrantes almacenados en el hogar resulta complejo identificar la fecha de caducidad debido a la ausencia de envases secundarios (frascos o cajas), en casos más extremos, los medicamentos están fuera de su envase primario (blíster)\footnote{Almacenamiento individual de cápsulas, comprimidos y pastillas para garantizar la dosificación exacta.} y no se tiene información de su fecha de caducidad, convirtiéndolos en medicinas no aptas para el consumo \cite{ResMedicamentos}. A esta problemática se le suma la mala legibilidad en las recetas escritas manualmente. Según un informe del Instituto de Medicina de la Academia Nacional de Ciencias de Estados Unidos, en 2022 se estimaron hasta siete mil muertes anuales relacionadas con errores directamente provocados por la caligrafía en recetas médicas escritas a mano \cite{elsoldedurango}.
+
+Esta situación representa un doble reto técnico; por un lado, implica la extracción y organización de datos médicos confiables a partir de fuentes de datos no estandarizadas y con poca legibilidad (como la caligrafía de recetas médicas y empaques deteriorados). Además, existe un problema de procesamiento de lenguaje natural a causa de la diferencia semántica entre el lenguaje coloquial que utilizan las personas para describir sus síntomas y la terminología oficial.
+
+El proyecto Botiquín Digital Inteligente ({BDI}) surge para automatizar la digitalización de prescripciones y el control de inventario médico personal mediante la integración de \emph{Large Language Models} (Grandes Modelos de Lenguaje, \emph{LLM} por sus siglas en inglés), específicamente modelos multimodales\footnote{La IA multimodal se refiere a modelos de aprendizaje automático capaces de procesar e integrar información de múltiples modalidades que pueden incluir texto, imágenes, audio, video y otras formas de entradas sensoriales \cite{multimodales}.} que interpretarán la caligrafía y el contexto médico. El sistema utilizará técnicas de inteligencia artificial para extraer información organizada y realizar un mapeo semántico que asocie términos comunes con los diagnósticos oficiales \cite{CIE10}. De esta manera, el proyecto busca aportar una herramienta tecnológica que centralice la gestión segura de la salud personal y desincentive la automedicación errónea.
+
+
+\section{Justificación}
+
+La realización del proyecto "Botiquín Digital Inteligente” se justifica por la necesidad de proveer una herramienta tecnológica integral que asista a las personas en la gestión de su salud. Al centralizar funciones como la ayuda para interpretar recetas médicas, localizar farmacias mediante geolocalización, gestionar el inventario de medicamentos y consultar precios en línea, el BDI optimiza la toma de decisiones y desincentiva la adquisición o el consumo empírico de fármacos sin un sustento clínico previo.
+
+El uso de \emph{LLM} multimodales es indispensable para resolver esta problemática, ya que el Reconocimiento Óptico de Caracteres (OCR) resulta insuficiente para reconocer la caligrafía médica; los \emph{LLM} aportan el razonamiento semántico y contextual necesario para lograr la extracción exacta de datos clínicos. Además, para asegurar el desarrollo de una interfaz dinámica, responsiva y accesible se implementará una arquitectura basada en \emph{React} para el \emph{frontend}. En el \emph{backend}, la elección de \emph{Node.js} con \emph{Express.js} permite un procesamiento eficiente, ideal para gestionar múltiples peticiones simultáneas hacia las API\footnote{Una API (interfaz de programación de aplicaciones) es un conjunto de mecanismos que permiten a dos componentes de software comunicarse entre sí mediante un conjunto de reglas o protocolos.\cite{apidef}} externas (inteligencia artificial y mapas). Finalmente, el uso de \emph{MySQL} garantiza la consistencia, integridad y aislamiento de la información sensible dentro de un modelo relacional.
+
+La información estructurada que mostrará el BDI permitirá reducir la incertidumbre y prevendrá los riesgos asociados al consumo de sustancias vencidas. Es importante mencionar que el sistema es un prototipo tecnológico de apoyo doméstico e informativo, que no emite diagnósticos médicos ni recetas autónomas, y que opera exclusivamente bajo la información previamente prescrita y validada por la persona usuaria, por lo que no sustituye ni requiere las certificaciones de la Secretaría de Salud aplicables a instituciones médicas.
+
+
+\section{Objetivo general}
+
+Desarrollar un sistema web interactivo que centralice el control del inventario médico y el historial de tratamientos a través de la digitalización automatizada de recetas, con el fin de proveer información estructurada que asista en la gestión responsable de la salud personal.
+
+\section{Objetivos específicos}
+
+\begin{enumerate}
+    \item Integrar un motor de extracción de datos basado en \emph{LLM} para estructurar la información clínica de recetas médicas y empaques, alimentando automáticamente un módulo de botiquín digital que gestione el inventario y alerte sobre fechas de caducidad.
+    \item Desarrollar un módulo de procesamiento de lenguaje natural multimodal (texto y audio) que traduzca síntomas coloquiales a códigos clínicos oficiales de la CIE-10 \cite{CIE10}, permitiendo a la persona usuaria consultar su historial de tratamientos de forma intuitiva.
+    \item Incorporar servicios de geolocalización y consumo de APIs externas para dotar al sistema de una herramienta de asistencia logística y económica, facilitando la ubicación de farmacias cercanas y la comparación de precios de medicamentos.
+    \item Establecer una arquitectura de datos segura que garantice la confidencialidad, privacidad e integridad de la información médica procesada, implementando controles de acceso por autenticación y el aislamiento estricto de la base de datos relacional.
+\end{enumerate}
+
+\section{Trabajos relacionados}
+
+\subsection{Recomendación de Códigos CIE-10 a Diagnósticos Médicos en Escenarios a Gran Escala \cite{Velasco}.}
+Esta tesis atendió la necesidad de automatizar la asignación de códigos de la Clasificación Internacional de Enfermedades (CIE-10-MC) a diagnósticos médicos redactados en lenguaje natural. Su propósito es ayudar a los profesionales de la salud a reducir errores manuales y agilizar la toma de decisiones. Para lograrlo, utiliza herramientas de procesamiento de texto que analizan las palabras y las emparejan con su código correspondiente. A nivel técnico, se apoya en técnicas de Procesamiento de Lenguaje Natural (NLP) y clasificadores automáticos de texto diseñados para manejar amplios volúmenes de datos hospitalarios. Como resultado, automatizó exitosamente la asignación a gran escala, mejorando la organización de los historiales clínicos y demostrando una reducción significativa del margen de error humano en comparación con el procesamiento manual. Este trabajo demuestra la viabilidad de asociar lenguaje no estructurado a catálogos estandarizados, fundamentando teóricamente el módulo del BDI encargado de mapear malestares comunes a diagnósticos oficiales de manera automática.
+
+\subsection{Mapping of Narrative Text Fields To ICD-10 Codes Using Natural Language Processing and Machine Learning \cite{nkolele}.}
+Este artículo presenta un modelo para automatizar la clasificación de textos médicos narrativos, con la finalidad de reducir el tiempo y los errores que ocurren al procesar documentos manualmente en los hospitales. El sistema utiliza algoritmos de aprendizaje automático para leer los resúmenes clínicos y asignarles el código CIE-10 correcto, implementando modelos basados en Árboles de Decisión y técnicas avanzadas de Procesamiento de Lenguaje Natural (NLP). En sus evaluaciones de rendimiento, el uso de clasificadores demostró el fuerte potencial de la codificación automatizada, logrando tasas de exactitud, precisión y exhaustividad superiores al 50\%, lo que acelera los procesos administrativos y sienta las bases para arquitecturas más robustas. Esto respalda directamente la funcionalidad semántica del BDI para procesar la entrada de texto coloquial de la persona usuaria y recuperar exclusivamente el historial previo relacionado con dicho malestar.
+
+\subsection{A novel approach of doctors' handwritten medical prescription recognition using a deep neural network and generating digital records of the patients \cite{novel}.}
+Este proyecto desarrolló un sistema capaz de leer y digitalizar recetas médicas escritas a mano; su propósito principal es evitar errores en la medicación causados por la mala caligrafía de los doctores. La solución utiliza un modelo híbrido de Reconocimiento Óptico de Caracteres (OCR) e inteligencia artificial, incorporando Redes Neuronales Profundas (DNN), Redes Neuronales Convolucionales (CNN) y Perceptrones Multicapa, apoyados por mecanismos de soporte de decisiones. Como resultado principal, el sistema logró reconocer visualmente el texto y los números de las recetas, permitiendo guardarlos de forma clara y segura en los expedientes electrónicos de los pacientes mediante la exportación automatizada a formatos estructurados. Esta investigación sustenta metodológicamente la extracción de datos clave a partir de fotografías en el BDI, principio que evolucionará mediante el uso de \emph{LLM} multimodales para extraer información clínica, dosis y fechas de caducidad.
+
+\subsection{Aplicación Móvil DrugXafe \cite{DrugXafe}.}
+Esta aplicación móvil permite a los usuarios verificar la autenticidad de sus medicamentos y localizar inventario disponible, con la finalidad de detectar y evitar el consumo de medicinas caducadas o falsas. Para su funcionamiento, emplea un sistema de trazabilidad farmacéutica de extremo a extremo fundamentado en la serialización con códigos de matriz de datos, e integra un sistema de geolocalización mediante GPS que guía a las personas hacia las farmacias más cercanas que cuentan con el medicamento que necesitan. Sus resultados garantizan una cadena de suministro transparente, optimizando la gestión de inventarios y logrando un manejo eficaz del control de caducidades a gran escala. Este trabajo valida la eficacia y aceptación de las herramientas de localización geográfica y gestión de vigencia en el usuario final, características que se replicarán de manera análoga en los módulos del BDI enfocados al botiquín digital y al mapa interactivo de farmacias.
+
+\subsection{Ada Health Clone Solutions: Architecture and Technology \cite{AdaHealthApp}.}
+Este sistema evalúa los síntomas y ayuda a los usuarios a entender su estado de salud para evitar que las personas se autodiagnostiquen con información incorrecta en internet. Utiliza procesamiento de lenguaje natural que analiza los síntomas escritos por la persona usuaria y los compara con una base de datos médica para recomendarle los siguientes pasos a seguir. Para lograr esto, emplea motores de inferencia clínica basados en redes bayesianas y modelos probabilísticos de Machine Learning. Evaluaciones clínicas han demostrado que esta arquitectura posee una alta precisión como herramienta de triaje, proporcionando recomendaciones seguras basadas en un razonamiento probabilístico validado por médicos. Aunque el BDI es un sistema de apoyo informativo y no emite diagnósticos nuevos, el éxito comercial de esta tecnología justifica el uso de mecanismos de procesamiento de lenguaje natural para orientar a la persona usuaria basándose estrictamente en el historial clínico que ya le fue prescrito.
+
+\subsection{Diccionario panhispánico de términos médicos ({DPTM}) \cite{DPTM}.}
+Este trabajo es una plataforma digital de búsqueda de distintos términos coloquiales o médicos, cuya función principal es agrupar en una sola plataforma el lenguaje médico de hispanohablantes para evitar confusiones entre los doctores y los pacientes. A nivel de arquitectura de software, consiste en un repositorio centralizado de base de datos relacional y un robusto motor de búsqueda web diseñado para indexar miles de términos, sinónimos y variantes léxicas. Con ello, se consolidó como un catálogo de consulta estandarizado que ayuda a interpretar correctamente tanto palabras coloquiales así como términos técnicos relacionados con enfermedades y síntomas. Este trabajo sirve como base para diseñar el diccionario interno del BDI y organizar la información en nuestra base de datos. Además, reafirma la importancia de traducir los síntomas descritos en lenguaje común a términos médicos oficiales para que el sistema no cometa errores.
+
+%Este texto es indicativo, deberá ser sustituido por el contenido de la sección.
+Las similitudes y diferencias con el proyecto propuesto, se presentan en la Tabla \ref{table:trabajosRelacionados}.
+
+%Esta es la tabla en donde se presentan las similitudes y diferencias.
+{
+\begin{longtable}{m{.05\paperwidth} *{3}{m{.33\paperwidth}} @{}}
+ \caption{Comparación cualitativa de los trabajos relacionados con el proyecto.}
+  \label{table:trabajosRelacionados}\\
+\hline
+\textbf{Ref.}&
+\textbf{Similitudes} &
+\textbf{Diferencias} \\
+\hline
+\endfirsthead
+
+\multicolumn{3}{c}{\textbf{Continuación de la Tabla \ref{table:trabajosRelacionados}}}\\
+\hline
+\textbf{Ref.}&
+\textbf{Similitudes} &
+\textbf{Diferencias} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+\cite{Velasco} &
+    \begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+        \item Uso de NLP para procesamiento de texto 
+        \item Asignación automática de códigos CIE-10
+    \end{itemize} &
+    \begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+        \item Orientado a personal administrativo/hospitalario
+        \item No cuenta con módulo LLM para extracción de caracteres
+        \item No geolocaliza farmacias
+    \end{itemize} \\
+    \midrule
+\cite{nkolele} &
+    \begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+        \item Análisis de texto clínico no estructurado
+        \item Mapeo directo a la clasificación CIE-10
+        \item Uso de algoritmos de inteligencia artificial para agilizar decisiones
+    \end{itemize} &
+    \begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+        \item Enfocado en estadísticas de morbilidad
+        \item No sugiere medicamentos al usuario
+        \item No cuenta con herramientas para cotizar precios en línea
+    \end{itemize} \\
+\midrule
+\cite{novel} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item Digitalización de recetas médicas manuscritas
+    \item Uso de inteligencia artificial para el reconocimiento de caracteres
+    \item Su propósito principal es evitar errores en la medicación
+\end{itemize} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item Destinado a historiales clínicos de hospitales
+	\item Implementación de motor OCR
+    \item No procesa ni interpreta síntomas coloquiales
+\end{itemize} \\
+\midrule
+\cite{DrugXafe} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item Geolocalización de farmacias cercanas
+	\item El paciente tiene un control de su salud
+    \item Prevención del consumo de medicinas caducadas
+\end{itemize} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item No procesa recetas médicas ni diagnósticos
+    \item No traduce términos coloquiales a un lenguaje médico estandarizado
+    \item Es una aplicación móvil nativa, a diferencia de la plataforma web responsiva propuesta
+\end{itemize} \\
+\midrule
+\cite{AdaHealthApp} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item Evaluación de síntomas con NLP
+	\item Mapeo de terminología a códigos CIE-10
+    \item Orientación directa a la consulta de la persona usuaria final
+\end{itemize} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item No sólo está enfocado a síntomas comununes también a condiciones graves
+    \item No digitaliza recetas médicas previas para filtrar su información
+    \item No cuenta con funciones de registro y escaneo de medicamentos
+\end{itemize} \\
+\midrule
+\cite{DPTM} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item Normalización del lenguaje médico
+	\item Mapea términos coloquiales a términos médicos
+    \item Agrupación de la información en un catálogo centralizado para realizar las consultas
+\end{itemize} &
+\begin{itemize}[topsep=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\item Es una herramienta de consulta manual
+	\item No realiza recomendaciones ni extracciones
+    \item Carece de integración con mapas, historiales o comparador de precios
+\end{itemize} \\
+    \bottomrule
+\end{longtable}
+}
+
+\section{Descripción técnica}
+
+En el desarrollo del BDI se usará una arquitectura modular organizada en tres bloques funcionales: Capa de Datos, Capa de Procesamiento y Lógica y Capa de Visualización. La estructura general del sistema se muestra en la Figura~\ref{fig:modulos}. 
+{
+
+\begin{figure}[H] % Ahora sí usamos la H mayúscula para posición fija
+	\centering
+	\includegraphics[width=0.67\textwidth]{esquema_bdi.png}
+	\caption{\label{fig:modulos} Diagrama de bloques del flujo general del sistema de información.}
+\end{figure}
+}
+\subsection{Capa de Datos}
+Esta capa será la responsable de la recepción, validación, almacenamiento y provisión de la información utilizada por el BDI. Aquí se integrará la comunicación con los módulos de la Capa de Procesamiento y Lógica descritos en la sección 6.2.
+\begin{itemize}
+        \item Módulo de Control de Datos (CD): Este módulo se encargará de recibir la información ya procesada, validarla y guardarla correctamente con un formato definido. Asimismo, es el responsable de gestionar el aislamiento de la base de datos, actuando como una capa intermedia que impide el acceso directo desde el \emph{frontend} para garantizar la integridad y seguridad de los datos. Además, es el encargado de buscar y entregar los datos rápidamente cuando el sistema o la persona usuaria los solicitan.
+        
+        \item Base de Datos relacional BDI: Es donde se guarda de forma estructurada toda la información para que el sistema funcione: perfil de la persona usuaria registrada (mediante su cuenta de Google), historial de recetas digitalizadas, el inventario de sus botiquín y el diccionario que relaciona los síntomas coloquiales con los términos médicos.
+    \end{itemize}
+
+
+\subsection{Capa de Procesamiento y Lógica}
+
+\begin{itemize}
+        \item Módulo \emph{LLM}: Este módulo es el núcleo analítico del sistema, encargado de procesar las fotografías de las recetas médicas impresas o manuscritas y de las cajas o etiquetas de los medicamentos. Para su implementación, se utilizará un modelo multimodal de última generación (Llama 3 Vision, accesible mediante la API de Groq \cite{CostoGroq}). El módulo recibirá como entrada (datos de entrada) la fotografía codificada en formato Base64 junto con un \emph{prompt} de sistema estructurado, y devolverá como salida un objeto estandarizado en formato JSON con la información extraída. Su función principal es extraer de forma automática las siguientes entidades:
+        \begin{itemize}
+            \item En el caso de recetas médicas: nombre, fecha, cédula profesional del personal médico, diagnóstico, nombres de medicamentos recetados e indicaciones para construir el historial clínico.
+            \item En el caso de medicamentos: capturar el nombre, dosis y fecha de caducidad para alertar a la persona usuaria sobre si un fármaco está vigente, próximo a vencer o ya ha caducado.
+        \end{itemize}
+        Para manejar posibles alucinaciones de la inteligencia artificial, respuestas incorrectas o imágenes con baja resolución, el sistema implementará un mecanismo de validación en la interfaz. Antes de insertar la salida del modelo en la base de datos, la información se presentará en un formulario web editable donde la persona usuaria deberá revisar, corregir y confirmar los datos. Además, como estrategia de contingencia, si el modelo falla al extraer la información, se habilitará la opción de captura manual total.
+        
+        \item Módulo ubicación de farmacias: Este módulo se encargará de procesar la información geográfica del dispositivo, tomando la ubicación en tiempo real de la persona usuaria o una dirección ingresada manualmente para mostrar un mapa interactivo con las farmacias más cercanas facilitando la adquisición del medicamento.
+
+        \item Módulo de consulta de precios: Este módulo tiene la tarea de realizar búsquedas para recopilar costos actualizados de los medicamentos en diferentes establecimientos. Esto permite a la persona usuaria visualizar rápidamente las opciones más económicas antes de realizar una compra.
+
+        \item Módulo voz-texto y texto-voz: Este módulo procesa el audio capturado por el micrófono del dispositivo para transformarlo en texto escrito, permitiendo a la persona usuaria describir un síntoma sin necesidad de teclear, también puede tomar el texto de los resultados y reproducirlo en audio a través de los altavoces. Esto mejora la accesibilidad y experiencia en el BDI. 
+
+        \item Módulo términos coloquiales a técnicos: Este módulo procesará síntomas ingresados por la persona usuaria que utilicen términos coloquiales y los mapeará a términos médicos oficiales CIE-10 \cite{CIE10}. Esto permite que el sistema busque en el historial de recetas del usuario qué tratamiento le ha sido prescrito anteriormente para esa condición específica.
+        
+    \end{itemize}
+    
+\subsection{Capa de Visualización}
+Esta capa representa la interfaz web con la que interactúa la comunidad usuaria.
+\begin{itemize}
+    \item Interfaz:  Permite a la persona usuaria autenticarse mediante su cuenta de Google, garantizando el acceso desde cualquier dispositivo a su botiquín e historial médico. Además, agrupa todos los servicios del BDI como ingresar texto, dictar síntomas por voz y recuperar el historial de recetas, presentar el mapa dinámico para la localización de farmacias cercanas, mostrar tablas de comparación de precios, haciendo la interacción amigable, intuitiva y fácil de entender.
+    \item Módulo de captura de fotografías: Este módulo se encarga de solicitar los permisos   necesarios al dispositivo para acceder a la cámara o galería. Su función es permitir a la persona usuaria capturar y confirmar las fotografías de sus recetas o cajas de medicamentos para su posterior procesamiento.
+    
+\end{itemize}
+
+
+\section{Especificación técnica}%añadir pies de página
+
+El desarrollo del BDI se enfocará en construir un sitio web funcional. La funcionalidad del sistema abarca desde la extracción de datos clínicos a partir de fotografías, el control de medicamentos con base en la fecha de caducidad, la localización de farmacias y la cotización de medicamentos.
+
+Para la construcción del sistema basado en un modelo cliente-servidor, el entorno de desarrollo será Visual Studio Code \cite{vscode}. El control de versiones y el trabajo colaborativo se llevará a cabo mediante Git y un repositorio en GitHub \cite{github}. En el lado del cliente (\emph{frontend}), se utilizarán los lenguajes HTML \cite{html}, CSS \cite{css} y JavaScript \cite{javascript}, empleando la librería React \cite{react} para la creación de interfaces dinámicas y Tailwind CSS \cite{tailwindcss} para el diseño adaptable y responsivo. El servicio de mapas interactivos se realizará mediante la implementación de la librería Leaflet \cite{leaflet} junto con OpenStreetMap \cite{openstreetmap}, y el soporte por voz funcionará con React Speech Recognition \cite{react_speech}.
+
+En el lado del servidor (\emph{backend}), se trabajará bajo el entorno Node.js \cite{nodejs} utilizando Express.js \cite{express}. En el sistema de almacenamiento se implementarán bases de datos relacionales MySQL \cite{mysql}.
+
+Tanto el \emph{frontend} como el \emph{backend} se comunicarán mediante el protocolo HTTP/HTTPS \cite{http}, incluyendo servicios de terceros como el servicio SerpApi \cite{CostoSerpApi} para la extracción de resultados comerciales de Google Shopping \cite{google_shopping}. Para el manejo de tareas como la extracción de texto, el análisis del texto extraído de las recetas médicas y el reconocimiento de caracteres en cajas de medicamentos, se utilizará la infraestructura en la nube de Groq \cite{CostoGroq}. Específicamente, se implementarán modelos \emph{LLM} concretos como Llama 3 Vision, integrados en el \emph{backend} mediante la biblioteca oficial \texttt{groq-sdk} para Node.js, instalada vía el gestor de paquetes NPM.
+
+El proyecto se considerará finalizado y completamente funcional cuando se cumplan los siguientes criterios de aceptación medibles y verificables:
+
+\begin{itemize}
+    \item \textbf{Módulo de Captura de fotografía:} Cuando sea capaz de solicitar el acceso a las fotos o cámara permitiendo seleccionar o tomar la imagen, garantizando un porcentaje de éxito en las pruebas funcionales de captura superior al 95\%, y dando siempre la opción de subir una nueva fotografía en caso de ilegibilidad.
+    \item \textbf{Módulo de Control de Datos (CD):} Cuando el sistema reciba, valide y guarde la información procesada en la base de datos, asegurando una disponibilidad del sistema del 99\% y tiempos de respuesta en la recuperación de datos inferiores a 2 segundos.
+    \item \textbf{Base de Datos relacional BDI:} Cuando todas las tablas necesarias estén creadas y relacionadas, alcanzando una cobertura de casos de prueba del 100\% en las validaciones de integridad referencial y almacenamiento correcto.
+    \item \textbf{Módulo LLM (Recetas y Medicamentos):} 
+        \begin{itemize}
+        \item Recetas médicas: Cuando sea capaz de extraer el nombre, la fecha, cédula profesional, diagnósticos, indicaciones y medicamentos prescritos, alcanzando un porcentaje de precisión de al menos el 80\% en la extracción correcta de campos frente a un conjunto de pruebas.
+        \item Medicamentos: Cuando se extraiga el nombre del medicamento, fecha de caducidad y dosis con un porcentaje de precisión superior al 80\% en el reconocimiento de texto (LLM).
+        \end{itemize}
+    \item \textbf{Módulo de términos coloquiales:} Cuando el sistema traduzca síntomas comunes a términos médicos y recupere medicamentos previos, logrando una tasa de éxito de mapeo semántico superior al 80\% en los escenarios de prueba superados.
+    \item \textbf{Módulo de ubicación:} Cuando muestre un mapa interactivo con las farmacias más cercanas mediante geolocalización o ingreso manual, superando el 95\% de éxito en los escenarios de prueba de renderizado y posicionamiento con Leaflet.
+    \item \textbf{Módulo de consulta de precios:} Cuando el sistema se conecte con el buscador y muestre la tabla comparativa, procesando la solicitud con un porcentaje de éxito del 80\% en la extracción de datos de al menos 3 proveedores distintos mediante SerpApi.
+    \item \textbf{Módulo voz-texto y texto-voz:} Cuando logre capturar el dictado, convertirlo a consulta y leer los resultados, manteniendo un porcentaje de precisión en la transcripción de voz a texto mayor al 80\% en pruebas con ruido ambiente moderado.
+\end{itemize}
+
+Al concluir el proyecto de integración se entregará a la Coordinación de Estudios de Ingeniería en Computación una carpeta digital que incluirá el reporte final del proyecto en un archivo PDF (sin restricciones)\footnote{Debe poder visualizarse sin solicitar contraseña}, el código fuente del proyecto en un archivo comprimido (sin restricciones)\footnote{Debe poder descomprimirse sin solicitar contraseña}. Además, la sección de apéndices del reporte final contendrá al menos un listado del código fuente desarrollado.
+\section{Calendario de actividades}
+Las actividades a realizar por el alumno Cristian Emanuel Ceron Franco durante el Trimestre 2026-Otoño, en la UEA Proyecto de Integración en Ingeniería en Computación I (1100113) se presentan en la Tabla \ref{table:calendarioActividades1}.
+
+\section{Calendario de actividades}
+Las actividades a realizar por el alumno Cristian Emanuel Ceron Franco durante el Trimestre 2026-Otoño, en la UEA Proyecto de Integración en Ingeniería en Computación I (1100113) se presentan en la Tabla \ref{table:calendarioActividades1}.
+
+{
+\begin{longtable}{p{0.05\textwidth} p{0.4\textwidth} p{0.1\textwidth} p{0.35\textwidth}}
+	\caption{Listado de actividades a realizar por el alumno Cristian Emanuel Ceron Franco durante el Trimestre 2026-Otoño.}
+  \label{table:calendarioActividades1}\\
+  \toprule
+\textbf{No.} &
+\textbf{Actividad} &
+\textbf {Horas} &
+\textbf{Entregable} \\
+\hline
+\endfirsthead
+
+\multicolumn{4}{c}{\textbf{Continuación de la Tabla \ref{table:calendarioActividades1}}}\\
+\hline
+\textbf{No.} &
+\textbf{Actividad} &
+\textbf{Horas} &
+\textbf{Entregable} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+1 &
+Diseñar la arquitectura de la Capa de Datos del BDI. &
+11 &
+Diagrama de arquitectura de datos (Reporte final). \\
+    \midrule
+
+2 &
+Diseñar el modelo de base de datos relacional en MySQL. &
+13 &
+Script SQL de definición de esquema (Repositorio). \\
+    \midrule
+
+3 &
+Configurar el servidor backend con Node.js y Express.js. &
+13 &
+Entorno de servidor Node.js configurado (Repositorio). \\
+    \midrule
+    
+4 &
+Crear la lógica para calcular la caducidad de los medicamentos. &
+13 &
+Algoritmo de validación de caducidad (Repositorio). \\
+    \midrule
+
+5 &
+Integrar los códigos clínicos de la CIE-10 a la base de datos. &
+16 &
+Base de datos poblada con catálogo CIE-10 (Repositorio). \\
+    \midrule
+
+6 &
+Implementar conexión backend con API de LLM para cajas de medicamentos. &
+15 &
+Controlador backend para consumo de IA (Repositorio). \\
+    \midrule
+
+7 &
+Realizar pruebas de carga y rendimiento del servidor backend. &
+14 &
+Resultados de pruebas de rendimiento (Reporte final). \\
+    \midrule
+
+8 &
+Diseñar la arquitectura frontend y navegación en React. &
+12 &
+Diagrama de componentes web (Reporte final). \\
+    \midrule
+
+9 &
+Crear los prototipos gráficos (Mockups) del sistema. &
+13 &
+Prototipos de interfaz de usuario (Reporte final). \\
+    \midrule
+
+10 &
+Configurar el proyecto web con React y Tailwind CSS. &
+12 &
+Estructura base del proyecto React (Repositorio). \\
+    \midrule
+
+11 &
+Implementar el inicio de sesión con cuenta de Google. &
+12 &
+Módulo de autenticación con Google OAuth (Repositorio). \\
+    \midrule
+
+12 &
+Programar la interfaz para captura de fotos y uso de cámara. &
+14 &
+Componente React para acceso a cámara (Repositorio). \\
+    \midrule
+
+13 &
+Conectar interfaz de escaneo de medicamentos con el backend. &
+12 &
+Módulo de peticiones HTTP para escaneo (Repositorio). \\
+    \midrule
+
+14 &
+Crear el formulario de edición y validación de datos extraídos. &
+13 &
+Componente de formulario dinámico (Repositorio). \\
+    \midrule
+    
+15 &
+Redactar las secciones asignadas para el reporte final. &
+15 &
+Capítulo de desarrollo backend (Reporte final). \\
+    \midrule
+
+ &
+\textbf{Total} &
+198 &
+ \\
+\bottomrule
+\end{longtable}
+}
+
+Las actividades a realizar por el alumno Ricardo Nava Lima durante el Trimestre 2026-Otoño, en la UEA Proyecto de Integración en Ingeniería en Computación I (1100113) se presentan en la Tabla \ref{table:calendarioActividades2}.
+
+{
+\begin{longtable}{p{0.05\textwidth} p{0.4\textwidth} p{0.1\textwidth} p{0.35\textwidth}}
+	\caption{Listado de actividades a realizar por el alumno Ricardo Nava Lima durante el Trimestre 2026-Otoño.}
+  \label{table:calendarioActividades2}\\
+  \toprule
+\textbf{No.} &
+\textbf{Actividad} &
+\textbf {Horas} &
+\textbf{Entregable} \\
+\hline
+\endfirsthead
+
+\multicolumn{4}{c}{\textbf{Continuación de la Tabla \ref{table:calendarioActividades2}}}\\
+\hline
+\textbf{No.} &
+\textbf{Actividad} &
+\textbf{Horas} &
+\textbf{Entregable} \\
+\hline
+\endhead
+\hline
+\endlastfoot
+1 &
+Programar los endpoints para el registro de usuarios y botiquín. &
+15 &
+API REST para gestión de inventario (Repositorio). \\
+    \midrule
+
+2 &
+Programar el mapeo de síntomas coloquiales a términos médicos. &
+13 &
+Función de mapeo de texto a CIE-10 (Repositorio). \\
+    \midrule
+
+3 &
+Implementar el filtro de relevancia para los diagnósticos. &
+13 &
+Algoritmo de filtrado de diagnósticos (Repositorio). \\
+    \midrule
+    
+4 &
+Implementar conexión backend con API de LLM para recetas médicas. &
+15 &
+Controlador backend de procesamiento de recetas (Repositorio). \\
+    \midrule
+    
+5 &
+Conectar interfaz de captura de recetas con endpoints del backend. &
+12 &
+Integración frontend-backend de captura (Repositorio). \\
+    \midrule
+
+6 &
+Crear API para coordenadas e integrar geolocalización en tiempo real. &
+14 &
+API de geolocalización y componente de mapa (Repositorio). \\
+    \midrule
+
+7 &
+Programar la búsqueda manual de farmacias por dirección. &
+10 &
+Componente visual de búsqueda manual (Repositorio). \\
+    \midrule
+
+8 &
+Realizar pruebas de integración de base de datos y modelo LLM. &
+14 &
+Resultados de pruebas de integración (Reporte final). \\
+    \midrule
+
+9 &
+Programar la captura de síntomas por voz (Speech-to-Text). &
+14 &
+Componente React de Speech-to-Text (Repositorio). \\
+    \midrule
+
+10 &
+Integrar la lectura de resultados por voz (Text-to-Speech). &
+13 &
+Componente React de Text-to-Speech (Repositorio). \\
+    \midrule
+
+11 &
+Diseñar la interfaz de tabla comparativa de precios. &
+11 &
+Vista de tabla dinámica de precios (Repositorio). \\
+    \midrule
+
+12 &
+Conectar la interfaz web con SerpApi para cotización comercial. &
+13 &
+Módulo de integración web con SerpApi (Repositorio). \\
+    \midrule
+
+13 &
+Realizar pruebas de usabilidad y responsividad del frontend. &
+12 &
+Resultados de pruebas de usabilidad (Reporte final). \\
+    \midrule
+
+14 &
+Realizar pruebas de accesibilidad (dictado y lectura de voz). &
+14 &
+Resultados de pruebas de accesibilidad (Reporte final). \\
+    \midrule
+
+15 &
+Redactar las secciones asignadas para el reporte final. &
+15 &
+Capítulo de integración y pruebas (Reporte final). \\
+    \midrule
+
+ &
+\textbf{Total} &
+198 &
+ \\
+\bottomrule
+\end{longtable}
+}
+
+\section{Factibilidad Técnica y Operativa}
+
+\subsection{Factibilidad Técnica}
+La factibilidad técnica del proyecto es positiva, ya que se cuenta con los conocimientos necesarios en programación y se tiene experiencia en el manejo del lenguaje SQL y el modelado de datos relacionales adquiridos a lo largo del plan de estudios de la carrera de Ingeniería en Computación.
+
+Se dominan los lenguajes de la web como lo son: HTML, CSS y JavaScript, lo que facilita la implementación tanto del servidor (\emph{backend}) usando Node.js y Express.js, como de la interfaz web (\emph{frontend}) mediante React y Tailwind CSS. También, se cuenta con experiencia en el manejo del protocolo HTTP/HTTPS para lograr la comunicación del sistema con servicios de terceros como la API de Groq y SerpApi. Asimismo, se posee experiencia práctica en la integración y uso de \emph{LLM} a través de APIs, lo que asegura el correcto procesamiento de recetas y medicamentos.
+
+El desarrollo y las pruebas se llevarán a cabo utilizando equipos de cómputo personales. Es importante aclarar que no se requerirá de hardware especializado, como Unidades de Procesamiento Gráfico (GPU), ni se descargarán los modelos \emph{LLM} para su ejecución local. Todo el procesamiento intensivo de inteligencia artificial se delegará a la infraestructura en la nube de Groq, optimizando los recursos físicos. Todo el entorno de desarrollo que incluye \emph{frameworks} y librerías propuestos son de código abierto y uso gratuito, los servicios externos de Inteligencia Artificial y APIs cuentan con planes accesibles que cubren las necesidades del proyecto. Se determina que todas las actividades descritas en la Tabla \ref{table:calendarioActividades1} y Tabla \ref{table:calendarioActividades2} son realizables. Con esto, se asegura que se pueda cumplir de forma realista con las 198 horas asignadas a cada integrante, garantizando que los módulos se programen, integren y prueben exitosamente dentro del tiempo establecido.
+
+\subsection{Factibilidad Operativa}
+La factibilidad operativa del proyecto es favorable porque el Botiquín Digital Inteligente (BDI) resuelve una situación que ocurre en casi cualquier hogar, tener medicinas guardadas sin control, olvidar para qué servían las recetas pasadas y el peligro de tomar medicamentos que ya caducaron. Al solucionar un problema como este, se espera que el sistema tenga una gran aceptación.
+
+Al ser una página web adaptable, las personas usuarias no tendrán que descargar aplicaciones pesadas que llenen la memoria de su celular. Cualquier persona con un celular básico y conexión a internet podrá acceder directamente desde su navegador. Además, el sistema está pensado para facilitar la navegación entre los distintos módulos. Por otra parte, al utilizar herramientas de desarrollo modernas y servicios en la nube, el sistema está preparado para seguir funcionando correctamente aunque los celulares se actualicen, esto garantiza que el proyecto sea sostenible, fácil de mantener y útil a largo plazo.
+
+\section{Estimación de Costos}
+
+%Este texto es indicativo, deberá ser sustituido por el contenido de la sección.
+La estimación de costos del proyecto se muestra en la Tabla \ref{table:tablaCostos}.
+{
+\begin{longtable}{m{6.5cm} m{4.5cm} m{4cm}}
+	\caption{Estimación de costos del proyecto.}
+  \label{table:tablaCostos}\\
+  \toprule
+\textbf{Descripción}&
+\textbf{Costo mensual}&
+\textbf{Costo trimestral} \\
+\hline
+\endfirsthead
+
+\multicolumn{3}{c}{\textbf{Continuación de la Tabla \ref{table:tablaCostos}}}\\
+\hline
+\textbf{Descripción}&
+\textbf{Costo mensual}&
+\textbf{Costo trimestral} \\
+\hline
+\endhead
+\hline
+
+\endlastfoot
+%Estimaciónes de Infraestructura y Recursos Materiales
+
+Equipo de cómputo personal (Procesador equivalente a Intel i7 / Ryzen 7, 16 GB RAM, 512 GB SSD)~\cite{CostoLaptop}&
+\$42,000.00 MXN (Pago único) &
+\$42,000.00 MXN (Pago único)\\
+\midrule    
+
+Internet comercial~\cite{CostoInternet}&
+\$1,000.00 MXN&
+\$3,000.00 MXN\\
+\midrule
+
+Electricidad~\cite{CostoLuz}&
+\$400.00 MXN&
+\$1,200.00 MXN\\
+\midrule
+
+%Estimaciones de Servicios de Software y APIs de Terceros
+
+Servidor de Base de Datos y Hospedaje MySQL en la nube~\cite{CostoAWS}&
+\$500.00 MXN&
+\$1,500.00 MXN\\
+\midrule
+
+Consumo de API de Inteligencia Artificial (\emph{Large Language Models})~\cite{CostoGroq}&
+\$450.00 MXN&
+\$1,350.00 MXN\\
+\midrule
+
+Consumo de la API comercial SerpApi (\emph{Google Shopping})~\cite{CostoSerpApi}&
+\$1,300.00 MXN&
+\$3,900.00 MXN\\
+\midrule
+
+%Estimaciones de Trabajo Intelectual (Capital Humano)
+
+Salario para desarrollador Jr. enfocado en Capa de Datos y \emph{Backend}~\cite{SalarioBackend}&
+\$39,580.00 MXN&
+\$118,740.00 MXN\\
+\midrule
+
+Salario para desarrollador Jr. enfocado en \emph{Frontend} e Interfaces de IA~\cite{SalarioFrontend}&
+\$36,856.00 MXN&
+\$110,568.00 MXN\\
+\midrule
+
+\textbf{Costo Total}&
+   & \$283,458.00 MXN \\
+
+\hline
+\bottomrule
+\end{longtable}
+}

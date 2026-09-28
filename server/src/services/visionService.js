@@ -1,6 +1,8 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const config = require('../config/env');
 const { optimizarImagenBase64 } = require('./imageService');
+const { extraerJsonSeguro } = require('../utils/jsonParser');
+const { procesarVisionLLM } = require('./llmAdapter');
 
 const GEMINI_MODEL = 'gemini-3.5-flash-lite';
 
@@ -85,11 +87,10 @@ const analizarImagenReceta = async (rawBase64) => {
     },
   };
 
-  const responseText = await procesarConGemini(prompt, imagePart);
-  const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
+  const responseText = await procesarVisionLLM(prompt, cleanBase64);
 
   return {
-    datosClinicos: JSON.parse(cleanJson),
+    datosClinicos: extraerJsonSeguro(responseText),
     imagenOptimizada
   };
 };
@@ -128,12 +129,10 @@ const analizarCajaMedicamento = async (rawBase64) => {
     }
     Si algún dato no es visible, pon null. No incluyas ningún texto fuera del JSON.`;
 
-  const imagePart = { inlineData: { data: cleanBase64, mimeType: 'image/jpeg' } };
-  const responseText = await procesarConGemini(prompt, imagePart);
-  const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
+  const responseText = await procesarVisionLLM(prompt, cleanBase64);
 
   return {
-    datosExtraidos: JSON.parse(cleanJson)
+    datosExtraidos: extraerJsonSeguro(responseText)
   };
 };
 
@@ -160,5 +159,6 @@ const _getMockReceta = () => ({
 
 module.exports = {
   analizarImagenReceta,
-  analizarCajaMedicamento
+  analizarCajaMedicamento,
+  procesarConGemini
 };

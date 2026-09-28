@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "fa5e178a-9b1e-4acf-8411-8dc3aa0ffdf8",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\Users\\vonn_0001\\Downloads\\Proyecto-Terminal-BDI-UAM-AZC\\.archify\\architecture-bdi-20260928-100700\\candidate.json",
+  "output": "C:\\Users\\vonn_0001\\Downloads\\Proyecto-Terminal-BDI-UAM-AZC\\.archify\\architecture-bdi-20260928-100700\\bdi.html",
+  "specification": {
+    "sha256": "4c269c40f68b022a5d6749534684d63d01155c751cbf3a5a8cbe158f39fa7826",
+    "bytes": 2710
+  },
+  "artifact": {
+    "sha256": "6fe210df4032b5a1fa12ec7620e99b1a39d1ee0e37a5075046151ec30391b959",
+    "bytes": 759235
+  }
+}

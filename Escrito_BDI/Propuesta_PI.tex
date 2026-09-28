@@ -1,0 +1,82 @@
+%Plantilla para redactar la propuesta del proyecto de integración
+%Para construir el documento, puedes usar el comando latexmk que está
+%disponible en distribuciones como TeXLive, MikTeX y MacTeX.
+%
+% El autor puede usar hasta doce páginas comenzando por la introducción
+%
+%Esta plantilla también funciona en aplicaciones web como ShareLaTeX (Overleaf)
+
+\documentclass{computacion}
+\titulo{Botiquín Digital Inteligente} %El tíitulo no requiere incluir ningún tipo de comillas 
+\tipo{Proyecto Tecnológico} %Opciones: Proyecto Tecnológico, Proyecto de Investigación, Estancia Profesional, Experiencia Profesional
+\reporte{Reporte de Proyecto de Integración} %Primera, Segunda ó Tercera (La tercera versión es para Evaluación de Recuperación)
+
+\trimestre{2026-Otoño} %aaaa-Primavera, aaaa-Invierno u aaaa-Otoño
+
+%DATOS DEL ALUMNO
+\rolaalumno{Alumno} %Por ejemplo: Alumno o Alumna
+\alumnoa{Cristian Emanuel Ceron Franco} %Nombre y apellidos del alumno o alumna
+\matriculaa{2232002614}
+
+%DATOS DEL ALUMNO
+\rolbalumno{Alumno} %Por ejemplo: Alumno o Alumna
+\alumnob{Ricardo Nava Lima} %Nombre y apellidos del alumno o alumna
+\matriculab{2232000209}
+
+%DATOS DEL ASESOR(A) DEL PROYECTO
+\rola{Asesora} %Por ejemplo: Asesor o Asesora
+\asesor{Dra. Angeles Belém Priego Sánchez} %Grado y nombre del asesor(a)
+\categoria{Profesora Titular} %Categoría del asesor, e.g. Profesor Titular, Profesor Asociado, Profesor Asistente
+\departamento{Departamento de Sistemas} %Departamento de adscripción del profesor, e.g. Departamento de Sistemas
+\correo{abps@azc.uam.mx} %Correo del asesor(a)
+
+%DATOS DEL COASESOR(A) DEL PROYECTO, SI NO SE CUENTA CON UN COASESOR
+\rolb{Coasesor} %Por ejemplo: Coasesor o Coasesora
+\coasesor{Dr. Aron de la Cruz Vázquez} %Grado y nombre del coasesor, dejar en blanco los campos del coasesor en caso de no contar con uno, incluso eliminar espacios
+\categoriacoasesor{Profesor Titular} %Categoría del asesor, e.g. Profesor Titular, Profesor Asociado, Profesor Asistente
+\departamentocoasesor{Escuela de Tecnologías Digitales y Aplicadas, Universidad Autónoma de Chiapas} %Departamento de adscripción del coasesor, e.g. Departamento de Sistemas, Departamento de Electrónica
+\correocoasesor{aron.cruz@unach.mx} %Correo del coasesor
+\usepackage{float}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel} % Configura el documento en español
+\usepackage{listings}       % Paquete para manejar código fuente
+\usepackage{xcolor}         % Opcional: para darle color al código
+
+% CONFIGURACIÓN PARA EL ÍNDICE EN ESPAÑOL
+\renewcommand{\lstlistingname}{Código} % Cambia "Listing" por "Código"
+\renewcommand{\lstlistlistingname}{Índice de códigos} % Cambia "List of Listings" por "Índice de códigos"
+
+
+\lstset{
+    captionpos=b,
+    backgroundcolor=\color{gray!10},
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny\color{gray}
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % Para incluir imágenes
+\usepackage{newfloat} % Para crear el entorno de diagramas
+
+% 1. Definir el nuevo tipo de elemento flotante "diagram"
+\DeclareFloatingEnvironment[
+    fileext=lod,      % Extensión del archivo auxiliar (List of Diagrams)
+    listname={Índice de diagramas}, % Título del índice
+    name=Diagrama,    % Palabra que aparecerá en el formato (Diagrama 1:)
+    placement=htbp    % Posición por defecto
+]{diagram}
+
+\begin{document}
+	\portada %Esta línea se debe mantener
+    %Escribe tu propuesta en el archivo cuerpo.tex
+    \input{cuerpo}
+	%\responsabilidad  %Esta línea se debe mantener
+    %Añade las referencias que necesites en el archivo ./Referencias/piic.bib
+    {
+    \referencias %Esta línea se debe mantener
+    }
+\end{document}
