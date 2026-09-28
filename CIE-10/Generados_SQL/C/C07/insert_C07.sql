@@ -1,0 +1,3 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('C07', 'Neoplasia maligna de glándula parótida', 'Sin especificar', '["cáncer de parótida", "tumor en la mejilla", "bolita frente al oído", "bulto en la cara", "inflamación glandular", "cáncer de glándula salival", "tumor parotídeo", "bulto cerca de la mandíbula", "dolor en la zona de la oreja", "inflamación debajo del oído", "nódulo facial", "crecimiento en la cara", "bolita detrás del lóbulo", "tumoración salival", "cáncer de las glándulas", "masa en la mejilla", "dolor al masticar", "dureza en la zona del oído"]');

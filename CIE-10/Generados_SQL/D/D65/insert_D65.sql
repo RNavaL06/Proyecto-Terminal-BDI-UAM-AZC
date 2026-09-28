@@ -1,0 +1,3 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D65', 'Coagulación intravascular diseminada [síndrome de desfibrinación]', 'Sin especificar', '["CID", "coagulación dentro de las venas", "sangrado masivo", "desfibrinación", "coágulos en todo el cuerpo", "trastorno de la coagulación", "hemorragia incontrolable", "fallo multiorgánico por sangrado", "sangrar por todos lados", "problemas de cuajar la sangre", "sangrado intravascular", "coagulación intravascular", "síndrome de consumo de factores", "trombosis y hemorragia", "sangrado descontrolado", "fallo de la coagulación"]');

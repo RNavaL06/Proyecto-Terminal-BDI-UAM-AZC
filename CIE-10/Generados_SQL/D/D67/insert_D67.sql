@@ -1,0 +1,3 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('D67', 'Déficit hereditario del factor IX', 'Sin especificar', '["hemofilia B", "enfermedad de Christmas", "trastorno de coagulación", "sangrado excesivo", "coagulopatía hereditaria", "deficiencia de factor IX", "problemas de sangrado", "sangrado que no para", "hemofilia tipo B", "enfermedad hemorrágica genética", "fallo en la coagulación", "sangrado interno", "hematomas fáciles", "sangrado en articulaciones", "defecto en la cascada de coagulación", "enfermedad de la sangre", "hemartrosis", "problemas para cicatrizar"]');

@@ -1,0 +1,4 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('B70.0', 'Difilobotriasis', 'Sin especificar', '["lombriz solitaria", "gusano del pescado", "tenia del pescado", "parásitos intestinales", "infección por pescado crudo", "bicho en la panza", "lombrices", "anemia por parásitos", "dolor abdominal", "mala digestión", "teniasis", "Diphyllobothrium latum", "gusano plano", "infestación parasitaria", "parásito de sushi", "típico bicho de pescado"]'),
+('B70.1', 'Esparganosis', 'Sin especificar', '["infección por espargano", "parásitos en la piel", "bulto subcutáneo", "quiste con parásito", "gusano en el ojo", "infección por agua contaminada", "larva migrante", "parásitos extraintestinales", "Spirometra", "infección por comer anfibios", "tumor parasitario", "bulto que se mueve", "inflamación bajo la piel", "infección por carne de reptil", "larvas en tejidos", "absceso parasitario"]');

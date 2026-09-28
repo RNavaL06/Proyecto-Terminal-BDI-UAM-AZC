@@ -1,0 +1,4 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('B15.0', 'Hepatitis aguda tipo A, con coma hepático', 'Sin especificar', '["hepatitis A grave", "hígado inflamado", "ictericia severa", "ojos amarillos", "piel amarilla", "coma hepático", "falla hepática", "infección del hígado", "hepatitis fulminante", "mal del hígado", "hepatitis aguda con encefalopatía", "hígado grande", "dolor abdominal severo", "vómitos biliosos", "ictericia intensa", "insuficiencia hepática"]'),
+('B15.9', 'Hepatitis aguda tipo A, sin coma hepático', 'Sin especificar', '["hepatitis A", "hígado inflamado", "ictericia", "ojos amarillentos", "fiebre amarilla", "mal del hígado", "infección hepática", "dolor de panza", "dolor de barriga", "hinchazón abdominal", "orina oscura", "heces pálidas", "náuseas", "malestar general", "cansancio extremo", "hepatitis viral"]');

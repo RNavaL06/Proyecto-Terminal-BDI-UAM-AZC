@@ -1,0 +1,3 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('B75', 'Triquinosis', 'Sin especificar', '["triquinosis", "triquina", "infección por carne de cerdo", "gusano del cerdo", "triquinelosis", "diarrea por cerdo mal cocido", "dolor muscular intenso", "hinchazón de párpados", "triquina en la carne", "enfermedad por carne cruda", "parásito del cerdo", "fiebre y dolor de cuerpo", "triquiniasis", "triquina en embutidos", "infección por triquinela", "dolor abdominal y náuseas", "problemas estomacales por carne", "triquina por comer chancho", "triquina por comer cerdo", "inflamación ocular por parásitos"]');

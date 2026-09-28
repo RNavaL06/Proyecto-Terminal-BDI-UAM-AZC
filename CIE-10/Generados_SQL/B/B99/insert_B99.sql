@@ -1,0 +1,4 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('B99.8', 'Otras enfermedades infecciosas', 'Sin especificar', '["infección", "bichos", "contagio", "virus", "bacterias", "enfermedad rara", "mal", "infecciones varias", "fiebre infecciosa", "infección generalizada", "infección desconocida", "cuadro infeccioso", "infección persistente", "gripe fuerte", "malestar infeccioso", "infección sistémica", "infección no común", "agente patógeno"]'),
+('B99.9', 'Enfermedad infecciosa no especificada', 'Sin especificar', '["infección sin nombre", "fiebre de origen desconocido", "algo me pegaron", "infección extraña", "enfermedad sin diagnosticar", "malestar general", "dolencia infecciosa", "virus desconocido", "infección sin especificar", "tengo algo", "bicho raro", "infección no determinada", "enfermedad indefinida", "síntomas de infección", "infección incierta", "mal raro", "infección por confirmar", "enfermedad sin etiqueta"]');

@@ -1,0 +1,3 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('A89', 'Infección viral del sistema nervioso central, no especificada', 'Sin especificar', '["inflamación del cerebro", "infección en la cabeza", "virus en el cerebro", "meningitis viral", "encefalitis", "dolor de cabeza intenso", "fiebre alta y confusión", "bicho en la cabeza", "infección del sistema nervioso", "ataque al cerebro", "problemas neurológicos por virus", "rigidez de nuca", "mareos y desorientación", "convulsiones por infección", "inflamación cerebral", "fiebre y dolor de nuca", "virus cerebral", "encefalopatía viral", "mal del sistema nervioso", "infección encéfalo-medular"]');

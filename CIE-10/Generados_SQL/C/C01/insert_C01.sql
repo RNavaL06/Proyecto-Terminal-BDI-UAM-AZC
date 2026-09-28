@@ -1,0 +1,3 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('C01', 'Neoplasia maligna de base de la lengua', 'Sin especificar', '["cáncer de lengua", "bolita en la lengua", "tumor en la base de la lengua", "dolor al tragar", "disfagia", "bulto en el cuello", "llaga que no cura en la lengua", "úlcera lingual", "molestia en la garganta", "ganglios inflamados", "cáncer de boca", "carcinoma lingual", "problemas para pasar saliva", "dolor de lengua constante", "mancha blanca en la lengua", "mancha roja en la lengua", "dificultad para hablar", "entumecimiento de lengua", "sangrado en la boca"]');

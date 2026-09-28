@@ -1,0 +1,3 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('A99', 'Fiebre viral hemorrágica, no especificada', 'Sin especificar', '["fiebre hemorrágica", "fiebre alta con sangrado", "dengue hemorrágico", "virus con sangrado", "fiebre por virus", "sangrado de nariz y encías", "fiebre maligna", "púrpura viral", "infección viral grave", "fiebre con hemorragias", "virus tropical", "fiebre fulminante", "malestar general con manchas en la piel", "fiebre quebrantahuesos", "choque hemorrágico viral", "epidemia viral", "fiebre incontrolable", "picadura de mosquito peligrosa", "infección sistémica con sangrado"]');

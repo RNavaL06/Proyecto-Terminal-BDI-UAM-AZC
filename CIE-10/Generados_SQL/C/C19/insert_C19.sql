@@ -1,0 +1,3 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('C19', 'Neoplasia maligna de unión rectosigmoidea', 'Sin especificar', '["cáncer de colon", "cáncer de recto", "tumor en el intestino", "cáncer rectosigmoide", "tumor maligno", "sangre en la caca", "dolor abdominal bajo", "cáncer colorrectal", "masa en la guata", "problemas para ir al baño", "cáncer en la panza", "tumor en el colon", "sangrado rectal", "evacuaciones con sangre", "dolor al defecar", "obstrucción intestinal", "cáncer de tripa", "bulto en el abdomen", "cancer en el intestino grueso", "neoplasia rectal"]');

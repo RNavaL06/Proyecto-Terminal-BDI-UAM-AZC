@@ -1,0 +1,3 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('A34', 'Tétanos obstétrico', 'Sin especificar', '["tétanos neonatal", "tétanos en el parto", "infección umbilical", "tétanos puerperal", "tétanos posparto", "mal de los siete días", "trismo neonatal", "convulsiones del recién nacido", "bacteria del tétanos", "infección por parto", "tétanos del recién nacido", "rigidez en el bebé", "clostridium tetani parto", "fiebre puerperal tetánica", "complicación de parto", "tétanos de la madre", "infección post-parto grave", "espasmos en el recién nacido", "tétanos umbilical"]');

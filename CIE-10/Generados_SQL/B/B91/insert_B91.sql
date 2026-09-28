@@ -1,0 +1,3 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('B91', 'Secuelas de poliomielitis', 'Sin especificar', '["secuelas de polio", "parálisis infantil", "post-polio", "atrofia muscular por polio", "deformidad por polio", "secuelas de la poliomielitis", "síndrome post-polio", "piernas delgadas por polio", "atrofia de miembros por polio", "secuela de parálisis", "parálisis de la niñez", "problemas motores por polio", "debilidad muscular residual", "atrofia por enfermedad infantil", "daño nervioso por polio", "discapacidad física por polio", "secuelas de poliomielitis anterior aguda"]');

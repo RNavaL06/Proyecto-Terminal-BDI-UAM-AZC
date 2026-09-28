@@ -1,0 +1,3 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('C58', 'Neoplasia maligna de placenta', 'Sin especificar', '["cáncer de placenta", "coriocarcinoma", "tumor en la placenta", "masa maligna en el embarazo", "cáncer gestacional", "tumor trofoblástico", "bolitas en la placenta", "complicaciones del embarazo", "manchado durante el embarazo", "sangrado anormal en la gestación", "dolor abdominal embarazo", "cáncer de útero durante el embarazo", "crecimiento anormal de la placenta", "enfermedad del trofoblasto", "tumor placentario", "complicaciones placentarias", "síntomas de cáncer en la matriz", "embarazo molar maligno", "neoplasia trofoblástica gestacional"]');

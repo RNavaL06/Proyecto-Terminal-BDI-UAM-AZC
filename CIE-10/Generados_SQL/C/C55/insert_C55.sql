@@ -1,0 +1,3 @@
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('C55', 'Neoplasia maligna de útero, parte no especificada', 'Sin especificar', '["cáncer de matriz", "tumor en la matriz", "cáncer uterino", "bola en el útero", "cáncer de útero", "neoplasia en la matriz", "cáncer ginecológico", "sangrado anormal", "dolor pélvico", "flujo vaginal extraño", "dolor en la zona baja", "tumor maligno en el vientre", "metástasis en la matriz", "cáncer de la cérvix", "mal en la matriz", "dolor de ovarios o matriz", "masa uterina maligna", "cáncer en la guata", "dolor en la panza baja", "cáncer femenino"]');
