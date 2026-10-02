@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: J41
--- Aquí se insertarán los códigos que empiecen con J41
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J41.0', 'Bronquitis crónica simple', 'Sin especificar', '["tos persistente", "tos seca", "pecho apretado", "inflamación de bronquios", "tos del fumador", "tos perruna", "tos crónica", "flemas claras", "pecho cargado", "catarro crónico", "carraspera", "tos de pecho", "dolor al toser", "bronquios irritados", "tos matutina"]'),
+('J41.1', 'Bronquitis crónica mucopurulenta', 'Sin especificar', '["tos con flemas verdes", "tos con flemas amarillas", "expectoración purulenta", "flema espesa", "pecho congestionado", "bronquios con infección", "tos productiva", "bronquitis con moco", "tos ruidosa", "pecho silbando", "flemas de color", "secreción bronquial", "tos con galla", "pecho embarrado", "tos flemosa"]'),
+('J41.8', 'Bronquitis crónica mixta simple y mucopurulenta', 'Sin especificar', '["bronquitis complicada", "tos persistente con flemas", "tos seca y productiva", "inflamación bronquial severa", "pecho pesado", "tos crónica con moco", "dificultad para expectorar", "bronquios obstruidos", "pecho cerrado", "tos con flema ocasional", "molestia en el pecho", "tos irritativa y flemosa", "carraspera persistente", "bronquitis persistente", "problema bronquial crónico"]');

@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: F72
--- Aquí se insertarán los códigos que empiecen con F72
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('F72', 'Discapacidad intelectual grave', 'Sin especificar', '["retraso mental severo", "discapacidad cognitiva profunda", "deficiencia mental grave", "dificultad de aprendizaje extrema", "necesidades educativas especiales", "condición de vida", "neurodivergencia severa", "problemas de desarrollo cognitivo", "bajo coeficiente intelectual", "capacidad intelectual limitada", "atraso mental", "discapacidad del desarrollo", "dependencia severa", "trastorno del neurodesarrollo", "necesita apoyo constante", "falta de autonomía intelectual", "retraso madurativo grave", "discapacidad psíquica"]');

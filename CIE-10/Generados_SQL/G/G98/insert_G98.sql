@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: G98
--- Aquí se insertarán los códigos que empiecen con G98
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G98.0', 'Artropatía neurógena no sifilítica NCOC', 'Sin especificar', '["articulación de Charcot", "artropatía neurogénica", "dolor articular neuropático", "deformidad articular por nervios", "articulación destruida", "pie de Charcot", "problemas óseos por neuropatía", "daño articular sin sífilis", "inflamación articular crónica", "pérdida de sensibilidad articular", "artrosis secundaria a nervios", "articulación inestable", "huesos débiles por diabetes", "artritis neuropática", "hinchazón de articulaciones", "desgaste articular rápido", "dolor articular persistente"]'),
+('G98.8', 'Otros trastornos del sistema nervioso', 'Sin especificar', '["problemas de los nervios", "fallas del sistema nervioso", "daño neurológico", "enfermedad nerviosa", "trastorno neurológico", "dolor de nervios", "entumecimiento", "hormigueo", "parestesia", "debilidad muscular", "problemas del sistema nervioso central", "neuropatía inespecífica", "fallo nervioso", "dolencias de los nervios", "ataque de nervios", "problemas de sensibilidad", "temblores", "afectación del sistema nervioso"]');

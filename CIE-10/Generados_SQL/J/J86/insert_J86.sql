@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: J86
--- Aquí se insertarán los códigos que empiecen con J86
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J86.0', 'Piotórax con fístula', 'Sin especificar', '["pus en el pulmón", "infección pulmonar grave", "derrame pleural infectado", "empiema con fístula", "agujero en el pulmón", "pulmón podrido", "flema en el pecho", "brotan pus del pulmón", "fístula broncopleural", "neumonía complicada", "absceso pulmonar drenado", "dolor agudo en el tórax", "pulmón con supuración", "infección de la pleura", "burbujas en el pulmón", "complicación de neumonía"]'),
+('J86.9', 'Piotórax sin fístula', 'Sin especificar', '["pus en la pleura", "empiema pleural", "agua en los pulmones", "líquido infectado en el pecho", "infección pleural", "neumonía con derrame", "pecho lleno de infección", "pleuresía purulenta", "acumulación de pus", "pulmón pegado", "dolor al respirar", "flemas atrapadas", "inflamación del pulmón", "derrame en el pulmón", "infección del espacio pleural", "pulmón tapado"]');

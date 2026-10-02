@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: J4A
--- Aquí se insertarán los códigos que empiecen con J4A
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J4A.0', 'Síndrome restrictivo del aloinjerto', 'Sin especificar', '["rechazo de trasplante pulmonar", "fibrosis del injerto", "dificultad para respirar tras trasplante", "disnea post-trasplante", "fallo del pulmón nuevo", "obstrucción bronquial crónica", "pérdida de capacidad pulmonar", "falta de aire al respirar", "tos seca persistente", "ahogo", "fatiga respiratoria", "insuficiencia del órgano trasplantado", "complicación de trasplante", "cicatrización pulmonar", "bronquiolitis obliterante restrictiva"]'),
+('J4A.8', 'Otra disfunción crónica de aloinjerto pulmonar', 'Sin especificar', '["problemas crónicos del trasplante", "desgaste del pulmón trasplantado", "falla crónica de pulmón donado", "rechazo crónico", "deterioro de la función pulmonar", "infecciones pulmonares recurrentes", "bronquiectasias post-trasplante", "tos con flema", "cansancio crónico", "inflamación crónica pulmonar", "disfunción del injerto", "problemas para respirar bien", "falta de oxígeno", "disminución de la capacidad pulmonar", "secuelas post-quirúrgicas pulmonares"]'),
+('J4A.9', 'Disfunción crónica de aloinjerto pulmonar, no especificada', 'Sin especificar', '["problema pulmonar post-trasplante", "falla del pulmón donado", "complicaciones del trasplante de pulmón", "no respiro bien después del trasplante", "rechazo de pulmón", "dolor en el pecho tras trasplante", "tos persistente", "ahogo al caminar", "disnea", "insuficiencia respiratoria crónica", "fallo del órgano", "problemas con el pulmón nuevo", "enfermedad pulmonar post-trasplante", "dificultad al respirar", "baja oxigenación"]');

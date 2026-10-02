@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: G01
--- Aquí se insertarán los códigos que empiecen con G01
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G01', 'Meningitis en enfermedades bacterianas clasificadas bajo otro concepto', 'Sin especificar', '["meningitis", "inflamación de las meninges", "infección en el cerebro", "fiebre alta y rigidez de nuca", "dolor de cabeza intenso", "nuca tiesa", "cuello duro", "infección de las meninges", "meningitis bacteriana", "dolor de cabeza punzante", "fotofobia", "fiebre cerebral", "inflamación cerebral", "infección de la membrana del cerebro", "dolor de nuca", "malestar en la cabeza", "inflamación de la médula", "infección del sistema nervioso central"]');

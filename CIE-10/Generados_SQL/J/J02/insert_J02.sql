@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: J02
--- Aquí se insertarán los códigos que empiecen con J02
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J02.0', 'Faringitis estreptocócica', 'Sin especificar', '["dolor de garganta", "anginas", "infección en la garganta", "placas en la garganta", "garganta irritada", "amigdalitis", "fiebre y dolor de garganta", "garganta roja", "estreptococo", "carraspera", "dolor al tragar", "disfagia", "inflamación de amígdalas", "faringoamigdalitis", "bacterias en la garganta", "dolor fuerte de garganta"]'),
+('J02.8', 'Faringitis aguda debida a otros microorganismos especificados', 'Sin especificar', '["infección de garganta viral", "faringitis viral", "garganta raspada", "picazón en la garganta", "dolor de cuello y garganta", "garganta irritada por virus", "inflamación faríngea", "ardor al tragar", "catarro de garganta", "molestia al pasar saliva", "garganta seca", "inflamación de la faringe", "virus en la garganta", "garganta congestionada", "malestar en la faringe"]'),
+('J02.9', 'Faringitis aguda, no especificada', 'Sin especificar', '["dolor de garganta repentino", "garganta tomada", "picor de garganta", "garganta irritada", "molestia en la garganta", "faringitis común", "dolor de garganta inespecífico", "garganta fastidiosa", "ardor de garganta", "garganta inflamada", "dolor al pasar comida", "garganta raspando", "sensación de cuerpo extraño en garganta", "garganta roja", "inflamación de garganta"]');

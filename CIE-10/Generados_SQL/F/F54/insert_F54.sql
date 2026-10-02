@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: F54
--- Aquí se insertarán los códigos que empiecen con F54
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('F54', 'Factores psicológicos y de comportamiento asociados con trastornos o enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["enfermedades psicosomáticas", "somatización", "el cuerpo habla", "dolor por estrés", "ansiedad que enferma", "nervios que dan dolor", "enfermo por la cabeza", "trastorno psicógeno", "mente y cuerpo", "dolencias del alma", "ataque de nervios", "trastorno somatoforme", "psicología médica", "síntomas emocionales", "malestar nervioso", "estrés crónico", "somatizar", "enfermedad nerviosa", "problemas emocionales físicos", "tensión que enferma"]');

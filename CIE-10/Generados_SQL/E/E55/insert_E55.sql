@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: E55
--- Aquí se insertarán los códigos que empiecen con E55
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('E55.0', 'Raquitismo activo', 'Sin especificar', '["raquitismo", "huesos blandos", "piernas arqueadas", "deformidad osea infantil", "deficiencia de vitamina D en niños", "problemas de crecimiento oseo", "huesos fragiles", "dolor en las piernas", "debilidad muscular infantil", "falta de calcio en huesos", "esqueleto debil", "retraso en el crecimiento", "torax en quilla", "deformidad en las rodillas", "huesos que se doblan", "insuficiencia de vitamina D"]'),
+('E55.9', 'Carencia de vitamina D, no especificada', 'Sin especificar', '["falta de vitamina D", "deficiencia vitaminica", "carencia vitaminica", "vitamina del sol baja", "cansancio cronico", "dolor de huesos", "dolor articular", "debilidad muscular", "fatiga", "depresion estacional", "bajas defensas", "sistema inmune debil", "huesos que duelen", "falta de sol", "niveles bajos de vitamina D", "hipovitaminosis D"]');

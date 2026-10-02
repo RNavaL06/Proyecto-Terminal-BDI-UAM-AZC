@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: J16
--- Aquí se insertarán los códigos que empiecen con J16
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J16.0', 'Neumonía por clamidias', 'Sin especificar', '["neumonía", "pulmonía", "infección pulmonar", "inflamación de pulmones", "tos con flema", "dificultad para respirar", "agua en los pulmones", "pecho cargado", "dolor al respirar", "fiebre alta", "escalofríos", "clamidia pulmonar", "infección respiratoria grave", "pulmones inflamados", "tos seca", "fatiga extrema", "silbido en el pecho"]'),
+('J16.8', 'Neumonía por otros microorganismos infecciosos especificados', 'Sin especificar', '["pulmonía bacteriana", "infección en el pecho", "neumonía atípica", "bronquitis complicada", "flemas verdes", "tos persistente", "asfixia", "falta de aire", "dolor en la espalda al toser", "malestar general", "cuerpo cortado", "pulmón tapado", "secreciones pulmonares", "infección viral de pulmón", "foco infeccioso pulmonar", "neumonía mal curada", "fiebre y tos"]');

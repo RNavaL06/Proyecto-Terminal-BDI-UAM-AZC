@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: F59
--- Aquí se insertarán los códigos que empiecen con F59
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('F59', 'Síndromes de comportamiento no especificados asociados a trastornos fisiológicos y factores físicos', 'Sin especificar', '["trastornos de conducta", "problemas de comportamiento", "conducta rara", "mal del comportamiento", "comportamiento extraño", "actitud inusual", "desequilibrio emocional y físico", "psicosomático", "dolencias del cuerpo y la mente", "estrés físico", "malestar inexplicable", "trastorno raro", "enfermedad psicosomática", "cuerpo y mente mal", "crisis nerviosa física", "conducta nerviosa", "alteración de la conducta", "síntomas corporales sin causa clara", "comportamiento desajustado", "trastorno psicofisiológico"]');

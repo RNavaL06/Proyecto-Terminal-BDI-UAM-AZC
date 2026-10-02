@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: F82
--- Aquí se insertarán los códigos que empiecen con F82
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('F82', 'Trastorno específico del desarrollo de la función motora', 'Sin especificar', '["torpeza motora", "problemas de coordinación", "dificultad para moverse", "niño torpe", "desarrollo motor lento", "falta de equilibrio", "dificultad para escribir", "problemas de psicomotricidad", "poca destreza manual", "se le caen las cosas", "dispraxia", "niño descoordinado", "falta de coordinación motriz", "retraso en habilidades motoras", "torpeza al caminar", "inmadurez motriz", "problemas de motricidad fina", "desorden del desarrollo de la coordinación"]');

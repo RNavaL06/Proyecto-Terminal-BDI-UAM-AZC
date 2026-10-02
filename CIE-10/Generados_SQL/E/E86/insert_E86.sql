@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: E86
--- Aquí se insertarán los códigos que empiecen con E86
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('E86.0', 'Deshidratación', 'Sin especificar', '["deshidratado", "falta de agua", "boca seca", "sed excesiva", "cuerpo seco", "lengua pastosa", "descompensación por calor", "golpe de calor", "pérdida de líquidos", "orina oscura", "mareo por falta de agua", "electrolitos bajos", "cuerpo deshidratado", "piel acartonada", "labios partidos", "sediento", "deshidratación severa"]'),
+('E86.1', 'Hipovolemia', 'Sin especificar', '["volumen sanguíneo bajo", "poca sangre", "presión baja", "shock hipovolémico", "desangrado", "hipotensión", "debilidad extrema", "desmayo por sangre", "baja volemia", "sangrado interno", "pérdida de volumen", "mareos constantes", "pulso débil", "desvanecimiento", "colapso circulatorio", "palidez extrema", "baja presión arterial"]'),
+('E86.9', 'Depleción de volumen, no especificada', 'Sin especificar', '["pérdida de líquidos", "descompensación", "deshidratación inespecífica", "bajón de energía", "falta de volumen", "problemas de fluidos", "desequilibrio hídrico", "seco", "caída de presión", "malestar general", "pérdida de electrolitos", "bajón", "cuerpo descompensado", "deshidratación leve", "falta de hidratación", "volumen bajo", "estado de depleción"]');

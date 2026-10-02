@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: J09
--- Aquí se insertarán los códigos que empiecen con J09
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J09.X1', 'Gripe debida a virus de la nueva gripe A identificado con neumonía', 'Sin especificar', '["gripe A", "AH1N1", "neumonía", "pulmonía", "gripe porcina", "fiebre alta", "dolor de pecho", "falta de aire", "tos con flema", "dificultad para respirar", "gripe fuerte", "infección pulmonar", "catarro mal curado", "resfriado con complicaciones", "malestar general", "cansancio extremo", "influenza grave"]'),
+('J09.X2', 'Gripe debida a virus de la nueva gripe A identificado con otras manifestaciones respiratorias', 'Sin especificar', '["gripe A", "AH1N1", "tos seca", "tos persistente", "congestión nasal", "mocos", "dolor de garganta", "gripe estacional fuerte", "influenza", "bronquitis", "pecho cerrado", "estornudos", "gripe respiratoria", "flemas", "dolor al tragar", "afonía", "picazón de garganta"]'),
+('J09.X3', 'Gripe debida a virus de la nueva gripe A identificado con manifestaciones gastrointestinales', 'Sin especificar', '["gripe estomacal", "gripe intestinal", "diarrea", "vómitos", "dolor de panza", "dolor de guata", "dolor de barriga", "náuseas", "gripe con retortijones", "descomposición", "mal de estómago", "gripe con diarrea", "gripe AH1N1 gástrica", "indigestión por gripe", "vómito", "dolor abdominal", "gripe con náuseas"]'),
+('J09.X9', 'Gripe debida a virus de la nueva gripe A identificado con otras manifestaciones', 'Sin especificar', '["gripe A general", "AH1N1", "fiebre", "dolor de cuerpo", "rompehuesos", "dolor de articulaciones", "decaimiento", "postración", "malestar general", "gripe viral", "influenza tipo A", "dolor de cabeza", "jaqueca", "escalofríos", "sudores fríos", "gripe fuerte", "tengo el cuerpo cortado"]');

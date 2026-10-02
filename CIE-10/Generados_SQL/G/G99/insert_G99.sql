@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: G99
--- Aquí se insertarán los códigos que empiecen con G99
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G99.0', 'Neuropatía autonómica en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["fallo nervioso", "sistema nervioso autónomo", "disautonomía", "desajuste nervioso", "ataque a los nervios", "nervios alterados", "daño nervioso sistémico", "fallo del sistema autónomo", "neuropatía diabética", "mareos crónicos", "problemas de presión arterial", "sudoración excesiva", "problemas digestivos nerviosos", "taquicardia inexplicable", "desmayos frecuentes", "debilidad nerviosa", "problemas de control corporal"]'),
+('G99.2', 'Mielopatía en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["daño en la médula", "lesión medular", "dolor de espalda fuerte", "problemas de columna", "pérdida de sensibilidad", "debilidad en las piernas", "entumecimiento de extremidades", "hormigueo en el cuerpo", "problemas para caminar", "falta de fuerza", "columna lastimada", "presión en la médula", "dolor cervical", "problemas motores", "parálisis parcial", "nervio comprimido", "atrofia muscular"]'),
+('G99.8', 'Otros trastornos especificados del sistema nervioso en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["trastorno neurológico", "problemas de los nervios", "enfermedad rara del sistema nervioso", "dolores nerviosos", "ataque cerebral", "falla neurológica", "alteración nerviosa", "confusión mental", "pérdida de equilibrio", "temblores involuntarios", "dolor punzante", "neurosis severa", "problemas de coordinación", "debilidad extrema", "disfunción nerviosa", "neuropatía general", "problemas de sensibilidad"]');

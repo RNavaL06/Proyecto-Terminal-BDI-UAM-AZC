@@ -1,0 +1,5 @@
+pip install pandas
+pip install google-generativeai
+pip install openpyxl
+
+python generar_inserts_ia.py

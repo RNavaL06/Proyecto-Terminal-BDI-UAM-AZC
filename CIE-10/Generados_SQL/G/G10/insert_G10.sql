@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: G10
--- Aquí se insertarán los códigos que empiecen con G10
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G10', 'Enfermedad de Huntington', 'Sin especificar', '["mal de Huntington", "corea de Huntington", "movimientos involuntarios", "baile de San Vito", "trastorno neurodegenerativo", "tics incontrolables", "sacudidas corporales", "enfermedad hereditaria cerebral", "deterioro cognitivo", "movimientos espasmódicos", "corea", "enfermedad genética del sistema nervioso", "movimientos raros del cuerpo", "problemas de equilibrio y movimiento", "pérdida de control muscular", "trastorno del movimiento", "enfermedad progresiva del cerebro"]');

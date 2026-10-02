@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: J61
--- Aquí se insertarán los códigos que empiecen con J61
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J61', 'Neumoconiosis por asbesto y otras fibras minerales', 'Sin especificar', '["asbestosis", "pulmón de minero", "fibrosis pulmonar por asbesto", "amianto", "pulmón con cicatrices", "enfermedad del trabajador de la construcción", "polvo en los pulmones", "dificultad para respirar por asbesto", "asbesto en el aire", "tos crónica por fibras", "asbesto en los pulmones", "enfermedad ocupacional pulmonar", "espesamiento pleural", "placas pleurales", "falta de aire por exposición a minerales", "enfermedad de obreros de la construcción", "exposición a amianto", "daño pulmonar por materiales de construcción"]');

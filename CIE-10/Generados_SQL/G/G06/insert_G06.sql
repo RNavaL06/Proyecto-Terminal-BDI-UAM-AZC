@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: G06
--- Aquí se insertarán los códigos que empiecen con G06
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G06.0', 'Absceso y granuloma intracraneal', 'Sin especificar', '["absceso en el cerebro", "postemilla en la cabeza", "bulto en el cerebro", "infección cerebral", "tumor inflamatorio cerebral", "flemón cerebral", "pus en la cabeza", "dolor de cabeza intenso", "masa supurada intracraneal", "colección de pus en el cráneo", "inflamación cerebral con pus", "absceso encefálico", "lesión ocupante de espacio", "granuloma en el coco", "infección dentro del cráneo", "malestar en la cabeza"]'),
+('G06.1', 'Absceso y granuloma intrarraquídeo', 'Sin especificar', '["absceso en la columna", "infección en la médula", "bulto en la espalda", "pus cerca de la médula espinal", "flemón espinal", "masa en la columna vertebral", "inflamación dentro de la columna", "dolor de espalda fuerte", "absceso epidural espinal", "postemilla en la columna", "infección en el canal medular", "granuloma de la médula", "dolor punzante en la columna", "lesión medular infecciosa", "colección de pus en la columna", "problemas de espalda con fiebre"]'),
+('G06.2', 'Absceso extradural y subdural, no especificado', 'Sin especificar', '["absceso debajo del cráneo", "pus en las meninges", "infección en la cabeza", "absceso epidural", "absceso subdural", "bulto en el cuero cabelludo", "flemón en la cabeza", "dolor de cabeza fuerte", "infección alrededor del cerebro", "colección de pus craneal", "meningitis con pus", "inflamación cerebral", "masa en la cabeza", "dolor craneal persistente", "infección meningea", "fiebre y dolor de cabeza intenso"]');

@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: I32
--- Aquí se insertarán los códigos que empiecen con I32
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('I32', 'Pericarditis en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["inflamación del corazón", "dolor en el pecho", "puntada en el pecho", "pinchazo al respirar", "dolor precordial", "líquido alrededor del corazón", "pericardio inflamado", "dolor al acostarse", "presión en el tórax", "taquicardia", "opresión en el pecho", "dolor que atraviesa la espalda", "molestia en el esternón", "dificultad para respirar", "fatiga cardíaca", "punzada al inspirar", "dolor agudo en el pecho", "inflamación de la membrana del corazón"]');

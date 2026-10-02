@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: F88
--- Aquí se insertarán los códigos que empiecen con F88
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('F88', 'Otros trastornos del desarrollo psicológico', 'Sin especificar', '["retraso madurativo", "problemas de aprendizaje", "dificultades para aprender", "lento para aprender", "trastorno del desarrollo", "problemas de desarrollo infantil", "chico con problemas", "niño con retraso", "problemas cognitivos", "no avanza en el cole", "problemas de evolución", "maduración tardía", "trastorno evolutivo", "dificultades escolares", "problemas de conducta y aprendizaje", "desarrollo neuropsicológico", "falta de madurez", "déficit en el desarrollo", "necesidades educativas especiales"]');

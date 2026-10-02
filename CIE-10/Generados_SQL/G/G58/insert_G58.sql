@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: G58
--- Aquí se insertarán los códigos que empiecen con G58
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G58.0', 'Neuropatía intercostal', 'Sin especificar', '["dolor entre las costillas", "puntada en el costado", "pinchazo en el pecho", "dolor intercostal", "nervio atrapado en el tórax", "dolor al respirar", "neuralgia intercostal", "dolor en la caja torácica", "pinchazos al inhalar", "dolor en las costillas", "inflamación de nervios del tórax", "dolor de costado", "punzadas en el tórax", "dolor torácico neuropático", "calambre en el pecho"]'),
+('G58.7', 'Mononeuritis múltiple', 'Sin especificar', '["mononeuritis múltiple", "dolor en varios nervios", "hormigueo en extremidades", "debilidad muscular dispersa", "neuropatía múltiple", "adormecimiento de nervios", "pérdida de sensibilidad", "dolor neuropático", "falla de nervios periféricos", "parálisis de varios nervios", "neuritis", "dolor quemante", "ataque a los nervios", "daño nervioso múltiple", "parestesia"]'),
+('G58.8', 'Otras mononeuropatías especificadas', 'Sin especificar', '["dolor nervioso específico", "daño en un nervio", "neuropatía focal", "dolor localizado", "pinchazos", "quemazón en la piel", "calambres localizados", "adormecimiento", "pérdida de fuerza focal", "tensión nerviosa", "problemas de nervios", "neuropatía", "dolor punzante", "entumecimiento localizado", "daño del nervio periférico"]'),
+('G58.9', 'Mononeuritis, no especificada', 'Sin especificar', '["dolor de nervios", "nervio dañado", "hormigueo", "adormecimiento", "quemazón", "mononeuropatía", "falla nerviosa", "dolor inexplicable en nervio", "problema de un nervio", "pinchazos", "dolor en la extremidad", "entumecimiento", "debilidad en una zona", "trastorno nervioso", "sensación rara en el cuerpo", "dolor constante", "electrizante"]');

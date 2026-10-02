@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: J81
--- Aquí se insertarán los códigos que empiecen con J81
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J81.0', 'Edema agudo de pulmón', 'Sin especificar', '["agua en los pulmones", "ahogo repentino", "falta de aire aguda", "pulmones encharcados", "ahogamiento", "dificultad para respirar grave", "edema pulmonar", "asfixia", "líquido en los pulmones", "insuficiencia respiratoria aguda", "fatiga extrema", "taquipnea", "garganta cerrada", "silbido al respirar", "sofoco repentino", "corazón fallando", "emergencia respiratoria"]'),
+('J81.1', 'Edema pulmonar crónico', 'Sin especificar', '["agua crónica en pulmones", "tos persistente", "falta de aliento constante", "ahogo al caminar", "cansancio crónico", "insuficiencia cardiaca congestiva", "edema pulmonar prolongado", "líquido acumulado", "dificultad respiratoria al acostarse", "tos con flema", "pulmones cargados", "disnea crónica", "asfixia progresiva", "falta de aire de larga data", "hinchazón por líquido", "respiración agitada", "opresión en el pecho persistente"]');

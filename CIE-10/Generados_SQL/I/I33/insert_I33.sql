@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: I33
--- Aquí se insertarán los códigos que empiecen con I33
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('I33.0', 'Endocarditis infecciosa aguda y subaguda', 'Sin especificar', '["infección en el corazón", "inflamación del corazón", "fiebre reumática", "fiebre persistente", "infección de las válvulas cardíacas", "soplo cardíaco", "manchas en la piel", "fatiga extrema", "dolor en el pecho", "escalofríos", "sudores nocturnos", "endocarditis bacteriana", "infección por estafilococo", "soplo en el corazón", "valvulitis infecciosa", "problemas cardíacos graves", "inflamación del endocardio"]'),
+('I33.9', 'Endocarditis aguda y subaguda, no especificada', 'Sin especificar', '["inflamación cardíaca", "infección cardíaca no especificada", "dolor en el pecho", "palpitaciones", "fiebre sin causa", "cansancio crónico", "soplo de aparición reciente", "malestar en el corazón", "infección de válvulas", "miocarditis sospechosa", "fiebre de origen desconocido", "problemas en las válvulas del corazón", "infección de las paredes del corazón", "dolor precordial", "taquicardia", "inflamación interna del corazón", "afección cardiaca"]');

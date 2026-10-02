@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: I16
--- Aquí se insertarán los códigos que empiecen con I16
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('I16.0', 'Urgencia hipertensiva', 'Sin especificar', '["presion alta", "presion elevada", "subida de presion", "hipertension", "presion descompensada", "tensión alta", "taquicardia", "dolor de nuca", "zumbido en los oídos", "acufenos", "presion por las nubes", "presion disparada", "siento la cara caliente", "mareo por presion", "presion arterial alterada"]'),
+('I16.1', 'Emergencia hipertensiva', 'Sin especificar', '["crisis hipertensiva grave", "infarto por presion", "presion altisima", "colapso por presion", "accidente cardiovascular", "presion en el pecho", "vision borrosa", "dolor de cabeza fulminante", "confusion mental", "dificultad para hablar", "pico de presion", "descompensacion severa", "presion de emergencia", "urgencia cardiaca", "ictus por presion"]'),
+('I16.9', 'Crisis hipertensiva, no especificada', 'Sin especificar', '["problemas de presion", "mala presion", "presion inestable", "presion descontrolada", "se me subio la tension", "malestar por hipertension", "susto con la presion", "presion rara", "presion que sube y baja", "hipertension descontrolada", "crisis de tension", "alteracion de la presion arterial", "mal de presion", "presion arterial fuera de rango", "sentirse mal de la presion"]');

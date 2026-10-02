@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: I02
--- Aquí se insertarán los códigos que empiecen con I02
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('I02.0', 'Corea reumática con afectación cardiaca', 'Sin especificar', '["baile de san vito", "movimientos incontrolables", "reumatismo en el corazón", "fiebre reumática", "corea de sydenham", "sacudidas involuntarias", "problemas cardíacos por reuma", "movimientos bruscos", "ataque de nervios", "tembladeras", "mal del san vito", "complicaciones cardiacas", "faringoamigdalitis mal curada", "secuela de estreptococo", "corea con daño al corazón", "espasmos musculares", "carditis reumática", "agitación motora"]'),
+('I02.9', 'Corea reumática sin afectación cardiaca', 'Sin especificar', '["baile de san vito", "corea de sydenham", "movimientos involuntarios", "tic nervioso", "sacudidas musculares", "fiebre reumática sin daño cardiaco", "movimientos descontrolados", "manoteo", "ataques de movimientos", "problemas de motricidad", "reumatismo articular", "agitación corporal", "espasmos", "tembladera", "movimientos espasmódicos", "secuela de infección de garganta", "descoordinación motora", "movimientos coreicos"]');

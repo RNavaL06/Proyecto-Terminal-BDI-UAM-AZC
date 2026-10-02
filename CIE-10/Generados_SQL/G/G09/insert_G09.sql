@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: G09
--- Aquí se insertarán los códigos que empiecen con G09
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G09', 'Secuelas de enfermedades inflamatorias del sistema nervioso central', 'Sin especificar', '["secuelas neurológicas", "daño cerebral permanente", "daño en el sistema nervioso", "después de una meningitis", "secuelas de encefalitis", "problemas motores post infección", "secuelas de inflamación cerebral", "daño neuronal", "secuelas de mielitis", "problemas cognitivos post infección", "daño post viral en el cerebro", "secuelas de absceso cerebral", "problemas de movilidad tras infección", "secuelas de meningoencefalitis", "daño en el sistema nervioso central", "secuelas de neuroinfección", "problemas neurológicos crónicos"]');

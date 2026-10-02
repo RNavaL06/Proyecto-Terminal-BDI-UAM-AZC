@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: J92
--- Aquí se insertarán los códigos que empiecen con J92
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J92.0', 'Placa pleural con presencia de asbesto', 'Sin especificar', '["asbestosis", "fibra de amianto", "daño pulmonar por asbesto", "placas en los pulmones", "exposición al asbesto", "cáncer de pulmón relacionado con asbesto", "cicatrices en la pleura", "dificultad para respirar", "enfermedad laboral respiratoria", "tos con asbesto", "engrosamiento pleural", "asbesto en el pecho", "pulmón de minero", "fibrosis pleural"]'),
+('J92.9', 'Placa pleural sin asbesto', 'Sin especificar', '["placas pleurales", "engrosamiento de la pleura", "cicatriz en la pleura", "dolor en el pecho", "fibrosis de pleura", "manchas en la radiografía de tórax", "calcificación pleural", "problemas respiratorios", "pleuritis", "inflamación de la pleura", "sensación de opresión en el pecho", "dolor al respirar", "pleura endurecida", "secuela pulmonar"]');

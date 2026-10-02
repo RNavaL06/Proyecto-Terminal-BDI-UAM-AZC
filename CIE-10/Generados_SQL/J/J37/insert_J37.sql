@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: J37
--- Aquí se insertarán los códigos que empiecen con J37
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J37.0', 'Laringitis crónica', 'Sin especificar', '["ronquera", "afonía", "voz ronca", "garganta irritada", "dolor de garganta", "carraspera", "pérdida de voz", "voz tomada", "inflamación de cuerdas vocales", "tos seca", "garganta seca", "voz cascada", "disfonía", "garganta quemada", "molestia al hablar", "cuerdas vocales inflamadas", "picazón en la garganta"]'),
+('J37.1', 'Laringotraqueítis crónica', 'Sin especificar', '["tos perruna", "tos de perro", "tos seca crónica", "inflamación de laringe y tráquea", "pecho apretado", "tos persistente", "irritación de pecho", "respiración ruidosa", "dolor al toser", "crup crónico", "picazón en el pecho", "garganta cerrada", "tos con flema", "sensación de opresión", "tos bronquial", "carraspera crónica", "inflamación vías respiratorias"]');

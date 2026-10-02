@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: I46
--- Aquí se insertarán los códigos que empiecen con I46
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('I46.2', 'Paro cardiaco debido a enfermedad cardiaca subyacente', 'Sin especificar', '["infarto", "ataque al corazón", "fallo cardiaco", "corazón se paró", "paro fulminante", "patatús", "yeyo", "soponcio", "se le paró el motor", "muerte súbita cardiaca", "dolor en el pecho", "desmayo por corazón", "taquicardia grave", "arritmia mortal", "problema coronario", "colapso cardiaco", "ataque masivo"]'),
+('I46.8', 'Parada cardiaca debida a otra afección subyacente', 'Sin especificar', '["paro respiratorio", "se quedó tieso", "colapso sistémico", "fallo multisistémico", "corazón dejó de latir", "desvanecimiento fatal", "emergencia médica", "ahogo", "asfixia con paro", "se le fue el aire", "shock cardiogénico", "coma por paro", "muerte clínica", "desmayo extremo", "problemas graves de salud", "se le paró la patota", "paro por complicación"]'),
+('I46.9', 'Paro cardiaco, causa no especificada', 'Sin especificar', '["paro cardiaco repentino", "muerte súbita", "se desplomó de repente", "se le paró el corazón sin aviso", "desmayo mortal", "no reacciona", "colapso repentino", "quedó inconsciente", "corazón dejó de funcionar", "crisis cardiaca", "desvanecimiento súbito", "sin signos vitales", "emergencia por paro", "quedó inerte", "ataque repentino", "se desplomó", "parada del corazón"]');

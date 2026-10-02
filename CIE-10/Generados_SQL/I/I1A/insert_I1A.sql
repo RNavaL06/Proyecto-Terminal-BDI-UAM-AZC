@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: I1A
--- Aquí se insertarán los códigos que empiecen con I1A
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('I1A.0', 'Hipertensión resistente', 'Sin especificar', '["presión alta que no baja", "hipertensión difícil de controlar", "tensión arterial rebelde", "presión alta crónica", "presión arterial alta sin control", "hipertensión refractaria", "presión arterial resistente al tratamiento", "tensión alta que no responde a pastillas", "presión alta descontrolada", "subidas de presión constantes", "hipertensión grave", "presión alta persistente", "hipertensión primaria resistente", "hipertensión arterial de difícil manejo", "tensión que no cede con medicamentos", "hipertensión resistente a fármacos", "tensión alta incontrolable", "presión que no baja con el tratamiento"]');

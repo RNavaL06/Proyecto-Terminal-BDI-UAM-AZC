@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: G55
--- Aquí se insertarán los códigos que empiecen con G55
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G55', 'Compresiones de raíces y plexos nerviosos en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["nervio pinchado", "nervio atrapado", "radiculopatía", "compresión nerviosa", "hormigueo", "entumecimiento", "dolor irradiado", "ciática", "dolor de nervio", "calambres", "adormecimiento", "pinzamiento", "entumido", "corriente eléctrica", "dolor en el plexo", "hormigueo en extremidades", "sensación de hormigueo", "dolor punzante", "debilidad muscular", "entumecimiento de brazos y piernas"]');

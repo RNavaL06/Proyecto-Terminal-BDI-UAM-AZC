@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: F79
--- Aquí se insertarán los códigos que empiecen con F79
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('F79', 'Discapacidad intelectual no especificada', 'Sin especificar', '["retraso mental", "discapacidad cognitiva", "problemas de aprendizaje", "deficiencia mental", "lentitud mental", "desarrollo cognitivo lento", "dificultad para aprender", "bajo coeficiente intelectual", "incapacidad de aprendizaje", "retraso en el desarrollo", "dificultades de entendimiento", "problemas de desarrollo mental", "discapacidad del desarrollo", "torpeza mental", "atraso mental", "necesidades educativas especiales", "maduración cognitiva tardía"]');

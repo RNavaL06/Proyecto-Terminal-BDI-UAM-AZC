@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: J69
--- Aquí se insertarán los códigos que empiecen con J69
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J69.0', 'Neumonitis debida a inhalación de alimentos y vómito', 'Sin especificar', '["aspiración de vómito", "broncoaspiración", "se me fue la comida al pulmón", "neumonía por aspiración", "atragantamiento", "pasarse algo por el conducto equivocado", "inhalar comida", "ahogarse con el vómito", "inflamación pulmonar por comida", "aspirar alimento", "problemas al tragar", "tos después de comer", "ahogo", "atragantarse", "falsa vía", "se me fue por el camino viejo", "broncoaspirar"]'),
+('J69.1', 'Neumonitis debida a inhalación de aceites y esencias', 'Sin especificar', '["neumonía lipoidea", "inhalación de aceites", "pulmón con aceite", "aspiración de esencias", "inflamación pulmonar por químicos", "daño pulmonar por gotas nasales", "respirar aceites", "neumonitis por inhalación de lípidos", "se me fue aceite a los pulmones", "broncoaspiración de aceite", "aceite en los bronquios", "problemas pulmonares por esencias", "exposición a aceites", "neumonía química", "toser aceite"]'),
+('J69.8', 'Neumonitis debida a inhalación de otros sólidos y líquidos', 'Sin especificar', '["aspiración de cuerpos extraños", "inhalar sólidos", "líquido en los pulmones", "se me fue agua a los pulmones", "aspirar agua", "broncoaspiración de objetos", "cuerpo extraño en la vía aérea", "neumonitis por aspiración", "pulmón inflamado por líquidos", "se me fue por el otro lado", "ahogarse con agua", "atragantamiento con líquidos", "aspiración pulmonar", "aspirar basura", "obstrucción por aspiración", "tos por inhalación"]');

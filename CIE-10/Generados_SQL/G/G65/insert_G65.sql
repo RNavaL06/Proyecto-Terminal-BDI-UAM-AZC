@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: G65
--- Aquí se insertarán los códigos que empiecen con G65
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G65.0', 'Secuelas del síndrome de Guillain-Barré', 'Sin especificar', '["Guillain-Barré", "secuelas Guillain-Barré", "parálisis ascendente", "debilidad muscular", "hormigueo en pies", "entumecimiento", "pérdida de sensibilidad", "problemas de movimiento", "fisioterapia post Guillain-Barré", "entumido", "adormecimiento de piernas", "problemas al caminar", "neuropatía post infecciosa", "debilidad en las extremidades", "parálisis después de virus"]'),
+('G65.1', 'Secuelas de otros tipos de polineuropatía inflamatoria', 'Sin especificar', '["polineuropatía crónica", "inflamación de nervios", "daño nervioso persistente", "neuropatía inflamatoria", "dolor neuropático", "pérdida de fuerza", "sensación de pinchazos", "quemazón en pies", "adormecimiento crónico", "nervios dañados", "falta de sensibilidad", "debilidad muscular persistente", "problemas de los nervios", "ardor en manos", "inestabilidad al caminar"]'),
+('G65.2', 'Secuelas de polineuropatía tóxica', 'Sin especificar', '["neuropatía por tóxicos", "daño nervioso por químicos", "daño por metales pesados", "polineuropatía por alcohol", "secuelas de intoxicación", "calambres por químicos", "dolor punzante", "pérdida de sensibilidad por tóxicos", "neuropatía inducida por drogas", "debilidad por envenenamiento", "daño a los nervios", "entumecimiento por exposición tóxica", "hormigueo persistente", "dolor en las plantas de los pies", "ataque a los nervios periféricos"]');

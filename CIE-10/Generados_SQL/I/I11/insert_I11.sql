@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: I11
--- Aquí se insertarán los códigos que empiecen con I11
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('I11.0', 'Enfermedad cardíaca hipertensiva con insuficiencia cardiaca', 'Sin especificar', '["corazón grande", "insuficiencia cardíaca", "presión alta en el corazón", "fallo cardíaco", "corazón cansado", "hinchazón de piernas por el corazón", "edema cardíaco", "falta de aire al acostarse", "taquicardia por hipertensión", "ahogos", "corazón crecido", "tensión arterial descompensada", "corazón que no bombea bien", "hipertensión severa", "fatiga cardíaca", "líquido en los pulmones por el corazón", "palpitaciones", "opresión en el pecho"]'),
+('I11.9', 'Enfermedad cardiaca hipertensiva sin insuficiencia cardiaca', 'Sin especificar', '["presión alta", "hipertensión", "tensión alta", "corazón hipertenso", "hipertrofia ventricular", "presión elevada", "daño al corazón por presión", "subidas de presión", "tensión descontrolada", "hipertensión arterial", "dolor de pecho por presión", "corazón forzado", "arritmias por hipertensión", "dolor de cabeza por presión", "zumbido en los oídos", "tensión arterial sistólica alta", "riesgo cardíaco por presión", "hipertensión esencial"]');

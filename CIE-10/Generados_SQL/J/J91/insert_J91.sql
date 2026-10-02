@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: J91
--- Aquí se insertarán los códigos que empiecen con J91
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J91.0', 'Derrame pleural maligno', 'Sin especificar', '["agua en los pulmones", "líquido en el pulmón", "derrame cancerígeno", "pulmón con agua", "hidrotórax", "pleuresía maligna", "líquido pleural por cáncer", "acumulación de líquido en la pleura", "ahogo por agua en pulmón", "pulmón encharcado", "cáncer en la pleura", "derrame tumoral", "pulmón ahogado", "líquido alrededor del pulmón", "dificultad respiratoria por líquido", "derrame pleural neoplásico", "metástasis en la pleura", "dolor en el pecho por líquido"]'),
+('J91.8', 'Derrame pleural en otras afecciones clasificadas bajo otro concepto', 'Sin especificar', '["agua en los pulmones", "líquido en el pulmón", "derrame pleural", "pulmón encharcado", "pleuresía", "hidrotórax", "líquido en la pleura", "inflamación de la pleura con líquido", "pulmón ocupado por líquido", "derrame pleural benigno", "infección en el pulmón con líquido", "líquido pleural reactivo", "ahogo por derrame", "exudado pleural", "trasudado pleural", "pulmón mojado", "acumulación pleural", "falla cardíaca con líquido en pulmón"]');

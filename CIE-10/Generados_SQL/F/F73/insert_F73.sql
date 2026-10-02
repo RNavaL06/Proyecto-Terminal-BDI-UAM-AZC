@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: F73
--- Aquí se insertarán los códigos que empiecen con F73
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('F73', 'Discapacidad intelectual profunda', 'Sin especificar', '["retraso mental profundo", "discapacidad cognitiva severa", "deficiencia intelectual grave", "dificultad de aprendizaje profunda", "incapacidad mental", "necesidades educativas especiales permanentes", "discapacidad del desarrollo", "limitación intelectual", "atraso mental", "necesidad de cuidados constantes", "discapacidad intelectual mayor", "discapacidad severa", "problemas de desarrollo cognitivo", "dependencia severa", "retraso madurativo profundo", "discapacidad psíquica profunda", "condición neurocognitiva"]');

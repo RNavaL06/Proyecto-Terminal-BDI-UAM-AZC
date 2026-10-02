@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: F93
--- Aquí se insertarán los códigos que empiecen con F93
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('F93.0', 'Trastorno de ansiedad por separación en la infancia', 'Sin especificar', '["angustia por separación", "miedo a quedarse solo", "bebé no se despega de la mamá", "ansiedad infantil", "apego extremo", "pánico al ir a la escuela", "niño chiflado", "llanto excesivo al despedirse", "apego ansioso", "no quiere ir al jardín", "berrinche por separación", "miedo al abandono", "mal de amores infantiles", "inseguridad emocional", "lloradera al dejarlo en clase"]'),
+('F93.8', 'Otros trastornos emocionales infantiles', 'Sin especificar', '["problemas emocionales en niños", "niño irritable", "cambios de humor en niños", "inestabilidad emocional", "niño berrinchudo", "niño mimado", "problemas de conducta", "niño llorón", "mal genio", "desequilibrio emocional", "hiperreactividad", "crisis de llanto", "niño difícil", "necesita psicólogo infantil", "berrinches fuera de lugar"]'),
+('F93.9', 'Trastorno emocional infantil, no especificado', 'Sin especificar', '["niño raro", "comportamiento extraño", "malestar emocional sin causa", "niño retraído", "cambios de actitud repentinos", "problemas psicológicos en niños", "niño triste", "niño apagado", "niño desganado", "niño que no es el mismo", "inestabilidad infantil", "niño intranquilo", "problemas de ánimo en niños", "psicología infantil", "diagnóstico emocional incierto"]');

@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: G02
--- Aquí se insertarán los códigos que empiecen con G02
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G02', 'Meningitis en otras enfermedades infecciosas y parasitarias clasificadas bajo otro concepto', 'Sin especificar', '["meningitis", "inflamación de las meninges", "fiebre cerebral", "dolor de nuca", "rigidez de nuca", "cuello tieso", "meningitis bacteriana", "infección en la cabeza", "meningitis viral", "cefalea intensa", "fotofobia", "manchas en la piel por meningitis", "meningitis infecciosa", "dolor de cabeza extremo", "inflamación del cerebro", "cuello duro", "meningitis por complicaciones", "infección del sistema nervioso", "meningitis secundaria", "fiebre y vómito cerebral"]');

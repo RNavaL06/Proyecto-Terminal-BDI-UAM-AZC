@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: G05
--- Aquí se insertarán los códigos que empiecen con G05
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G05.3', 'Encefalitis y encefalomielitis en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["inflamación del cerebro", "infección cerebral", "encefalitis", "cerebritis", "fiebre cerebral", "delirio por infección", "confusión mental aguda", "meningoencefalitis", "inflamación de la médula y cerebro", "daño cerebral inflamatorio", "encefalomielitis", "cefalea intensa", "rigidez de nuca", "convulsiones", "pérdida de conciencia", "alteración mental", "fotofobia", "fiebre alta", "somnolencia excesiva", "estado mental alterado"]'),
+('G05.4', 'Mielitis en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["inflamación de la médula espinal", "mielitis", "daño en la columna", "debilidad en las piernas", "pérdida de sensibilidad", "hormigueo en el cuerpo", "entumecimiento de extremidades", "problemas para caminar", "falta de fuerza en las patas", "dolor de espalda irradiado", "disfunción vesical", "problemas para ir al baño", "parálisis parcial", "mielitis transversa", "espasmos musculares", "ataques a la médula", "sensación de descarga eléctrica en la espalda", "pérdida de reflejos", "incontinencia", "torpeza al mover las piernas"]');

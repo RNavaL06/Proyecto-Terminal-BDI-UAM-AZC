@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: F09
--- Aquí se insertarán los códigos que empiecen con F09
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('F09', 'Trastorno mental no especificado debido a afección fisiológica conocida', 'Sin especificar', '["locura", "trastorno mental", "problemas de la cabeza", "desequilibrio mental", "locura por enfermedad", "confusión mental", "delirios", "cambios de personalidad", "alucinaciones", "mente alterada", "pérdida de juicio", "demencia por causa médica", "locura repentina", "cerebro afectado", "comportamiento extraño", "crisis nerviosa", "psicosis orgánica", "desvaríos", "pérdida de la razón", "mente nublada"]');

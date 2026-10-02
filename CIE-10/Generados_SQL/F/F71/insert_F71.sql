@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: F71
--- Aquí se insertarán los códigos que empiecen con F71
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('F71', 'Discapacidad intelectual moderada', 'Sin especificar', '["retraso mental", "discapacidad cognitiva", "problemas de aprendizaje", "dificultad de aprendizaje", "lentitud mental", "madurez tardía", "desarrollo cognitivo lento", "discapacidad intelectual", "deficiencia intelectual", "problemas de desarrollo", "rezago educativo", "dificultades intelectuales", "limitación intelectual", "problemas mentales", "ritmo de aprendizaje lento", "discapacidad funcional", "atraso madurativo", "dificultad de comprensión"]');

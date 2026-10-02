@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: F69
--- Aquí se insertarán los códigos que empiecen con F69
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('F69', 'Trastorno de personalidad y comportamiento del adulto, no especificado', 'Sin especificar', '["inestabilidad emocional", "cambios de humor bruscos", "personalidad rara", "comportamiento extraño", "problemas de conducta", "me siento mal de la cabeza", "actitud descontrolada", "desequilibrio mental", "crisis existencial", "me siento raro", "inadaptación social", "conducta errática", "problemas de personalidad", "desorden de carácter", "no me hallo", "estado mental alterado", "comportamiento desajustado", "trastorno conductual", "salud mental", "locura"]');

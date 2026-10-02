@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: F53
--- Aquí se insertarán los códigos que empiecen con F53
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('F53.0', 'Depresión posparto', 'Sin especificar', '["tristeza después de dar a luz", "depre tras el parto", "bajón emocional post-parto", "melancolía puerperal", "baby blues grave", "depresión de la madre", "no siento amor por mi bebé", "angustia tras el nacimiento", "llanto constante posparto", "desesperación después de parir", "falla emocional materna", "inestabilidad tras el parto", "depre del post-parto", "tristeza materna", "desgano después del embarazo", "apatía posparto"]'),
+('F53.1', 'Psicosis puerperal', 'Sin especificar', '["locura después del parto", "alucinaciones tras parir", "brote psicótico puerperal", "delirios de la madre", "psicosis post-parto", "pérdida de la realidad tras el parto", "desconexión mental puerperal", "crisis de locura post-parto", "trastorno mental después de tener al bebé", "ideas extrañas tras el nacimiento", "psicosis de la maternidad", "desvaríos de la madre reciente", "psicosis tras el alumbramiento", "desequilibrio mental post-parto", "episodio psicótico materno"]');

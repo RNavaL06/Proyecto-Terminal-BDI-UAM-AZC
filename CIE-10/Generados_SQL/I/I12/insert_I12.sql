@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: I12
--- Aquí se insertarán los códigos que empiecen con I12
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('I12.0', 'Enfermedad renal crónica hipertensiva con enfermedad renal crónica en estadio 5 o con enfermedad renal en estadio terminal', 'Sin especificar', '["insuficiencia renal terminal", "fallo renal crónico", "riñones dañados", "diálisis", "necesito trasplante de riñón", "riñones no funcionan", "etapa final de riñones", "uremia", "hipertensión y riñones", "riñones parados", "edema por falla renal", "insuficiencia de riñones", "enfermedad renal severa", "depuración de sangre", "riñones en fase terminal"]'),
+('I12.9', 'Enfermedad renal crónica hipertensiva con enfermedad renal crónica en estadio 1 a 4 o con enfermedad renal crónica no especificada', 'Sin especificar', '["daño renal por presión alta", "riñones afectados por hipertensión", "insuficiencia renal leve", "creatinina alta", "problemas de riñón", "dolor de riñones", "presión arterial y riñones", "fallo renal incipiente", "enfermedad renal inicial", "filtración renal baja", "riñones inflamados", "mal de riñón", "exceso de proteína en la orina", "insuficiencia renal crónica", "cuidado de riñones"]');

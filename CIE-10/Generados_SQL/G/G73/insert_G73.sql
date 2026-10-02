@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: G73
--- Aquí se insertarán los códigos que empiecen con G73
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G73.1', 'Síndrome de Eaton-Lambert en enfermedad neoplásica', 'Sin especificar', '["debilidad muscular", "cansancio extremo", "párpados caídos", "problemas para caminar", "debilidad en piernas", "problemas de visión", "boca seca", "parálisis muscular", "hormigueo", "entumecimiento", "miastenia", "trastorno neuromuscular", "debilidad progresiva", "problemas de articulación", "dificultad para tragar", "fatiga crónica", "falta de fuerza", "pesadez en las extremidades", "enfermedad autoinmune"]'),
+('G73.3', 'Síndromes miasténicos en otras enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["miastenia", "debilidad muscular anormal", "fatiga muscular", "párpados caídos", "visión doble", "debilidad facial", "problemas para masticar", "voz nasal", "dificultad para respirar", "debilidad al hacer esfuerzo", "músculos débiles", "ptosis palpebral", "cansancio fácil", "debilidad generalizada", "dolor muscular", "bloqueo neuromuscular", "falta de tono muscular", "dificultad para tragar", "trastorno de la unión neuromuscular"]'),
+('G73.7', 'Miopatía en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["dolor muscular", "atrofia muscular", "músculos débiles", "dolor en los huesos", "debilidad en brazos y piernas", "calambres", "rigidez muscular", "pesadez en el cuerpo", "falta de fuerza muscular", "músculos adoloridos", "debilidad progresiva", "inflamación muscular", "fatiga muscular", "desgaste muscular", "problemas de movilidad", "dificultad para subir escaleras", "molestias en los músculos", "cuerpo cortado", "dolor de cuerpo", "miopatía"]');

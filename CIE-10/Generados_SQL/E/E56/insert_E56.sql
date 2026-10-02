@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: E56
--- Aquí se insertarán los códigos que empiecen con E56
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('E56.0', 'Carencia de vitamina E', 'Sin especificar', '["falta de vitamina E", "deficiencia de vitamina E", "piel seca", "debilidad muscular", "problemas de visión", "falta de energía", "anemia", "sistema inmune bajo", "tocoferol bajo", "pérdida de equilibrio", "falta de reflejos", "hormigueo en manos y pies", "desnutrición", "astenia", "fatiga crónica", "falta de vitaminas", "mala absorción"]'),
+('E56.1', 'Carencia de vitamina K', 'Sin especificar', '["deficiencia de vitamina K", "falta de vitamina K", "problemas de coagulación", "sangrado fácil", "moretones frecuentes", "hematomas", "sangrado de nariz", "epistaxis", "sangrado de encías", "menstruación abundante", "hemorragias", "cicatrización lenta", "sangre en orina", "sangre en heces", "coágulos deficientes", "deficiencia de filoquinona", "riesgo de hemorragia"]'),
+('E56.8', 'Carencia de otras vitaminas', 'Sin especificar', '["déficit vitamínico", "falta de vitaminas", "hipovitaminosis", "avitaminosis", "mala nutrición", "malnutrición", "falta de nutrientes", "cansancio extremo", "debilidad general", "anemia", "pérdida de peso", "bajas defensas", "mala alimentación", "falta de vitalidad", "desequilibrio vitamínico", "cuerpo descompensado", "falta de vitaminas del grupo B o C"]'),
+('E56.9', 'Carencia de vitamina, no especificada', 'Sin especificar', '["falta de vitaminas sin especificar", "deficiencia vitamínica", "carencia nutricional", "no sé qué vitamina me falta", "estoy bajo de vitaminas", "cuerpo descompensado", "mala nutrición", "cansancio generalizado", "falta de energía", "astenia", "sentirse flojo", "bajón de defensas", "desnutrición", "falta de suplementos", "dieta deficiente", "sentirse mal y no saber por qué", "fatiga inexplicable"]');

@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: I68
--- Aquí se insertarán los códigos que empiecen con I68
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('I68.0', 'Angiopatía amiloide cerebral', 'Sin especificar', '["derrame cerebral", "sangrado en el cerebro", "hemorragia cerebral", "demencia senil", "problemas de memoria", "ataque cerebrovascular", "ACV", "ictus", "coágulo en la cabeza", "arterias cerebrales débiles", "confusión mental", "deterioro cognitivo", "sangre en la cabeza", "trombosis cerebral", "esclerosis de vasos cerebrales", "fallas de memoria", "olvidos frecuentes", "desorientación"]'),
+('I68.2', 'Arteritis cerebral en otras enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["inflamación de arterias cerebrales", "vasculitis cerebral", "dolor de cabeza constante", "jaqueca fuerte", "punzadas en la cabeza", "migraña crónica", "cabeza pesada", "arterias inflamadas", "cefalea intensa", "problemas de irrigación cerebral", "mareos", "vértigo", "entumecimiento facial", "debilidad en el cuerpo", "vision borrosa", "dolor de nuca", "presión en la cabeza", "tensión craneal"]'),
+('I68.8', 'Otros trastornos cerebrovasculares en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["problemas de circulación en la cabeza", "trastorno vascular cerebral", "mala irrigación al cerebro", "pequeños derrames", "microinfartos cerebrales", "obstrucción de arterias", "embolia cerebral", "trombosis", "ataque al cerebro", "falta de oxígeno en el cerebro", "daño vascular", "vértigos constantes", "desmayos frecuentes", "pérdida de fuerza", "hormigueo en extremidades", "dificultad para hablar", "parálisis facial", "problemas neurológicos", "deterioro vascular"]');

@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: E73
--- Aquí se insertarán los códigos que empiecen con E73
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('E73.0', 'Carencia congénita de lactasa', 'Sin especificar', '["intolerancia a la leche", "bebé no tolera leche", "alergia a la lactosa", "deficiencia congénita", "problemas digestivos leche", "diarrea por leche", "gases bebe", "cólicos lactante", "mala absorción lactosa", "intolerante de nacimiento", "enzima lactasa ausente", "hinchazón abdominal", "dolor de panza bebé", "intolerancia hereditaria", "problema genético leche"]'),
+('E73.1', 'Carencia secundaria de lactasa', 'Sin especificar', '["intolerancia adquirida", "intolerancia después de enfermar", "deficiencia post infecciosa", "problemas estomacales leche", "dolor de guata tras virus", "diarrea persistente", "malestar digestivo", "ya no digiero lácteos", "después de gastroenteritis", "inflamación de barriga", "pesadez estomacal", "ruidos abdominales", "gases constantes", "cólicos después de comer", "daño intestinal lactasa"]'),
+('E73.8', 'Otros tipos de intolerancia a lactosa', 'Sin especificar', '["intolerancia parcial", "sensibilidad láctea", "mala digestión lácteos", "problemas con quesos", "dolor de vientre", "retortijones", "flatulencias", "hinchazón de guatita", "indigestión lácteos", "intolerancia leve", "no aguanto la leche", "diarrea frecuente", "estreñimiento y gases", "malestar tras yogur", "intolerancia específica"]'),
+('E73.9', 'Intolerancia a lactosa, no especificada', 'Sin especificar', '["intolerancia a la lactosa", "mal de la leche", "me cae mal la leche", "dolor de panza al tomar leche", "barriga hinchada", "gases después de comer", "diarrea por lactosa", "intolerante a lácteos", "pesadez abdominal", "inflamación estomacal", "me suelta el estómago", "dolor abdominal", "mala digestión", "cólicos", "heces blandas tras lácteos", "me siento inflado"]');

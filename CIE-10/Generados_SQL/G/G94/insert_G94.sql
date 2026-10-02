@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: G94
--- Aquí se insertarán los códigos que empiecen con G94
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G94', 'Otros trastornos del cerebro en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["problemas cerebrales", "daño cerebral", "enfermedad en el coco", "dolor de sesos", "afectación neurológica", "mal funcionamiento del cerebro", "trastorno en la cabeza", "complicación cerebral", "daño en la mollera", "falla neurológica", "enfermedad del sistema nervioso central", "confusión mental", "inflamación cerebral", "problema de la choya", "anomalía cerebral", "deterioro cognitivo", "secuelas cerebrales", "problemas de la masa encefálica"]');

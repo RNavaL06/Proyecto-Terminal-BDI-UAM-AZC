@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: J06
--- Aquí se insertarán los códigos que empiecen con J06
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J06.0', 'Laringofaringitis aguda', 'Sin especificar', '["dolor de garganta", "laringitis", "faringitis", "garganta irritada", "carraspera", "ronquera", "voz tomada", "inflamación de garganta", "picazón en la garganta", "disfonía", "garganta raspada", "tos seca", "dolor al tragar", "odinofagia", "anginas inflamadas", "amígdalas rojas", "garganta cerrada"]'),
+('J06.9', 'Infección respiratoria aguda del tracto respiratorio superior, no especificada', 'Sin especificar', '["resfriado común", "catarro", "gripa", "gripe", "resfrío", "constipado", "moco", "nariz tapada", "congestión nasal", "estornudos", "malestar general", "cuerpo cortado", "flemas", "tos", "dolor de pecho", "fiebre", "decaimiento", "mocosera", "romadizo", "trancazo"]');

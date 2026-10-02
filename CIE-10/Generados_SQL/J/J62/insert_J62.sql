@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: J62
--- Aquí se insertarán los códigos que empiecen con J62
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J62.0', 'Neumoconiosis debida a polvo de talco', 'Sin especificar', '["pulmón de talco", "talcosis", "enfermedad por inhalar talco", "pulmones dañados por talco", "tisis industrial", "tos con polvo", "falta de aire por talco", "neumopatía por sílice", "enfermedad ocupacional pulmonar", "fibrosis pulmonar por talco", "tos seca crónica", "pecho apretado", "dificultad para respirar", "agotamiento al respirar", "dolor en el pecho por polvo", "pulmón minero", "daño pulmonar", "exposición laboral a talco"]'),
+('J62.8', 'Neumoconiosis debida a otro tipo de polvo que contiene sílice', 'Sin especificar', '["silicosis", "pulmón de sílice", "enfermedad del minero", "mal de piedra", "tisis de los mineros", "tos de los canteros", "pulmón endurecido", "cicatrices en los pulmones", "fibrosis por polvo de roca", "inhalación de sílice", "tos perruna", "falta de aliento", "pecho pesado", "silicosis aguda", "silicosis crónica", "enfermedad del polvo", "problemas para respirar por trabajo", "cemento pulmonar", "exposición a cuarzo"]');

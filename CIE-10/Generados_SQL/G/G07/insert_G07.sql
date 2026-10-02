@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: G07
--- Aquí se insertarán los códigos que empiecen con G07
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G07', 'Absceso y granuloma intracraneal e intrarraquídeo en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["pus en el cerebro", "bola en el cerebro", "infección dentro de la cabeza", "bulto en la cabeza", "tumor cerebral infeccioso", "absceso cerebral", "granos en el cerebro", "inflamación dentro del cráneo", "dolor de cabeza muy fuerte", "presión intracraneal", "quiste infectado en la cabeza", "infección medular", "absceso en la columna", "bulto en la espalda alta", "infección en el sistema nervioso", "dolor punzante en la cabeza", "absceso intrarraquídeo", "masa en el cerebro", "cabeza hinchada", "infección cerebral"]');

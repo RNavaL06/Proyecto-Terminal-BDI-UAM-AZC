@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: I79
--- Aquí se insertarán los códigos que empiecen con I79
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('I79.0', 'Aneurisma de aorta en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["aneurisma", "inflamación de la aorta", "vaso sanguíneo dilatado", "bulto en la arteria", "dilatación aórtica", "infarto de aorta", "rotura de aorta", "dolor en el pecho", "dolor abdominal repentino", "latidos en el abdomen", "pulsación en la panza", "corazón agrandado", "arteria hinchada", "tensión en el tórax", "problemas circulatorios graves", "aneurisma disecante", "urgencia vascular", "soplos"]'),
+('I79.1', 'Aortitis en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["aortitis", "inflamación de la arteria aorta", "infección de la arteria", "dolor torácico", "dolor de espalda fuerte", "fiebre persistente", "sensación de opresión en el pecho", "vasculitis", "inflamación de vasos sanguíneos", "dolor al tragar", "cansancio extremo", "malestar general", "infección vascular", "dolor en el pecho que se va a la espalda", "problemas de circulación", "inflamación de arterias grandes", "fiebre sin causa aparente"]'),
+('I79.8', 'Otros trastornos de arterias, arteriolas y capilares en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["problemas de circulación", "arterias tapadas", "mala irrigación", "capilares dañados", "enfermedad vascular", "hormigueo en las manos", "piernas frías", "dolor al caminar", "várices", "venas arañitas", "trombosis", "pies hinchados", "falta de flujo sanguíneo", "arterias enfermas", "problemas de riego", "insuficiencia arterial", "isquemia", "daño capilar", "dolor en las extremidades"]');

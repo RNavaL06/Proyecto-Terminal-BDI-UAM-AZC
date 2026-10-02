@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: I39
--- Aquí se insertarán los códigos que empiecen con I39
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('I39', 'Endocarditis y trastornos de las válvulas cardiacas en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["infección en el corazón", "soplos en el corazón", "valvulopatía", "dolor en el pecho", "fiebre reumática", "taquicardia", "palpitaciones", "cansancio extremo", "fatiga crónica", "inflamación de válvulas cardiacas", "insuficiencia valvular", "soplo cardiaco", "ahogo", "falta de aire", "disnea", "infección de las válvulas", "problemas al corazón", "mal del corazón", "taquicardias", "arritmia"]');

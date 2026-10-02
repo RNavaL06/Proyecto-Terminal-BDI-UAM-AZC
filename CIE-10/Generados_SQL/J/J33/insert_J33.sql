@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: J33
--- Aquí se insertarán los códigos que empiecen con J33
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J33.0', 'Pólipo de cavidad nasal', 'Sin especificar', '["carne en la nariz", "bulto en la nariz", "obstrucción nasal", "nariz tapada", "tengo algo en la nariz", "pólipos nasales", "pólipo en la nariz", "senos paranasales bloqueados", "dificultad para respirar por la nariz", "fosa nasal tapada", "crecimiento en la nariz", "sinusitis crónica", "nariz congestionada", "tengo un tapón en la nariz", "respirar mal por la nariz"]'),
+('J33.1', 'Degeneración polipoide de seno', 'Sin especificar', '["sinusitis polipoidea", "senos nasales inflamados", "mucosa nasal hinchada", "poliposis sinusal", "degeneración de los senos", "inflamación crónica de la nariz", "mocos constantes", "presión en la cara", "nariz llena de carne", "sinusitis persistente", "dolor de senos paranasales", "obstrucción sinusal", "problemas para respirar", "sinusitis severa", "se me tapan los senos nasales"]'),
+('J33.8', 'Otros pólipos de senos', 'Sin especificar', '["crecimientos nasales", "masas en la nariz", "pólipos en los senos paranasales", "tumor benigno nasal", "obstrucción de vías aéreas", "nariz congestionada siempre", "problemas de mucosidad", "bultos dentro de la nariz", "sensación de pesadez en la cara", "sinusitis con pólipos", "infección de senos nasal", "tejido inflamado en la nariz", "no puedo respirar bien", "cuerpo extraño en la nariz", "crecimiento anormal en la nariz"]'),
+('J33.9', 'Pólipo nasal, no especificado', 'Sin especificar', '["pólipo", "bulto nasal", "nariz tapada por algo", "tengo un pólipo", "me cuesta respirar por la nariz", "problema en las fosas nasales", "crecimiento nasal", "obstrucción de nariz", "nariz bloqueada", "sinusitis", "goteo nasal constante", "tengo la nariz obstruida", "tengo pólipos", "masa en fosa nasal", "afección de la nariz"]');

@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: J47
--- Aquí se insertarán los códigos que empiecen con J47
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J47.0', 'Bronquiectasias con infección aguda de vías respiratorias bajas', 'Sin especificar', '["tos con flemas", "bronquios dañados", "infección pulmonar", "pecho cargado", "tos crónica con moco", "bronquios inflamados", "flemas con pus", "infección bronquial", "pulmones con secreción", "tos persistente", "bronquios dilatados", "dificultad para respirar", "pecho ronco", "garganta congestionada", "tos con catarro", "bronquitis recurrente", "secreción bronquial"]'),
+('J47.1', 'Bronquiectasias con exacerbación (aguda)', 'Sin especificar', '["crisis de bronquiectasia", "brote de bronquios", "ataque de tos", "empeoramiento pulmonar", "pecho cerrado", "falta de aire", "tos violenta", "bronquios tapados", "flemas espesas", "recaída respiratoria", "exacerbación bronquial", "dificultad al respirar", "ahogo", "silbido en el pecho", "tos con sangre", "inflamación de bronquios", "moco en los pulmones"]'),
+('J47.9', 'Bronquiectasias, sin complicaciones', 'Sin especificar', '["bronquios dilatados", "daño en bronquios", "tos constante", "pulmones debilitados", "bronquiectasia leve", "flemas frecuentes", "tos seca o productiva", "afección pulmonar", "cicatrices en bronquios", "respiración con ruido", "obstrucción bronquial", "tos persistente", "moco acumulado", "enfermedad de bronquios", "bronquios deformados", "catarro crónico", "secreciones pulmonares"]');

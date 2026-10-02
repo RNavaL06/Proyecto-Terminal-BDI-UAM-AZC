@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: I99
--- Aquí se insertarán los códigos que empiecen con I99
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('I99.8', 'Otros trastornos de aparato circulatorio', 'Sin especificar', '["problemas de circulación", "mala circulación", "piernas pesadas", "hinchazón de pies", "hormigueo en extremidades", "várices", "insuficiencia venosa", "dolor en las venas", "adormecimiento", "mala sangre", "pesadez en las piernas", "venas marcadas", "calambres nocturnos", "arañitas vasculares", "problemas del sistema circulatorio", "edema en extremidades"]'),
+('I99.9', 'Trastorno de aparato circulatorio no especificado', 'Sin especificar', '["problema del corazón y vasos", "afección circulatoria", "molestias en la sangre", "fallo circulatorio", "tengo algo en las venas", "enfermedad vascular sin nombre", "trastorno de la sangre", "problemas vasculares", "dolor vascular", "chequeo de circulación", "cardiovascular raro", "síntomas circulatorios", "problema de irrigación", "mala presión", "tensión rara"]');

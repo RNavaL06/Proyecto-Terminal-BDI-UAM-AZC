@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: J05
--- Aquí se insertarán los códigos que empiecen con J05
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J05.0', 'Laringitis aguda obstructiva [crup]', 'Sin especificar', '["crup", "tos de perro", "tos perruna", "laringitis", "voz ronca", "afonía", "dificultad para respirar", "estridor", "silbido al respirar", "inflamación de garganta", "tos metálica", "ahogo", "garganta cerrada", "respiración ruidosa", "croup", "tos seca", "falso crup"]'),
+('J05.10', 'Epiglotitis aguda sin obstrucción', 'Sin especificar', '["dolor de garganta", "inflamación epiglotis", "dificultad al tragar", "odinofagia", "babear", "fiebre alta", "garganta inflamada", "dolor al pasar saliva", "anginas inflamadas", "inflamación de cuello", "voz ahogada", "disfagia", "infección de garganta", "picazón en la garganta", "molestia al tragar"]'),
+('J05.11', 'Epiglotitis aguda con obstrucción', 'Sin especificar', '["epiglotitis severa", "no puedo respirar", "garganta cerrada", "asfixia", "falta de aire", "estridor laríngeo", "emergencia respiratoria", "obstrucción de vía aérea", "dificultad respiratoria severa", "garganta obstruida", "inflamación grave de garganta", "respiración dificultosa", "necesito aire", "ahogamiento", "cierre de garganta", "epiglotis hinchada"]');

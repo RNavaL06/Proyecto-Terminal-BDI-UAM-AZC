@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: J31
--- Aquí se insertarán los códigos que empiecen con J31
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('J31.0', 'Rinitis crónica', 'Sin especificar', '["nariz tapada", "congestión nasal constante", "mocos todo el tiempo", "alergia nasal", "nariz congestionada", "goteo nasal", "rinitis alérgica", "moqueo crónico", "nariz bloqueada", "inflamación de la nariz", "resfriado que no se quita", "picazón en la nariz", "estornudadera", "catarro crónico", "nariz obstruida"]'),
+('J31.1', 'Rinofaringitis crónica', 'Sin especificar', '["garganta irritada siempre", "inflamación de nariz y garganta", "carraspera crónica", "dolor de garganta constante", "faringitis y rinitis", "goteo postnasal", "tos seca constante", "molestia al tragar", "flemas en la garganta", "infección nasal y faríngea", "picor en la garganta", "garganta reseca", "moco en la parte de atrás de la nariz", "inflamación de las vías altas", "catarro recurrente"]'),
+('J31.2', 'Faringitis crónica', 'Sin especificar', '["dolor de garganta crónico", "garganta inflamada", "carraspera", "garganta irritada", "picazón en la garganta", "molestia al pasar saliva", "dolor al tragar", "garganta roja", "tos seca irritativa", "garganta seca", "sensación de cuerpo extraño en la garganta", "inflamación de la faringe", "garganta quemante", "dolor de tragadera", "ardor en la garganta"]');

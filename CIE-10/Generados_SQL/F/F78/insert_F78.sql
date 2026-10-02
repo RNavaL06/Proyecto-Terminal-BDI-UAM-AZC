@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: F78
--- Aquí se insertarán los códigos que empiecen con F78
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('F78.A1', 'Discapacidad intelectual relacionada con SYNGAP-1', 'Sin especificar', '["retraso en el desarrollo", "problemas de aprendizaje genéticos", "mutación SYNGAP1", "discapacidad del desarrollo", "dificultad cognitiva", "retraso madurativo", "déficit intelectual congénito", "problemas de neurodesarrollo", "condición genética rara", "síndrome genético", "trastorno del espectro intelectual", "problemas de habla y lenguaje", "discapacidad mental", "retraso cognitivo", "alteración neurológica"]'),
+('F78.A9', 'Otros tipos de discapacidad intelectual de origen genético', 'Sin especificar', '["discapacidad intelectual hereditaria", "retraso mental genético", "condiciones genéticas que afectan el aprendizaje", "retraso en el desarrollo infantil", "trastorno del neurodesarrollo", "déficit cognitivo congénito", "problemas de desarrollo por genes", "discapacidad intelectual inespecífica", "retraso intelectual hereditario", "síndrome de origen genético", "retraso madurativo por ADN", "discapacidad del aprendizaje de origen biológico", "problemas mentales desde el nacimiento", "retraso en los hitos del desarrollo", "enfermedades genéticas del desarrollo"]');

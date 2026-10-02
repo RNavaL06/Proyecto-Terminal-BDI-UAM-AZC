@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: F21
--- Aquí se insertarán los códigos que empiecen con F21
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('F21', 'Trastorno esquizotípico', 'Sin especificar', '["comportamiento raro", "personalidad excéntrica", "aislamiento social", "pensamiento mágico", "ideas delirantes leves", "lenguaje extraño", "falta de amigos cercanos", "desconexión de la realidad", "percepción distorsionada", "conducta peculiar", "ansiedad social extrema", "paranoia leve", "alucinaciones fugaces", "dificultad para relacionarse", "sentirse observado", "creencias extrañas", "comportamiento bizarro", "falta de afecto", "aplanamiento afectivo", "trastorno de la personalidad raro"]');

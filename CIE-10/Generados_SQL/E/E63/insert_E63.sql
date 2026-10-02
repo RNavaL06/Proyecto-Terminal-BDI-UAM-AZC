@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: E63
--- Aquí se insertarán los códigos que empiecen con E63
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('E63.0', 'Carencia de ácidos grasos esenciales [AGE]', 'Sin especificar', '["falta de omega", "deficiencia de grasas buenas", "pelo quebradizo", "piel seca", "escamación", "problemas de absorción", "déficit de nutrientes esenciales", "mala nutrición", "carencia de lípidos", "debilidad capilar", "problemas en la piel", "falta de ácidos grasos", "desnutrición específica", "piel descamada", "cansancio físico"]'),
+('E63.1', 'Desequilibrio de los componentes de la ingesta de alimentos', 'Sin especificar', '["mala alimentación", "dieta desbalanceada", "mal comer", "comer mal", "dieta chatarra", "desequilibrio alimenticio", "exceso de carbohidratos", "dieta incompleta", "falta de vitaminas", "malnutrición", "desorden alimenticio", "comer solo comida basura", "dieta poco saludable", "carencia de nutrientes", "falta de balance en la comida", "dieta pobre"]'),
+('E63.8', 'Otras carencias nutricionales especificadas', 'Sin especificar', '["carencia de minerales", "déficit vitamínico", "falta de nutrientes", "malnutrición específica", "anemia carencial", "debilidad por mala dieta", "carencia de oligoelementos", "desnutrición leve", "deficiencia de micronutrientes", "falta de vitaminas", "agotamiento nutricional", "bajas defensas por dieta", "problemas por mala nutrición", "deficiencia alimentaria"]'),
+('E63.9', 'Carencia nutricional, no especificada', 'Sin especificar', '["desnutrición", "estar mal nutrido", "falta de alimento", "cuerpo débil", "falta de vitaminas", "bajas defensas", "bajón de energía", "estar desganado", "mal alimentado", "flaqueza", "estado de desnutrición", "carencia alimentaria", "falta de fuerzas", "problemas nutricionales", "debilitamiento por hambre", "anemia", "falta de nutrientes"]');

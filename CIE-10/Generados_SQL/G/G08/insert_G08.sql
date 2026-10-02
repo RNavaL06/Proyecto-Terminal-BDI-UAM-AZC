@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: G08
--- Aquí se insertarán los códigos que empiecen con G08
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('G08', 'Flebitis y tromboflebitis intracraneal e intrarraquídea', 'Sin especificar', '["coágulo en el cerebro", "trombosis cerebral", "inflamación de venas cerebrales", "dolor de cabeza intenso", "trombosis venosa intracraneal", "obstrucción de venas en la cabeza", "flebitis espinal", "coágulo en la columna", "presión en la cabeza", "tromboflebitis del seno venoso", "cefalea severa", "trombosis intrarraquídea", "inflamación de vasos sanguíneos cerebrales", "dolor de nuca y cabeza", "infarto venoso cerebral", "coágulo en la médula", "problemas de circulación cerebral", "trombosis de venas profundas craneales", "dolor punzante en la cabeza"]');
