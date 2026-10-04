@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: N15
--- Aquí se insertarán los códigos que empiecen con N15
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N15.0', 'Nefropatía de los Balcanes', 'Sin especificar', '["fallo renal crónico", "insuficiencia de riñón", "riñones fallando", "dolor en la espalda baja", "nefropatía endémica", "riñón dañado", "enfermedad renal crónica", "orinar mucho", "orinar poco", "dolor lumbar", "nefropatía progresiva", "problemas de filtrado renal", "uremia", "cansancio extremo", "anemia por insuficiencia renal"]'),
+('N15.1', 'Absceso renal y perirrenal', 'Sin especificar', '["infección en el riñón", "pus en el riñón", "fuego en el riñón", "dolor de costado", "dolor fuerte en la espalda", "fiebre y escalofríos", "infección urinaria grave", "bolsa de pus renal", "dolor en la cintura", "punzada en el riñón", "absceso en la guata", "infección por bacterias", "orina con mal olor", "dolor al orinar", "malestar general renal"]'),
+('N15.8', 'Otras enfermedades túbulo-intersticiales renales especificadas', 'Sin especificar', '["daño en los túbulos renales", "nefritis intersticial", "inflamación de riñones", "riñones inflamados", "dolor en la zona lumbar", "fallo en los filtros del riñón", "problemas renales", "dolor al orinar", "infección de riñón", "riñones que no filtran bien", "enfermedad del tejido renal", "hinchazón por riñones", "dolor de riñones", "orina turbia", "insuficiencia renal"]'),
+('N15.9', 'Enfermedad túbulo-intersticial renal, no especificada', 'Sin especificar', '["problema en los riñones", "dolor de riñón", "dolor lumbar", "mal de riñones", "riñones que duelen", "insuficiencia de riñón", "nefropatía", "infección renal", "orina rara", "pinchazos en la espalda", "dolor en el costado", "mal funcionamiento renal", "daño renal", "problemas para orinar", "dolor en la panza baja"]');

@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: N22
--- Aquí se insertarán los códigos que empiecen con N22
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N22', 'Cálculo del tracto urinario en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["piedras en los riñones", "cálculos renales", "arenilla en la orina", "cólico nefrítico", "dolor de riñones", "piedras en la vejiga", "cálculos en la uretra", "dolor al orinar", "arenillas", "cálculo urinario", "piedras en la orina", "ataque de riñón", "litiasis renal", "cálculos en los riñones", "punzada en la espalda baja", "dolor punzante riñón", "bloqueo urinario", "cálculo ureteral", "dolor de riñón agudo"]');

@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: N71
--- Aquí se insertarán los códigos que empiecen con N71
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N71.0', 'Enfermedad inflamatoria aguda del útero', 'Sin especificar', '["infección en la matriz", "inflamación del útero", "metritis aguda", "dolor pélvico agudo", "dolor bajo vientre", "fiebre en la matriz", "flujo vaginal extraño", "dolor en la guata baja", "picazón en la zona íntima", "inflamación pélvica", "dolor en la panza baja", "infección uterina", "dolor en el bajo vientre", "mal de matriz", "dolor al orinar", "inflamación de la matriz"]'),
+('N71.1', 'Enfermedad inflamatoria crónica del útero', 'Sin especificar', '["metritis crónica", "matriz inflamada por mucho tiempo", "dolor pélvico persistente", "molestias constantes en la matriz", "inflamación uterina recurrente", "dolor sordo en la pelvis", "infección crónica en la matriz", "dolor en la zona genital constante", "picazón recurrente", "dolor al tener relaciones", "flujo vaginal constante", "dolor en el bajo vientre crónico", "enfermedad inflamatoria pélvica persistente", "inflamación crónica de la matriz", "pesadez en la parte baja de la panza"]'),
+('N71.9', 'Enfermedad inflamatoria del útero, no especificada', 'Sin especificar', '["infección en la matriz", "problemas en la matriz", "inflamación uterina", "malestar pélvico", "dolor en el bajo vientre", "dolor de matriz", "infección ginecológica", "dolor en la zona baja", "inflamación de útero", "problemas ginecológicos", "molestia en la panza baja", "dolor en la guata", "ardor en la zona pélvica", "irritación de matriz", "infección en el útero", "dolor al tener relaciones sexuales"]');

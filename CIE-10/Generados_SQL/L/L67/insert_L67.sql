@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: L67
--- Aquí se insertarán los códigos que empiecen con L67
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('L67.0', 'Tricorrexis nodosa', 'Sin especificar', '["pelo quebradizo", "puntas abiertas", "cabello dañado", "nudos en el pelo", "pelo débil", "puntas partidas", "rotura capilar", "pelo pajizo", "horquetillas", "orquillas", "cabello reventado", "pelo estropeado", "hebras quebradas", "daño estructural capilar", "pelo con nudos"]'),
+('L67.1', 'Variaciones en el color del pelo', 'Sin especificar', '["canas", "pelo canoso", "decoloración capilar", "pelo blanco", "pelo gris", "cambio de color en el cabello", "pérdida de pigmento", "pelo amarillento", "decoloración prematura", "mechones blancos", "pelo sin brillo", "pigmentación capilar", "canicie", "pelo descolorido", "alteración color pelo"]'),
+('L67.8', 'Otras anormalidades del color y del tallo del pelo', 'Sin especificar', '["pelo raro", "anomalía capilar", "problemas de hebra", "cabello extraño", "deformidad capilar", "pelo grueso o fino anormal", "alteración tallo piloso", "trastorno del cabello", "pelo seco y quebradizo", "daño en el folículo", "problemas de textura capilar", "cabello opaco", "pelo maltratado", "alteración pigmentación pelo", "enfermedades del pelo"]'),
+('L67.9', 'Anormalidad del color y del tallo del pelo, no especificada', 'Sin especificar', '["problemas capilares generales", "pelo enfermo", "no sé qué le pasa a mi pelo", "deformidad del cabello", "alteración del pelo no diagnosticada", "daño capilar desconocido", "textura de pelo extraña", "cambios en mi melena", "pelo extraño", "anomalía capilar inespecífica", "caída y cambio de pelo", "pelo con aspecto raro", "problemas con el tallo del pelo", "daño estructural desconocido", "chequeo de salud capilar"]');

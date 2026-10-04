@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: N20
--- Aquí se insertarán los códigos que empiecen con N20
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N20.0', 'Cálculo del riñón', 'Sin especificar', '["piedras en los riñones", "cálculos renales", "arenilla en el riñón", "cólico nefrítico", "dolor lumbar intenso", "dolor de riñones", "piedritas en la orina", "litiasis renal", "dolor en la espalda baja", "punzadas en la cintura", "arenillas", "piedra en la riñonera", "dolor de hijar", "ataque de riñones", "cálculo en el riñón"]'),
+('N20.1', 'Cálculo del uréter', 'Sin especificar', '["piedra en el uréter", "cálculo ureteral", "piedra bajando por la orina", "dolor de cólico", "punzadas en la ingle", "dolor al orinar", "obstrucción ureteral", "dolor fuerte en el costado", "piedra atascada", "cólico ureteral", "dolor irradiado a los genitales", "cálculo en conducto urinario", "dolor punzante en la pelvis", "cálculo bajando", "bloqueo de orina"]'),
+('N20.2', 'Cálculo de riñón con cálculo de uréter', 'Sin especificar', '["piedras en riñón y uréter", "litiasis múltiple", "cálculos en todo el sistema urinario", "piedras en el tracto urinario", "cólico renal severo", "cálculos complejos", "dolor intenso en flanco y espalda", "piedras múltiples", "obstrucción del tracto urinario superior", "cálculos renales y ureterales", "dolor insoportable en la cintura", "crisis renal", "complicación de piedras en el riñón", "cálculo impactado", "problemas renales graves"]'),
+('N20.9', 'Cálculo urinario, no especificado', 'Sin especificar', '["piedra en la vía urinaria", "cálculo en el sistema urinario", "piedras en la orina", "dolor en las vías urinarias", "litiasis urinaria", "arenilla al orinar", "molestias para orinar", "dolor de vejiga", "punzadas al hacer pis", "cálculo genitourinario", "problema de piedras", "cólico urinario", "dolor pélvico", "sangre en la orina por piedra", "infección por cálculos"]');

@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: N08
--- Aquí se insertarán los códigos que empiecen con N08
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N08', 'Trastornos glomerulares en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["fallo renal", "daño en los riñones", "insuficiencia de los glomérulos", "enfermedad de los riñones", "problemas al filtrar la orina", "orina con espuma", "riñones enfermos", "nefropatía secundaria", "dolor en la espalda baja", "inflamación de los glomérulos", "problemas renales", "hinchazón por retención de líquidos", "edema renal", "proteínas en la orina", "mal funcionamiento de los riñones", "orina turbia", "insuficiencia renal crónica", "complicaciones renales"]');

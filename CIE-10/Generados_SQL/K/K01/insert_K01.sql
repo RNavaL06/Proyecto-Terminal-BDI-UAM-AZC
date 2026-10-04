@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: K01
--- Aquí se insertarán los códigos que empiecen con K01
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('K01.0', 'Dientes incluidos', 'Sin especificar', '["dientes que no salen", "diente atrapado", "muela que no quiere bajar", "diente retenido", "diente escondido", "diente enterrado", "diente sin erupcionar", "diente bajo la encía", "problemas con los dientes", "diente que no termina de salir", "diente bloqueado", "dolor de muela escondida", "diente cubierto por encía", "diente en el hueso", "pieza dental no erupcionada"]'),
+('K01.1', 'Dientes impactados', 'Sin especificar', '["muela del juicio impactada", "muela chocada", "diente chueco por impacto", "dolor de muela de juicio", "diente que empuja a otros", "muela atravesada", "diente empotrado", "diente contra el hueso", "infección por muela del juicio", "diente de lado", "muela que no tiene espacio", "diente trabado", "diente que presiona otros dientes", "inflamación de encía por muela", "dolor en la mandíbula por diente", "diente que no sale derecho"]');

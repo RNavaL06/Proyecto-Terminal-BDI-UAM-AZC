@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: N51
--- Aquí se insertarán los códigos que empiecen con N51
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N51', 'Trastornos de los órganos genitales masculinos en otras enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["dolor en los testículos", "inflamación genital masculina", "problemas en las partes íntimas", "dolor de huevos", "molestias en el miembro", "infección en los genitales", "dolor de bolas", "picazón en la zona genital", "bultos en el escroto", "inflamación de la próstata", "dolor de pene", "problemas de virilidad", "dolor de entrepierna", "ardor al orinar", "secreción genital", "dolor de chifla", "molestia en los paquetes", "afección en los genitales masculinos", "inflamación de la zona baja", "dolor de gónadas"]');

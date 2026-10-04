@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: L93
--- Aquí se insertarán los códigos que empiecen con L93
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('L93.0', 'Lupus eritematoso discoide', 'Sin especificar', '["lupus en la piel", "manchas rojas en la cara", "lupus discoide", "erupciones en forma de disco", "lesiones cutáneas rojas", "manchas en las mejillas", "piel escamosa", "lupus cutáneo", "manchas que dejan cicatriz", "mariposa en la cara", "enfermedad autoinmune piel", "sarpullido persistente", "manchas en cuero cabelludo", "dermatitis lúpica", "lesiones numulares", "manchas rojas sensibles al sol", "fotosensibilidad cutánea"]'),
+('L93.1', 'Lupus eritematoso cutáneo subagudo', 'Sin especificar', '["lupus cutáneo subagudo", "erupción anular", "manchas en forma de anillo", "erupción en pecho y espalda", "lupus que no deja cicatriz", "manchas rojas en el cuello", "fotosensibilidad severa", "lesiones cutáneas diseminadas", "manchas con borde rojo", "lesiones psoriasiformes", "lupus fotosensible", "sarpullido por el sol", "manchas en el escote", "exantema cutáneo", "erupciones cutáneas autoinmunes", "manchas que aparecen tras tomar sol", "erupción papuloescamosa"]'),
+('L93.2', 'Otros tipos de lupus eritematosos locales', 'Sin especificar', '["lupus cutáneo raro", "otras formas de lupus en piel", "lupus profundo", "paniculitis lúpica", "nódulos subcutáneos", "lesiones cutáneas raras", "lupus eritematoso profundo", "inflamación de la piel por lupus", "lupus que afecta la grasa", "bolitas debajo de la piel lupus", "manchas cutáneas atípicas", "enfermedad lúpica poco común", "lesiones ulceradas cutáneas", "problemas cutáneos por lupus", "lupus eritematoso atípico", "nódulos en la piel por autoinmunidad"]');

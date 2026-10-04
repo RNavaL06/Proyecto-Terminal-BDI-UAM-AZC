@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: K45
--- Aquí se insertarán los códigos que empiecen con K45
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('K45.0', 'Otra hernia abdominal especificada, con obstrucción, sin gangrena', 'Sin especificar', '["hernia atascada", "bolita en la panza", "bulto en el abdomen", "intestino obstruido", "dolor de guata fuerte", "dolor de barriga", "tripas trabadas", "hernia encarcelada", "hinchazón abdominal", "dolor agudo en el vientre", "obstrucción intestinal", "nudo en el estómago", "bulto que no baja", "hernia que se traba", "abdomen bloqueado", "dolor abdominal severo", "hernia dolorosa"]'),
+('K45.1', 'Otras hernias abdominales especificadas, con gangrena', 'Sin especificar', '["hernia gangrenada", "tejido muerto en el abdomen", "hernia con infección grave", "panza negra", "hernia necrosada", "dolor abdominal insoportable", "emergencia por hernia", "tripas podridas", "bulto abdominal negro", "hernia estrangulada", "sepsis por hernia", "abdomen con necrosis", "bulto muy inflamado y caliente", "hernia crítica", "peritonitis por hernia", "abdomen agudo", "hernia con tejido necrosado"]'),
+('K45.8', 'Otras hernias abdominales especificadas sin obstrucción ni gangrena', 'Sin especificar', '["hernia abdominal", "bulto en la panza", "protuberancia en el abdomen", "hernia reducible", "bolita que entra y sale", "hernia que molesta", "bulto en el ombligo", "hernia sin dolor", "bulto en la guata", "hernia simple", "inflamación abdominal", "bolita que aparece al toser", "hernia pequeña", "bulto abdominal inofensivo", "hernia que se mete sola", "debilidad en la pared abdominal", "hernia no complicada"]');

@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: K67
--- Aquí se insertarán los códigos que empiecen con K67
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('K67', 'Trastornos de peritoneo en enfermedades infecciosas clasificadas bajo otro concepto', 'Sin especificar', '["peritonitis", "infección en la panza", "dolor abdominal severo", "inflamación del peritoneo", "peritonitis infecciosa", "dolor de guata", "barriga dura", "dolor de abdomen agudo", "infección estomacal grave", "peritonitis aguda", "dolor en el vientre", "abdomen sensible", "pus en el abdomen", "irritación peritoneal", "abdomen en tabla", "infección abdominal", "dolor de tripa", "fiebre por infección abdominal"]');

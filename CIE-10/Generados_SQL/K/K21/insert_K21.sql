@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: K21
--- Aquí se insertarán los códigos que empiecen con K21
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('K21.00', 'Enfermedad por reflujo gastroesofágico con esofagitis, sin hemorragia', 'Sin especificar', '["reflujo", "acidez", "agruras", "ardor en el pecho", "quemazón en el esófago", "ardor de estómago", "reflujo gástrico", "reflujo esofágico", "esofagitis", "esófago irritado", "garganta quemada por reflujo", "agrieras", "reflujo ácido", "acidez estomacal", "ardor retroesternal", "reflujo severo"]'),
+('K21.01', 'Enfermedad por reflujo gastroesofágico con esofagitis, con hemorragia', 'Sin especificar', '["reflujo con sangre", "esofagitis hemorrágica", "vómito con sangre", "hematemesis por reflujo", "esófago sangrante", "reflujo severo con sangre", "daño en el esófago con sangrado", "úlceras esofágicas sangrantes", "sangre al eructar", "reflujo que sangra", "esofagitis severa con hemorragia", "sangrado digestivo alto por reflujo", "esofagitis erosiva sangrante", "lesiones en el esófago con sangre", "esofagitis complicada"]'),
+('K21.9', 'Enfermedad por reflujo gastroesofágico sin esofagitis', 'Sin especificar', '["reflujo sin lesiones", "reflujo gástrico leve", "agruras constantes", "acidez crónica", "ardor estomacal frecuente", "reflujo sin dañar el esófago", "gases y reflujo", "reflujo gastroesofágico no erosivo", "quemazón en la boca del estómago", "sentir comida en la garganta", "regurgitación ácida", "sensación de nudo en la garganta", "reflujo silencioso", "acidez frecuente", "reflujo que sube a la boca", "pesadez estomacal"]');

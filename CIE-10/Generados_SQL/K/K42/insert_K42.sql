@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: K42
--- Aquí se insertarán los códigos que empiecen con K42
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('K42.0', 'Hernia umbilical con obstrucción, sin gangrena', 'Sin especificar', '["hernia en el ombligo", "ombligo saltado", "bola en la panza", "hernia atascada", "dolor de guata", "bulto abdominal", "dolor umbilical", "ombligo que no entra", "hernia encarcelada", "tensión en el abdomen", "bolita en el vientre", "obstrucción intestinal", "dolor de barriga fuerte", "estomago inflamado", "pinchazos en el ombligo", "hernia que se traba"]'),
+('K42.1', 'Hernia umbilical con gangrena', 'Sin especificar', '["hernia necrosada", "ombligo negro", "hernia podrida", "infección en el ombligo", "hernia gangrenada", "ombligo morado", "bulto con pus", "hernia estrangulada", "emergencia abdominal", "tejido muerto en hernia", "hernia grave", "dolor agudo abdominal", "ombligo hinchado y caliente", "septicemia por hernia", "hernia con mal olor", "abdomen muy doloroso"]'),
+('K42.9', 'Hernia umbilical sin obstrucción ni gangrena', 'Sin especificar', '["hernia simple", "ombligo abultado", "bolita en el ombligo", "hernia reducible", "bulto que se mete", "hernia umbilical pequeña", "ombligo salido", "hernia asintomática", "hernia que entra y sale", "abultamiento en el vientre", "hernia de ombligo común", "bolita blanda en la panza", "dolor leve de ombligo", "hernia sin complicaciones"]');

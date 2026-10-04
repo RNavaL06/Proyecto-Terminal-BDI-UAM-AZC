@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: M81
--- Aquí se insertarán los códigos que empiecen con M81
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('M81.0', 'Osteoporosis relacionada con la edad, sin fractura patológica actual', 'Sin especificar', '["huesos frágiles", "descalcificación", "osteoporosis senil", "huesos débiles", "pérdida de masa ósea", "huesos porosos", "huesos de cristal", "desgaste de huesos", "vejez y huesos", "dolor óseo", "disminución de densidad ósea", "fragilidad ósea", "envejecimiento óseo", "cuidado de huesos ancianos", "huesos quebradizos", "descalcificación de la vejez"]'),
+('M81.6', 'Osteoporosis localizada [Lequesne]', 'Sin especificar', '["osteoporosis regional", "pérdida ósea localizada", "osteoporosis de Lequesne", "descalcificación de una zona", "dolor localizado en huesos", "atrofia ósea focal", "debilidad ósea en una parte", "osteoporosis transitoria", "lesión ósea localizada", "desmineralización focal", "huesos débiles en una zona", "problemas óseos específicos", "osteoporosis por desuso", "dolor focal en articulaciones", "inflamación ósea localizada"]'),
+('M81.8', 'Otros tipos de osteoporosis, sin fractura patológica actual', 'Sin especificar', '["osteoporosis secundaria", "descalcificación ósea", "huesos porosos", "baja densidad ósea", "pérdida de calcio en huesos", "huesos desgastados", "osteopenia severa", "dolor por descalcificación", "fragilidad de esqueleto", "problemas de densidad mineral ósea", "huesos débiles por enfermedad", "riesgo de fracturas", "esqueleto débil", "enfermedad metabólica ósea", "falta de calcio en huesos"]');

@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: K87
--- Aquí se insertarán los códigos que empiecen con K87
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('K87', 'Trastornos de vesícula biliar, vías biliares y páncreas en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["dolor en la boca del estómago", "piedras en la vesícula", "cálculos biliares", "cólico biliar", "ataque al hígado", "pancreatitis", "dolor bajo las costillas", "ictericia", "ojos amarillos", "piel amarilla", "vesícula inflamada", "dolor en el epigastrio", "acidez estomacal", "náuseas y vómitos", "indigestión fuerte", "piedras en el hígado", "dolor punzante en el abdomen", "mal de vesícula", "litiasis biliar", "inflamación de páncreas"]');

@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: L58
--- Aquí se insertarán los códigos que empiecen con L58
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('L58.0', 'Radiodermatitis aguda', 'Sin especificar', '["quemadura por radiación", "piel roja por radioterapia", "dermatitis por rayos", "piel quemada radiación", "eritema actínico agudo", "piel irritada radiación", "inflamación piel radiación", "quemazón por radioterapia", "reacción cutánea aguda", "picazón por radiación", "piel escaldada radiación", "ardor en la piel tratamiento", "piel dañada por rayos X", "dermatitis de contacto por radiación", "irritación dérmica radiación"]'),
+('L58.1', 'Radiodermatitis crónica', 'Sin especificar', '["piel dura por radiación", "manchas en la piel radiación", "fibrosis cutánea radiación", "piel adelgazada radiación", "telangiectasias por radiación", "cicatriz por radioterapia", "piel seca y escamosa radiación", "cambios en la piel a largo plazo", "atrofia dérmica radiación", "piel acartonada radioterapia", "piel con arrugas por rayos", "lesión cutánea crónica", "engrosamiento de la piel radiación", "piel manchada post radiación", "daño cutáneo permanente"]'),
+('L58.9', 'Radiodermatitis, no especificada', 'Sin especificar', '["problema de piel por radiación", "erupción por radioterapia", "reacción de la piel a rayos", "daño en la piel por radiación", "cambios cutáneos radiación", "irritación por radioterapia", "dermatitis de rayos", "lesión de piel por radiación", "efecto secundario radiación piel", "sarpullido por radiación", "dolor de piel por radiación", "quemadura por rayos", "complicación cutánea radioterapia", "enrojecimiento por radiación", "reacción dérmica rayos"]');

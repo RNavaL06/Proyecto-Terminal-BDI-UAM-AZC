@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: N77
--- Aquí se insertarán los códigos que empiecen con N77
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N77.0', 'Ulceración de la vulva por otras enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["llaga en la vulva", "herida en la zona íntima", "úlcera genital", "lesión en la parte de abajo", "dolor al orinar", "escoriación genital", "ampolla vulvar", "irritación íntima persistente", "úlceras por sífilis", "heridas por herpes", "quemazón en la vulva", "boca de jarro", "lastimadura en la vagina", "inflamación genital", "dolor en la entrepierna", "flujo con sangre", "picazón vulvar intensa"]'),
+('N77.1', 'Vaginitis, vulvitis y vulvovaginitis en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["infección vaginal", "picazón en la zona íntima", "ardor al orinar", "flujo raro", "flujo con mal olor", "picazón abajo", "hongos vaginales", "inflamación de la vulva", "ardor vaginal", "candidiasis", "irritación vulvar", "comezón en la parte íntima", "resequedad vaginal", "vulva roja", "flujo color lechoso", "secreción vaginal anormal", "dolor durante el sexo", "picor genital", "vagina irritada"]');

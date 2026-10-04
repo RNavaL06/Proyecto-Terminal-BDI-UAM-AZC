@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: L91
--- Aquí se insertarán los códigos que empiecen con L91
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('L91.0', 'Cicatriz hipertrófica', 'Sin especificar', '["cicatriz abultada", "queloides", "cicatriz gruesa", "cicatriz elevada", "cicatriz roja", "marca de herida inflamada", "cicatriz queloide", "cicatriz abombada", "cicatriz con relieve", "cicatriz queloidea", "cicatriz que no baja", "bulto en cicatriz", "cicatriz queloide", "cicatriz deforme", "piel engrosada en cicatriz", "cicatriz hipertrófica", "cordón en cicatriz"]'),
+('L91.8', 'Otros tipos de trastornos hipertróficos de la piel', 'Sin especificar', '["engrosamiento de la piel", "piel dura", "piel áspera", "hiperqueratosis", "piel con parches gruesos", "placas en la piel", "piel acartonada", "piel escamosa y dura", "crecimiento anormal de piel", "engrosamiento cutáneo", "piel callosa", "piel gruesa", "hipertrofia dérmica", "piel acartonada", "lesión cutánea elevada", "durezas en la piel", "piel acartonada"]'),
+('L91.9', 'Trastorno hipertrófico de la piel, no especificado', 'Sin especificar', '["problemas de piel gruesa", "lesión en la piel", "bultos en la piel", "piel abultada", "crecimiento en la piel", "alteración cutánea", "piel anormalmente gruesa", "mancha elevada", "inflamación cutánea", "piel con relieve", "afección cutánea desconocida", "piel rara", "tejido cutáneo crecido", "nódulos en la piel", "piel endurecida", "crecimiento dérmico", "piel con texturas"]');

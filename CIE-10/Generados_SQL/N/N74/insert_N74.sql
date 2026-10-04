@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: N74
--- Aquí se insertarán los códigos que empiecen con N74
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N74', 'Trastornos inflamatorios pélvicos en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["dolor pélvico", "inflamación de la matriz", "infección en la pelvis", "dolor de ovarios", "dolor de vientre", "infección vaginal profunda", "mal de los ovarios", "dolor en la bajovientre", "inflamación ginecológica", "dolor de guata", "dolor de panza bajo", "molestia en la zona íntima", "anexitis", "infección de trompas", "dolor pelviano", "pinchazos en el bajo vientre", "infección de matriz", "salpingitis", "cistitis crónica"]');

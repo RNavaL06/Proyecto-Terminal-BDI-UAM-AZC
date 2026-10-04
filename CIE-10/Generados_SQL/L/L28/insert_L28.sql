@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: L28
--- Aquí se insertarán los códigos que empiecen con L28
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('L28.0', 'Liquen simple crónico', 'Sin especificar', '["picazón crónica", "piel escamosa", "eccema del rascado", "piel engrosada", "comezón constante", "liquenificación", "piel acartonada", "picor persistente", "mancha rascada", "piel dura y reseca", "dermatitis por rascado", "placa de picazón", "piel de elefante", "comezón que no se quita", "piel irritada por rascarse"]'),
+('L28.1', 'Prurigo nodular', 'Sin especificar', '["nódulos que pican", "granitos con picazón", "bolitas en la piel", "rascadoras crónicas", "prurigo", "comezón intensa en bultos", "picazón nodular", "lesiones por rascado", "bultos duros en las piernas", "ronchas que no se van", "picazón insoportable", "pápulas pruriginosas", "nudos de piel", "eccema nodular", "pica mucho la piel"]'),
+('L28.2', 'Otros prurigos', 'Sin especificar', '["comezón generalizada", "picazón fuerte", "ronchas", "sarpullido pruriginoso", "picor intenso", "piel irritada", "alergia cutánea", "erupción que pica", "prurito", "granitos que pican", "picaduras falsas", "reacción en la piel", "picazón por todo el cuerpo", "piel con picor", "urticaria persistente"]');

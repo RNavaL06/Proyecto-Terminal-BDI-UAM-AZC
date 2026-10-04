@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: N96
--- Aquí se insertarán los códigos que empiecen con N96
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N96', 'Pérdida repetida de embarazo', 'Sin especificar', '["abortos recurrentes", "abortos seguidos", "pérdida de bebé", "no puedo retener el embarazo", "aborto espontáneo frecuente", "problemas para mantener el embarazo", "aborto a repetición", "perder el embarazo varias veces", "malograr seguido", "pérdida gestacional recurrente", "problemas de fertilidad para llevar a término", "abortar muchas veces", "incompetencia cervical", "causas de abortos múltiples", "perder al bebé prematuramente", "embarazo que no llega a término", "problemas de implantación repetidos"]');

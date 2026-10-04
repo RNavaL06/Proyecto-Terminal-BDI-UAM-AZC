@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: L71
--- Aquí se insertarán los códigos que empiecen con L71
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('L71.0', 'Dermatitis peribucal', 'Sin especificar', '["granos alrededor de la boca", "eccema labial", "rojeces en la boca", "pustulitas en la barbilla", "dermatitis de contacto bucal", "erupción perioral", "irritación alrededor de los labios", "brotes en el bigote", "manchas rojas en la cara", "acné peribucal", "inflamación de la piel bucal", "puntos rojos en el contorno de boca", "eccema perioral", "erupción cutánea boca", "piel irritada labial"]'),
+('L71.1', 'Rinofima', 'Sin especificar', '["nariz de borracho", "nariz agrandada", "nariz roja e hinchada", "nariz bulbosa", "nariz deformada por rosácea", "hipertrofia nasal", "nariz de papa", "crecimiento de la nariz", "nariz rugosa", "inflamación crónica nasal", "nariz grande y roja", "engrosamiento de la piel nasal", "nariz porosa", "fima nasal", "nariz abultada"]'),
+('L71.8', 'Otras rosáceas', 'Sin especificar', '["rosácea ocular", "ojos rojos por rosácea", "rosácea papulopustulosa", "rosácea eritemato-telangiectásica", "rosácea granulomatosa", "arañitas en la cara", "venitas en la nariz", "cara muy roja", "bochorno facial", "rosácea persistente", "piel reactiva y roja", "cuperosis severa", "rosácea de los ojos", "inflamación facial crónica", "enrojecimiento crónico de mejillas"]'),
+('L71.9', 'Rosácea, no especificada', 'Sin especificar', '["cara roja", "mejillas encendidas", "cuperosis", "piel sensible con rojeces", "rosácea", "tengo la cara siempre colorada", "capilares rotos en la cara", "eritema facial", "acné rosáceo", "brotes de rojez en el rostro", "me arde la cara", "manchas rojas en la nariz y mejillas", "piel con telangiectasias", "reacción cutánea en la cara", "cara de tomate"]');

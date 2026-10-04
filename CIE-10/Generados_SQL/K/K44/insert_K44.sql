@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: K44
--- Aquí se insertarán los códigos que empiecen con K44
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('K44.0', 'Hernia diafragmática con obstrucción, sin gangrena', 'Sin especificar', '["hernia en el diafragma", "taponamiento estomacal", "nudo en el diafragma", "obstrucción diafragmática", "dolor en la boca del estómago", "panza apretada", "hernia atascada", "nudo en la guata", "presión en el diafragma", "bloqueo abdominal", "dolor bajo el esternón", "sentir que se atora la comida", "hernia que no baja", "pesadez en el diafragma", "malestar en la boca del estómago"]'),
+('K44.1', 'Hernia diafragmática con gangrena', 'Sin especificar', '["hernia necrosada", "hernia gangrenada", "muerte de tejido en el diafragma", "abdomen agudo", "dolor abdominal severo", "hernia complicada", "hernia podrida", "emergencia por hernia", "septicemia por hernia", "hernia con tejido muerto", "abdomen hinchado y duro", "dolor insoportable en el diafragma", "hernia estrangulada", "isquemia diafragmática", "infección grave por hernia"]'),
+('K44.9', 'Hernia diafragmática sin obstrucción ni gangrena', 'Sin especificar', '["hernia de hiato", "acidez estomacal", "reflujo", "ardor de estómago", "agrieras", "quemazón en el pecho", "hernia diafragmática simple", "pesadez al comer", "nudo en la boca del estómago", "dolor tipo punzada en el pecho", "sentir que la comida se regresa", "hernia sin complicaciones", "eructos constantes", "sensación de bulto en el diafragma", "llenura excesiva"]');

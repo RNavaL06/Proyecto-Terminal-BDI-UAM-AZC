@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: N26
--- Aquí se insertarán los códigos que empiecen con N26
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N26.1', 'Atrofia del riñón (terminal)', 'Sin especificar', '["riñón atrofiado", "insuficiencia renal terminal", "fallo renal crónico", "riñón chiquito", "daño renal irreversible", "riñón achicado", "enfermedad renal etapa 5", "necrosis renal", "falla de los riñones", "insuficiencia renal crónica", "riñón que no funciona", "riñones secos", "uremia", "diálisis", "enfermedad terminal del riñón", "riñón encogido"]'),
+('N26.2', 'Riñón de Page', 'Sin especificar', '["hipertensión renal", "riñón comprimido", "hematoma subcapsular", "compresión renal", "hipertensión por riñón", "isquemia renal", "presión alta de origen renal", "riñón aplastado", "lesión renal por hematoma", "fibrosis perirrenal", "síndrome de Page", "presión arterial disparada", "riñón apretado", "daño por hematoma", "hipertensión diastólica"]'),
+('N26.9', 'Esclerosis renal, no especificada', 'Sin especificar', '["riñón endurecido", "cicatrices en el riñón", "nefroesclerosis", "daño renal", "riñón endurecido", "fibrosis renal", "fallo renal", "riñón cicatrizado", "riñón con tejido muerto", "enfermedad de los riñones", "problemas renales", "riñón que se endurece", "insuficiencia de riñón", "tejido fibroso en riñones", "mal funcionamiento renal"]');

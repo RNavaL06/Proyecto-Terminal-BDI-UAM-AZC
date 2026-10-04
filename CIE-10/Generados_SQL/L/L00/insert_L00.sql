@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: L00
--- Aquí se insertarán los códigos que empiecen con L00
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('L00', 'Síndrome de la piel escaldada estafilocócica', 'Sin especificar', '["piel escaldada", "quemaduras en la piel", "infección por estafilococo", "piel roja y dolorida", "ampollas en la piel", "descamación de la piel", "piel de bebé quemada", "enfermedad de Ritter", "piel en carne viva", "infección bacteriana cutánea", "piel que se cae", "estafilococo dorado", "dermatitis infecciosa", "piel irritada y con llagas", "exantema estafilocócico", "síndrome de Ritter-Lyell", "piel como papel de fumar", "erupción con ampollas", "despellejamiento cutáneo"]');

@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: N27
--- Aquí se insertarán los códigos que empiecen con N27
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N27.0', 'Riñón pequeño, unilateral', 'Sin especificar', '["riñón atrofiado", "riñón chiquito", "riñón que no crece", "hipoplasia renal", "riñón más chico que el otro", "insuficiencia renal unilateral", "problemas de riñón en un lado", "atrofia renal", "riñón pequeño de un solo lado", "riñón seco", "dolor en un costado", "disminución de tamaño renal", "riñón disminuido", "fallo renal unilateral"]'),
+('N27.1', 'Riñón pequeño, bilateral', 'Sin especificar', '["riñones chiquitos", "riñones atrofiados", "ambos riñones pequeños", "hipoplasia renal bilateral", "insuficiencia renal crónica", "riñones que no funcionan bien", "riñones encogidos", "fallo en ambos riñones", "problemas renales graves", "riñones pequeños de nacimiento", "insuficiencia renal bilateral", "riñones atrofiados ambos", "riñones de menor tamaño", "daño renal en los dos riñones"]'),
+('N27.9', 'Riñón pequeño, no especificado', 'Sin especificar', '["problema de riñón", "riñón chico", "riñón atrofiado sin especificar", "dolor de riñones", "estudios renales alterados", "riñón pequeño indeterminado", "fallo renal", "dolor lumbar", "problema en el riñón", "riñón que no se ve normal", "afectación renal", "dolor en la espalda baja", "mal funcionamiento renal", "enfermedad renal no definida"]');

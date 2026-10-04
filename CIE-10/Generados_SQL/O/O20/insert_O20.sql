@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: O20
--- Aquí se insertarán los códigos que empiecen con O20
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('O20.0', 'Amenaza de aborto', 'Sin especificar', '["riesgo de perder al bebé", "pérdida", "sangrado en el embarazo", "manchado al estar embarazada", "peligro de aborto", "botar sangre embarazada", "amenaza de pérdida", "pérdida de sangre", "cólicos en el embarazo", "dolor bajo en el embarazo", "me estoy desangrando", "spotting embarazo", "sangrado vaginal temprano", "peligro de abortar", "embarazo en riesgo", "sangrado primer trimestre"]'),
+('O20.8', 'Otras hemorragias en la fase temprana del embarazo', 'Sin especificar', '["sangrado temprano", "sangradito", "pérdida de sangre", "manchas de sangre", "sangrado por implantación", "desangrado leve", "botar líquido", "flujo con sangre", "sangrado antes de los tres meses", "sangrado uterino temprano", "sangre en la pantaleta", "manchado café", "manchado rosado", "hemorragia gestacional temprana", "pérdida de líquido", "sangrado fuera del periodo"]'),
+('O20.9', 'Hemorragia en la fase temprana del embarazo, no especificada', 'Sin especificar', '["sangrado sin causa", "sangrado desconocido embarazo", "botando sangre", "hemorragia", "pérdida hemática", "sangrado inexplicable", "embarazo con sangrado", "sangrado gestacional", "sangre en el embarazo", "pérdida de sangre inexplicable", "problemas de sangrado embarazo", "flujo sanguíneo", "sangrado repentino", "manchado persistente", "desangramiento", "sangrado vago"]');

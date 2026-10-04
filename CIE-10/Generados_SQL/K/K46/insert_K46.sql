@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: K46
--- Aquí se insertarán los códigos que empiecen con K46
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('K46.0', 'Hernia abdominal no especificada con obstrucción, sin gangrena', 'Sin especificar', '["bola en la panza", "bulto en el abdomen", "intestino atorado", "hernia estrangulada", "dolor de barriga fuerte", "guata trabada", "tripas revueltas", "panza dura", "obstrucción intestinal por hernia", "hernia que no baja", "dolor abdominal agudo", "bola en el vientre", "abultamiento doloroso", "hernia complicada", "bulto en la ingle que duele", "náuseas por hernia"]'),
+('K46.1', 'Hernia abdominal no especificada con gangrena', 'Sin especificar', '["hernia necrosada", "hernia podrida", "intestino con gangrena", "hernia infectada", "emergencia por hernia", "hernia que se puso negra", "dolor abdominal insoportable", "bulto muy caliente en la panza", "hernia con tejido muerto", "sepsis por hernia", "panza inflamada y dolorosa", "bulto que no se puede tocar", "hernia en estado grave", "abdomen agudo", "infección en la hernia", "tejido necrosado en el abdomen"]'),
+('K46.9', 'Hernia abdominal no especificada sin obstrucción ni gangrena', 'Sin especificar', '["bola en la barriga", "bulto en el abdomen", "hernia reductible", "hernia simple", "pelotita en la panza", "bulto que entra y sale", "guata con hernia", "hernia abdominal leve", "bolita en el ombligo", "bulto sin dolor", "hernia que se siente al toser", "salida de tejido abdominal", "hernia pequeña", "abultamiento en la pared abdominal", "desgarro abdominal", "hernia asintomática"]');

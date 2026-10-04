@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: N29
--- Aquí se insertarán los códigos que empiecen con N29
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N29', 'Otros trastornos del riñón y del uréter en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["dolor de riñones", "mal de orín", "problemas renales", "dolor en la espalda baja", "piedras en el riñón", "cálculos renales", "cólico nefrítico", "dolor en el costado", "inflamación de riñones", "infección urinaria", "falla renal", "dolor de cintura", "ureteritis", "dolor de riñón", "tengo dolor atrás en la espalda", "punzadas en la espalda baja", "orinar mal", "arenilla en los riñones", "problemas de vías urinarias"]');

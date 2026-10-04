@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: L55
--- Aquí se insertarán los códigos que empiecen con L55
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('L55.0', 'Quemadura solar de primer grado', 'Sin especificar', '["quemadura de sol", "piel roja", "ardor en la piel", "piel quemada", "insolación leve", "pellejo rojo", "quemado por el sol", "ardor solar", "piel irritada por sol", "enrojecimiento solar", "asoleada", "quemazón", "piel encendida", "picazón por sol", "quemadita"]'),
+('L55.1', 'Quemadura solar de segundo grado', 'Sin especificar', '["ampollas por sol", "quemadura solar con ampollas", "burbujas en la piel", "quemadura con vejigas", "quemadura solar grave", "piel levantada por sol", "quemadura con agua", "quemado fuerte", "insolación con ampollas", "quemadura de segundo grado", "flictenas solares", "piel en carne viva", "quemadura dolorosa", "ampollas en la espalda", "quemadura de sol profunda"]'),
+('L55.2', 'Quemadura solar de tercer grado', 'Sin especificar', '["quemadura solar severa", "quemadura solar de tercer grado", "daño profundo en la piel", "piel carbonizada", "quemadura que no duele", "destrucción de tejidos", "quemadura solar crítica", "piel blanca o acartonada", "quemadura de espesor total", "necrosis por sol", "emergencia por quemadura", "quemadura grave por sol", "piel quemada profundamente", "quemadura de grado mayor", "daño dérmico severo"]'),
+('L55.9', 'Quemadura solar, no especificada', 'Sin especificar', '["me quemé con el sol", "insolación", "golpe de calor", "piel tostada", "quemadura por rayos UV", "irritación solar", "ardor por asolearme", "dolor por sol", "piel dañada por el sol", "asoleado", "quemadura de playa", "bronceado que duele", "exposición solar excesiva", "quemazón solar", "piel sensible por sol"]');

@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: N33
--- Aquí se insertarán los códigos que empiecen con N33
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N33', 'Trastornos de vejiga en enfermedades clasificadas bajo otro concepto', 'Sin especificar', '["dolor al orinar", "ardor al hacer pipí", "vejiga irritada", "cistitis", "mal de orín", "infección urinaria", "ganas constantes de orinar", "vejiga hiperactiva", "escozor al orinar", "orinar a cada rato", "dolor en la vejiga", "problemas para orinar", "ardor genital", "goteo al orinar", "vejiga inflamada", "pujo al orinar", "orina con mal olor", "micción dolorosa", "chorro de orina débil", "incontinencia urinaria"]');

@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: N65
--- Aquí se insertarán los códigos que empiecen con N65
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N65.0', 'Deformidad de mama reconstruida', 'Sin especificar', '["deformidad en seno", "pecho deformado post cirugía", "teta operada rara", "bultos tras reconstrucción mamaria", "pecho asimétrico reconstruido", "secuelas de mastectomía", "mala forma en reconstrucción de mama", "hundimiento en pecho", "deformidad tras reconstrucción", "problemas estéticos tras cirugía de seno", "busto deforme post operatorio", "irregularidades en la teta", "contorno mamario irregular", "cambios de forma en seno reconstruido", "mama con bultos tras cirugía"]'),
+('N65.1', 'Desproporción de mama reconstruida', 'Sin especificar', '["pecho más grande que el otro", "asimetría mamaria post reconstrucción", "teta desproporcionada", "desequilibrio de senos operados", "senos de diferente tamaño post cirugía", "pecho más caído que el otro", "diferencia de volumen en reconstrucción", "seno desigual tras reconstrucción", "descompensación en el tamaño del busto", "pechos disparejos", "asimetría en reconstrucción mamaria", "diferencia de talla en pechos", "mama reconstruida más pequeña", "falta de simetría en mamas reconstruidas", "desproporción de volumen mamario"]');

@@ -1,3 +1,7 @@
--- Archivo SQL para el grupo CIE-10: L73
--- Aquí se insertarán los códigos que empiecen con L73
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('L73.0', 'Acné queloide', 'Sin especificar', '["acné queloideo de la nuca", "granos en la nuca", "cicatrices en el cuello", "bultos en la nuca", "keloide en la nuca", "foliculitis queloidea", "espinillas duras cuello", "queloide nuca", "bolitas en el cuello", "inflamación nuca", "granos rebeldes cuero cabelludo", "cicatrices hipertróficas nuca", "acné inflamatorio nuca"]'),
+('L73.1', 'Seudofoliculitis de la barba', 'Sin especificar', '["pelos encarnados", "barba irritada", "pelos enterrados", "granitos por afeitarse", "foliculitis por afeitado", "pelos adentro de la piel", "barbilla irritada", "pelos enconados", "barba encarnada", "granos por rastrillo", "puntos rojos en la barba", "inflamación por rasurada", "pelos atrapados piel"]'),
+('L73.2', 'Hidradenitis supurativa', 'Sin especificar', '["golondrinos", "granos en la axila", "bultos en la ingle", "abscesos recurrentes", "infección axilar", "quistes en las axilas", "bolas en la entrepierna", "hidradenitis", "granos profundos", "supuración axilar", "infección glútea", "bultos que supuran", "acné invertido"]'),
+('L73.8', 'Otros trastornos foliculares especificados', 'Sin especificar', '["problemas folículo piloso", "foliculitis", "piel de gallina", "granos en la piel", "poros obstruidos", "puntos negros persistentes", "irritación folicular", "reacción en los poros", "pelo atascado", "inflamación de poros", "granos por vellos", "alteración de folículos", "problema dermatológico folículos"]'),
+('L73.9', 'Trastorno folicular, no especificado', 'Sin especificar', '["enfermedad de la piel", "granos inexplicables", "problema en los poros", "foliculitis sin nombre", "alteración cutánea", "irritación de la piel", "bultitos en la piel", "erupción folicular", "problema de vellos", "afección folicular", "piel con granitos", "manchas y granos", "molestia en la piel folículos"]');

@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: L82
--- Aquí se insertarán los códigos que empiecen con L82
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('L82.0', 'Queratosis seborreica irritada', 'Sin especificar', '["mancha en la piel", "verruga seca", "lunares de vejez", "queratosis inflamada", "lesión cutánea con costra", "mancha rugosa que pica", "verruga que sangra", "excrecencia cutánea", "mancha café con relieve", "verruga sebácea irritada", "mancha de sol con costra", "queratosis que duele", "tumor benigno en la piel", "mancha aterciopelada irritada", "verruga verrugosa", "mancha que arde", "lesión queratósica inflamada"]'),
+('L82.1', 'Otros tipos de queratosis seborreica', 'Sin especificar', '["verrugas de la edad", "manchas seniles", "lunares de carne", "verrugas planas", "manchas café con leche", "queratosis seborreica", "tumores benignos de la piel", "manchas rugosas", "verrugas oscuras", "crecimientos cutáneos benignos", "manchas de vejez", "queratosis parda", "verrugas tipo sebo", "manchas con aspecto de cera", "lesiones cutáneas planas", "verrugas aterciopeladas", "manchas abultadas"]');

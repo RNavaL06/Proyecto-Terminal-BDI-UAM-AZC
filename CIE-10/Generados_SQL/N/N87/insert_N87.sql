@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: N87
--- Aquí se insertarán los códigos que empiecen con N87
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('N87.0', 'Displasia cervical leve', 'Sin especificar', '["NIC 1", "lesión de bajo grado", "cambios en el cuello uterino", "células precancerosas leves", "VPH cuello uterino", "citología anormal", "papanicolaou con cambios", "displasia leve en la matriz", "infección por VPH en cuello", "lesión escamosa intraepitelial de bajo grado", "LSIL", "control ginecológico anormal", "células anormales en la cérvix", "displasia grado 1", "chequeo mujer anormal"]'),
+('N87.1', 'Displasia cervical moderada', 'Sin especificar', '["NIC 2", "lesión de alto grado", "displasia moderada", "células precancerosas cérvix", "HSIL", "lesión escamosa intraepitelial de alto grado", "cambios celulares cuello del útero", "papanicolaou alterado", "citología con displasia", "riesgo de cáncer de cuello uterino", "lesión precancerosa moderada", "anormalidad cervical", "células displásicas", "NIC II", "patología cervical moderada"]'),
+('N87.9', 'Displasia del cervix, no especificada', 'Sin especificar', '["displasia de cuello uterino", "problemas en el cuello de la matriz", "células raras en el cérvix", "estudio citológico anormal", "enfermedad de la cérvix", "cambios en el Papanicolaou", "displasia uterina", "lesión en la cérvix", "anormalidad en el cuello uterino", "NIC sin especificar", "patología del cérvix", "diagnóstico de displasia", "citología con hallazgos", "chequeo de mujer con problemas", "células atípicas en el cuello uterino"]');

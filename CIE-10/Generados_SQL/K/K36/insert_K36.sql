@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: K36
--- Aquí se insertarán los códigos que empiecen con K36
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('K36', 'Otros tipos de apendicitis', 'Sin especificar', '["apendicitis", "dolor en la panza", "dolor en la guata", "dolor en la barriga", "inflamación del apéndice", "apéndice inflamado", "dolor en el lado derecho del abdomen", "punzada en el costado", "dolor abdominal agudo", "cólico apendicular", "dolor de vientre", "fiebre y dolor de panza", "náuseas y dolor abdominal", "dolor en la fosa ilíaca derecha", "apéndice reventado", "ataque de apéndice", "dolor al caminar por apendicitis", "infección en el apéndice"]');

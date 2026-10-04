@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: L64
--- Aquí se insertarán los códigos que empiecen con L64
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('L64.0', 'Alopecia androgénica, inducida por fármacos', 'Sin especificar', '["caída de pelo por pastillas", "calvicie medicamentosa", "pérdida de cabello por fármacos", "pelo que se cae por tratamiento", "alopecia por químicos", "quedar pelado por medicinas", "efecto secundario de medicamentos pelo", "caída capilar inducida", "pérdida de pelo por fármacos", "se me cae el pelo por las pastillas", "reacción adversa alopecia", "calvicie por toxicidad farmacológica", "pérdida de pelo por quimioterapia", "alopecia inducida", "caída de cabello por medicamentos"]'),
+('L64.8', 'Otros tipos de alopecia androgénica', 'Sin especificar', '["calvicie hereditaria", "calvicie común", "se me clarea la cabeza", "entradas en el pelo", "coronilla despoblada", "pérdida de pelo hormonal", "alopecia androgenética", "calvicie masculina", "quedar calvo", "poca densidad capilar", "pelo ralo", "pérdida de cabello por genética", "alopecia difusa", "se me ve el cuero cabelludo", "caída de pelo por edad", "calvicie femenina"]'),
+('L64.9', 'Alopecia androgénica, no especificada', 'Sin especificar', '["calvicie sin causa clara", "caída de pelo persistente", "alopecia sin especificar", "pérdida de cabello sin diagnóstico", "se me cae el pelo mucho", "problemas de calvicie", "calvicie inespecífica", "pelo que se cae", "estoy quedando pelón", "quedar sin pelo", "atrofia del folículo", "debilitamiento capilar", "calvicie precoz", "alopecia general", "caída capilar crónica", "pérdida de pelo en zonas"]');

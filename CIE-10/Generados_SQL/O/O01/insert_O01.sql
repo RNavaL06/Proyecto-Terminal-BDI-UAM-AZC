@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: O01
--- Aquí se insertarán los códigos que empiecen con O01
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('O01.0', 'Mola hidatiforme clásica', 'Sin especificar', '["embarazo molar", "tumor en el útero", "quiste en el útero", "embarazo de uvas", "gestación molar", "pérdida de embarazo", "sangrado en embarazo", "placenta anormal", "tumor placentario", "masa en la matriz", "embarazo fallido", "sangrado vaginal", "crecimiento anormal en útero", "trofoblasto", "enfermedad trofoblástica"]'),
+('O01.1', 'Mola hidatiforme incompleta o parcial', 'Sin especificar', '["mola parcial", "embarazo molar incompleto", "gestación anómala", "aborto retenido", "sangrado por la matriz", "embarazo sin feto", "problemas en la placenta", "masa placentaria", "crecimiento fuera de lugar", "sangrado a inicios del embarazo", "tejido anormal en el útero", "trofoblasto parcial", "enfermedad del embarazo", "complicación de gestación", "quistes en la placenta"]'),
+('O01.9', 'Mola hidatiforme, no especificada', 'Sin especificar', '["embarazo molar", "problemas en la matriz", "enfermedad trofoblástica gestacional", "tumor de placenta", "sangrado anormal", "gestación complicada", "masa en el vientre", "pérdida del bebé", "crecimiento uterino anormal", "embarazo mal formado", "complicación del útero", "diagnóstico de mola", "sangrado durante el embarazo", "tumor benigno en útero", "riesgo en el embarazo"]');

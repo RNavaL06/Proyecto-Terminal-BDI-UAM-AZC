@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: L21
--- Aquí se insertarán los códigos que empiecen con L21
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('L21.0', 'Seborrea capitis', 'Sin especificar', '["caspa", "costra láctea", "cuero cabelludo graso", "picazón en la cabeza", "escamas en el pelo", "caspilla", "seborrea", "descamación del cuero cabelludo", "hongos en la cabeza", "picor de cabeza", "pelo graso", "picores en el cuero cabelludo", "erupción en el cuero cabelludo", "caspa persistente", "pellejitos en la cabeza"]'),
+('L21.1', 'Dermatitis seborreica infantil', 'Sin especificar', '["costra láctea", "caspa del bebé", "escamas en la cabeza del bebé", "costras en el cuero cabelludo del recién nacido", "dermatitis del pañal", "rojez en la cabeza del bebé", "piel escamosa bebé", "manchas amarillas bebé", "costras amarillentas recién nacido", "erupción infantil", "escamitas en el pelo del bebé", "irritación en la cabeza del bebé", "dermatitis de cuna", "costra de leche", "piel grasa bebé"]'),
+('L21.8', 'Otros tipos de dermatitis seborreicas', 'Sin especificar', '["dermatitis grasa", "piel descamada", "eccema seborreico", "manchas rojas en la cara", "picazón en la cara", "descamación detrás de las orejas", "dermatitis en el pecho", "piel irritada y con escamas", "seborrea facial", "eccema en cejas", "piel con caspa", "inflamación cutánea", "rojez en pliegues de la piel", "picor por seborrea", "dermatitis del cuero cabelludo adulto"]'),
+('L21.9', 'Dermatitis seborreica, no especificada', 'Sin especificar', '["dermatitis", "eccema", "piel descamada", "seborrea", "picazón de piel", "rojez en la piel", "manchas descamadas", "irritación cutánea", "problemas de la piel", "piel grasa con rojez", "escamas amarillentas", "dermatitis generalizada", "picor crónico", "erupción cutánea escamosa", "afección de la piel"]');

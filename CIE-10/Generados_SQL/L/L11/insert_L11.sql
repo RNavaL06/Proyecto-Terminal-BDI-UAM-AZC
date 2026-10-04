@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: L11
--- Aquí se insertarán los códigos que empiecen con L11
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('L11.0', 'Queratosis folicular adquirida', 'Sin especificar', '["piel de gallina", "granitos en la piel", "foliculitis", "puntos rojos", "aspereza en la piel", "piel áspera", "folículos tapados", "queratosis pilar", "granos en los brazos", "piel de lija", "poros obstruidos", "erupción folicular", "piel irritada", "puntos en la piel", "dermatitis folicular"]'),
+('L11.1', 'Dermatosis acantolítica transitoria [Grover]', 'Sin especificar', '["enfermedad de Grover", "picazón en el pecho", "ronchas que pican", "erupción en el torso", "pápulas que pican", "picazón intensa", "erupción de verano", "alergia en la espalda", "bultitos en la piel", "dermatosis que pica", "prurito en el tronco", "erupción cutánea transitoria", "manchas con relieve", "irritación por calor", "granos en la espalda"]'),
+('L11.8', 'Otros tipos de trastornos acantolíticos especificados', 'Sin especificar', '["problemas de la piel", "lesiones cutáneas", "desprendimiento de células", "acantólisis", "dermatitis extraña", "ampollas en la piel", "erupciones raras", "pérdida de unión celular", "manchas en la piel", "dermatosis especificada", "alteración de la epidermis", "problema dermatológico", "descamación", "irritación crónica", "afección cutánea rara"]'),
+('L11.9', 'Trastorno acantolítico, no especificado', 'Sin especificar', '["dermatitis no diagnosticada", "problema de piel desconocido", "erupción cutánea", "piel descamada", "lesión cutánea", "enfermedad de la piel", "picazón generalizada", "granos o manchas", "irritación en la piel", "problema dermatológico sin nombre", "mancha rara", "alteración de la piel", "prurito inexplicable", "desorden cutáneo", "reacción en la piel"]');
