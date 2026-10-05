@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: P80
--- Aquí se insertarán los códigos que empiecen con P80
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('P80.0', 'Síndrome de lesión por frío', 'Sin especificar', '["bebé congelado", "enfriamiento neonatal", "hipotermia por frío", "bebé helado", "lesión por frío", "recién nacido frío", "shock por frío", "bebé tieso por frío", "insuficiencia térmica neonatal", "bebé morado por frío", "enfriamiento severo", "desequilibrio térmico neonatal", "pérdida de calor bebé"]'),
+('P80.8', 'Otros tipos de hipotermia del recién nacido', 'Sin especificar', '["bebé con frío", "temperatura baja en recién nacido", "hipotermia infantil", "bebé se enfría", "recién nacido con guata fría", "bebé con la panza fría", "desajuste térmico", "bebé no calienta", "enfriamiento del crío", "bebé helado al tacto", "fallo termorregulador", "hipotermia leve neonatal", "bebé friolento"]'),
+('P80.9', 'Hipotermia del recién nacido, no especificada', 'Sin especificar', '["bebé frío", "recién nacido frío", "bebé con temperatura baja", "hipotermia sin causa", "bebé no mantiene temperatura", "recién nacido destemplado", "bebé con frío excesivo", "bebé pálido y frío", "mala termorregulación", "recién nacido entumecido", "bebé con escalofríos", "síndrome de enfriamiento", "bebé helado no especificado"]');

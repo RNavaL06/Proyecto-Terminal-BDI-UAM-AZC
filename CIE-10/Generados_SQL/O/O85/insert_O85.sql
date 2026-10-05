@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: O85
--- Aquí se insertarán los códigos que empiecen con O85
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('O85', 'Sepsis puerperal', 'Sin especificar', '["infección después del parto", "fiebre puerperal", "infección postparto", "sepsis tras dar a luz", "fiebre de la leche", "infección en la matriz", "infección uterina postparto", "septicemia después de parir", "infección en la cesárea", "fiebre de sobreparto", "infección después de alumbrar", "complicaciones infecciosas tras el parto", "fiebre alta después del alumbramiento", "infección grave postparto", "sepsis obstétrica", "infección en los puntos del parto", "fiebre de cuarentena"]');

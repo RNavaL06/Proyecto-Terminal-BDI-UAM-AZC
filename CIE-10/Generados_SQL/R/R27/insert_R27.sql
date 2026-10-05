@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: R27
--- Aquí se insertarán los códigos que empiecen con R27
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R27.0', 'Ataxia, no especificada', 'Sin especificar', '["pérdida de equilibrio", "caminar como borracho", "torpeza al moverse", "descoordinación", "falta de equilibrio", "andar tambaleante", "cuerpo que no responde", "inestabilidad al caminar", "movimientos erráticos", "falta de control motor", "andar raro", "desequilibrio", "marcha atáxica", "tropiezos frecuentes", "falta de coordinación"]'),
+('R27.8', 'Otras alteraciones de la coordinación motora', 'Sin especificar', '["problemas de motricidad", "torpeza física", "dificultad para agarrar cosas", "tembleque", "movimientos torpes", "dificultad para coordinar", "problemas de movimiento", "torpeza de manos", "falta de precisión al moverse", "descoordinación motora", "habilidades motoras alteradas", "dificultad con la motricidad fina", "lentitud motriz", "tensión en los movimientos", "dificultad para realizar tareas manuales"]'),
+('R27.9', 'Alteración de la coordinación motora no especificada', 'Sin especificar', '["no me sale el movimiento", "descontrol motor", "movimientos extraños", "falla al moverme", "incapacidad de coordinar", "torpeza inexplicable", "mala coordinación", "desenchufe motor", "problema de coordinación", "rigidez extraña", "falta de destreza", "dificultad para manejar el cuerpo", "movimientos descoordinados", "desequilibrio motor", "cuerpo raro"]');

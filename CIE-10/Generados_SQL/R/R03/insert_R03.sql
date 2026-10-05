@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: R03
--- Aquí se insertarán los códigos que empiecen con R03
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R03.0', 'Medida de presión arterial elevada, sin diagnóstico de hipertensión', 'Sin especificar', '["presión alta", "tensión alta", "presión subida", "me subió la presión", "taquicardia", "dolor de nuca", "zumbido en los oídos", "mareos", "hipertensión leve", "tensión elevada", "corazon acelerado", "presión por las nubes", "tensión disparada", "presión arterial alta", "siento la presión alta", "presión elevada", "tensión descompensada"]'),
+('R03.1', 'Medida de presión arterial baja inespecífica', 'Sin especificar', '["presión baja", "tensión baja", "hipotensión", "bajón de presión", "me bajó la tensión", "mareos", "desmayo", "me siento debil", "presión por los suelos", "lipotimia", "tensión por el piso", "desvanecimiento", "se me nubla la vista", "presión arterial baja", "me siento mareado", "tengo la presión muy baja", "bajón de azúcar y presión"]');

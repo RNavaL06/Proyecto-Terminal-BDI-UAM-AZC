@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: R70
--- Aquí se insertarán los códigos que empiecen con R70
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R70.0', 'Elevación de la velocidad de sedimentación globular', 'Sin especificar', '["VSG alta", "sedimentación elevada", "inflamación en sangre", "velocidad de eritrosedimentación", "sangre espesa", "infección oculta", "marcadores de inflamación", "análisis de sangre alterado", "problemas inflamatorios", "eritrosedimentación rápida", "sangre con sedimentación", "estudio de inflamación", "resultados de VSG", "indicador de infección", "chequeo de sedimentación"]'),
+('R70.1', 'Viscosidad plasmática alterada', 'Sin especificar', '["sangre espesa", "viscosidad sanguínea", "sangre viscosa", "problemas de circulación", "sangre pesada", "plasma alterado", "exámenes de coagulación", "análisis de viscosidad", "riesgo de trombos", "sangre lenta", "alteración del plasma", "densidad de la sangre", "problemas de fluidez sanguínea", "sangre pegajosa", "estudios hematológicos"]');

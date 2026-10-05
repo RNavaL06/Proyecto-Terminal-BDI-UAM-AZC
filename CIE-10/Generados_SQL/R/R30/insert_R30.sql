@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: R30
--- Aquí se insertarán los códigos que empiecen con R30
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R30.0', 'Disuria', 'Sin especificar', '["ardor al orinar", "quemazón al orinar", "dolor al hacer pipí", "orinar con dolor", "escozor al orinar", "dolor en la uretra", "orina que quema", "mal de orín", "cistitis", "infección urinaria", "chorro doloroso", "picazón al orinar", "molestia al hacer pis", "orinar cortado"]'),
+('R30.1', 'Tenesmo vesical', 'Sin especificar', '["ganas constantes de orinar", "orinar a cada rato", "quedarse con ganas de orinar", "necesidad imperiosa de orinar", "micción incompleta", "sensación de no terminar de orinar", "frecuencia urinaria", "vejiga llena pero no sale nada", "pujo urinario", "ganas de ir al baño a cada rato", "orinar por gotitas", "espasmo en la vejiga", "vejiga hiperactiva", "tensión en la vejiga"]'),
+('R30.9', 'Micción dolorosa, no especificada', 'Sin especificar', '["dolor al orinar", "molestia al hacer pipí", "pipi con dolor", "dolor en la vejiga", "dolor genital al orinar", "pinchazos al orinar", "orinar y ver las estrellas", "problemas para orinar", "escozor genital", "quemazón en la zona íntima", "dolor al bajar el chorro", "orinar con molestia", "disconfort al orinar", "dolor al final de la micción"]');

@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: R88
--- Aquí se insertarán los códigos que empiecen con R88
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R88.0', 'Líquido de diálisis (hemodiálisis) (peritoneal) turbio', 'Sin especificar', '["liquido de dialisis turbio", "dialisis peritoneal sucia", "hemodialisis aspecto lechoso", "agua de dialisis opaca", "liquido de cateter turbio", "infeccion en la dialisis", "peritonitis", "liquido de lavado peritoneal cambiado", "orina o liquido de dialisis extraño", "color raro en el dializado", "sedimento en bolsa de dialisis", "pus en el liquido de dialisis", "liquido de dialisis mal aspecto", "falla renal liquido extraño", "infeccion del peritoneo", "dializado blanquecino", "problemas con la bolsa de dialisis"]'),
+('R88.8', 'Resultados anormales en otros fluidos y sustancias corporales', 'Sin especificar', '["analisis de fluidos alterado", "estudios clinicos raros", "resultados de laboratorio anormales", "examen de liquidos corporales mal", "valores fuera de rango en muestras", "fluidos raros del cuerpo", "alteracion en muestras biologicas", "estudio de liquidos corporales", "biopsia o fluido anormal", "resultados de examen fisico extraño", "analisis de laboratorio inusual", "secreciones con resultados raros", "prueba de laboratorio con problemas", "muestras de fluidos con alteracion", "analitica anormal", "examen medico con hallazgos distintos", "estudio de laboratorio alterado"]');

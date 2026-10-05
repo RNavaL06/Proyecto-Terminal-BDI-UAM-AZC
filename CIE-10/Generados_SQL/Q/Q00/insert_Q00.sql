@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Q00
--- Aquí se insertarán los códigos que empiecen con Q00
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Q00.0', 'Anencefalia', 'Sin especificar', '["falta de cerebro", "bebé sin cerebro", "malformación craneal", "defecto del tubo neural", "cerebro incompleto", "ausencia de bóveda craneal", "anencefálico", "gestación interrumpida", "problemas congénitos graves", "malformación fetal", "anencefalia fetal", "desarrollo cerebral incompleto", "anencefalia"]'),
+('Q00.1', 'Craneorraquisquisis', 'Sin especificar', '["defecto del tubo neural abierto", "columna abierta", "cráneo y columna expuestos", "malformación grave de columna", "espina bífida severa", "falla de cierre del tubo neural", "defecto congénito severo", "ausencia de cierre óseo", "malformación del sistema nervioso central", "craneorraquisquisis total", "defecto neural múltiple", "malformación congénita grave", "columna no cerrada"]'),
+('Q00.2', 'Iniencefalia', 'Sin especificar', '["iniencefalia", "malformación de la base del cráneo", "defecto de la columna cervical", "cuello corto", "inclinación extrema de la cabeza", "fusión de vértebras cervicales", "defecto occipital", "malformación craneocervical", "problemas de postura fetal", "cabeza hacia atrás", "defecto congénito craneal", "malformación neurológica severa", "anomalía de la unión cráneo-espinal"]');

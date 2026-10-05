@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: O48
--- Aquí se insertarán los códigos que empiecen con O48
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('O48.0', 'Embarazo postérmino', 'Sin especificar', '["embarazo pasado de fecha", "bebé que no quiere salir", "embarazo de más de 40 semanas", "se pasó la fecha de parto", "parto retrasado", "embarazo tardío", "gestación prolongada", "bebé atrasado", "se me pasó el tiempo del embarazo", "parto después de la fecha prevista", "embarazo de 41 semanas", "pasada de tiempo", "no me pongo de parto", "fpp vencida", "gestación postérmino", "se cumplió el plazo y no nace"]'),
+('O48.1', 'Embarazo prolongado', 'Sin especificar', '["embarazo largo", "gestación larga", "bebé que tarda en nacer", "embarazo de 42 semanas", "embarazo que se extiende", "parto tardío", "postmadurez", "gestación prolongada", "el bebé sigue adentro", "embarazo que no termina", "esperando el parto", "sobrepasó la fecha de parto", "embarazo crónico", "gestación que dura mucho", "después de las 40 semanas", "bebé que no baja"]');

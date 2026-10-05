@@ -1,3 +1,7 @@
--- Archivo SQL para el grupo CIE-10: R73
--- Aquí se insertarán los códigos que empiecen con R73
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R73.01', 'Glucemia basal alterada', 'Sin especificar', '["azúcar alta en ayunas", "azúcar en sangre elevada", "glucosa alta", "pre-azúcar", "azúcar en el límite", "niveles de azúcar altos", "azúcar en ayuno", "glucemia limítrofe", "azúcar descontrolada", "azúcar en sangre", "azúcar alta al despertar", "glucemia en ayunas", "azúcar alterada", "valores altos de azúcar"]'),
+('R73.02', 'Intolerancia a la glucosa (oral)', 'Sin especificar', '["mala tolerancia al azúcar", "problemas con el azúcar", "azúcar que no baja", "curva de tolerancia alterada", "azúcar alta después de comer", "mala digestión de azúcares", "metabolismo lento de azúcar", "azúcar elevada postprandial", "intolerancia al dulce", "resistencia al azúcar", "problemas para procesar azúcares", "azúcar que sube mucho", "alteración de la glucosa", "azúcar en sangre inestable"]'),
+('R73.03', 'Prediabetes', 'Sin especificar', '["antesala de la diabetes", "principio de diabetes", "aviso de azúcar", "azúcar en el borde", "prediabético", "azúcar un poco alta", "en camino a la diabetes", "etapa previa a la diabetes", "azúcar controlable", "alerta de diabetes", "riesgo de azúcar", "pre-diabético", "niveles de azúcar sospechosos", "aviso del páncreas"]'),
+('R73.09', 'Otros tipos de glucemia anormal', 'Sin especificar', '["desequilibrio de azúcar", "azúcar rara", "problemas de azúcar", "glucosa extraña", "azúcar que sube y baja", "alteración metabólica", "glucemia rara", "picos de azúcar", "bajones y subidas de azúcar", "descontrol glucémico", "anomalía en la sangre", "problemas metabólicos", "azúcar fuera de rango", "glucemia inusual"]'),
+('R73.9', 'Hiperglucemia, no especificada', 'Sin especificar', '["azúcar muy alta", "hiperglucemia", "subidón de azúcar", "azúcar disparada", "azúcar alta", "descompensación de azúcar", "crisis de azúcar", "azúcar elevada", "exceso de azúcar en sangre", "azúcar por las nubes", "picos de glucosa", "hiperglicemia", "azúcar fuera de control", "niveles altos de azúcar"]');

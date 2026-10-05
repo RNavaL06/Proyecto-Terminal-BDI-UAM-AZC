@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Q36
--- Aquí se insertarán los códigos que empiecen con Q36
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Q36.0', 'Labio leporino bilateral', 'Sin especificar', '["labio partido", "labio hendido", "fisura labial", "boquita partida", "labio abierto", "labio con rajadura", "malformación de labio", "nacer con el labio abierto", "labio leporino doble", "hendidura en el labio", "deformidad labial", "labio con muesca", "labio dividido", "problemas al nacer labio", "cirugía de labio"]'),
+('Q36.1', 'Labio leporino medial', 'Sin especificar', '["labio partido en el medio", "fisura labial central", "hendidura labial medial", "labio abierto en el centro", "labio leporino central", "malformación línea media labial", "boquita partida al centro", "fisura en el filtrum", "problema de labio al nacer", "deformidad central del labio", "labio con rajadura central", "hendidura en el arco de cupido", "labio hendido medial", "labio con fisura media", "cirugía correctiva de labio"]'),
+('Q36.9', 'Labio leporino unilateral', 'Sin especificar', '["labio partido de un lado", "labio hendido de un lado", "fisura labial simple", "labio abierto a un costado", "labio leporino sencillo", "boquita partida de un lado", "malformación labial lateral", "nacer con labio rajado", "hendidura de labio unilateral", "deformidad de un lado del labio", "labio con muesca lateral", "labio dividido a un lado", "labio leporino lado izquierdo", "labio leporino lado derecho", "operación de labio hendido"]');

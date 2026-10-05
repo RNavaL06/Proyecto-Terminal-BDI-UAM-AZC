@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: P38
--- Aquí se insertarán los códigos que empiecen con P38
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('P38.1', 'Onfalitis con hemorragia leve', 'Sin especificar', '["ombligo sangrante", "infeccion en el ombligo", "ombligo con pus y sangre", "ombligo rojo bebe", "inflamacion ombligo recien nacido", "sangrado en el cordon umbilical", "ombligo supurando", "ombligo infectado", "ombligo con costra sanguinolenta", "ombligo del bebe con sangre", "onfalitis neonatal", "infeccion umbilical", "ombligo supurativo", "ombligo supurado con sangre", "secrecion umbilical", "ombligo que sangra poquito"]'),
+('P38.9', 'Onfalitis sin hemorragia', 'Sin especificar', '["infeccion del ombligo", "ombligo irritado bebe", "ombligo con pus", "ombligo enrojecido", "mal olor en el ombligo", "inflamacion umbilical", "ombligo del bebe rojo", "ombligo inflamado", "secrecion en el ombligo", "ombligo con mal olor", "infeccion de cordon", "ombligo supurante", "onfalitis del recien nacido", "ombligo con costra", "ombligo babeando", "ombligo infectado sin sangre"]');

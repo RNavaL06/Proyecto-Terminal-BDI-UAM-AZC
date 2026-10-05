@@ -1,3 +1,7 @@
--- Archivo SQL para el grupo CIE-10: R43
--- Aquí se insertarán los códigos que empiecen con R43
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R43.0', 'Anosmia', 'Sin especificar', '["perdida de olfato", "no huelo nada", "no siento olores", "olfato bloqueado", "sin olfato", "anosmia", "nariz tapada sin olor", "perder el gusto y el olfato", "no distingo olores", "disminución del olfato", "nariz muerta", "falta de olfato", "anhidrosis olfativa", "trastorno olfativo"]'),
+('R43.1', 'Parosmia', 'Sin especificar', '["olor distorsionado", "huele mal todo", "olores raros", "cosas que huelen a podrido", "olfato alterado", "olor a quemado constante", "parosmia", "oler feo", "distorsión del olfato", "olores extraños", "todo me huele a químico", "percepción olfativa errónea", "olor desagradable fantasma", "cambio en el olor de la comida"]'),
+('R43.2', 'Parageusia', 'Sin especificar', '["gusto alterado", "sabor raro en la boca", "comida sabe mal", "sabor metalico", "distorsión del gusto", "parageusia", "todo sabe raro", "sabor amargo en la boca", "paladar alterado", "sabor a fierro", "comida con sabor extraño", "alteración gustativa", "sabor a podrido", "mala boca", "lengua con sabor raro"]'),
+('R43.8', 'Otras alteraciones del olfato y el gusto', 'Sin especificar', '["fantosmia", "hiposmia", "hiperosmia", "disgeusia", "ageusia", "hipogeusia", "problemas para saborear", "problemas para oler", "olfato muy sensible", "gusto muy sensible", "no siento el sabor de la comida", "dificultad para distinguir olores", "sabor fantasma", "olor fantasma", "nariz y lengua raras"]'),
+('R43.9', 'Alteraciones del olfato y el gusto no especificadas', 'Sin especificar', '["no siento sabores ni olores", "problemas de olfato y gusto", "se me fue el sabor", "se me fue el olor", "nariz y paladar bloqueados", "trastorno de sentidos", "no detecto aromas ni gustos", "perdida de sentido del gusto y olfato", "sentidos alterados", "no se qué me pasa con el olfato", "nariz rara", "boca rara", "fallo en el olfato y gusto", "insensibilidad sensorial", "desconocimiento del sabor u olor"]');

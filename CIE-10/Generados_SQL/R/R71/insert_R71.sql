@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: R71
--- Aquí se insertarán los códigos que empiecen con R71
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R71.0', 'Descenso brusco del hematocrito', 'Sin especificar', '["anemia aguda", "bajón de sangre", "pérdida de glóbulos rojos", "anemia repentina", "sangrado interno", "anemia severa", "caída de hemoglobina", "palidez repentina", "mareo por anemia", "desmayo por falta de sangre", "hematocrito bajo", "anemia fulminante", "hemorragia oculta", "debilidad extrema", "taquicardia por anemia", "anemia post-hemorrágica"]'),
+('R71.8', 'Otras anomalías de los hematíes', 'Sin especificar', '["problemas de glóbulos rojos", "sangre rara", "anemia de origen desconocido", "deformidad de células sanguíneas", "anemia crónica", "fallo en la sangre", "sangre débil", "alteración eritrocitaria", "anemia genética", "glóbulos rojos deformes", "anemia hereditaria", "problemas de hierro", "cansancio crónico por sangre", "eritrocitos anormales", "sangre espesa", "sangre diluida"]');

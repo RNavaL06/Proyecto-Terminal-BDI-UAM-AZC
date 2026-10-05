@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: P60
--- Aquí se insertarán los códigos que empiecen con P60
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('P60', 'Coagulación intravascular diseminada del recién nacido', 'Sin especificar', '["CID neonatal", "coagulación en bebés", "sangrado anormal recién nacido", "problemas de coagulación bebé", "coágulos en sangre recién nacido", "fallo de coagulación neonatal", "trombosis en recién nacidos", "hemorragias en el recién nacido", "sangrado incontrolable bebé", "CID en neonatos", "fallo multiorgánico recién nacido", "coagulopatía neonatal", "sangrado por venas recién nacido", "coagulación intravascular", "sangrado interno bebé", "coagulación alterada neonato", "problemas de sangre en bebés", "trastorno grave de coagulación", "sangrado del cordón umbilical persistente", "petequias en recién nacidos"]');

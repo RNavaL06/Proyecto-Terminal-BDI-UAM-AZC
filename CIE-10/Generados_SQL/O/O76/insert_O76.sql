@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: O76
--- Aquí se insertarán los códigos que empiecen con O76
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('O76', 'Anormalidad de la frecuencia o ritmo cardiaco fetal que complica el trabajo de parto y el parto', 'Sin especificar', '["ritmo cardiaco del bebé", "latidos del feto", "frecuencia cardiaca fetal", "sufrimiento fetal", "taquicardia fetal", "bradicardia fetal", "desaceleraciones", "monitorización fetal", "monitor del parto", "corazón del bebé lento", "corazón del bebé rápido", "problemas cardiacos en el parto", "alteración del pulso fetal", "patrón cardiaco anormal", "riesgo fetal en trabajo de parto", "corazón del feto agitado", "monitoreo del bebé", "peligro fetal"]');

@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: R18
--- Aquí se insertarán los códigos que empiecen con R18
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R18.0', 'Ascitis maligna', 'Sin especificar', '["hinchazón abdominal", "panza de agua", "barriga hinchada", "líquido en el abdomen", "guata inflada", "ascitis por cáncer", "abdomen distendido", "acumulación de líquido", "panza grande", "vientre abultado", "edema abdominal", "pancita dura", "líquido ascítico", "barriga de tambor", "hinchazón por tumor"]'),
+('R18.8', 'Otros tipos de ascitis', 'Sin especificar', '["agua en el vientre", "abdomen inflamado", "retención de líquidos abdominal", "hinchazón de guata", "barriga llena de líquido", "panza inflamada", "ascitis", "vientre muy hinchado", "líquido libre abdominal", "distensión abdominal", "panza de sapo", "abdomen crecido", "acumulación de agua en la panza", "edema en el abdomen", "inflamación de la panza"]');

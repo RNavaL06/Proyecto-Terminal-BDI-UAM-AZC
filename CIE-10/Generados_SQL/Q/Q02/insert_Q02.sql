@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: Q02
--- Aquí se insertarán los códigos que empiecen con Q02
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Q02', 'Microcefalia', 'Sin especificar', '["cabeza pequeña", "cráneo pequeño", "cabecita chica", "desarrollo cerebral incompleto", "anomalía craneal", "cabeza chiquita", "malformación en la cabeza", "cráneo que no crece", "cabezón no (lo opuesto)", "microcefalia congénita", "problemas de crecimiento craneal", "cerebro poco desarrollado", "perímetro cefálico pequeño", "retraso en el crecimiento de la cabeza", "cabeza de bebé pequeña", "defecto de nacimiento en la cabeza", "cráneo reducido", "microcrania"]');

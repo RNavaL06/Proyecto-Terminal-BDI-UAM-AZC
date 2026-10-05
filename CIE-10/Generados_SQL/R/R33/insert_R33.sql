@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: R33
--- Aquí se insertarán los códigos que empiecen con R33
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R33.0', 'Retención urinaria inducida por fármacos', 'Sin especificar', '["no puedo orinar por pastillas", "vejiga llena por medicamentos", "bloqueo urinario medicamentoso", "pipí atascado fármacos", "dificultad para miccionar medicación", "retención de orina por efecto secundario", "no sale el pipí", "vejiga que no vacía por remedios", "anuria por fármacos", "taponamiento urinario", "tengo ganas y no puedo hacer pipí", "obstrucción urinaria inducida", "retención urinaria por antidepresivos", "no puedo hacer pis por medicinas", "inflamación de vejiga por pastillas"]'),
+('R33.8', 'Otro tipo de retención urinaria', 'Sin especificar', '["vejiga llena y no sale", "globo vesical", "tengo ganas pero no sale nada", "obstrucción al orinar", "dificultad para orinar", "dolor en la vejiga al intentar hacer pis", "cistitis con retención", "orina retenida", "no puedo vaciar la vejiga", "pipí atascado", "micción bloqueada", "retención aguda de orina", "problemas para orinar", "me duele al querer orinar y no sale", "vejiga distendida"]'),
+('R33.9', 'Retención urinaria, no especificada', 'Sin especificar', '["no puedo hacer pipí", "no me sale la orina", "tengo ganas de hacer pis y no puedo", "vejiga atascada", "bloqueo urinario", "retención de orina", "problemas urinarios", "ganas de orinar sin éxito", "micción imposible", "dolor por retención de orina", "vejiga llena que no descarga", "incapacidad para orinar", "tengo la vejiga muy llena y no sale", "se me quedó la orina", "no puedo tirar el agua"]');

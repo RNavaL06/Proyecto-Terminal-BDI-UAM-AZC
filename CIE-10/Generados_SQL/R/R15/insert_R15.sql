@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: R15
--- Aquí se insertarán los códigos que empiecen con R15
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R15.0', 'Defecación incompleta', 'Sin especificar', '["sensación de no terminar", "evacuación incompleta", "tenesmo rectal", "quedarse con ganas", "popo no sale todo", "pujo", "esfuerzo al obrar", "estreñimiento", "quedarse con el pendiente", "sensación de pesadez anal", "evacuar a medias", "heces retenidas", "obstrucción al defecar", "ganas de ir al baño otra vez", "no vaciar el intestino"]'),
+('R15.1', 'Manchado fecal', 'Sin especificar', '["manchar la ropa interior", "fuga fecal", "soiling", "escapes de caca", "ensuciar el calzón", "manchar el interior", "fugas de excremento", "ensuciarse sin querer", "goteo rectal", "manchado en la trusa", "popo en la ropa", "escurrimiento anal", "incontinencia menor", "higiene anal deficiente", "humedad fecal"]'),
+('R15.2', 'Urgencia fecal', 'Sin especificar', '["ganas imperiosas de ir al baño", "no aguantarse la caca", "tener que correr al baño", "urgencia para obrar", "emergencia intestinal", "necesidad inmediata de defecar", "no poder retener el excremento", "pánico al no encontrar baño", "esfínter flojo", "ganas repentinas", "apuro por defecar", "no poder esperar", "incontinencia de urgencia", "cagadera repentina", "colitis de urgencia"]'),
+('R15.9', 'Incontinencia total de heces', 'Sin especificar', '["no poder controlar la caca", "defecación involuntaria", "incontinencia anal", "pérdida de control de esfínter", "hacerse en los pantalones", "no poder aguantar nada", "incontinencia fecal total", "fuga total de excremento", "pérdida de esfínter", "cagarse sin darse cuenta", "incontinencia de materia fecal", "incapacidad para contener heces", "esfínter roto", "incontinencia escatológica", "falta de control anal"]');

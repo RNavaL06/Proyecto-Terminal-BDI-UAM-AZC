@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: R59
--- Aquí se insertarán los códigos que empiecen con R59
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R59.0', 'Adenomegalia localizada', 'Sin especificar', '["ganglio inflamado", "bolita en el cuello", "pelota en la axila", "bulto en la ingle", "nódulo inflamado", "ganglio crecido", "inflamación de ganglios", "ganglios linfáticos hinchados", "bolita bajo la piel", "bulto localizado", "adenitis", "ganglio aumentado de tamaño", "bola en la piel", "tumoración localizada", "inflamación glandular"]'),
+('R59.1', 'Adenomegalia generalizada', 'Sin especificar', '["ganglios inflamados en todo el cuerpo", "varias bolitas en el cuerpo", "adenopatía generalizada", "ganglios hinchados por todas partes", "inflamación de ganglios múltiples", "ganglios del cuello y axilas inflamados", "adenopatías sistémicas", "muchas bolitas en la piel", "ganglios crecidos en varias zonas", "linfadenopatía generalizada", "bolitas por todo el cuerpo", "inflamación general del sistema linfático", "ganglios inflamados en cuello, axilas e ingle", "cuadro de ganglios inflamados", "adenomegalias múltiples"]'),
+('R59.9', 'Adenomegalia, no especificada', 'Sin especificar', '["ganglio crecido sin causa", "tengo una bolita y no sé qué es", "inflamación de ganglios linfáticos", "bulto extraño en el cuerpo", "ganglio inflamado qué hacer", "adenomegalia", "bolita en el cuerpo", "bultos linfáticos", "por qué tengo los ganglios hinchados", "ganglio aumentado", "problemas de ganglios", "inflamación linfática", "ganglio raro", "bolita que duele", "bulto en el sistema linfático"]');

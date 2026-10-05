@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: R91
--- Aquí se insertarán los códigos que empiecen con R91
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R91.1', 'Nódulo pulmonar solitario', 'Sin especificar', '["mancha en el pulmón", "bolita en el pulmón", "nódulo solitario", "punto en el pulmón", "nódulo pulmonar", "masa pulmonar", "quiste en el pulmón", "bola en el pecho", "nódulo en el tórax", "hallazgo pulmonar", "opacidad pulmonar", "sombra en el pulmón", "nódulo benigno o maligno", "lesión pulmonar única", "nódulo pulmonar asintomático", "mancha sospechosa en placa"]'),
+('R91.8', 'Otros resultados inespecíficos anormales del campo pulmonar', 'Sin especificar', '["manchas en los pulmones", "radiografía rara del pulmón", "hallazgos anormales tórax", "infiltrado pulmonar", "sombra en la radiografía", "pulmones sucios", "opacidad en el campo pulmonar", "lesión pulmonar inespecífica", "nódulos múltiples", "patrón pulmonar anormal", "radiografía de tórax con problemas", "manchitas en el pecho", "alteración pulmonar", "velamiento pulmonar", "consolidación pulmonar", "imagen pulmonar inusual"]');

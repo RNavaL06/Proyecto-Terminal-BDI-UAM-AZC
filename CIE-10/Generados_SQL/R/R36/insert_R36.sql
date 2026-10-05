@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: R36
--- Aquí se insertarán los códigos que empiecen con R36
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R36.0', 'Secreción uretral sin sangre', 'Sin especificar', '["supuración del pene", "pus en la uretra", "goteo uretral", "secreción blanca en el pene", "flujo uretral", "gota matutina", "infección urinaria masculina", "pupu en el pito", "líquido raro en el miembro", "secreción al orinar", "baba en la uretra", "secreción transparente del pene", "uretritis", "picazón al orinar", "mancha en el calzoncillo", "descarga peneana", "síntomas de ETS", "infección de transmisión sexual"]'),
+('R36.1', 'Hematospermia', 'Sin especificar', '["sangre en el semen", "eyaculación con sangre", "semen rosado", "eyaculado rojo", "sangre al correrse", "sangre en la leche", "semen manchado de sangre", "sangre en el esperma", "eyaculación sanguinolenta", "sangre al eyacular", "semen con coágulos", "sangre tras el sexo", "sangre en el fluido seminal", "mancha de sangre en el condón", "hematuria seminal", "problemas al eyacular", "sangre en el orgasmo"]'),
+('R36.9', 'Secreción uretral, no especificada', 'Sin especificar', '["goteo en el pene", "humedad en los genitales", "flujo genital masculino", "secreción uretral", "salida de líquido por el pene", "manchas en la ropa interior", "infección de pene", "secreción no identificada", "problemas urinarios masculinos", "supuración genital", "secreción extraña al orinar", "flujo uretral inespecífico", "secreción de la uretra", "baba del miembro", "goteo post-miccional", "irritación en la uretra", "síntoma uretral", "flujo en la pichula", "secreción en el pilín"]');

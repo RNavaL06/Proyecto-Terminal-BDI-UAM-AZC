@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: Q69
--- Aquí se insertarán los códigos que empiecen con Q69
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Q69.0', 'Dedo (-s) de la mano supernumerario (-s)', 'Sin especificar', '["dedo de más en la mano", "dedo extra", "polidactilia manual", "dedos añadidos", "dedo de más", "malformación en la mano", "dedo que sobra", "dedo adicional", "dedos extras", "dedito de más", "dedo supernumerario", "dedos extra en la mano", "anomalía congénita dedos", "dedo de nacimiento", "dedo extra en la palma"]'),
+('Q69.1', 'Pulgar (-es) supernumerario (-s)', 'Sin especificar', '["pulgar de más", "dos pulgares en un dedo", "pulgar extra", "dedo gordo de más", "pulgar duplicado", "pulgar adicional", "dedo gordo extra", "polidactilia preaxial", "pulgar bífido", "malformación del pulgar", "pulgarcito extra", "doble pulgar", "pulgar supernumerario", "anomalía del pulgar", "dedo gordo de nacimiento"]'),
+('Q69.2', 'Dedo (-s) del pie supernumerario (-s)', 'Sin especificar', '["dedo de más en el pie", "dedo extra en el pie", "dedo del pie que sobra", "polidactilia podálica", "dedo adicional en el pie", "dedo de más en la pata", "dedo extra en la extremidad inferior", "dedo del pie extra", "deditos de más en el pie", "malformación en los pies", "dedo sobrante en el pie", "anomalía en los dedos del pie", "dedo de nacimiento en el pie", "dedo del pie supernumerario", "dedo extra podal"]'),
+('Q69.9', 'Polidactilia no especificada', 'Sin especificar', '["tener más dedos", "dedos de más", "polidactilia", "nacer con dedos de más", "dedos extras", "malformación de dedos", "dedos sobrantes", "muchos dedos", "anomalía de dedos", "tener dedos extra", "dedos supernumerarios", "dedos adicionales", "deformidad en los dedos", "problema de dedos de nacimiento", "dedos de más en manos o pies"]');

@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: O94
--- Aquí se insertarán los códigos que empiecen con O94
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('O94', 'Secuelas de complicaciones del embarazo, parto y puerperio', 'Sin especificar', '["secuelas postparto", "problemas despues del embarazo", "complicaciones de parto", "dolores despues de dar a luz", "secuelas de la gestacion", "problemas del puerperio", "quedar mal despues del parto", "cicatrices de cesarea", "dolor pelvico postparto", "secuelas de embarazo de alto riesgo", "complicaciones de la cuarentena", "secuelas por parto dificil", "lesiones tras el alumbramiento", "problemas de salud despues de parir", "secuelas de eclampsia", "recuperacion postparto lenta", "dolencias de la recien parida", "complicaciones tardias del embarazo"]');

@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: R16
--- Aquí se insertarán los códigos que empiecen con R16
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R16.0', 'Hepatomegalia, no clasificada bajo otro concepto', 'Sin especificar', '["hígado inflamado", "hígado grande", "hinchazón abdominal", "dolor en el cuadrante superior derecho", "hígado crecido", "pesadez estomacal", "dolor bajo las costillas derechas", "inflamación hepática", "panza inflamada", "barriga hinchada", "dolor en la guata", "hepatitis", "molestia en el hipocondrio derecho", "abultamiento en el abdomen", "hígado graso"]'),
+('R16.1', 'Esplenomegalia, no clasificada bajo otro concepto', 'Sin especificar', '["bazo inflamado", "bazo grande", "bazo crecido", "dolor bajo las costillas izquierdas", "dolor en el costado izquierdo", "inflamación del bazo", "sensación de plenitud abdominal", "dolor abdominal superior izquierdo", "pesadez en el costado", "hinchazón en el lado izquierdo", "bazo agrandado", "dolor de bazo", "molestia abdominal persistente", "abdomen abultado izquierdo", "esplenomegalia"]'),
+('R16.2', 'Hepatomegalia con esplenomegalia, no clasificadas bajo otro concepto', 'Sin especificar', '["hígado y bazo grandes", "hepatoesplenomegalia", "inflamación de hígado y bazo", "abdomen hinchado", "panza abultada", "dolor abdominal generalizado", "hígado y bazo inflamados", "hinchazón abdominal severa", "dolor bajo las costillas", "pesadez en la panza", "órganos abdominales crecidos", "inflamación de vísceras", "barriga distendida", "malestar abdominal complejo", "crecimiento de órganos abdominales"]');

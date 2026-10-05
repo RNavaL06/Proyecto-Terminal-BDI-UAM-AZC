@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: R57
--- Aquí se insertarán los códigos que empiecen con R57
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R57.0', 'Shock cardiogénico', 'Sin especificar', '["infarto al corazón", "fallo cardíaco", "corazón no bombea", "ataque al corazón", "insuficiencia cardíaca aguda", "paro cardíaco inminente", "colapso del corazón", "choque del corazón", "dolor en el pecho", "presión en el pecho", "palpitaciones fuertes", "taquicardia", "desmayo por corazón", "falla de bomba cardíaca", "insuficiencia de corazón", "choque cardiogénico"]'),
+('R57.1', 'Shock hipovolémico', 'Sin especificar', '["desangramiento", "choque por pérdida de sangre", "deshidratación severa", "desangre", "pérdida de líquidos", "shock por hemorragia", "hipovolemia", "presión baja por desangre", "desmayo por pérdida de sangre", "choque hemorrágico", "falta de sangre en el cuerpo", "deshidratación extrema", "choque por desangramiento", "baja de volumen sanguíneo", "colapso circulatorio", "desangrarse"]'),
+('R57.8', 'Shock, no especificado', 'Sin especificar', '["choque general", "estar en shock", "colapso del cuerpo", "desvanecimiento", "bajada de tensión brusca", "bajón de presión", "choque circulatorio", "desmayo repentino", "pérdida de conciencia", "estar mal", "colapso sistémico", "shock severo", "descompensación aguda", "shock séptico", "shock anafiláctico", "estado de choque", "desgonzarse"]'),
+('R57.9', 'Shock, no especificado', 'Sin especificar', '["shock", "choque", "colapso", "desmayo", "bajón de presión", "descompensación", "estar en shock", "desvanecimiento súbito", "ataque de shock", "crisis circulatoria", "desgonzarse", "estar fuera de sí", "colapso generalizado", "desmayarse", "choque indeterminado", "estado crítico"]');

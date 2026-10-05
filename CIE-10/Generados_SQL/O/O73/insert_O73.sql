@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: O73
--- Aquí se insertarán los códigos que empiecen con O73
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('O73.0', 'Placenta retenida sin hemorragia', 'Sin especificar', '["placenta pegada", "no sale la placenta", "quedó adentro la placenta", "placenta retenida", "postparto sin sangrado", "alumbramiento incompleto", "se quedó la placenta", "no expulsé la placenta", "placenta adherida", "complicación de parto", "retención placentaria", "placenta en el útero", "después del parto", "problemas al dar a luz", "placenta no sale", "revisión de placenta"]'),
+('O73.1', 'Porciones de placenta y membranas retenidas, sin hemorragia', 'Sin especificar', '["restos de placenta", "pedazos de placenta", "membranas en el útero", "placenta incompleta", "quedaron restos adentro", "limpieza de matriz", "legrado por restos", "infección por restos placentarios", "dolor abdominal postparto", "cólicos después del parto", "restos ovulares", "quedó tejido en la matriz", "sangrado escaso postparto", "placenta no salió completa", "revisión de cavidad uterina", "restos de membranas", "mal olor postparto"]');

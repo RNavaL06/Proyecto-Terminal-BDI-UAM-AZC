@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: P53
--- Aquí se insertarán los códigos que empiecen con P53
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('P53', 'Enfermedad hemorrágica del recién nacido', 'Sin especificar', '["sangrado en bebés", "deficiencia de vitamina K", "hemorragia neonatal", "bebé sangrando", "sangre en pañal", "moretones en recién nacidos", "sangrado por el ombligo", "hematomas en bebé", "sangrado interno neonatal", "problemas de coagulación en recién nacidos", "sangrado gastrointestinal en bebés", "enfermedad hemorrágica del lactante", "defecto de coagulación vitamina K", "melena en recién nacido", "sangre en la caca del bebé", "sangrado espontáneo en neonatos", "coagulopatía neonatal"]');

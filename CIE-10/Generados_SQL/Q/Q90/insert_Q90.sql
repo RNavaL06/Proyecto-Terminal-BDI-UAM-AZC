@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: Q90
--- Aquí se insertarán los códigos que empiecen con Q90
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Q90.0', 'Trisomía 21, sin mosaicismo (no disyunción meiótica)', 'Sin especificar', '["Síndrome de Down", "trisomia 21", "mongolismo", "retraso madurativo", "discapacidad intelectual", "cromosomopatia", "problemas de aprendizaje", "retraso cognitivo", "genetica", "alteracion cromosomica", "bebe con sindrome", "alteracion genetica", "desarrollo psicomotor", "sindrome down clasico", "cariotipo trisomia 21"]'),
+('Q90.1', 'Trisomía 21, mosaicismo (no disyunción mitótica)', 'Sin especificar', '["sindrome de down mosaico", "mosaicismo cromosomico", "trisomia 21 mosaicismo", "variante sindrome de down", "forma leve de sindrome de down", "alteracion celular", "genetica", "mutacion en mosaico", "desarrollo cognitivo variable", "cromosomas mezclados", "cariotipo mosaico", "sindrome down atipico", "retraso madurativo", "diagnostico genetico", "discapacidad leve"]'),
+('Q90.2', 'Trisomía 21, translocación', 'Sin especificar', '["sindrome de down por translocacion", "trisomia 21 translocada", "genetica hereditaria", "cromosomas pegados", "reordenamiento cromosomico", "alteracion genetica familiar", "translocacion robertsoniana", "cariotipo con translocacion", "causa genetica sindrome down", "trisomia 21 heredada", "problemas cromosomicos", "anomalia genetica", "desarrollo infantil", "consejo genetico", "diagnostico prenatal"]'),
+('Q90.9', 'Síndrome de Down, no especificado', 'Sin especificar', '["sindrome de down", "trisomia 21", "mongolismo", "nino con sindrome", "discapacidad mental", "retraso en el desarrollo", "problemas geneticos", "rasgos faciales caracteristicos", "hipotonia", "retraso cognitivo", "cromosomopatia", "atencion temprana", "estimulacion temprana", "necesidades educativas especiales", "cariotipo", "discapacidad intelectual"]');

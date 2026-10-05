@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: R51
--- Aquí se insertarán los códigos que empiecen con R51
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R51.0', 'Cefalea con componente ortostático, no clasificada bajo otro concepto', 'Sin especificar', '["dolor de cabeza al levantarse", "mareo al ponerse de pie", "cabeza pesada", "dolor de cabeza postural", "aturdimiento al pararse", "cefalalgia ortostática", "vértigo postural", "presión en la cabeza al estar de pie", "desvanecimiento al levantarse", "dolor de cabeza gravitacional", "se me nubla la vista al pararme", "dolor de cabeza tras punción", "cefalalgia por cambio de posición", "dolor de nuca al levantarse"]'),
+('R51.9', 'Cefalea, no especificada', 'Sin especificar', '["dolor de cabeza", "jaqueca", "migraña", "punzadas en la cabeza", "cabeza pesada", "dolor de chola", "dolor de coco", "dolor de chompa", "cabeza que explota", "mal de cabeza", "tensión en la frente", "dolor de sien", "cabezón", "dolor craneal", "molestia en la cabeza", "casco apretado", "dolor de cabeza constante", "latidos en la cabeza"]');

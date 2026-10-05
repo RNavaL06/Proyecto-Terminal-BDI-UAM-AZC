@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: P90
--- Aquí se insertarán los códigos que empiecen con P90
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('P90', 'Convulsiones neonatales', 'Sin especificar', '["convulsiones en recién nacidos", "bebé con ataques", "temblorina neonatal", "crisis convulsivas en bebés", "bebé que se sacude", "convulsiones de recién nacido", "bebé que se pone tieso", "espasmos en neonatos", "ataques al nacer", "bebé con movimientos raros", "convulsiones de lactante", "crisis epilépticas en bebés", "bebé con rigidez", "tembladera en neonatos", "convulsiones del recién nacido", "movimientos espasmódicos del bebé", "ataques de recién nacido", "convulsiones infantiles tempranas"]');

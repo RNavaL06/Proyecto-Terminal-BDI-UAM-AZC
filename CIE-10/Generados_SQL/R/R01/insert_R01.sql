@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: R01
--- Aquí se insertarán los códigos que empiecen con R01
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R01.0', 'Soplos cardíacos benignos o inocentes', 'Sin especificar', '["soplo en el corazón", "ruido extraño en el pecho", "soplo funcional", "soplo inofensivo", "silbido en el corazón", "soplo infantil", "corazón con ruido", "soplo que se quita solo", "soplo sin importancia", "latido con ruido", "soplo benigno", "ruido al latir", "pitido en el pecho", "soplo fisiológico", "corazón que suena raro", "chequeo de soplo", "soplo de niño"]'),
+('R01.1', 'Soplo cardíaco, no especificado', 'Sin especificar', '["soplo cardíaco", "problemas de válvulas", "ruido en el corazón", "tengo un soplo", "doctor dijo que tengo un soplo", "soplos", "fallo cardíaco", "sonido anormal del corazón", "diagnóstico de soplo", "soplo en adultos", "soplo en el pecho", "latidos raros", "examen del corazón", "auscultación cardíaca", "soplido en el corazón", "patología cardíaca"]'),
+('R01.2', 'Otros ruidos cardíacos', 'Sin especificar', '["ruidos extraños al latir", "chasquidos en el corazón", "roce pericárdico", "latido con eco", "galope cardíaco", "frote en el corazón", "ruidos al auscultar", "sonidos cardíacos anormales", "clics cardíacos", "ruido de válvulas", "taquicardia con ruido", "arritmia con sonido", "palpitaciones con ruido", "ruido raro en el tórax", "sonido soplante", "ruido pericárdico"]');

@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: P93
--- Aquí se insertarán los códigos que empiecen con P93
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('P93.0', 'Síndrome del niño gris', 'Sin especificar', '["síndrome del bebé gris", "toxicidad por cloranfenicol", "piel grisácea recién nacido", "bebé con coloración gris", "cianosis neonatal", "piel amoratada bebé", "shock cardiovascular neonatal", "insuficiencia circulatoria bebé", "efecto secundario cloranfenicol", "bebé pálido y azulado", "intoxicación por antibióticos en recién nacidos", "gray baby syndrome", "bebé con piel gris", "fallo circulatorio neonatal", "reacción adversa medicamentosa neonatos"]'),
+('P93.8', 'Otras reacciones e intoxicaciones debidas a fármacos administrados al recién nacidos', 'Sin especificar', '["reacción a medicamentos recién nacido", "intoxicación medicamentosa neonatos", "efecto secundario fármacos bebé", "sobredosis de medicina en recién nacido", "toxicidad por fármacos neonatales", "alergia a remedios en bebés", "efectos adversos medicamentos bebé", "malestar por medicamentos neonatos", "reacción alérgica fármacos recién nacido", "toxicidad neonatal por medicamentos", "problemas por medicación en el hospital bebé", "reacción rara a fármacos recién nacido", "intoxicación iatrogénica neonatal", "reacción a jarabes o inyecciones bebé", "efectos tóxicos medicamentos recién nacido"]');

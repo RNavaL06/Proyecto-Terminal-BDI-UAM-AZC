@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: Q11
--- Aquí se insertarán los códigos que empiecen con Q11
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Q11.0', 'Globo ocular quístico', 'Sin especificar', '["ojo quístico", "quiste en el ojo", "ojo deforme", "ojo con líquido", "ojo hueco", "malformación ocular", "globo ocular lleno de líquido", "ojo atrofiado", "ojo con quiste congénito", "ojo que no se formó bien", "ojo ciego con quiste", "ojo estropeado de nacimiento", "anomalía del ojo", "ojo quistoso", "problema de formación ocular"]'),
+('Q11.1', 'Otras anoftalmías', 'Sin especificar', '["nacer sin ojos", "falta de ojos", "anoftalmia", "ausencia de globos oculares", "ojo que no salió", "hijo sin ojos", "falta de formación ocular", "cuenca vacía", "sin ojos al nacer", "agenesia ocular", "malformación de nacimiento ojos", "ojos que no se desarrollaron", "defecto congénito ocular", "cavidad ocular vacía", "nació sin ver por falta de ojo"]'),
+('Q11.2', 'Microftalmía', 'Sin especificar', '["ojos muy pequeños", "ojo chico", "ojo diminuto", "ojo enano", "microftalmos", "ojo poco desarrollado", "ojitos chiquitos", "ojo que no creció", "ojo pequeño de nacimiento", "hipoplasia ocular", "ojo subdesarrollado", "problema de tamaño del ojo", "ojo más chico que el otro", "anomalía ocular congénita", "ojo miniatura"]'),
+('Q11.3', 'Macroftalmía', 'Sin especificar', '["ojos muy grandes", "ojo gigante", "ojo enorme", "ojo saltón de nacimiento", "ojo desproporcionado", "globo ocular demasiado grande", "macroftalmos", "ojo hipertrofiado", "aumento de tamaño del ojo", "ojo muy desarrollado", "ojo hinchado congénito", "ojo de buey", "ojo que sobresale mucho", "anomalía de tamaño ocular", "ojo fuera de lo normal por grande"]');

@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Q15
--- Aquí se insertarán los códigos que empiecen con Q15
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Q15.0', 'Glaucoma congénito', 'Sin especificar', '["glaucoma de nacimiento", "ojos llorosos en bebés", "fotofobia infantil", "ojo grande en recién nacido", "ceguera infantil", "presión alta en el ojo del bebé", "buftalmos", "ojo de buey", "nubosidad en el ojo del niño", "ojos nublados recién nacido", "malformación ocular congénita", "glaucoma infantil", "ojo que lagrimea mucho en bebés", "sensibilidad a la luz bebé", "problemas de vista al nacer"]'),
+('Q15.8', 'Otras malformaciones congénitas especificadas del ojo', 'Sin especificar', '["defecto de nacimiento en el ojo", "ojo deforme al nacer", "anomalía ocular congénita", "microftalmia", "anoftalmia", "coloboma", "ojo pequeño", "problemas visuales genéticos", "malformación en el globo ocular", "anomalía del párpado al nacer", "catarata congénita", "ojo raro al nacer", "defecto genético visión", "anomalía en la estructura del ojo", "malformación del iris"]'),
+('Q15.9', 'Malformación congénita del ojo, no especificada', 'Sin especificar', '["ojo raro", "problema de ojo desde el nacimiento", "defecto congénito ocular", "ojo que no se formó bien", "anomalía del ojo no definida", "malformación ocular sin especificar", "problema visual de nacimiento", "enfermedad del ojo del bebé", "ojo diferente al nacer", "defecto visual al nacer", "anomalía congénita en la vista", "ojo que no ve bien desde bebé", "problema estructural del ojo", "neonato con ojo raro", "malformación ocular general"]');

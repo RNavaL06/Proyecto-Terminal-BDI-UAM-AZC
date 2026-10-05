@@ -1,3 +1,20 @@
--- Archivo SQL para el grupo CIE-10: Q70
--- Aquí se insertarán los códigos que empiecen con Q70
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Q70.00', 'Dedos de la mano fusionados, mano no especificada', 'Sin especificar', '["sindactilia", "dedos pegados", "dedos unidos", "dedos juntos", "malformación dedos", "manos deformes", "dedos soldados", "dedos fusionados mano", "dedos atados", "anomalía congénita manos", "dedos pegaditos", "dedos sin separar"]'),
+('Q70.01', 'Dedos de la mano fusionados, mano derecha', 'Sin especificar', '["dedos pegados mano derecha", "sindactilia derecha", "mano derecha deforme", "dedos unidos mano derecha", "dedos soldados mano derecha", "malformación mano derecha", "anomalía mano derecha", "dedos diestra pegados", "dedos juntos mano derecha"]'),
+('Q70.02', 'Dedos de la mano fusionados, mano izquierda', 'Sin especificar', '["dedos pegados mano izquierda", "sindactilia izquierda", "mano izquierda deforme", "dedos unidos mano izquierda", "dedos soldados mano izquierda", "malformación mano izquierda", "anomalía mano izquierda", "dedos siniestra pegados", "dedos juntos mano izquierda"]'),
+('Q70.03', 'Dedos de la mano fusionados, bilateral', 'Sin especificar', '["dedos pegados ambas manos", "sindactilia bilateral", "manos unidas", "dedos soldados ambas manos", "malformación manos", "dedos fusionados dos manos", "anomalía congénita ambas manos", "dedos pegaditos en las dos manos"]'),
+('Q70.10', 'Dedos de la mano palmeados, mano no especificada', 'Sin especificar', '["dedos palmeados", "manos palmeadas", "membrana entre los dedos", "dedos con piel entre ellos", "dedos unidos por piel", "sindactilia leve", "dedos conectados", "malformación palmeada"]'),
+('Q70.11', 'Dedos de la mano palmeados, mano derecha', 'Sin especificar', '["dedos palmeados mano derecha", "membrana entre dedos mano derecha", "piel entre dedos mano derecha", "dedos unidos piel derecha", "mano derecha con membranas"]'),
+('Q70.12', 'Dedos de la mano palmeados, mano izquierda', 'Sin especificar', '["dedos palmeados mano izquierda", "membrana entre dedos mano izquierda", "piel entre dedos mano izquierda", "dedos unidos piel izquierda", "mano izquierda con membranas"]'),
+('Q70.13', 'Dedos de la mano palmeados, bilateral', 'Sin especificar', '["dedos palmeados ambas manos", "membranas en manos", "piel entre dedos manos", "sindactilia palmeada bilateral", "ambas manos palmeadas"]'),
+('Q70.20', 'Dedos del pie fusionados, pie no especificado', 'Sin especificar', '["dedos pies pegados", "sindactilia pies", "dedos pies unidos", "dedos soldados pies", "dedos pies juntos", "malformación pies", "pies con dedos unidos", "dedos pegaditos pies"]'),
+('Q70.21', 'Dedos del pie fusionados, pie derecho', 'Sin especificar', '["dedos pie derecho pegados", "sindactilia pie derecho", "pie derecho deforme", "dedos unidos pie derecho", "dedos soldados pie derecho"]'),
+('Q70.22', 'Dedos del pie fusionados, pie izquierdo', 'Sin especificar', '["dedos pie izquierdo pegados", "sindactilia pie izquierdo", "pie izquierdo deforme", "dedos unidos pie izquierdo", "dedos soldados pie izquierdo"]'),
+('Q70.23', 'Dedos del pie fusionados, bilateral', 'Sin especificar', '["dedos pies pegados bilateral", "sindactilia ambos pies", "dedos soldados pies", "dedos unidos ambos pies", "malformación pies fusionados"]'),
+('Q70.30', 'Dedos del pie palmeados, pie no especificado', 'Sin especificar', '["dedos pies palmeados", "membrana entre dedos pies", "piel entre dedos pies", "pies palmeados", "sindactilia pies leve", "dedos pies unidos piel"]'),
+('Q70.31', 'Dedos del pie palmeados, pie derecho', 'Sin especificar', '["dedos pie derecho palmeados", "membrana pie derecho", "piel entre dedos pie derecho", "dedos pie derecho con piel"]'),
+('Q70.32', 'Dedos del pie palmeados, pie izquierdo', 'Sin especificar', '["dedos pie izquierdo palmeados", "membrana pie izquierdo", "piel entre dedos pie izquierdo", "dedos pie izquierdo con piel"]'),
+('Q70.33', 'Dedos del pie palmeados, bilateral', 'Sin especificar', '["dedos pies palmeados bilateral", "membrana ambos pies", "pies palmeados", "piel entre dedos ambos pies"]'),
+('Q70.4', 'Polisindactilia, no especificada', 'Sin especificar', '["muchos dedos", "dedos extra pegados", "polidactilia y sindactilia", "dedos de más unidos", "dedos fusionados y extra", "malformación dedos múltiples", "dedos sobrantes unidos"]'),
+('Q70.9', 'Sindactilia, no especificada', 'Sin especificar', '["dedos pegados", "sindactilia", "dedos soldados", "dedos unidos", "malformación dedos", "problema en dedos", "dedos sin separar", "dedos fusionados", "dedos pegaditos", "anomalía extremidades"]');

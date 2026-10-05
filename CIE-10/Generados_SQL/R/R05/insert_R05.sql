@@ -1,3 +1,8 @@
--- Archivo SQL para el grupo CIE-10: R05
--- Aquí se insertarán los códigos que empiecen con R05
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R05.1', 'Tos aguda', 'Sin especificar', '["tos repentina", "tos seca", "carraspera", "tos con flema", "tos de golpe", "tos reciente", "picazón en la garganta", "tos pasajera", "tos que me empezó hoy", "irritación de garganta", "tos con moco", "tos convulsa", "tos de resfriado", "tos pasajera", "tos corta"]'),
+('R05.2', 'Tos subaguda', 'Sin especificar', '["tos que no se quita", "tos persistente", "tos de varias semanas", "tos post-viral", "tos que sigue ahí", "tos latosa", "tos pegajosa", "tos de resfriado mal curado", "tos de más de tres semanas", "garganta irritada", "tos intermitente", "tos seca constante", "tos que me tiene harto", "tos prolongada", "flema que no sale"]'),
+('R05.3', 'Tos crónica', 'Sin especificar', '["tos de toda la vida", "tos vieja", "tos crónica", "tos mañanera", "tos de fumador", "tos que me ahoga", "tos perruna", "tos persistente", "tos de meses", "tos incurable", "carraspera crónica", "tos seca nocturna", "tos con flemas constantes", "tos de años", "bronquitis crónica"]'),
+('R05.4', 'Síncope tusígeno', 'Sin especificar', '["mareo al toser", "desmayo por tos", "desmayo al toser mucho", "pérdida de conocimiento al toser", "me desmayé tosiendo", "desvanecimiento tras tos", "quedarme sin aire y desmayar", "tos que me desmaya", "caerse por toser", "desmayo súbito con tos", "tos violenta con desmayo", "mareo extremo al toser", "toser hasta desvanecer", "pérdida de conciencia al toser", "nubarrones al toser"]'),
+('R05.8', 'Otro tipo especificado de tos', 'Sin especificar', '["tos rara", "tos con sangre", "hemoptisis", "tos con pitos", "tos sibilante", "tos psicógena", "tos nerviosa", "tos seca irritativa", "tos ahogante", "tos con arcadas", "tos por reflujo", "tos de perro", "tos alérgica", "tos con silbidos", "tos inusual"]'),
+('R05.9', 'Tos, no especificada', 'Sin especificar', '["tengo tos", "tos", "tosida", "tos seca", "tos con flema", "garganta mala", "tos fea", "tos del pecho", "tos insoportable", "tos constante", "tos que me duele el pecho", "tos en la garganta", "tos que no me deja dormir", "tos de perro", "tosido"]');

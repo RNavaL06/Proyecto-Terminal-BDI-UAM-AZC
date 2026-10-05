@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: R99
--- Aquí se insertarán los códigos que empiecen con R99
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R99', 'Causas de mortalidad mal definidas y desconocidas', 'Sin especificar', '["muerte sin causa", "fallecimiento inexplicable", "muerte repentina", "causa de muerte no clara", "muerte dudosa", "no se supo de qué murió", "fallecimiento sin diagnóstico", "murió de la nada", "muerte súbita", "desenlace fatal desconocido", "muerte por causas naturales no especificadas", "se fue sin decir por qué", "muerte misteriosa", "sin explicación médica", "fallecimiento en circunstancias desconocidas", "muerte inesperada", "causa de defunción no determinada"]');

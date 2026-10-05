@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: R60
--- Aquí se insertarán los códigos que empiecen con R60
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R60.0', 'Edema localizado', 'Sin especificar', '["hinchazón", "inflamación", "hinchado", "retención de líquidos", "bulto hinchado", "inflamación local", "chichón", "edema en una zona", "se me hinchó", "pierna hinchada", "tobillo hinchado", "acumulación de agua", "edema localizado", "inflamación aislada", "hinchazón focal", "inflamado"]'),
+('R60.1', 'Edema generalizado', 'Sin especificar', '["cuerpo hinchado", "anasarca", "retención de líquidos general", "hinchazón de todo el cuerpo", "estar hinchado de todo", "edema sistémico", "hinchazón general", "cuerpo inflamado", "acumulación de agua en el cuerpo", "edema general", "hinchado de pies a cabeza", "volverse gordo de pronto", "hidropesía", "todo el cuerpo hinchado", "retención excesiva de agua", "inflamación total"]'),
+('R60.9', 'Edema, no especificado', 'Sin especificar', '["hinchazón sin causa", "edema", "me estoy hinchando", "problemas de retención", "líquido en el cuerpo", "hinchazón extraña", "inflamación no especificada", "edema a secas", "tengo el cuerpo raro", "hinchazón persistente", "acumulación de líquidos", "se me acumula agua", "no sé por qué estoy hinchado", "edema inespecífico", "hinchazón sospechosa", "tengo líquidos retenidos"]');

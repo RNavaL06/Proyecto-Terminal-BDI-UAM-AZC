@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: R14
--- Aquí se insertarán los códigos que empiecen con R14
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('R14.0', 'Distensión abdominal (por gases)', 'Sin especificar', '["panza hinchada", "barriga inflada", "abdomen distendido", "tener la guata hinchada", "estómago inflamado", "pancita abultada", "gases acumulados", "estar lleno de aire", "estómago duro", "vientre inflado", "abdomen tenso", "sentirse sapo", "tener gases atrapados", "hinchazón abdominal", "panza de embarazada", "distensión de estómago"]'),
+('R14.1', 'Dolor por gases', 'Sin especificar', '["retortijones", "dolor de panza por gases", "cólico por aire", "pinchazos en el estómago", "dolor abdominal agudo", "dolor de guata", "gases dolorosos", "retorcijones", "dolor en los intestinos", "aire atrapado", "molestias estomacales", "dolor de barriga por gases", "cólicos intestinales", "punzadas en la panza", "gasas dolor", "tensión abdominal dolorosa"]'),
+('R14.2', 'Eructo', 'Sin especificar', '["eructar", "pedir un gas", "echar un aire", "ventosidad bucal", "soltar un eructo", "gas de la boca", "sacar el aire", "eructos frecuentes", "gases superiores", "eructadera", "botar el aire", "aire que sube", "burp", "eructo constante", "ruido estomacal por boca", "desalojo de aire"]'),
+('R14.3', 'Flatulencia', 'Sin especificar', '["pedos", "gases", "flatos", "ventosidades", "tirarse un gas", "exceso de gases", "pedorrera", "aire intestinal", "gases fétidos", "soltar gases", "ruidos intestinales", "flatulencias constantes", "gases malolientes", "gas anal", "expulsión de gases", "tener muchos gases"]');

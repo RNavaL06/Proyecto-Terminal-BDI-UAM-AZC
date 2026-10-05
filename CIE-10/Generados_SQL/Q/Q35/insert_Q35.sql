@@ -1,3 +1,7 @@
--- Archivo SQL para el grupo CIE-10: Q35
--- Aquí se insertarán los códigos que empiecen con Q35
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Q35.1', 'Paladar duro hendido', 'Sin especificar', '["paladar abierto", "fisura en el paladar", "boca abierta en el techo", "boquera en el paladar", "paladar partido", "agujero en el techo de la boca", "malformación en el paladar", "paladar hendido anterior", "fenda palatina", "paladar despegado", "paladar rajado", "defecto al nacer en la boca", "paladar óseo hendido"]'),
+('Q35.3', 'Paladar blando hendido', 'Sin especificar', '["velo del paladar abierto", "fisura del velo", "paladar blando partido", "fenda palatina blanda", "garganta abierta", "malformación velar", "problemas al tragar bebé", "paladar flexible hendido", "fisura en la parte trasera del paladar", "insuficiencia velofaríngea", "problemas de habla paladar", "paladar hendido posterior", "velo del paladar rajado"]'),
+('Q35.5', 'Paladar duro hendido con paladar blando hendido', 'Sin especificar', '["paladar hendido completo", "fisura palatina total", "paladar abierto completo", "boca partida de lado a lado", "agujero completo en el techo de la boca", "fenda palatina completa", "paladar completamente rajado", "labio y paladar hendido", "defecto congénito en el paladar", "paladar deshecho", "paladar separado", "hendidura de paladar duro y blando", "problemas de succión en recién nacidos"]'),
+('Q35.7', 'Úvula hendida', 'Sin especificar', '["úvula bífida", "campanilla partida", "campanilla doble", "úvula dividida", "campanilla hendida", "campanilla en dos", "úvula bífida congénita", "malformación de la campanilla", "campanilla con forma de cola de pez", "garganta con campanilla doble", "úvula separada", "anomalía de la úvula"]'),
+('Q35.9', 'Paladar hendido, no especificado', 'Sin especificar', '["paladar partido", "fenda palatina", "boca abierta", "malformación de boca", "problemas de paladar en bebés", "fisura de paladar", "paladar rajado", "paladar abierto al nacer", "defectos de nacimiento en la boca", "paladar hendido", "problemas para succionar bebé", "fisura oral", "paladar despegado"]');

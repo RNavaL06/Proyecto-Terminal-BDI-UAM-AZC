@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: P84
--- Aquí se insertarán los códigos que empiecen con P84
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('P84', 'Otros problemas del recién nacido', 'Sin especificar', '["problemas del bebé", "recién nacido enfermo", "neonato delicado", "guagua enferma", "bebé recién nacido complicaciones", "recién nacido malito", "padecimientos del lactante", "problemas de salud infantil", "recién nacido con dificultades", "bebé con problemas al nacer", "cuidados del recién nacido", "salud del neonato", "bebé en incubadora", "problemas posparto bebé", "recién nacido prematuro", "complicaciones neonatales", "neonato con síntomas extraños", "bebé recién nacido decaído"]');

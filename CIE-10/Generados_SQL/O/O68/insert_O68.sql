@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: O68
--- Aquí se insertarán los códigos que empiecen con O68
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('O68', 'Trabajo de parto y parto complicados por equilibrio ácido-básico fetal anormal', 'Sin especificar', '["sufrimiento fetal", "bebé en peligro", "pérdida de bienestar fetal", "acidosis fetal", "bebé con estrés durante el parto", "parto complicado", "hipoxia fetal", "pH bajo en el bebé", "problemas al nacer", "bebé sin oxígeno", "parto de alto riesgo", "sufrimiento del feto", "emergencia obstétrica", "bebé con dificultad al nacer", "pérdida de frecuencia cardíaca fetal", "bebé asfixiado", "acidosis metabólica del feto", "complicaciones en el alumbramiento", "bebé que viene mal"]');

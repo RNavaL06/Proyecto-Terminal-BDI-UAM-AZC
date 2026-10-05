@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Q73
--- Aquí se insertarán los códigos que empiecen con Q73
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Q73.0', 'Agenesia/aplasia de extremidad (-es) no especificada (-s)', 'Sin especificar', '["falta de miembro", "brazo que no salió", "pierna que no se formó", "nacer sin un brazo", "nacer sin una pierna", "ausencia congénita de extremidad", "malformación de nacimiento", "miembro no desarrollado", "agenesia de miembros", "aplasia de brazos o piernas", "defecto de formación en el feto", "extremidad inexistente", "nacer con una parte menos", "miembro ausente desde el nacimiento"]'),
+('Q73.1', 'Focomelia, extremidad (-es) no especificada (-s)', 'Sin especificar', '["focomelia", "manos pegadas a los hombros", "pies pegados a la cadera", "miembros cortos", "síndrome de talidomida", "brazos en forma de aleta", "malformación tipo foca", "extremidades reducidas", "manos unidas al tronco", "ausencia de huesos largos en brazos", "deformidad congénita de extremidades", "miembros atrofiados desde el hombro", "desarrollo incompleto de extremidades", "extremidades estilo aleta", "anomalía de reducción de miembros"]'),
+('Q73.8', 'Otros defectos por acortamiento de extremidad (-s) no especificados', 'Sin especificar', '["extremidad corta", "pierna más corta que otra", "brazo de diferente tamaño", "discrepancia de longitud en miembros", "acortamiento de huesos", "miembros asimétricos", "defecto de crecimiento óseo", "huesos que no crecieron bien", "hipoplasia de extremidades", "extremidad atrofiada", "brazo o pierna pequeña", "malformación ósea", "acortamiento congénito", "diferencia de largo en piernas", "desarrollo óseo incompleto"]');
