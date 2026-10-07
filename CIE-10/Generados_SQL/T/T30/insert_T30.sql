@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: T30
--- Aquí se insertarán los códigos que empiecen con T30
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('T30.0', 'Quemadura de región anatómica no especificado de grado no especificado', 'Sin especificar', '["quemada", "quemaduras", "me quemé", "ardor en la piel", "ampollas", "piel irritada", "piel roja", "quemadura por fuego", "quemadura por sol", "quemadura por agua caliente", "quemadura de primer grado", "quemadura de segundo grado", "quemadura de tercer grado", "lesión térmica", "piel quemada", "quemazón", "dermatitis por calor", "dolor por quemadura"]'),
+('T30.4', 'Corrosión de región anatómica no especificado de grado no especificado', 'Sin especificar', '["quemadura química", "corrosión cutánea", "quemadura por ácido", "quemadura con químicos", "piel corroída", "irritación por productos químicos", "quemadura por sosa cáustica", "quemadura por lejía", "químicos en la piel", "lesión por sustancias corrosivas", "piel quemada por químicos", "quemadura industrial", "arruiné mi piel con químico", "quemadura cáustica", "reacción cutánea a químicos", "contacto con ácido", "daño químico en la piel", "quemadura por limpiadores"]');

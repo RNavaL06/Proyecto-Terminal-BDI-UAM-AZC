@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: T07
--- Aquí se insertarán los códigos que empiecen con T07
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('T07.XXXA', 'Traumatismos múltiples no especificados, contacto inicial', 'Sin especificar', '["golpes por todos lados", "porrazo fuerte", "accidentado", "policontundido", "madriza", "putazos", "hecho bolsa", "deshecho", "traumado", "golpeado", "chocado", "lesionado", "fracturas múltiples", "heridas graves", "accidentado grave", "hecho tira", "quebrado", "molido a golpes"]'),
+('T07.XXXD', 'Traumatismos múltiples no especificados, contacto sucesivo', 'Sin especificar', '["seguimiento de golpes", "control de traumatismos", "revisión de lesiones", "curación de heridas", "rehabilitación por golpes", "cita de control tras accidente", "recuperación de porrazos", "chequeo de policontusiones", "tratamiento de seguimiento", "seguimiento de fracturas", "recuperándose de los golpes", "curaciones sucesivas", "revisión de secuelas tempranas", "observación post-trauma", "evolución de lesiones", "repaso de golpes"]'),
+('T07.XXXS', 'Traumatismos múltiples no especificados, secuela', 'Sin especificar', '["secuelas de golpes", "dolores crónicos post-accidente", "secuelas de porrazo", "cicatrices de lesiones viejas", "traumas antiguos", "secuela de choque", "dolor persistente por golpe", "daño permanente por accidente", "consecuencias de policontusión", "secuela de madriza", "secuelas de caída fuerte", "secuelas físicas", "dolor viejo por fractura", "secuelas de traumatismo", "secuelas crónicas", "quedé marcado", "quedé con secuelas"]');
