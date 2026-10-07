@@ -115,7 +115,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo y Nombre */}
-          <Link to="/" className="flex items-center gap-3 group shrink-0">
+          <Link to="/dashboard" className="flex items-center gap-3 group shrink-0">
             <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform bg-gradient-to-tr from-[#4f83f5] to-blue-500 text-white">
               <Activity className="w-5 h-5 stroke-[2.5]" />
             </div>

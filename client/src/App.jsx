@@ -13,6 +13,7 @@ import SintomasVoz from './pages/SintomasVoz';
 import Farmacias from './pages/Farmacias';
 import Configuracion from './pages/Configuracion';
 import Login from './pages/Login';
+import Landing from './pages/Landing';
 
 // Componente para proteger rutas privadas
 function PrivateRoute({ children }) {
@@ -42,12 +43,18 @@ export default function App() {
           {/* Ruta pública */}
           <Route
             path="/login"
-            element={isAuthenticated ? <Navigate to="/" replace /> : <Login />}
+            element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Login />}
+          />
+
+          {/* Rutas públicas */}
+          <Route
+            path="/"
+            element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Landing />}
           />
 
           {/* Rutas protegidas */}
           <Route
-            path="/"
+            path="/dashboard"
             element={
               <PrivateRoute>
                 <Dashboard />
@@ -112,7 +119,7 @@ export default function App() {
           />
 
           {/* Fallback */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to={isAuthenticated ? "/dashboard" : "/"} replace />} />
         </Routes>
       </main>
 

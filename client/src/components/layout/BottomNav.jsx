@@ -10,7 +10,7 @@ export default function BottomNav() {
         className="bg-white w-full shadow-[0_-4px_10px_rgba(0,0,0,0.06)]"
       >
         <div className="flex justify-evenly items-center h-[72px] px-2 max-w-md mx-auto relative">
-          <NavItem to="/" icon={<Home />} label="Inicio" />
+          <NavItem to="/dashboard" icon={<Home />} label="Inicio" />
           <NavItem to="/botiquin" icon={<Pill />} label="Botiquín" />
           <NavItem to="/escanear-receta" icon={<Scan />} label="Escanear" />
           <NavItem to="/sintomas-voz" icon={<Activity />} label="Síntomas" />
