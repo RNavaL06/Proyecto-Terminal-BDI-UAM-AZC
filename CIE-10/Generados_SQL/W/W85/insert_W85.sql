@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W85
--- Aquí se insertarán los códigos que empiecen con W85
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W85.XXXA', 'Exposición a líneas de transmisión eléctrica, contacto inicial', 'Sin especificar', '["electrocutado", "descarga eléctrica", "corrientazo", "toque eléctrico", "quemadura por electricidad", "choque eléctrico", "palo de luz", "cables de alta tensión", "patada de corriente", "electrocución", "armazón eléctrico", "poste de luz", "arco eléctrico", "quemado por cable", "accidente eléctrico"]'),
+('W85.XXXD', 'Exposición a líneas de transmisión eléctrica, contacto sucesivo', 'Sin especificar', '["segundo choque eléctrico", "reincidencia por descarga", "contacto repetido con cables", "quemaduras eléctricas persistentes", "electricidad continuada", "fallo en línea de alta tensión", "reexposición a corriente", "accidente por cable pelado", "choque eléctrico recurrente", "lesión eléctrica prolongada", "segunda descarga", "contacto accidental sucesivo", "exposición sostenida a corriente", "quemadura por contacto reiterado", "choque constante"]'),
+('W85.XXXS', 'Exposición a líneas de transmisión eléctrica, secuela', 'Sin especificar', '["secuelas de electrocución", "daño por descarga eléctrica", "cicatriz por quemadura eléctrica", "problemas nerviosos tras choque", "trauma post eléctrico", "secuela de corriente", "quemaduras viejas por luz", "daño residual por alta tensión", "dolor tras descarga", "efectos a largo plazo por electrocución", "cicatrices de cable", "neuropatía por corriente", "marcas de quemadura eléctrica", "consecuencias de choque eléctrico", "herida eléctrica antigua"]');

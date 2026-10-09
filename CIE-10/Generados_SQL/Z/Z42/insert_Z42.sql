@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: Z42
--- Aquí se insertarán los códigos que empiecen con Z42
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Z42.1', 'Contacto para reconstrucción mamaria después de mastectomía', 'Sin especificar', '["reconstrucción de seno", "cirugía de pecho después de cáncer", "reconstrucción mamaria", "prótesis mamaria post mastectomía", "cirugía estética tras cáncer", "reconstrucción de mamas", "cirugía reconstructiva de busto", "operación de bubis post cáncer", "reconstrucción de pechos", "cirugía plástica mamaria oncológica", "reconstrucción de teta", "cirugía de reconstrucción de glándula mamaria", "cirugía de senos post cirugía oncológica", "reconstrucción de mama con implantes", "cirugía estética post mastectomía"]'),
+('Z42.8', 'Contacto por otro tipo cirugía plástica y reconstructiva después de un procedimiento médico o reparación de lesión', 'Sin especificar', '["cirugía plástica reparadora", "cirugía de reconstrucción", "reparación estética por cicatrices", "cirugía post accidente", "cirugía plástica reconstructiva", "corrección de secuelas de cirugía", "operación para quitar cicatrices", "reconstrucción por traumatismo", "cirugía reconstructiva después de quemaduras", "plástica reparadora", "cirugía de reconstrucción de tejidos", "cirugía por secuelas traumáticas", "corrección estética post operatoria", "reparación de la piel post lesión", "cirugía reconstructiva de partes del cuerpo", "operación reparadora por golpe"]');

@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: X35
--- Aquí se insertarán los códigos que empiecen con X35
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('X35.XXXA', 'Erupción volcánica, contacto inicial', 'Sin especificar', '["quemaduras por lava", "accidente volcán", "cerca de erupción", "exposición a ceniza volcánica", "heridas por material volcánico", "contacto con piroclastos", "emergencia volcánica", "quemadura química volcán", "inhalación de gases volcánicos", "daño por rocas volcánicas", "desastre natural volcán", "contacto directo lava", "quemadura magma", "trauma por erupción", "ceniza en los ojos"]'),
+('X35.XXXD', 'Erupción volcánica, contacto sucesivo', 'Sin especificar', '["seguimiento quemadura volcán", "complicaciones erupción", "curación heridas por lava", "reexposición a ceniza", "problemas respiratorios por volcán", "infección por ceniza", "revisión heridas piroclastos", "tratamiento quemaduras erupción", "daño pulmonar crónico volcán", "control post erupción", "efectos tardíos gases volcánicos", "cuidado post desastre volcánico", "dolores post exposición", "irritación ojos volcán", "cicatrización quemadura volcánica"]'),
+('X35.XXXS', 'Erupción volcánica, secuela', 'Sin especificar', '["secuelas volcán", "cicatrices por quemadura volcánica", "problemas pulmonares crónicos volcán", "estrés postraumático erupción", "fibrosis pulmonar por ceniza", "daño permanente ojos volcán", "secuela desastre natural", "invalidez por erupción", "problemas de salud crónicos volcán", "cicatrización queloide por lava", "fobias por volcán", "discapacidad post volcán", "trastorno respiratorio persistente", "marcas de quemaduras volcán", "efectos a largo plazo erupción"]');

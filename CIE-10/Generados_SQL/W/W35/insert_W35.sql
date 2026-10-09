@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W35
--- Aquí se insertarán los códigos que empiecen con W35
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W35.XXXA', 'Explosión y rotura de caldera, contacto inicial', 'Sin especificar', '["explosión de caldera", "accidente industrial", "quemadura por vapor", "estallido de tanque", "accidente de trabajo", "quemaduras graves", "fuga de presión", "quemadura de tercer grado", "accidente con calderas", "explosión de presión", "lesión por explosión", "quemadura térmica", "accidente laboral grave", "estallido de caldera industrial", "emergencia por vapor", "trauma por explosión"]'),
+('W35.XXXD', 'Explosión y rotura de caldera, contacto sucesivo', 'Sin especificar', '["seguimiento de explosión", "complicaciones por explosión", "tratamiento de quemaduras", "secuelas de quemadura", "curación de heridas", "rehabilitación por accidente", "infección de quemadura", "seguimiento médico industrial", "quemaduras en recuperación", "daño colateral por explosión", "curación de úlceras por quemadura", "atención post-accidente", "consulta por secuela de accidente", "revisión de lesiones", "tratamiento de cicatrices"]'),
+('W35.XXXS', 'Explosión y rotura de caldera, secuela', 'Sin especificar', '["cicatrices por quemadura", "secuelas de accidente laboral", "discapacidad por quemadura", "secuela post-explosión", "fibrosis por quemadura", "retracción cicatricial", "daño crónico por vapor", "estrés postraumático accidente", "dolor crónico por quemadura", "marcas de explosión", "secuela a largo plazo", "daño por quemadura antigua", "rehabilitación funcional", "indemnización por secuelas", "cicatriz queloide por quemadura"]');

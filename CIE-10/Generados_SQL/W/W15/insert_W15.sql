@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W15
--- Aquí se insertarán los códigos que empiecen con W15
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W15.XXXA', 'Caída desde acantilado, contacto inicial', 'Sin especificar', '["despeñarse", "caer al precipicio", "desbarrancarse", "accidente de montaña", "caída de altura", "despeñadero", "caerse por el barranco", "rodar por el risco", "accidente de escalada", "caída mortal", "despeñó", "precipitarse al vacío", "tira abajo", "golpe por caída", "traumatismo por caída"]'),
+('W15.XXXD', 'Caída desde acantilado, contacto sucesivo', 'Sin especificar', '["choques secundarios", "golpes tras la caída", "rodar por la ladera", "politraumatismos", "fracturas por arrastre", "lesiones por rebotar", "impactos múltiples", "caída prolongada", "golpes sucesivos", "caída en picada", "contusiones múltiples", "arrastre tras caída", "caída inercial", "lesión traumática recurrente", "choque contra rocas"]'),
+('W15.XXXS', 'Caída desde acantilado, secuela', 'Sin especificar', '["secuelas de caída", "rehabilitación por despeño", "consecuencias de accidente", "discapacidad por caída", "secuela de traumatismo", "cicatrices de accidente", "daño permanente", "dolores post-accidente", "secuela física", "consecuencias de rodar", "secuela de precipicio", "trauma residual", "dolor crónico tras caída", "secuelas motoras", "evolución de politrauma"]');

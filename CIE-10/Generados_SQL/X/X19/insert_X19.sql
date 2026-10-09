@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: X19
--- Aquí se insertarán los códigos que empiecen con X19
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('X19.XXXA', 'Contacto con calor y sustancias calientes, contacto inicial', 'Sin especificar', '["quemadura", "quemado", "me quemé", "escaldadura", "ampollas por calor", "contacto con fuego", "quemadura reciente", "agua hirviendo", "aceite caliente", "fogonazo", "quemadura de primer contacto", "piel roja por calor", "quemadura nueva", "accidente doméstico calor", "quemadura térmica", "accidente con objeto caliente"]'),
+('X19.XXXD', 'Contacto con calor y sustancias calientes, contacto sucesivo', 'Sin especificar', '["curación de quemadura", "quemadura en seguimiento", "revisión de quemado", "quemadura que no sana", "tratamiento de quemadura continua", "control de quemadura", "cura de herida por calor", "seguimiento médico quemadura", "quemadura en evolución", "post-quemadura", "cuidado de quemadura recurrente", "revisión médica por contacto térmico", "quemadura en proceso de sanación", "evaluación de quemadura", "consulta de seguimiento quemado"]'),
+('X19.XXXS', 'Contacto con calor y sustancias calientes, secuela', 'Sin especificar', '["cicatriz de quemadura", "marcas de quemadura", "queloides por quemadura", "secuelas de quemadura", "quemadura antigua", "piel retraída por quemadura", "mancha por quemadura", "cicatriz queloide", "quemadura sanada", "daño residual por calor", "cicatrización anormal", "pérdida de sensibilidad por quemadura", "piel quemada antigua", "consecuencias de quemadura", "cicatriz crónica"]');

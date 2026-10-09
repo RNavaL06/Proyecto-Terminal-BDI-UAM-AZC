@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W60
--- Aquí se insertarán los códigos que empiecen con W60
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W60.XXXA', 'Contacto con espinas, pinchos y hojas puntiagudas de plantas no venenosas, contacto inicial', 'Sin especificar', '["pincharse con espinas", "espina clavada", "pinchazo de planta", "me pinché", "púa en la piel", "espinas en el dedo", "rasguño de zarza", "pinchazo de cactus", "me enterré una espina", "plantas con pinchos", "lastimado con arbusto", "herida por espina", "clavarse una púa", "pinchazo vegetal", "raspones por plantas", "astilla de planta", "me espiné"]'),
+('W60.XXXD', 'Contacto con espinas, pinchos y hojas puntiagudas de plantas no venenosas, contacto sucesivo', 'Sin especificar', '["seguimiento por pinchazo", "cura de herida por espina", "revisión de púa", "infección por espina", "espinas recurrentes", "limpieza de pinchazo", "dolor por espina que no sale", "cuerpo extraño vegetal", "extracción de púa", "revisión de rasguño de planta", "tratamiento por pinchazo", "herida de espina infectada", "quitar espina enterrada", "punto de pinchazo", "seguimiento de herida vegetal"]'),
+('W60.XXXS', 'Contacto con espinas, pinchos y hojas puntiagudas de plantas no venenosas, secuela', 'Sin especificar', '["cicatriz por espina", "secuelas de pinchazo", "mancha por púa", "queloide por espina", "dolor crónico por planta", "fibrosis por cuerpo extraño", "cicatrización difícil", "secuela de lesión vegetal", "daño cutáneo por espina", "cicatriz de púa", "complicación tras pinchazo", "marca de planta", "cicatriz profunda por espina", "secuela por traumatismo vegetal", "reacción alérgica tardía a espina"]');

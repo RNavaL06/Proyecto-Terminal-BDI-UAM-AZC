@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W03
--- Aquí se insertarán los códigos que empiecen con W03
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W03.XXXA', 'Otra caída en mismo nivel debida a colisión con otra persona, contacto inicial', 'Sin especificar', '["me caí", "choque con alguien", "me empujaron", "tropezón", "porrazo", "me fui al suelo", "me dieron un topón", "me dieron un encontronazo", "me hicieron caer", "perdí el equilibrio", "me resbalé con alguien", "me fui de bruces", "me dieron un empujón", "accidente caminando", "me fui a pique", "costalazo", "tortazo"]'),
+('W03.XXXD', 'Otra caída en mismo nivel debida a colisión con otra persona, contacto sucesivo', 'Sin especificar', '["golpe recurrente", "otra vez me caí", "me volví a caer", "seguimiento de caída", "dolor tras choque", "recaída por golpe", "revisión de caída", "efectos del choque", "seguimiento de contusión", "lesión persistente por caída", "chequeo post caída", "dolor después del porrazo", "secuelas inmediatas", "reincidencia por tropiezo", "atención médica tras golpe"]'),
+('W03.XXXS', 'Otra caída en mismo nivel debida a colisión con otra persona, secuela', 'Sin especificar', '["secuelas de caída", "dolor viejo por caída", "problema crónico tras golpe", "me quedó doliendo", "lesión de hace tiempo", "consecuencias del porrazo", "daño a largo plazo", "dolor persistente", "molestias tras accidente", "complicaciones por caída vieja", "secuela física", "dolores por el golpe antiguo", "rehabilitación por caída", "cicatriz o lesión antigua", "problema persistente tras choque"]');

@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Y33
--- Aquí se insertarán los códigos que empiecen con Y33
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Y33.XXXA', 'Otros eventos especificados, intención no determinada, contacto inicial', 'Sin especificar', '["accidente raro", "evento extraño", "incidente inesperado", "que me pasó", "golpe sin explicación", "daño no especificado", "urgencia rara", "trauma inexplicable", "lesión de origen dudoso", "emergencia confusa", "choque accidental", "incidente no aclarado", "qué me sucedió", "evento fortuito", "lesión sin causa clara"]'),
+('Y33.XXXD', 'Otros eventos especificados, intención no determinada, contacto sucesivo', 'Sin especificar', '["seguimiento de accidente", "revisión por golpe previo", "control de incidente", "consulta tras evento", "curación de herida rara", "seguimiento de trauma", "otra vez el dolor", "reconsulta por accidente", "observación de lesión antigua", "me sigue doliendo", "control post incidente", "revisión de daño", "cita de seguimiento por golpe", "me volvió a pasar", "evolución de lesión dudosa"]'),
+('Y33.XXXS', 'Otros eventos especificados, intención no determinada, secuela', 'Sin especificar', '["secuelas de accidente", "dolor crónico tras incidente", "daño persistente", "me quedó mal la zona", "complicaciones por golpe pasado", "secuela de lesión", "efecto a largo plazo", "dolencia antigua", "trauma curado mal", "problemas después del accidente", "cicatriz que molesta", "secuela física", "molestia persistente", "secuelas del evento", "consecuencias de incidente previo"]');

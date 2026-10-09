@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: Z08
--- Aquí se insertarán los códigos que empiecen con Z08
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Z08', 'Contacto para reconocimiento médico de seguimiento después de finalizar un tratamiento de neoplasia maligna', 'Sin especificar', '["seguimiento cáncer", "chequeo post cáncer", "control oncológico", "revisión después de quimio", "alta oncológica", "cita de control tumor", "exámenes de seguimiento", "monitorización remisión", "cita revisión oncólogo", "ver si volvió el cáncer", "chequeo de rutina oncología", "seguimiento post tratamiento", "estudios de control oncológico", "revisión periódica tumor", "vigilancia oncológica", "cita post tratamiento maligno", "control de recidiva"]');

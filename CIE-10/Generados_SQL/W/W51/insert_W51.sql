@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W51
--- Aquí se insertarán los códigos que empiecen con W51
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W51.XXXA', 'Golpe o tropezón contra otra persona, contacto inicial', 'Sin especificar', '["choque", "chocar con alguien", "golpe accidental", "tropezón", "tropezar", "topetazo", "topón", "porrazo", "estrellarse con alguien", "embestida", "impacto accidental", "guamazo", "madrazo", "verguiza", "porrazo", "tumbada", "contacto físico accidental"]'),
+('W51.XXXD', 'Golpe o tropezón contra otra persona, contacto sucesivo', 'Sin especificar', '["recibir otro golpe", "segundo impacto", "seguido del choque", "golpe consecutivo", "tras el encontronazo", "dolor persistente por choque", "reincidencia de golpe", "efecto tras el choque", "contusión recurrente", "golpe secundario", "seguimiento de choque", "post-choque", "tratamiento por choque previo", "secuela inmediata de impacto"]'),
+('W51.XXXS', 'Golpe o tropezón contra otra persona, secuela', 'Sin especificar', '["secuelas de golpe", "consecuencias de chocar", "dolor crónico tras golpe", "lesión antigua por choque", "problemas post-impacto", "cicatriz de golpe", "molestia persistente", "dolencia crónica por caída", "secuela de topetazo", "trauma antiguo", "dificultad tras tropezón", "dolor viejo por choque", "consecuencias a largo plazo", "efectos tardíos de impacto"]');

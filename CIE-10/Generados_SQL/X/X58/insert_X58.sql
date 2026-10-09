@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: X58
--- Aquí se insertarán los códigos que empiecen con X58
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('X58.XXXA', 'Exposición a otros factores especificados, contacto inicial', 'Sin especificar', '["accidente inicial", "contacto primario", "primer incidente", "exposición reciente", "trauma nuevo", "lesión de primera vez", "evento súbito", "choque inicial", "ingreso por emergencia", "contacto por primera vez", "exposición directa", "primer auxilio", "agresión inicial", "susto o golpe reciente", "atención de primera instancia"]'),
+('X58.XXXD', 'Exposición a otros factores especificados, contacto sucesivo', 'Sin especificar', '["seguimiento de lesión", "consulta de control", "cita sucesiva", "segunda visita", "reconsulta", "control médico", "continuación de tratamiento", "evolución de la herida", "chequeo post-evento", "visita de seguimiento", "curación recurrente", "segunda vuelta", "tratamiento constante", "revisión de lesiones", "seguimiento de golpe"]'),
+('X58.XXXS', 'Exposición a otros factores especificados, secuela', 'Sin especificar', '["secuelas de accidente", "daño persistente", "complicaciones a largo plazo", "efectos secundarios", "dolor crónico", "cicatrices", "limitación física", "daño permanente", "resultado tardío", "secuela post-traumática", "lesión vieja", "consecuencia del golpe", "daños colaterales", "malestar crónico", "efecto de un trauma pasado"]');

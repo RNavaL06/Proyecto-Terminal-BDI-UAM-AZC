@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Z58
--- Aquí se insertarán los códigos que empiecen con Z58
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Z58.6', 'Suministro inadecuado de agua potable', 'Sin especificar', '["falta de agua", "agua sucia", "agua contaminada", "corte de agua", "escasez de agua", "agua no potable", "agua no apta para consumo", "agua de mala calidad", "problemas de abastecimiento", "falta de cañerías", "agua entubada sucia", "falta de suministro", "agua con sedimentos", "mala calidad del agua", "sin acceso a agua limpia", "agua turbia", "contaminación hídrica"]'),
+('Z58.81', 'Servicios básicos no disponibles en el entorno físico', 'Sin especificar', '["falta de servicios públicos", "sin luz ni agua", "barrio sin servicios", "falta de alcantarillado", "sin infraestructura básica", "zonas marginadas", "sin recolección de basura", "falta de alumbrado público", "asentamiento informal", "sin drenaje", "sin red eléctrica", "precariedad habitacional", "falta de cloacas", "servicios deficientes", "barrio olvidado", "carencias básicas", "sin servicios domiciliarios"]'),
+('Z58.89', 'Otros problemas relacionados con el entorno físico', 'Sin especificar', '["contaminación ambiental", "ruido excesivo", "polución", "basurero cercano", "mala calidad del aire", "presencia de plagas", "condiciones insalubres", "entorno tóxico", "problemas de vecindad", "riesgos ambientales", "hacinamiento", "vivienda en mal estado", "falta de ventilación", "humedad en paredes", "plagas de insectos", "olor fétido", "ambiente peligroso"]');

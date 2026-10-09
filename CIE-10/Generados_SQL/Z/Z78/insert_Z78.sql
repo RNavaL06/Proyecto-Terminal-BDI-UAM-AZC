@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Z78
--- Aquí se insertarán los códigos que empiecen con Z78
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Z78.0', 'Estado de menopausia asintomática', 'Sin especificar', '["menopausia", "climaterio", "etapa del cambio", "cese de regla", "fin de la menstruación", "la vida sin regla", "cambio de vida", "cuando se corta el periodo", "postmenopausia", "perimenopausia", "ausencia de menstruación", "menopausia sin síntomas", "etapa madura", "cese ovulatorio", "climaterio femenino", "retiro de la regla"]'),
+('Z78.1', 'Estado de restricción física', 'Sin especificar', '["limitación física", "movilidad reducida", "discapacidad motriz", "problemas para moverse", "falta de movilidad", "estar encamado", "postrado", "impedimento físico", "dificultad para caminar", "cuerpo tieso", "restricción de movimiento", "incapacidad física", "problemas locomotores", "falta de agilidad", "movimiento limitado", "bloqueo físico"]'),
+('Z78.9', 'Otra estado de salud especificado', 'Sin especificar', '["estado de salud general", "condición médica", "malestar general", "no me siento bien", "problema de salud", "chequeo médico", "estado físico", "sentirse enfermo", "problema no definido", "diagnóstico general", "cómo me siento", "evaluación de salud", "estado corporal", "situación clínica", "problema inespecífico", "chequeo de rutina"]');

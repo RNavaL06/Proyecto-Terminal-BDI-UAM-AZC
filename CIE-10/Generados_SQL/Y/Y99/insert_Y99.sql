@@ -1,3 +1,7 @@
--- Archivo SQL para el grupo CIE-10: Y99
--- Aquí se insertarán los códigos que empiecen con Y99
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Y99.0', 'Actividad de civil realizada a cambio de retribución o pago', 'Sin especificar', '["trabajo", "empleo", "chamba", "laburo", "curro", "pega", "jale", "chante", "oficio", "plaza", "empleado", "asalarado", "jornada laboral", "sueldo", "quincena", "hacer plata", "ganarse la vida"]'),
+('Y99.1', 'Actividad militar', 'Sin especificar', '["ejército", "mili", "servicio militar", "cuartel", "milico", "soldado", "fuerzas armadas", "vida militar", "base militar", "instrucción militar", "ser recluta", "tropa", "oficial", "operación militar", "defensa", "entrenamiento militar", "acuartelamiento"]'),
+('Y99.2', 'Actividad voluntaria', 'Sin especificar', '["voluntariado", "trabajo social", "ayuda humanitaria", "hacer caridad", "donar tiempo", "ayudar gratis", "filantropía", "acción social", "voluntario", "servicio comunitario", "ONG", "trabajo ad honorem", "sin pago", "voluntad propia", "ayuda desinteresada", "apoyo social", "hacer el bien"]'),
+('Y99.8', 'Otra situación de causa externa', 'Sin especificar', '["causa externa", "accidente", "incidente", "situación ajena", "evento externo", "factor externo", "suceso no especificado", "causa no laboral", "imprevisto", "siniestro", "agente externo", "evento fortuito", "lesión externa", "circunstancia externa", "daño externo", "factor ambiental", "accidente externo"]'),
+('Y99.9', 'Estado de causa externa no especificado', 'Sin especificar', '["causa desconocida", "origen incierto", "situación no definida", "causa no clara", "sin especificar", "causa indeterminada", "no sabe no responde", "estado incierto", "causa externa ambigua", "sin dato", "motivo desconocido", "razón no aclarada", "origen no identificado", "fuente desconocida", "incertidumbre causal", "causa no determinada", "evento no clasificado"]');

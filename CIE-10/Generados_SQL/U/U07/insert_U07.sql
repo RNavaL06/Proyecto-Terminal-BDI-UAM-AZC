@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: U07
--- Aquí se insertarán los códigos que empiecen con U07
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('U07.0', 'Trastorno relacionado con el vapeo', 'Sin especificar', '["vapeo", "cigarrillo electrónico", "vape", "daño pulmonar por vapeo", "EVALI", "pucho electrónico", "vapear", "vaporizador", "problemas al respirar por vapear", "tos por vape", "neumonía por vapeo", "sustancias químicas en pulmones", "adicción al vape", "irritación pulmonar por vapor", "dolor de pecho al vapear", "efectos secundarios del vaper"]'),
+('U07.1', 'COVID-19', 'Sin especificar', '["coronavirus", "bicho", "covid", "la peste", "pandemia", "tos seca", "fiebre", "falta de aire", "neumonía viral", "SARS-CoV-2", "malestar general", "pérdida del olfato", "pérdida del gusto", "cuarentena", "dolor de cuerpo", "confinamiento", "positivo en covid"]');

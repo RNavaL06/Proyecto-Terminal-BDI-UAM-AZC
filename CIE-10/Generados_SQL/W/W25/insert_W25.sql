@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W25
--- Aquí se insertarán los códigos que empiecen con W25
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W25.XXXA', 'Contacto con vidrio afilado, contacto inicial', 'Sin especificar', '["cortada con vidrio", "vidrio roto", "me corté con un cristal", "herida por vidrio", "tajada con vidrio", "vidrio molido", "accidente con cristales", "vidrio quebrado", "vidrio cortante", "tajo con vidrio", "me rebané con vidrio", "esquirla de vidrio", "corte profundo con vidrio", "sangrando por vidrio", "vidrio enterrado", "incidente con objetos de vidrio"]'),
+('W25.XXXD', 'Contacto con vidrio afilado, contacto sucesivo', 'Sin especificar', '["curación de corte por vidrio", "seguimiento de herida por cristal", "limpieza de corte con vidrio", "herida con vidrio infectada", "revisión de cortada", "tratamiento de herida de vidrio", "puntos por corte de vidrio", "cambio de vendas por vidrio", "retiro de puntos por vidrio", "corte de vidrio que no sana", "herida de cristal en proceso", "dolor por corte de vidrio antiguo", "infección por esquirla", "control de herida cortante", "curar tajada de vidrio"]'),
+('W25.XXXS', 'Contacto con vidrio afilado, secuela', 'Sin especificar', '["cicatriz por vidrio", "marca de corte de vidrio", "secuelas de accidente con vidrio", "tejido cicatricial por cristal", "adherencias por corte profundo", "queloides por vidrio", "pérdida de sensibilidad por corte", "cicatriz que duele", "daño en tendón por vidrio", "cicatriz fea por vidrio", "problemas crónicos por corte de vidrio", "secuela post traumática por vidrio", "corte antiguo con vidrio", "deformidad por corte de cristal", "complicaciones a largo plazo de herida"]');

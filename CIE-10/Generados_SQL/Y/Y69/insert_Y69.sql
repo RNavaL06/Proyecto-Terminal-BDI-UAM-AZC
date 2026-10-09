@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: Y69
--- Aquí se insertarán los códigos que empiecen con Y69
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Y69', 'Evento adverso no especificado durante atención quirúrgica y médica', 'Sin especificar', '["error médico", "mala praxis", "negligencia médica", "complicación en cirugía", "accidente en el hospital", "falla en la operación", "mal procedimiento", "daño por tratamiento", "negligencia quirúrgica", "mala atención médica", "efectos secundarios inesperados", "error en quirófano", "accidente quirúrgico", "negligencia en el hospital", "iatrogenia", "problemas postoperatorios", "cagada del médico", "se le fue la mano al doctor", "error de bisturí", "mala mano del cirujano"]');

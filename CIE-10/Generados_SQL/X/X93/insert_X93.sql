@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: X93
--- Aquí se insertarán los códigos que empiecen con X93
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('X93.XXXA', 'Agresión por disparo de arma corta, contacto inicial', 'Sin especificar', '["tiro", "balazo", "disparo", "herida de bala", "plomazo", "fogonazo", "baleado", "pistolazo", "pegaron un tiro", "fuego", "arma de mano", "impacto de proyectil", "ataque armado", "balacera", "escopetazo", "tiroteo", "recibí un balazo"]'),
+('X93.XXXD', 'Agresión por disparo de arma corta, contacto sucesivo', 'Sin especificar', '["seguimiento de herida de bala", "curación de balazo", "balazo recurrente", "limpieza de herida por arma de fuego", "tratamiento de disparo", "revisión de impacto de bala", "herida de arma corta continua", "control de herida de fuego", "complicación de balazo", "atención post-tiro", "segunda atención por bala", "infección por balazo", "seguimiento médico de impacto", "cuidado de herida de pistola", "evolución de herida de bala"]'),
+('X93.XXXS', 'Agresión por disparo de arma corta, secuela', 'Sin especificar', '["cicatriz de bala", "secuelas de balazo", "discapacidad por disparo", "daño permanente por arma", "dolor por antigua herida de bala", "quedar lisiado por tiro", "atrofia por herida de arma", "rehabilitación por balazo", "consecuencia de tiroteo", "marca de bala", "problemas post-balazo", "daño nervioso por bala", "secuela de impacto de arma corta", "operación por secuela de bala", "fibrosis por disparo"]');

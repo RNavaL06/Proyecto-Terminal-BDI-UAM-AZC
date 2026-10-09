@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W08
--- Aquí se insertarán los códigos que empiecen con W08
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W08.XXXA', 'Caída desde otro mueble, contacto inicial', 'Sin especificar', '["me caí de la cama", "me caí de una silla", "porrazo desde un mueble", "caída de altura", "escorchón", "golpe al caer", "me fui de bruces", "me di un talegazo", "caída doméstica", "accidente en casa", "me caí de la mesa", "trancazo", "me puse un guamazo", "palo desde alto", "me di un porrazo", "lesión por caída", "me caí de la repisa"]'),
+('W08.XXXD', 'Caída desde otro mueble, contacto sucesivo', 'Sin especificar', '["seguimiento de caída", "control por golpe previo", "revisión de porrazo", "dolor tras caída", "molestias por caída antigua", "evolución de golpe", "reconsulta por caída", "secuelas de porrazo", "continúan los dolores", "dolor que persiste", "evaluación post caída", "revisión médica por trauma", "me sigue doliendo el golpe", "terapia tras caída", "seguimiento de lesión en casa", "revisión de contusión"]'),
+('W08.XXXS', 'Caída desde otro mueble, secuela', 'Sin especificar', '["dolor crónico por caída", "secuelas de porrazo", "problemas tras caída", "dolores viejos", "complicaciones por golpe", "me quedó doliendo", "lesión antigua", "daño residual", "secuela de accidente doméstico", "dolor persistente", "consecuencias de caída", "rehabilitación por caída antigua", "me quedó la secuela", "dolor postraumático", "lesión de vieja data", "secuela física por accidente"]');

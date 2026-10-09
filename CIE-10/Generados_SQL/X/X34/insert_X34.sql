@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: X34
--- Aquí se insertarán los códigos que empiecen con X34
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('X34.XXXA', 'Terremoto, contacto inicial', 'Sin especificar', '["sismo", "temblor", "movimiento telúrico", "sacudida", "seísmo", "terremoto", "desastre natural", "eventos sísmicos", "choque inicial", "temblor fuerte", "temblorona", "cataclismo", "movimiento de tierra", "réplica inicial", "impacto sísmico", "emergencia por sismo"]'),
+('X34.XXXD', 'Terremoto, contacto sucesivo', 'Sin especificar', '["réplica", "temblores secundarios", "post-sismo", "segundo impacto", "continuación de sismo", "sacudidas sucesivas", "temblor repetido", "réplicas sísmicas", "después del temblor", "movimiento continuo", "reacomodo de tierra", "temblor recurrente", "oleada sísmica", "impacto post-terremoto", "sismo secundario", "estremecimiento posterior"]'),
+('X34.XXXS', 'Terremoto, secuela', 'Sin especificar', '["daños post-terremoto", "consecuencias del sismo", "efectos secundarios del terremoto", "secuelas sísmicas", "lesiones por sismo", "daño estructural", "trauma post-terremoto", "heridas por temblor", "impacto a largo plazo", "estado post-desastre", "lesiones tras el temblor", "efectos de terremoto", "daño físico post-sismo", "consecuencias de sismo", "secuela post-desastre", "complicaciones tras temblor"]');

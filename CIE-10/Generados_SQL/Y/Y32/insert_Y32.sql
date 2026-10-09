@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Y32
--- Aquí se insertarán los códigos que empiecen con Y32
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Y32.XXXA', 'Accidente de vehículo motorizado, intención no determinada, contacto inicial', 'Sin especificar', '["choque", "accidente de tránsito", "siniestro vial", "chocón", "estrellada", "fierrazo", "colisión", "palo", "tortazo", "choque de autos", "accidente vehicular", "golpe con carro", "trancazo", "accidente en la calle", "choque automovilístico", "siniestro de tráfico", "impacto vehicular"]'),
+('Y32.XXXD', 'Accidente de vehículo motorizado, intención no determinada, contacto sucesivo', 'Sin especificar', '["choque múltiple", "carambola", "choque en cadena", "seguimiento de accidente", "choque repetido", "colisión múltiple", "choque encadenado", "segundo impacto", "rechoque", "accidente consecutivo", "impactos sucesivos", "choques seguidos", "accidente posterior", "choque en serie", "golpe tras golpe", "siniestro en cadena"]'),
+('Y32.XXXS', 'Accidente de vehículo motorizado, intención no determinada, secuela', 'Sin especificar', '["secuelas de choque", "dolores post-accidente", "problemas tras accidente", "traumas por choque", "daños permanentes por colisión", "secuelas de siniestro", "lesiones crónicas de accidente", "consecuencias de choque", "problemas de salud por accidente", "dolor después del choque", "secuelas viales", "trauma post-choque", "secuelas de estrellada", "dolores residuales por accidente", "efectos a largo plazo por choque"]');

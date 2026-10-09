@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: V99
--- Aquí se insertarán los códigos que empiecen con V99
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('V99.XXXA', 'Accidente de transporte no especificado, contacto inicial', 'Sin especificar', '["choque", "accidente de tránsito", "siniestro vial", "estrellón", "autazo", "palo", "porrazo", "encuentro en la vía", "toque", "colisión", "atropello", "volcamiento", "me di un leñazo", "accidente de carro", "choque de autos", "incidente vehicular", "sacudón", "choque fuerte"]'),
+('V99.XXXD', 'Accidente de transporte no especificado, contacto sucesivo', 'Sin especificar', '["seguimiento de accidente", "control tras choque", "consulta post accidente", "revisión por siniestro", "dolores después del choque", "secuelas inmediatas", "segunda atención por accidente", "golpes persistentes", "cita post colisión", "evaluación post trauma", "dolor tras el palo", "revisión de lesiones por accidente", "seguimiento médico de choque", "me duele todo tras el choque", "continúa el dolor del accidente"]'),
+('V99.XXXS', 'Accidente de transporte no especificado, secuela', 'Sin especificar', '["secuelas de accidente", "dolor crónico por choque", "trauma de vieja data", "quedé mal del choque", "dolores que me quedaron", "problemas post accidente", "secuelas de colisión", "dolor antiguo por atropello", "limitación física por accidente", "cicatrices de choque", "secuela postraumática", "consecuencias del accidente", "me dejó mal el accidente", "molestias persistentes por siniestro", "rehabilitación por choque antiguo"]');

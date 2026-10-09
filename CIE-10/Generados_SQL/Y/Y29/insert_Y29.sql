@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Y29
--- Aquí se insertarán los códigos que empiecen con Y29
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Y29.XXXA', 'Contacto con objeto sin filo, intención no determinada, contacto inicial', 'Sin especificar', '["golpe con objeto romo", "traumatismo contuso", "porrazo", "chichón", "moretón", "cardenal", "golpe seco", "contusión", "madrazo", "guamazo", "tortazo", "cachazo", "leñazo", "trancazo", "porrazo", "golpe sin corte", "traumatismo cerrado", "lesión por impacto"]'),
+('Y29.XXXD', 'Contacto con objeto sin filo, intención no determinada, contacto sucesivo', 'Sin especificar', '["golpes reiterados", "contusiones múltiples", "golpiza", "trauma recurrente", "golpes constantes", "seguido de golpe", "lesiones sucesivas", "recaída por golpe", "traumatismo por repetición", "golpe sobre golpe", "hematomas múltiples", "trauma acumulado", "segundo impacto", "lesión agravada", "traumatismos seguidos", "golpes frecuentes", "golpe constante", "maltrato contuso"]'),
+('Y29.XXXS', 'Contacto con objeto sin filo, intención no determinada, secuela', 'Sin especificar', '["secuelas de golpe", "consecuencia de trauma", "dolor crónico por golpe", "secuela de contusión", "cicatriz interna", "molestias persistentes", "dolor viejo", "lesión antigua", "daño residual", "secuela por porrazo", "dolor tras golpe", "consecuencia de porrazo", "problema crónico post-trauma", "dolor tras el golpe", "secuelas físicas", "lesiones crónicas", "dolores postraumáticos", "impacto tardío"]');

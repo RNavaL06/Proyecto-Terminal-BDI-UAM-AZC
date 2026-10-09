@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Y30
--- Aquí se insertarán los códigos que empiecen con Y30
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Y30.XXXA', 'Caída, salto o empujón desde un lugar alto, intención no determinada, contacto inicial', 'Sin especificar', '["golpe por caída", "me caí de alto", "porrazo", "costalazo", "me vine abajo", "precipitación", "accidente por altura", "trancazo", "leñazo", "cataplum", "despeñarse", "caída de altura", "me tiré", "empujón", "golpe seco", "traumatismo por caída", "tijeretazo", "cagadón"]'),
+('Y30.XXXD', 'Caída, salto o empujón desde un lugar alto, intención no determinada, contacto sucesivo', 'Sin especificar', '["seguimiento de caída", "dolor por caída previa", "curación de golpe", "revisión de porrazo", "consecuencias de caída", "trauma continuo", "dolores post caída", "rehabilitación por caída", "lesión persistente", "seguimiento de accidente", "secuelas de porrazo", "consulta tras accidente", "dolor que no se quita", "golpe mal curado", "tratamiento de contusión", "seguimiento médico", "evolución de traumatismo"]'),
+('Y30.XXXS', 'Caída, salto o empujón desde un lugar alto, intención no determinada, secuela', 'Sin especificar', '["secuelas de caída", "quedé mal de la caída", "dolor crónico por caída", "problemas post accidente", "discapacidad por caída", "cicatrices de accidente", "limitación física por golpe", "dolores viejos", "fractura mal soldada", "consecuencias a largo plazo", "secuelas de porrazo", "daño permanente", "dolor residual", "secuela postraumática", "historial de caída", "dolores que volvieron", "secuelas de trancazo"]');

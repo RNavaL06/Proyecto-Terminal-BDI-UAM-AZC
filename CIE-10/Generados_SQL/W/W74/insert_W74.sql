@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W74
--- Aquí se insertarán los códigos que empiecen con W74
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W74.XXXA', 'Causa de ahogamiento e inmersión accidental no especificados, contacto inicial', 'Sin especificar', '["ahogo", "ahogamiento", "asfixia por agua", "tragar agua", "inmersión", "sumersión", "casi ahogado", "se está ahogando", "aspiración de agua", "accidente acuático", "se fue a pique", "tragó líquido", "asfixia", "atragantamiento con agua", "emergencia acuática", "inhalación de agua", "se está hundiendo"]'),
+('W74.XXXD', 'Causa de ahogamiento e inmersión accidental no especificados, contacto sucesivo', 'Sin especificar', '["seguimiento de ahogamiento", "control post ahogamiento", "consecuencias de inmersión", "atención tras ahogo", "revisión por casi ahogamiento", "secuelas de asfixia por agua", "chequeo post accidente acuático", "tratamiento tras inmersión", "seguimiento médico ahogo", "evaluación post inmersión", "revisión de pulmones por ahogo", "después del ahogamiento", "cuidado post sumersión", "complicaciones por tragar agua", "reconsulta por accidente en agua"]'),
+('W74.XXXS', 'Causa de ahogamiento e inmersión accidental no especificados, secuela', 'Sin especificar', '["secuelas de ahogo", "daño post ahogamiento", "problemas pulmonares por ahogamiento", "hipoxia tras inmersión", "secuela por sumersión", "secuelas de casi ahogamiento", "lesión cerebral por falta de oxígeno", "cicatriz pulmonar por agua", "efectos a largo plazo por ahogo", "secuela post-asfixia", "daños después de casi morir ahogado", "trauma post inmersión", "secuela crónica por asfixia", "complicaciones por inmersión previa", "secuelas neurológicas por ahogo"]');

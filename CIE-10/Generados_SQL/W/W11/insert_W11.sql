@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W11
--- Aquí se insertarán los códigos que empiecen con W11
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W11.XXXA', 'Caída en y desde una escalera de mano, contacto inicial', 'Sin especificar', '["me caí de la escalera", "porrazo", "golpe al caer", "me fui de espaldas", "accidentes domésticos", "caída de altura", "esguince por caída", "fractura por escalera", "me resbalé", "estrellazo", "me pegué contra el piso", "porrazo en la escalera", "caída de manos", "accidente laboral", "me vine abajo", "traumatismo al caer", "golpe seco"]'),
+('W11.XXXD', 'Caída en y desde una escalera de mano, contacto sucesivo', 'Sin especificar', '["dolor después de la caída", "recaída del golpe", "secuelas de porrazo", "me sigue doliendo el golpe", "control de accidente", "dolor persistente", "revisión por caída", "moretones posteriores", "chichón que no baja", "molestias por el impacto", "me duele el cuerpo tras la caída", "seguimiento de accidente", "tratamiento de golpe", "sigo adolorido del porrazo", "revisión de lesiones por caída", "dolor residual", "traumatismo continuo"]'),
+('W11.XXXS', 'Caída en y desde una escalera de mano, secuela', 'Sin especificar', '["secuelas de caída vieja", "dolor crónico por golpe", "lesión antigua", "problemas tras caída", "dolor de huesos viejo", "secuelas de porrazo", "artrosis por trauma", "secuelas de accidente en escalera", "dolor de espalda viejo", "daño permanente", "consecuencias de caída", "me quedó doliendo", "rigidez tras accidente", "rehabilitación por trauma antiguo", "cicatriz de golpe", "secuela física", "antiguo porrazo"]');

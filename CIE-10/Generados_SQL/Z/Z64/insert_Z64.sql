@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Z64
--- Aquí se insertarán los códigos que empiecen con Z64
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Z64.0', 'Problemas relacionados con embarazo no deseado', 'Sin especificar', '["embarazo sorpresa", "quede embarazada y no queria", "embarazo no planificado", "paternidad no deseada", "maternidad forzada", "estoy embarazada y no se que hacer", "como interrumpir embarazo", "aborto legal", "pastillas para abortar", "problemas con el embarazo", "estoy en cinta y no lo planee", "angustia por embarazo", "miedo al embarazo", "consejería embarazo", "retraso menstrual", "prueba positiva"]'),
+('Z64.1', 'Problemas relacionados con multiparidad', 'Sin especificar', '["demasiados hijos", "familia numerosa", "muchos embarazos", "cansancio de ser madre", "agotamiento materno", "estrés por crianza", "no puedo más con los niños", "planificación familiar fallida", "embarazos seguidos", "partos múltiples", "problemas económicos por hijos", "ayuda crianza", "sobredemanda materna", "colapso familiar", "crianza difícil", "superpoblación familiar"]'),
+('Z64.4', 'Desavenencias con asesores', 'Sin especificar', '["problemas con el doctor", "mala atención médica", "no entiendo al doctor", "desacuerdo con el terapeuta", "mala experiencia con el especialista", "choque con el consejero", "conflicto con mi psicólogo", "asesoría médica deficiente", "no me llevo bien con el médico", "pelea con el terapeuta", "asesor no me entiende", "mala praxis comunicativa", "diferencias con el profesional", "incomodidad en consulta", "mala guía médica", "no estoy conforme con la atención"]');

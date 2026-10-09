@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W06
--- Aquí se insertarán los códigos que empiecen con W06
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W06.XXXA', 'Caída desde cama, contacto inicial', 'Sin especificar', '["me caí de la cama", "porrazo al levantarse", "golpe al dormir", "cayó de la cama", "accidente al bajar de la cama", "trancazo por caída", "madrazo", "guamazo", "porrazo", "golpe en la cabeza al caer", "me fui de bruces de la cama", "rodó de la cama", "impacto inicial", "traumatismo al caer de la cama", "golpazo"]'),
+('W06.XXXD', 'Caída desde cama, contacto sucesivo', 'Sin especificar', '["seguimiento de caída", "dolor tras caer de la cama", "molestias por golpe en la cama", "evolución de golpe", "chequeo por caída", "revisión de traumatismo", "contusión persistente", "tratamiento posterior a caída", "dolor que no pasa", "cardenal por caída", "moretón tras golpe", "chichón después de caer", "seguimiento médico caída", "dolor persistente", "atención sucesiva"]'),
+('W06.XXXS', 'Caída desde cama, secuela', 'Sin especificar', '["secuelas de caída", "dolor crónico por caída", "problemas tras golpe en cama", "trauma de largo plazo", "consecuencias de caída", "dolor de huesos viejo", "secuela postraumática", "molestia antigua por golpe", "rehabilitación por caída antigua", "daño permanente por golpe", "dolores después de tiempo", "efectos secundarios del porrazo", "lesión consolidada", "dolor persistente por accidente", "secuela física"]');

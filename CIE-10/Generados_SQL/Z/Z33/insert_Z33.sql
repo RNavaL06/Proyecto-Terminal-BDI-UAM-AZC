@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Z33
--- Aquí se insertarán los códigos que empiecen con Z33
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Z33.1', 'Estado de embarazo incidental', 'Sin especificar', '["embarazo", "estar encinta", "gestación", "esperando un bebé", "estar en estado", "panza", "pancita", "bombita", "preñez", "estar embarazada", "positivo en el test", "tener un bebé en camino", "con un bombo", "estado de gestación", "embarazo sorpresa", "embarazo detectado", "esperando familia"]'),
+('Z33.2', 'Contacto para interrupción voluntaria del embarazo', 'Sin especificar', '["aborto", "aborto inducido", "IVE", "interrupción del embarazo", "abortar", "quitarse al bebé", "terminar el embarazo", "aborto legal", "procedimiento de aborto", "legrado", "pastillas para abortar", "aborto provocado", "interrupción voluntaria", "sacar el embarazo", "asistencia para aborto", "clínica de abortos", "intervención ginecológica"]'),
+('Z33.3', 'Estado de embarazo, portadora gestacional', 'Sin especificar', '["vientre de alquiler", "gestación subrogada", "madre sustituta", "gestante", "madre de alquiler", "portadora gestacional", "embarazo subrogado", "alquiler de vientre", "gestación por otro", "madre portadora", "embarazo para terceros", "gestación altruista", "subrogación", "vientre solidario", "gestante subrogada"]');

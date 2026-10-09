@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: X04
--- Aquí se insertarán los códigos que empiecen con X04
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('X04.XXXA', 'Exposición a ignición de material altamente inflamable, contacto inicial', 'Sin especificar', '["quemadura por fuego", "incendio", "accidente con fuego", "quemado con gasolina", "explosión", "fuego directo", "chamusquina", "quemarse con solventes", "accidente doméstico con inflamables", "quemadura por materiales químicos", "fogonazo", "quemadura de primer contacto", "emergencia por quemadura", "accidente laboral con inflamables", "llamarada"]'),
+('X04.XXXD', 'Exposición a ignición de material altamente inflamable, contacto sucesivo', 'Sin especificar', '["seguimiento de quemadura", "curación de quemadura", "quemadura recurrente", "complicación de quemadura", "revisión de piel quemada", "post-quemadura", "infección en quemadura", "tratamiento de heridas por fuego", "continuación de quemado", "quemadura que no cicatriza", "reingreso por quemadura", "control de quemaduras", "cuidado de quemaduras graves", "seguimiento médico de fuego", "evolución de quemadura"]'),
+('X04.XXXS', 'Exposición a ignición de material altamente inflamable, secuela', 'Sin especificar', '["cicatriz por quemadura", "queloides por fuego", "secuelas de incendio", "cicatriz deformante", "retracción por quemadura", "daño permanente por fuego", "marcas de quemadura", "contractura post-quemadura", "atrofia por quemadura", "consecuencias de quemadura grave", "secuela dermatológica", "cicatrización patológica", "discapacidad por fuego", "fibrosis post-quemadura", "cicatriz que tira"]');

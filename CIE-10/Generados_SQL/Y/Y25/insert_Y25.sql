@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Y25
--- Aquí se insertarán los códigos que empiecen con Y25
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Y25.XXXA', 'Contacto con material explosivo, intención no determinada, contacto inicial', 'Sin especificar', '["explosión", "dinamita", "bomba", "accidente con explosivos", "detonación", "voladura", "quemaduras por explosión", "herida por onda expansiva", "estallido", "petardo", "pirotecnia", "artefacto explosivo", "cohete", "heridas por esquirlas", "trauma por explosión", "accidente con pólvora", "explosión accidental"]'),
+('Y25.XXXD', 'Contacto con material explosivo, intención no determinada, contacto sucesivo', 'Sin especificar', '["seguimiento de explosión", "curación de herida por explosivo", "control de lesión por detonación", "rehabilitación tras explosión", "segunda atención por accidente explosivo", "tratamiento de quemaduras antiguas", "evaluación post detonación", "revisión de heridas por pólvora", "atención médica sucesiva por explosivo", "manejo de cicatrices por explosión", "seguimiento de trauma por bomba", "curaciones por estallido", "control médico por accidente con dinamita"]'),
+('Y25.XXXS', 'Contacto con material explosivo, intención no determinada, secuela', 'Sin especificar', '["secuelas de explosión", "cicatrices por explosión", "sordera por explosión", "trauma crónico por detonación", "daño permanente por explosivo", "secuela por bomba", "discapacidad tras explosión", "problemas auditivos por estallido", "cicatrices de quemaduras por pólvora", "secuelas físicas por accidente con dinamita", "daño por onda expansiva", "secuelas post-traumáticas por explosión", "heridas antiguas de explosión"]');

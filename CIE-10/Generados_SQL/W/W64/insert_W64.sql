@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W64
--- Aquí se insertarán los códigos que empiecen con W64
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W64.XXXA', 'Exposición a otras fuerzas mecánicas animadas, contacto inicial', 'Sin especificar', '["ataque de animal", "mordida", "picadura", "topetazo de animal", "embestida", "patada de bicho", "arañazo", "golpe animal", "ataque animal", "fuerza mecánica animada", "contacto con ser vivo", "accidente con animal", "mordedura inicial", "choque contra animal", "agresión animal"]'),
+('W64.XXXD', 'Exposición a otras fuerzas mecánicas animadas, contacto sucesivo', 'Sin especificar', '["seguimiento de mordida", "curación de ataque animal", "tratamiento tras embestida", "revisión por golpe animal", "secuelas de ataque", "después de la mordida", "consulta post ataque", "contacto recurrente", "control de herida animal", "segunda consulta por animal", "evolución de mordedura", "seguimiento de arañazo", "atención sucesiva por bicho", "curación de herida por animal"]'),
+('W64.XXXS', 'Exposición a otras fuerzas mecánicas animadas, secuela', 'Sin especificar', '["cicatriz de mordida", "secuela de ataque animal", "daño permanente animal", "consecuencias de embestida", "deformidad por ataque", "problemas post mordida", "cicatriz de arañazo", "dolor crónico tras golpe animal", "secuelas de bicho", "efectos a largo plazo de ataque", "discapacidad por animal", "herida vieja de animal", "cicatriz antigua", "secuela post mordedura"]');

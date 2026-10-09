@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Y26
--- Aquí se insertarán los códigos que empiecen con Y26
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Y26.XXXA', 'Exposición al humo, fuego y llamas, intención no determinada, contacto inicial', 'Sin especificar', '["quemaduras por fuego", "intoxicación por humo", "incendio", "chamusque", "quemado", "inhalación de humo", "fuego accidental", "emergencia por llamas", "afectación por calor", "asfixia por humo", "herida por fuego", "accidente con fuego", "quemazón", "humareda", "lesión por llamarada", "fuego sin causa clara"]'),
+('Y26.XXXD', 'Exposición al humo, fuego y llamas, intención no determinada, contacto sucesivo', 'Sin especificar', '["seguimiento por quemaduras", "curación de quemadura", "control de heridas por fuego", "revisión por exposición al humo", "secuelas de incendio", "tratamiento de quemaduras", "cuidado posterior al fuego", "consulta de seguimiento por quemadura", "evolución de lesiones por llama", "atención médica por quemadura previa", "segunda consulta por fuego", "cicatrización por fuego", "revaloración por daño térmico", "curaciones por incendio", "chequeo post-quemadura"]'),
+('Y26.XXXS', 'Exposición al humo, fuego y llamas, intención no determinada, secuela', 'Sin especificar', '["cicatrices por fuego", "secuelas de quemaduras", "daño pulmonar por humo crónico", "fibrosis por inhalación", "marcas de quemadura", "secuela post-incendio", "queloide por quemadura", "problemas respiratorios por humo", "secuela por contacto con fuego", "herida antigua por llamas", "cicatriz deformante", "secuelas térmicas", "limitación funcional por quemadura", "secuelas de inhalación de humo", "historial de quemaduras"]');

@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: X18
--- Aquí se insertarán los códigos que empiecen con X18
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('X18.XXXA', 'Contacto con otros metales calientes, contacto inicial', 'Sin especificar', '["quemadura por metal", "quemado con hierro", "quemadura de primer grado", "ampolla por calor", "accidente laboral", "piel quemada", "quemadura industrial", "metal al rojo vivo", "quemadura fresca", "herida por metal caliente", "quemazón", "quemadura reciente", "accidente con metal", "lesión térmica", "quemado por soldadura", "quemadura aguda"]'),
+('X18.XXXD', 'Contacto con otros metales calientes, contacto sucesivo', 'Sin especificar', '["quemadura en curación", "seguimiento de quemadura", "quemadura infectada", "revisión de herida", "limpieza de quemadura", "quemadura que no cierra", "curación de piel", "control de quemado", "tratamiento de quemadura", "quemadura recidivante", "evolución de quemadura", "quemadura en tratamiento", "segunda cita por quemadura", "herida abierta por metal", "revisión médica de quemadura"]'),
+('X18.XXXS', 'Contacto con otros metales calientes, secuela', 'Sin especificar', '["cicatriz de quemadura", "marca de quemadura", "queloides por quemadura", "secuelas de quemado", "cicatriz hipertrófica", "quemadura vieja", "mancha por quemadura", "piel retraída", "secuela post-quemadura", "tejido cicatricial", "fibrosis por quemadura", "cicatriz deformante", "secuela de accidente", "quemadura antigua", "lesión crónica", "cicatriz permanente"]');

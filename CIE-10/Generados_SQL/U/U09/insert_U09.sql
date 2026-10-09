@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: U09
--- Aquí se insertarán los códigos que empiecen con U09
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('U09.9', 'Afección pos-COVID-19, no especificada', 'Sin especificar', '["secuelas covid", "covid largo", "long covid", "síntomas persistentes covid", "covid prolongado", "cansancio después de covid", "niebla mental post covid", "fatiga crónica post covid", "tos persistente post covid", "falta de aire después del covid", "efectos secundarios del coronavirus", "malestar tras superar el covid", "problemas respiratorios post covid", "daño pulmonar post covid", "pérdida de olfato prolongada", "dolor en el pecho post covid", "secuelas del bicho", "efectos de la pandemia", "post-covid", "recuperación lenta del covid"]');

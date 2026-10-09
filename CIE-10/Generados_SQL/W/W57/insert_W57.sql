@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W57
--- Aquí se insertarán los códigos que empiecen con W57
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W57.XXXA', 'Mordido o picado por insecto no venenoso y otro artrópodo no venenoso, contacto inicial', 'Sin especificar', '["picadura de insecto", "me picó un bicho", "roncha", "picotazo", "mordida de bicho", "hinchazón por picadura", "comezón por bicho", "picadura de mosquito", "zancudazo", "picadura de hormiga", "picadura de pulga", "chupetón de bicho", "reacción alérgica leve", "picazón en la piel", "picada de bicho", "bicho que me picó"]'),
+('W57.XXXD', 'Mordido o picado por insecto no venenoso y otro artrópodo no venenoso, contacto sucesivo', 'Sin especificar', '["reincidencia por picadura", "nueva picadura de bicho", "otra vez me picó un insecto", "picaduras recurrentes", "seguimiento de picadura", "reacción a picadura anterior", "otra roncha", "picotazo sucesivo", "contacto repetido con bicho", "inflamación persistente por picadura", "otra vez picado", "tratamiento de picaduras múltiples", "insistencia de bicho", "picaduras frecuentes", "reincidencia de mordedura"]'),
+('W57.XXXS', 'Mordido o picado por insecto no venenoso y otro artrópodo no venenoso, secuela', 'Sin especificar', '["cicatriz por picadura", "mancha de picadura", "secuela de bicho", "marcas de picaduras", "lesión residual por insecto", "cicatrización de picotazo", "consecuencia de mordedura", "mancha en la piel por bicho", "huella de picadura", "piel irritada post picadura", "daño en la piel por bicho", "secuelas de picaduras antiguas", "manchón de bicho", "cicatriz queloide por insecto", "efectos a largo plazo de picadura"]');

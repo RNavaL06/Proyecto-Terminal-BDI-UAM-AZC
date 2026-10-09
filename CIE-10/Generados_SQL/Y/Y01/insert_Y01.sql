@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Y01
--- Aquí se insertarán los códigos que empiecen con Y01
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Y01.XXXA', 'Agresión por empujón desde un lugar elevado, contacto inicial', 'Sin especificar', '["empujón", "tiraron", "me aventaron", "caída provocada", "precipitación", "despeñado", "golpe por caída", "agresión física", "tumbado desde altura", "empujado desde azotea", "tirado desde balcón", "cayó de edificio", "traumatismo por empuje", "lesión por caída intencional", "me tiraron de arriba", "ataque desde altura", "choque contra el suelo"]'),
+('Y01.XXXD', 'Agresión por empujón desde un lugar elevado, contacto sucesivo', 'Sin especificar', '["seguimiento de caída", "golpes secundarios", "trauma continuo", "complicaciones por empujón", "atención post-caída", "efectos tardíos de la caída", "reingreso por agresión", "lesiones múltiples por caída", "control de traumatismo", "seguimiento médico tras despeñamiento", "revaloración por empujón", "cuidado posterior a caída provocada", "evolución de lesiones por empujón", "revisión de daños", "atención de choque sucesivo"]'),
+('Y01.XXXS', 'Agresión por empujón desde un lugar elevado, secuela', 'Sin especificar', '["secuelas de caída", "daño permanente por empujón", "problemas post-traumáticos", "discapacidad por caída", "cicatrización tras agresión", "consecuencias de haber sido tirado", "secuela de precipitación", "dolor crónico por caída", "rehabilitación post-agresión", "daños a largo plazo", "secuela física por empuje", "estado post-traumático", "limitación física por caída", "terapia tras despeñamiento", "secuela de agresión intencional"]');

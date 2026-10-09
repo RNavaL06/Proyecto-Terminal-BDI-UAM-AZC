@@ -1,3 +1,4 @@
--- Archivo SQL para el grupo CIE-10: Z19
--- Aquí se insertarán los códigos que empiecen con Z19
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Z19.1', 'Estado de neoplasia hormonosensible', 'Sin especificar', '["cáncer sensible a hormonas", "tumor dependiente de estrógenos", "neoplasia hormono-dependiente", "cáncer que responde a terapia hormonal", "tumores sensibles a bloqueadores", "cáncer de mama con receptores positivos", "cáncer de próstata sensible a hormonas", "neoplasia estrogénico dependiente", "tumor con receptores hormonales", "terapia endocrina para cáncer", "cáncer que crece con hormonas", "tumor tratable con pastillas hormonales", "neoplasia receptora de hormonas", "cáncer que baja con antihormonales", "metástasis sensible a hormonas"]'),
+('Z19.2', 'Estado de neoplasia hormonorresistente', 'Sin especificar', '["cáncer resistente a hormonas", "tumor independiente de hormonas", "cáncer que no responde a terapia hormonal", "neoplasia refractaria a endocrinoterapia", "tumores sin receptores hormonales", "cáncer agresivo no hormonal", "neoplasia de crecimiento autónomo", "cáncer que no baja con bloqueadores", "tumor triple negativo", "resistencia a tratamiento hormonal", "cáncer que sigue creciendo con hormonas", "tumor que no reconoce las hormonas", "cáncer de próstata resistente a castración", "neoplasia insensible a endocrinos", "cáncer rebelde a medicación hormonal"]');

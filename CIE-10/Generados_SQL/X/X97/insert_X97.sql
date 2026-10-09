@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: X97
--- Aquí se insertarán los códigos que empiecen con X97
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('X97.XXXA', 'Agresión por humo, fuego y llamas, contacto inicial', 'Sin especificar', '["quemadura", "quemado", "incendio", "ataque con fuego", "fuego intencionado", "lesión por quemadura", "humo tóxico", "intoxicación por humo", "agresión física con fuego", "quemado vivo", "quemaduras de primer grado", "quemaduras de segundo grado", "quemaduras de tercer grado", "accidente por fuego provocado", "falta de aire por humo", "asfixia por incendio", "quemadura grave"]'),
+('X97.XXXD', 'Agresión por humo, fuego y llamas, contacto sucesivo', 'Sin especificar', '["curación de quemadura", "seguimiento de quemado", "tratamiento de heridas por fuego", "quemadura infectada", "cuidado de quemaduras", "revisión de lesiones por incendio", "cicatriz por fuego", "dolor por quemadura antigua", "infección en piel quemada", "rehabilitación por quemaduras", "injerto de piel", "cura de heridas", "seguimiento post-incendio", "control de quemaduras", "quemadura que no sana", "dolor crónico por incendio"]'),
+('X97.XXXS', 'Agresión por humo, fuego y llamas, secuela', 'Sin especificar', '["cicatrices por fuego", "quemadura antigua", "secuelas de quemaduras", "quemaduras viejas", "marcas de fuego", "queloides por quemadura", "retracción por quemadura", "daño pulmonar por humo", "fibrosis pulmonar post-incendio", "secuela de ataque con fuego", "deformidad por quemadura", "problemas respiratorios por humo", "cicatrices permanentes", "limitación de movimiento por quemadura", "trauma por incendio", "secuela física por fuego"]');

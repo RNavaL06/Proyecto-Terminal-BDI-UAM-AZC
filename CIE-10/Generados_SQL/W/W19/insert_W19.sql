@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W19
--- Aquí se insertarán los códigos que empiecen con W19
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W19.XXXA', 'Caída no especificada, contacto inicial', 'Sin especificar', '["golpe", "porrazo", "chichón", "tropezón", "resbalón", "caerse", "madrazo", "tortazo", "trompazo", "guamazo", "me caí", "accidente", "batacazo", "fregadazo", "talegazo", "costalazo", "palo", "centón"]'),
+('W19.XXXD', 'Caída no especificada, contacto sucesivo', 'Sin especificar', '["seguimiento de caída", "revisión por golpe", "dolor persistente por caída", "control de traumatismo", "evolución de porrazo", "curación de herida por caída", "revisión de chichón", "recaída por golpe", "revisión de lesiones", "valoración de golpe antiguo", "dolor tras el porrazo", "control de traumatismo previo", "evaluación de secuelas recientes", "monitoreo de chichón"]'),
+('W19.XXXS', 'Caída no especificada, secuela', 'Sin especificar', '["secuelas de caída", "dolor crónico por golpe", "problemas tras caída", "molestias por porrazo antiguo", "lesión vieja", "daño residual", "consecuencias de golpe", "secuela de traumatismo", "dolor recurrente por caída", "lesión de hace tiempo", "complicaciones por golpe", "efectos a largo plazo de caída", "dolor de viejo porrazo", "cicatriz de traumatismo"]');

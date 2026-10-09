@@ -1,3 +1,26 @@
--- Archivo SQL para el grupo CIE-10: W53
--- Aquí se insertarán los códigos que empiecen con W53
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W53.01XA', 'Mordido por ratón, contacto inicial', 'Sin especificar', '["mordida de ratón", "ratón me mordió", "herida por ratón", "ataque de ratón", "rasguño de ratón", "roedor me mordió", "urgencias mordida ratón", "infección por ratón", "vacuna mordida ratón", "mordedura de roedor", "me mordió un ratoncito", "primeros auxilios ratón"]'),
+('W53.01XD', 'Mordido por ratón, contacto sucesivo', 'Sin especificar', '["curación mordida ratón", "seguimiento mordedura ratón", "revisión herida ratón", "limpieza mordida ratón", "cita control ratón", "evolución mordedura", "segunda consulta ratón", "tratamiento continuo mordida", "sutura herida ratón", "revisión infección"]'),
+('W53.01XS', 'Mordido por ratón, secuela', 'Sin especificar', '["cicatriz por ratón", "secuelas mordedura ratón", "dolor crónico mordida ratón", "complicación mordedura roedor", "daño a largo plazo ratón", "rehabilitación mordida", "infección persistente ratón", "cicatrización deficiente"]'),
+('W53.09XA', 'Otro contacto con ratón, contacto inicial', 'Sin especificar', '["arañazo de ratón", "rasguño de ratón", "contacto con roedor", "rata o ratón", "ratón doméstico", "me rasguñó un ratón", "fui atacado por un ratón", "accidente con roedores", "tocar un ratón infectado", "prevención leptospirosis"]'),
+('W53.09XD', 'Otro contacto con ratón, contacto sucesivo', 'Sin especificar', '["seguimiento arañazo ratón", "control por contacto con ratón", "revisión rasguño roedor", "cura de herida por roedor", "valoración médica contacto ratón", "evolución de roce con roedor"]'),
+('W53.09XS', 'Otro contacto con ratón, secuela', 'Sin especificar', '["secuela contacto ratón", "cicatriz por arañazo ratón", "problema persistente tras contacto roedor", "daño tisular crónico ratón"]'),
+('W53.11XA', 'Mordido por rata, contacto inicial', 'Sin especificar', '["mordida de rata", "ataque de rata", "rata me mordió", "urgencias rata", "rabia por rata", "peligro rata", "herida profunda rata", "mordedura de rata de alcantarilla", "infección rata", "qué hacer si me muerde una rata"]'),
+('W53.11XD', 'Mordido por rata, contacto sucesivo', 'Sin especificar', '["cura mordida rata", "seguimiento médico mordedura rata", "antibióticos por mordedura rata", "revisión herida rata", "control infección rata", "curación de herida abierta"]'),
+('W53.11XS', 'Mordido por rata, secuela', 'Sin especificar', '["secuela mordedura rata", "cicatriz por mordida rata", "daño nervioso mordida rata", "fístula mordedura rata", "complicaciones rata", "dolor post-mordida rata"]'),
+('W53.19XA', 'Otro contacto con rata, contacto inicial', 'Sin especificar', '["rasguño de rata", "arañazo de rata", "rata me arañó", "contacto con rata", "roce con rata", "ataque de rata sin mordida", "limpieza de herida por rata", "riesgo de leptospira"]'),
+('W53.19XD', 'Otro contacto con rata, contacto sucesivo', 'Sin especificar', '["seguimiento arañazo rata", "revisión médica contacto rata", "evaluación contacto rata", "cita de control por rata", "observación clínica rata"]'),
+('W53.19XS', 'Otro contacto con rata, secuela', 'Sin especificar', '["cicatriz por arañazo de rata", "secuelas de contacto con roedor", "complicaciones por roce de rata", "daño cutáneo permanente"]'),
+('W53.21XA', 'Mordido por ardilla, contacto inicial', 'Sin especificar', '["mordida de ardilla", "ardilla me mordió", "mordedura de ardilla", "me atacó una ardilla", "urgencia mordedura ardilla", "primeros auxilios ardilla", "rabia ardilla", "herida por ardilla"]'),
+('W53.21XD', 'Mordido por ardilla, contacto sucesivo', 'Sin especificar', '["seguimiento mordedura ardilla", "cura herida ardilla", "revisión médico ardilla", "control post-mordida ardilla", "evolución herida ardilla"]'),
+('W53.21XS', 'Mordido por ardilla, secuela', 'Sin especificar', '["secuela mordedura ardilla", "cicatriz ardilla", "problemas post-mordida ardilla", "daño crónico mordedura ardilla"]'),
+('W53.29XA', 'Otro contacto con ardilla, contacto inicial', 'Sin especificar', '["arañazo de ardilla", "rasguño ardilla", "la ardilla me rasguñó", "contacto ardilla", "herida por ardilla", "accidente con ardilla"]'),
+('W53.29XD', 'Otro contacto con ardilla, contacto sucesivo', 'Sin especificar', '["revisión arañazo ardilla", "seguimiento contacto ardilla", "control médico ardilla", "cura roce ardilla"]'),
+('W53.29XS', 'Otro contacto con ardilla, secuela', 'Sin especificar', '["secuela contacto ardilla", "cicatriz por arañazo ardilla", "daño a largo plazo por ardilla"]'),
+('W53.81XA', 'Mordido por otro roedor, contacto inicial', 'Sin especificar', '["mordida de roedor", "hámster me mordió", "cobaya me mordió", "chinchilla me mordió", "mordedura de animal pequeño", "mordida de conejo", "me mordió un roedor"]'),
+('W53.81XD', 'Mordido por otro roedor, contacto sucesivo', 'Sin especificar', '["seguimiento mordida roedor", "revisión médica roedor", "cura herida pequeña mascota", "evolución mordedura roedor"]'),
+('W53.81XS', 'Mordido por otro roedor, secuela', 'Sin especificar', '["secuela mordida roedor", "cicatriz roedor", "complicaciones por mordedura de mascota"]'),
+('W53.89XA', 'Otro contacto con otros roedores, contacto inicial', 'Sin especificar', '["rasguño de roedor", "arañazo de mascota roedor", "roce con hámster", "contacto accidental roedor", "limpieza herida roedor"]'),
+('W53.89XD', 'Otro contacto con otros roedores, contacto sucesivo', 'Sin especificar', '["seguimiento arañazo roedor", "revisión médica contacto roedor", "control herida mascota roedor"]'),
+('W53.89XS', 'Otro contacto con otros roedores, secuela', 'Sin especificar', '["secuela contacto mascota roedor", "cicatriz por contacto roedor", "daño crónico roedor"]');

@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W92
--- Aquí se insertarán los códigos que empiecen con W92
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W92.XXXA', 'Exposición al calor excesivo de origen artificial, contacto inicial', 'Sin especificar', '["golpe de calor", "quemadura por calor", "sofocón", "acaloramiento", "calentura por aparato", "quemado por radiador", "insolación artificial", "exceso de calor", "quemadura industrial", "deshidratación por calor", "choque térmico", "quemadura térmica", "calor de estufa", "quemadura por maquinaria", "tostón"]'),
+('W92.XXXD', 'Exposición al calor excesivo de origen artificial, contacto sucesivo', 'Sin especificar', '["seguimiento de quemadura", "control por calor", "quemadura recurrente", "reexposición al calor", "cura de quemadura", "revisión por golpe de calor", "quemadura que no sana", "exposición continua", "seguimiento médico", "evolución de quemadura", "quemadura en tratamiento", "reiteración de contacto térmico", "recuperación de quemadura", "evaluación post quemadura"]'),
+('W92.XXXS', 'Exposición al calor excesivo de origen artificial, secuela', 'Sin especificar', '["cicatriz de quemadura", "secuelas de calor", "mancha por quemadura", "daño permanente por calor", "cicatriz hipertrófica", "queloides por quemadura", "daño dérmico crónico", "problemas post quemadura", "marcas de quemadura", "secuela térmica", "atrofia por calor", "problemas en la piel por quemadura", "secuela de choque térmico", "historial de quemadura", "cicatrización deficiente"]');

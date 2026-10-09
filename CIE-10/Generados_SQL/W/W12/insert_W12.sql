@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W12
--- Aquí se insertarán los códigos que empiecen con W12
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W12.XXXA', 'Caída en y desde andamio, contacto inicial', 'Sin especificar', '["accidente de trabajo", "caída de altura", "porrazo en construcción", "golpe por caída", "caerse de la plataforma", "accidente laboral", "estrellarse", "caída de andamio", "trabajador herido", "resbalón en andamio", "palo desde las alturas", "impacto por caída", "traumatismo por caída", "desplome", "caída desde estructura"]'),
+('W12.XXXD', 'Caída en y desde andamio, contacto sucesivo', 'Sin especificar', '["golpes múltiples", "recaída de accidente", "complicaciones por caída", "lesión persistente", "segundo impacto", "trauma continuo", "golpe tras golpe", "efecto rebote de caída", "secuela aguda", "dolor post-caída", "herida de seguimiento", "evaluación por caída previa", "golpazo constante", "traumatismo recurrente", "atención de seguimiento"]'),
+('W12.XXXS', 'Caída en y desde andamio, secuela', 'Sin especificar', '["secuelas de caída", "dolor crónico por caída", "lesión antigua de andamio", "dolencias de largo plazo", "consecuencias de accidente", "discapacidad post-accidente", "cicatriz de caída", "secuela física", "dolor por viejo golpe", "problemas post-traumáticos", "daño residual", "artritis post-traumática", "secuelas de obra", "dolor de huesos por caída", "limitación tras accidente"]');

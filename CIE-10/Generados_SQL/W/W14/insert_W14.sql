@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: W14
--- Aquí se insertarán los códigos que empiecen con W14
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('W14.XXXA', 'Caída desde árbol, contacto inicial', 'Sin especificar', '["me caí de un árbol", "porrazo desde un árbol", "golpe al caer de un árbol", "accidente al trepar", "me escaché del árbol", "me di un talegazo", "caída de altura", "porrazo", "traumatismo por caída", "madrazo", "golpazo", "me caí de la mata", "accidente arbóreo", "impacto por caída", "lesión por caída de árbol"]'),
+('W14.XXXD', 'Caída desde árbol, contacto sucesivo', 'Sin especificar', '["control por caída de árbol", "seguimiento tras caerse del árbol", "dolor persistente por caída", "revisión por golpe en árbol", "dolores después del porrazo", "segunda visita por caída", "complicaciones por caída", "me sigue doliendo el golpe", "evolución de la caída", "chequeo post caída", "golpe viejo por caer de árbol", "tratamiento de secuelas", "reconsulta por traumatismo", "continuación de tratamiento por caída", "dolencia post accidente"]'),
+('W14.XXXS', 'Caída desde árbol, secuela', 'Sin especificar', '["secuelas de caída de árbol", "dolor crónico por caída", "complicación vieja por golpe", "lesión antigua", "trauma de vieja data", "secuela de porrazo", "físico mal por caída", "me quedó doliendo desde que me caí", "problemas post caída", "secuela de accidente", "dolor persistente", "lesión mal curada", "consecuencia de la caída", "efectos secundarios de porrazo", "dolor viejo por accidente en árbol"]');

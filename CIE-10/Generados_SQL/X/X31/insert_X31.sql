@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: X31
--- Aquí se insertarán los códigos que empiecen con X31
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('X31.XXXA', 'Exposición a un exceso de frío natural, contacto inicial', 'Sin especificar', '["hipotermia", "congelamiento", "enfriamiento", "enfriarse", "pasmado de frío", "entumecido", "escarcha", "resfriado extremo", "choque térmico por frío", "temperatura baja", "cuerpo helado", "se me congelan los dedos", "pie de trinchera", "sabañones", "temblor por frío", "helada", "escalofrío intenso"]'),
+('X31.XXXD', 'Exposición a un exceso de frío natural, contacto sucesivo', 'Sin especificar', '["hipotermia recurrente", "exposición prolongada al frío", "frio crónico", "daño por frío continuo", "lesión por frío", "cuerpo destemplado", "enfriamiento prolongado", "segundo contacto con frío", "exposición repetida", "frio en los huesos", "necrotización por frío", "congelación de tejidos", "entumecimiento persistente", "dolor por congelación", "piel morada por frío", "vasoconstricción por frío"]'),
+('X31.XXXS', 'Exposición a un exceso de frío natural, secuela', 'Sin especificar', '["secuelas de hipotermia", "daño permanente por frío", "complicaciones por congelación", "cicatriz por frío", "dolor crónico por congelamiento", "pérdida de sensibilidad por frío", "neuropatía por frío", "daño en tejidos por hielo", "congelamiento antiguo", "secuela de congelación", "insensibilidad térmica", "efectos tardíos del frío", "problemas circulatorios post-frío", "dolor en las extremidades por frío", "lesiones dérmicas por frío", "hipersensibilidad al frío"]');

@@ -1,3 +1,3 @@
--- Archivo SQL para el grupo CIE-10: Z09
--- Aquí se insertarán los códigos que empiecen con Z09
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Z09', 'Contacto para reconocimiento médico de seguimiento después de finalizar tratamiento de afecciones distintas de neoplasia maligna', 'Sin especificar', '["chequeo de rutina", "revisión médica", "control post tratamiento", "alta médica", "cita de seguimiento", "control médico", "seguimiento clínico", "chequeo médico", "ver cómo sigo", "revisión después de curarme", "consulta de control", "evaluación post tratamiento", "revisión tras enfermedad", "chequeo después del hospital", "valoración de seguimiento", "seguimiento de salud", "revisión de salida", "control de alta", "cita de revisión", "seguimiento tras el tratamiento"]');

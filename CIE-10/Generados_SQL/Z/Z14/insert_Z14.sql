@@ -1,3 +1,6 @@
--- Archivo SQL para el grupo CIE-10: Z14
--- Aquí se insertarán los códigos que empiecen con Z14
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Z14.01', 'Portador de hemofilia A asintomático', 'Sin especificar', '["hemofilia A", "problemas de coagulacion", "sangrado sin sintomas", "portador sano", "genetica de la sangre", "fallo en la coagulacion", "deficiencia de factor VIII", "portador asintomatico", "herencia genetica", "riesgo de sangrado", "coagulos que no se forman", "hemorragia silenciosa", "portador de hemofilia", "enfermedad de la sangre"]'),
+('Z14.02', 'Portador de hemofilia A sintomático', 'Sin especificar', '["hemofilia A sintomatica", "sangrado frecuente", "moretones faciles", "hematomas inexplicables", "dolor en articulaciones", "hemartrosis", "sangrado al cortarse", "sangrado espontaneo", "problemas de sangre", "deficiencia de factor 8", "sangrado nasal constante", "epistaxis recurrente", "coagulacion lenta", "mala coagulacion", "sangrados internos"]'),
+('Z14.1', 'Portador de fibrosis quística', 'Sin especificar', '["fibrosis quistica", "mucoviscidosis", "problemas de pulmones", "moco en los pulmones", "genetica respiratoria", "portador de mucoviscidosis", "problemas digestivos geneticos", "acumulacion de moco", "enfermedad del moco pegajoso", "fallo genetico respiratorio", "dificultad para respirar por genetica", "problemas pancreaticos", "portador de gen mutado", "herencia de fibrosis", "moco espeso"]'),
+('Z14.8', 'Portador genético de otra enfermedad', 'Sin especificar', '["portador genetico", "enfermedad hereditaria", "herencia de enfermedades", "gen mutado", "riesgo de hijos enfermos", "gen recesivo", "transmision genetica", "antecedentes geneticos", "salud familiar", "mapa genetico", "genetica de padres a hijos", "enfermedad silenciosa", "portador de genes", "problema de adn", "herencia familiar"]');

@@ -1,3 +1,28 @@
--- Archivo SQL para el grupo CIE-10: Z52
--- Aquí se insertarán los códigos que empiecen con Z52
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Z52.000', 'Donante no especificado de sangre completa', 'Sin especificar', '["donar sangre", "banco de sangre", "necesito donador", "donación de sangre", "sangre total", "dar sangre", "ayuda donación", "colecta de sangre", "centros de sangre", "hacerse donante", "campaña de donación"]'),
+('Z52.001', 'Donante no especificado de células madre', 'Sin especificar', '["células madre", "trasplante médula", "donación células madre", "stem cells", "donar celulas progenitoras", "donante hematopoyético", "donante de vida", "células troncales", "donar para leucemia", "banco de células madre"]'),
+('Z52.008', 'Donante no especificado de otros hemoderivados', 'Sin especificar', '["donación plasma", "donar plaquetas", "hemoderivados", "donar componentes sanguíneos", "plasmaféresis", "donación de suero", "dar plaquetas", "banco de plasma", "recolección plaquetaria"]'),
+('Z52.010', 'Donante autólogo de sangre completa', 'Sin especificar', '["donación propia", "autodonación", "autotransfusión", "pre-depósito sangre", "donar para mí mismo", "reserva de sangre propia", "programar autodonación", "sangre para cirugía propia"]'),
+('Z52.011', 'Donante autólogo de células madre', 'Sin especificar', '["autotrasplante células madre", "cosecha propia células madre", "autólogo médula", "preservación células madre", "guardar mis células madre", "autoinjerto", "trasplante autólogo"]'),
+('Z52.018', 'Donante autólogo de otro tipo de sangre', 'Sin especificar', '["autodonación hemoderivados", "autotransfusión componentes", "guardar mi propio plasma", "reserva propia de plaquetas", "donar componentes para cirugía propia"]'),
+('Z52.090', 'Otros tipo de donante de sangre completa', 'Sin especificar', '["donante dirigido", "donación familiar", "donador específico", "donante de reposición", "donante de banco", "donante altruista", "donación remunerada", "donante amigo"]'),
+('Z52.091', 'Otros tipo de donante de células madre', 'Sin especificar', '["donante emparentado", "donante no emparentado", "donante voluntario", "banco público de células", "donante de cordón umbilical", "donante compatible", "donante de médula ósea"]'),
+('Z52.098', 'Otros tipo de donante de otro tipo de sangre', 'Sin especificar', '["donante de plasma específico", "donante de concentrado plaquetario", "donante por aféresis", "donante de urgencia", "donación dirigida de componentes"]'),
+('Z52.10', 'Donante no especificado de piel', 'Sin especificar', '["donar piel", "trasplante de piel", "banco de piel", "injerto de piel", "donante de tejido cutáneo", "aloinjerto piel", "donante quemados", "piel de cadáver"]'),
+('Z52.11', 'Donante autólogo de piel', 'Sin especificar', '["autoinjerto piel", "autoinjerto cutáneo", "auto-trasplante piel", "quemaduras injerto propio", "tomar piel propia", "cirugía reconstructiva propia"]'),
+('Z52.19', 'Otro tipo de donante de piel', 'Sin especificar', '["donante vivo piel", "donante cadavérico piel", "donante familiar piel", "trasplante cutáneo", "tejido de piel"]'),
+('Z52.20', 'Donante no especificado de hueso', 'Sin especificar', '["donar hueso", "banco de huesos", "injerto óseo", "donante tejido óseo", "trasplante de hueso", "donante esquelético", "donar parte de hueso"]'),
+('Z52.21', 'Donante autólogo de hueso', 'Sin especificar', '["autoinjerto óseo", "injerto de hueso propio", "sacar hueso para injerto", "hueso autólogo", "cirugía ortopédica injerto propio"]'),
+('Z52.29', 'Otro tipo de donante de hueso', 'Sin especificar', '["donante hueso vivo", "donante hueso fallecido", "aloinjerto óseo", "donante banco hueso", "donante de tejido ortopédico"]'),
+('Z52.3', 'Donante de médula ósea', 'Sin especificar', '["donar médula", "donante médula", "trasplante médula", "donante células progenitoras", "donante para leucemia", "dar médula ósea", "registro donantes médula", "donación de tuétano"]'),
+('Z52.4', 'Donante de riñón', 'Sin especificar', '["donar riñón", "trasplante renal", "donante vivo riñón", "donante fallecido riñón", "donante compatible riñón", "donante de órgano", "necesito un riñón", "donación en vida"]'),
+('Z52.5', 'Donante de córnea', 'Sin especificar', '["donar córnea", "trasplante córnea", "banco de ojos", "donante de ojos", "donar ojos", "trasplante ocular", "donante de tejido ocular"]'),
+('Z52.6', 'Donante de hígado', 'Sin especificar', '["donar hígado", "trasplante hepático", "donante vivo hígado", "donante de lóbulo hepático", "trasplante de parte del hígado", "donante donación de órgano", "donante fallecido hígado"]'),
+('Z52.810', 'Donante de óvulo (ovocito) menor de 35 años, receptor anónimo', 'Sin especificar', '["donación óvulos joven", "donante óvulos anónima", "ovodonación joven", "donar óvulos", "banco óvulos", "donante joven", "receptor anónimo óvulos"]'),
+('Z52.811', 'Donante de óvulo (ovocito) menor de 35 años, receptor conocido', 'Sin especificar', '["donación óvulos conocida", "donante joven conocida", "ovodonación familiar", "donar óvulos amiga", "ovodonación dirigida"]'),
+('Z52.812', 'Donante de óvulo (ovocito) de 35 años o mayor, receptor anónimo', 'Sin especificar', '["donación óvulos 35 años", "ovodonación anónima", "donante óvulos mayor 35", "donante madura óvulos"]'),
+('Z52.813', 'Donante de óvulo (ovocito) de 35 años o mayor, receptor conocido', 'Sin especificar', '["donación óvulos conocida 35+", "ovodonación familiar conocida", "donar óvulos receptora conocida"]'),
+('Z52.819', 'Donante de óvulo (ovocito), no especificado', 'Sin especificar', '["donante de gametos", "donación de ovocitos", "banco de óvulos", "ovodonación", "donar óvulos"]'),
+('Z52.89', 'Donante de otros órganos o tejidos especificados', 'Sin especificar', '["donante de corazón", "donante de pulmón", "donante de páncreas", "donante de intestino", "donante de válvulas cardíacas", "donante multiorgánico", "donante de órganos"]'),
+('Z52.9', 'Donante de órgano o tejido no especificado', 'Sin especificar', '["donador de órganos", "donante de tejido", "donar órganos", "ser donante", "donante de cuerpo", "carnet de donante", "donación órganos muerte"]');

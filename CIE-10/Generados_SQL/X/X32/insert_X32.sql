@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: X32
--- Aquí se insertarán los códigos que empiecen con X32
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('X32.XXXA', 'Exposición a luz del sol, contacto inicial', 'Sin especificar', '["quemadura de sol", "insolación", "quemado por el sol", "pellejo quemado", "piel roja", "quemazón solar", "daño solar", "picazón por sol", "ardor en la piel", "bronceado excesivo", "rayos UV", "quemado por estar en la playa", "ampollas por sol", "piel irritada por sol", "eritema solar"]'),
+('X32.XXXD', 'Exposición a luz del sol, contacto sucesivo', 'Sin especificar', '["insolación recurrente", "exposición prolongada al sol", "daño solar acumulado", "piel curtida", "manchas por el sol", "quemaduras frecuentes", "problemas en la piel por sol", "bronceado constante", "fotodaño", "envejecimiento solar", "exposición solar crónica", "quemar la piel seguido", "sensibilidad al sol", "quemaduras solares repetidas", "daño actínico"]'),
+('X32.XXXS', 'Exposición a luz del sol, secuela', 'Sin especificar', '["cicatriz solar", "secuelas de insolación", "daño solar a largo plazo", "manchas en la piel por sol", "piel manchada", "efectos secundarios del sol", "quemadura vieja", "piel acartonada", "daño dérmico crónico", "consecuencias de quemarse", "piel con pecas solares", "hiperpigmentación post-solar", "atrofia por sol", "daño post-solar", "marcas de sol"]');

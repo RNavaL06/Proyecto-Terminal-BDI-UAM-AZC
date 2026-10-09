@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: X30
--- Aquí se insertarán los códigos que empiecen con X30
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('X30.XXXA', 'Exposición al calor natural excesivo, contacto inicial', 'Sin especificar', '["golpe de calor", "insolación", "deshidratación", "agotamiento por calor", "sofoco", "mareo por calor", "calor extremo", "ataque de calor", "quemado por el sol", "calentura", "bochorno", "desmayo por sol", "hipertermia", "estrés térmico", "desvanecimiento", "sed excesiva", "dolor de cabeza por sol"]'),
+('X30.XXXD', 'Exposición al calor natural excesivo, contacto sucesivo', 'Sin especificar', '["golpe de calor recurrente", "fiebre por calor", "recaída por insolación", "calor acumulado", "estrés térmico continuo", "deshidratación crónica", "intolerancia al calor", "agotamiento crónico", "fatiga por calor", "malestar por clima", "exposición prolongada", "daño por calor continuo", "insuficiencia termorreguladora", "choque térmico recurrente", "descompensación por calor", "mal del calor"]'),
+('X30.XXXS', 'Exposición al calor natural excesivo, secuela', 'Sin especificar', '["secuelas de golpe de calor", "daño cerebral por calor", "daño renal post calor", "efectos a largo plazo por insolación", "problemas de termorregulación", "sensibilidad al calor", "secuelas de insolación", "deterioro post golpe de calor", "fatiga persistente", "daño multiorgánico por calor", "hipertermia residual", "intolerancia crónica al sol", "trastorno por golpe de calor", "dolores de cabeza crónicos por sol", "daño neurológico por calor"]');

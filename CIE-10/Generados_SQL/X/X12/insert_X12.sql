@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: X12
--- Aquí se insertarán los códigos que empiecen con X12
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('X12.XXXA', 'Contacto con otros líquidos calientes, contacto inicial', 'Sin especificar', '["quemadura con agua caliente", "quemadura por aceite", "chorreadura de café", "escaldadura", "quemarse con sopa", "quemadura fresca", "me quemé con agua hirviendo", "accidente doméstico cocina", "quemadura de primer grado", "quemadura de segundo grado", "quemadura reciente", "ampolla por calor", "escaldado", "quemadura accidental", "contacto con líquido hirviente"]'),
+('X12.XXXD', 'Contacto con otros líquidos calientes, contacto sucesivo', 'Sin especificar', '["seguimiento de quemadura", "curación de quemadura", "control de quemadura", "quemadura que no sana", "tratamiento posterior quemadura", "revisión de piel quemada", "quemadura en evolución", "cita de control por escaldadura", "quemadura infectada", "cambio de vendas quemadura", "evaluación de herida por calor", "seguimiento médico quemadura", "quemadura en proceso de curación", "revisión de lesión térmica", "atención continuada quemadura"]'),
+('X12.XXXS', 'Contacto con otros líquidos calientes, secuela', 'Sin especificar', '["cicatriz por quemadura", "mancha de quemadura", "secuelas de escaldadura", "queloides por quemadura", "piel retraída por quemadura", "marca de agua hirviendo", "cicatriz hipertrófica", "problemas post-quemadura", "secuela de accidente doméstico", "cicatrización anormal", "secuelas dérmicas", "fibrosis por quemadura", "consecuencias de quemadura antigua", "cicatriz queloide", "marcas permanentes por calor"]');

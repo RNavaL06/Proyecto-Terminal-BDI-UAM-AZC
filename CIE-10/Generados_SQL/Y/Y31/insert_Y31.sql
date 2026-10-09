@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Y31
--- Aquí se insertarán los códigos que empiecen con Y31
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Y31.XXXA', 'Caer, acostarse o correr ante un objeto en movimiento, intención no determinada, contacto inicial', 'Sin especificar', '["golpe por objeto", "atropello", "caída por esquivar", "me tiré al suelo", "choque con objeto", "me tropecé", "impacto inicial", "raspones por caída", "me caí corriendo", "caída accidental", "golpe repentino", "traumatismo por impacto", "esquivar algo y caer", "frenazo y caída", "me tumbé para no chocar", "lesión por objeto en movimiento"]'),
+('Y31.XXXD', 'Caer, acostarse o correr ante un objeto en movimiento, intención no determinada, contacto sucesivo', 'Sin especificar', '["seguimiento de golpe", "dolor tras el golpe", "lesión persistente", "recaída por impacto", "contusión continua", "tratamiento por choque", "dolor después de la caída", "seguimiento médico golpe", "malestar tras el impacto", "segunda revisión por golpe", "moretón que no se quita", "evolución de traumatismo", "molestia tras atropello", "dolor residual por caída", "revisión de lesiones", "herida en tratamiento"]'),
+('Y31.XXXS', 'Caer, acostarse o correr ante un objeto en movimiento, intención no determinada, secuela', 'Sin especificar', '["secuelas de golpe", "dolor crónico por caída", "cicatriz por accidente", "complicación tras choque", "secuela de atropellamiento", "secuela física", "daño a largo plazo", "consecuencia de caída", "problemas post golpe", "dolor de vieja herida", "secuelas por trauma", "deformidad tras impacto", "dificultad tras accidente", "secuela de impacto", "dolor postraumático", "rehabilitación por caída"]');

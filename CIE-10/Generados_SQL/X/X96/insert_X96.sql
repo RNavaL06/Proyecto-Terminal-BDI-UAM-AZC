@@ -1,3 +1,23 @@
--- Archivo SQL para el grupo CIE-10: X96
--- Aquí se insertarán los códigos que empiecen con X96
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('X96.0XXA', 'Agresión por bomba antipersona, contacto inicial', 'Sin especificar', '["mina antipersona", "explosión", "herida por mina", "pisé una mina", "estallido", "ataque con explosivo", "accidente por guerra", "voladura", "detonación", "artefacto explosivo", "herida de combate", "trauma por explosión"]'),
+('X96.0XXD', 'Agresión por bomba antipersona, contacto sucesivo', 'Sin especificar', '["curación mina", "seguimiento explosión", "herida por mina seguimiento", "atención post-explosión", "revisión herida guerra", "tratamiento tras mina", "limpieza herida explosivo", "evolución trauma explosión"]'),
+('X96.0XXS', 'Agresión por bomba antipersona, secuela', 'Sin especificar', '["cicatriz por mina", "secuelas explosión", "amputación por mina", "discapacidad por guerra", "problemas post-explosión", "trauma antiguo explosivo", "daño crónico mina", "secuela de guerra"]'),
+('X96.1XXA', 'Agresión por bomba de gasolina, contacto inicial', 'Sin especificar', '["bomba molotov", "quemadura por explosión", "fuego provocado", "ataque con combustible", "bomba casera incendiaria", "botella incendiaria", "fuego agresivo", "explosión de gasolina", "ataque con fuego"]'),
+('X96.1XXD', 'Agresión por bomba de gasolina, contacto sucesivo', 'Sin especificar', '["curación quemaduras molotov", "seguimiento quemadura gasolina", "tratamiento quemado explosión", "revisión herida fuego", "manejo de quemaduras", "evolución quemadura agresiva"]'),
+('X96.1XXS', 'Agresión por bomba de gasolina, secuela', 'Sin especificar', '["cicatrices quemadura fuego", "secuelas molotov", "retracciones por quemadura", "piel quemada antigua", "secuela ataque incendiario", "daño por fuego"]'),
+('X96.2XXA', 'Agresión por carta bomba, contacto inicial', 'Sin especificar', '["paquete explosivo", "sobre bomba", "atentado por correo", "bomba en sobre", "explosión paquete", "paquete sospechoso estallido"]'),
+('X96.2XXD', 'Agresión por carta bomba, contacto sucesivo', 'Sin especificar', '["curación explosión paquete", "seguimiento herida sobre-bomba", "atención ataque postal", "revisión trauma paquete"]'),
+('X96.2XXS', 'Agresión por carta bomba, secuela', 'Sin especificar', '["secuela atentado correo", "cicatrices explosión sobre", "daño tras ataque paquete", "secuela trauma postal"]'),
+('X96.3XXA', 'Agresión con bomba de fertilizante, contacto inicial', 'Sin especificar', '["bomba amonal", "explosivo agrícola", "estallido fertilizante", "ataque con explosivo casero", "detonación fertilizante", "bomba química"]'),
+('X96.3XXD', 'Agresión con bomba de fertilizante, contacto sucesivo', 'Sin especificar', '["seguimiento explosivo casero", "atención herida fertilizante", "evolución herida explosión", "tratamiento post-detonación"]'),
+('X96.3XXS', 'Agresión con bomba de fertilizante, secuela', 'Sin especificar', '["secuela explosivo agrícola", "cicatriz explosión fertilizante", "daño por bomba amonal", "trauma crónico explosivo"]'),
+('X96.4XXA', 'Agresión por bomba de tubería (casera), contacto inicial', 'Sin especificar', '["bomba de tubo", "caño bomba", "explosivo casero", "bomba artesanal", "detonación tubo", "ataque con bomba de tubo", "estallido artefacto hecho en casa"]'),
+('X96.4XXD', 'Agresión por bomba de tubería (casera), contacto sucesivo', 'Sin especificar', '["seguimiento herida bomba casera", "atención bomba tubo", "curación herida artesanal", "revisión trauma explosivo casa"]'),
+('X96.4XXS', 'Agresión por bomba de tubería (casera), secuela', 'Sin especificar', '["secuela bomba artesanal", "cicatrices bomba de tubo", "trauma por artefacto casero", "daño post bomba casera"]'),
+('X96.8XXA', 'Agresión por otros explosivos especificados, contacto inicial', 'Sin especificar', '["explosión dinamita", "ataque con granada", "detonación explosivo", "estallido objeto", "agresión explosivo", "herida por detonación"]'),
+('X96.8XXD', 'Agresión por otros explosivos especificados, contacto sucesivo', 'Sin especificar', '["seguimiento heridas explosión", "cura por explosivo", "tratamiento detonación", "evolución herida granada"]'),
+('X96.8XXS', 'Agresión por otros explosivos especificados, secuela', 'Sin especificar', '["secuelas explosión", "cicatriz por granada", "daño post detonación", "secuela trauma explosivo"]'),
+('X96.9XXA', 'Agresión con explosivos no especificados, contacto inicial', 'Sin especificar', '["explosión desconocida", "estallido repentino", "ataque con algo explosivo", "herida por estallido", "accidente explosivo", "atentado con explosivo"]'),
+('X96.9XXD', 'Agresión con explosivos no especificados, contacto sucesivo', 'Sin especificar', '["seguimiento explosión desconocida", "curación herida estallido", "tratamiento ataque no especificado", "revisión post explosión"]'),
+('X96.9XXS', 'Agresión con explosivos no especificados, secuela', 'Sin especificar', '["secuela explosión no identificada", "daño crónico estallido", "cicatrices ataque explosivo", "secuelas post atentado"]');

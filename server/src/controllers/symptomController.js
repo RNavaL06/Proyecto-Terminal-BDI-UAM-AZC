@@ -1,3 +1,4 @@
+const { TokenizerEs } = require('@nlpjs/lang-es');
 const { buscarDiagnosticos } = require('../services/nlpService');
 const { aplicarFiltroRelevancia } = require('../utils/filtroRelevancia');
 const pool = require('../config/db');
@@ -10,6 +11,7 @@ const pool = require('../config/db');
 const analizarSintomas = async (req, res, next) => {
   const { frase } = req.body;
   const idUsuario = req.usuario ? req.usuario.id_usuario : null;
+  const tokenizer = new TokenizerEs(); // Instancia de Tokenizer para español
 
   if (!frase || typeof frase !== 'string' || frase.trim().length === 0) {
     return res.status(400).json({
@@ -37,9 +39,9 @@ const analizarSintomas = async (req, res, next) => {
       extraccion.entidadesDetectadas
     );
 
-    // 3. Extraer historial clínico del paciente cruzado con diagnósticos y existencias en botiquín
+    // EXTRAER HISTORIAL MÉDICO DE LA BD (Filtrado por Diagnóstico Actual)
     let historialReal = [];
-    const terminosEncontrados = resultadosFinales.map((d) => d.termino_medico.toLowerCase());
+    const terminosEncontrados = resultadosFinales.map((d) => d.termino_medico);
 
     if (idUsuario && terminosEncontrados.length > 0) {
       try {
@@ -63,27 +65,27 @@ const analizarSintomas = async (req, res, next) => {
           [idUsuario]
         );
 
-        // Extraer los códigos CIE-10, términos oficiales y palabras dictadas por NLP
+        // Extraemos los códigos CIE-10 detectados por la Inteligencia Artificial
         const codigosCie10NLP = resultadosFinales.map(d => d.codigo_cie10);
-        const terminosOficiales = resultadosFinales.flatMap(d => d.termino_medico.toLowerCase().split(' ').filter(w => w.length > 3));
-        const palabrasClaveNLP = extraccion.entidadesDetectadas.map(e => e.utteranceText.toLowerCase());
 
-        // Filtrar coincidencias: Prioridad 1: Código CIE-10. Prioridad 2: Texto coloquial y clínico
+        // Filtramos el historial del paciente
         historialReal = filasHistorial.filter((receta) => {
-          // 1. Cruce exacto por código CIE-10 (Si la receta lo tiene registrado)
+          
+          // 1. MATCH PERFECTO: Si la receta tiene el código CIE-10 guardado y coincide con el dictado
           if (receta.codigo_cie10 && codigosCie10NLP.includes(receta.codigo_cie10)) {
             return true;
           }
 
-          // 2. Cruce por texto (Contingencia si la receta NO tiene código CIE-10 o no empató)
+          // 2. MATCH COLOQUIAL (Fallback): Si no empató por código, usamos TokenizerEs para cruzar texto
           if (!receta.diagnostico) return false;
-          const diagReceta = receta.diagnostico.toLowerCase();
           
-          // Verificamos si alguna palabra dictada ("codo") o algún término oficial ("cefalea") está en el diagnóstico del doctor
-          const coincidePalabraDictada = palabrasClaveNLP.some((palabra) => diagReceta.includes(palabra));
-          const coincideTerminoOficial = terminosOficiales.some((termino) => diagReceta.includes(termino));
-
-          return coincidePalabraDictada || coincideTerminoOficial;
+          // Usamos la librería para tokenizar
+          const cleanReceta = tokenizer.tokenize(receta.diagnostico).map((w) => w.toLowerCase()).filter((w) => w.length > 3);
+          
+          return terminosEncontrados.some((termino) => {
+            const cleanIA = tokenizer.tokenize(termino).map((w) => w.toLowerCase()).filter((w) => w.length > 3);
+            return cleanIA.some((word) => cleanReceta.includes(word));
+          });
         });
       } catch (dbError) {
         console.error('[Symptom Controller] Error al consultar historial médico:', dbError.message);

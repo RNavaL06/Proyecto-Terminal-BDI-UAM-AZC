@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Y22
--- Aquí se insertarán los códigos que empiecen con Y22
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Y22.XXXA', 'Disparo de arma de fuego, intención no determinada, contacto inicial', 'Sin especificar', '["balazo", "tiro", "herida de bala", "disparo", "plomazo", "fogonazo", "impacto de bala", "le dispararon", "tiroteo", "bala perdida", "orificio de entrada", "atentado", "peinada", "plomo", "cohetazo", "escopetazo", "trancazo", "quemazón"]'),
+('Y22.XXXD', 'Disparo de arma de fuego, intención no determinada, contacto sucesivo', 'Sin especificar', '["seguimiento de herida", "curación de bala", "control de balazo", "herida abierta", "infección por bala", "tratamiento de tiro", "post-operatorio disparo", "revisión de herida", "limpieza de plomazo", "evolución de balazo", "cicatrización de bala", "complicación de herida", "segunda atención por arma", "cura de bala", "revisión de impacto"]'),
+('Y22.XXXS', 'Disparo de arma de fuego, intención no determinada, secuela', 'Sin especificar', '["cicatriz de bala", "secuelas de balazo", "daño permanente por arma", "limitación por disparo", "bala alojada", "atrofia post-balazo", "cicatriz queloide por tiro", "discapacidad por arma", "trauma antiguo por bala", "secuelas de plomazo", "dolor crónico por bala", "daño neurológico por tiro", "hueso astillado por bala", "rehabilitación por balazo", "post-trauma por disparo"]');

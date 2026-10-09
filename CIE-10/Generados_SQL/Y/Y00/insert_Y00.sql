@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: Y00
--- Aquí se insertarán los códigos que empiecen con Y00
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('Y00.XXXA', 'Agresión con objeto sin filo, contacto inicial', 'Sin especificar', '["golpe", "porrazo", "cachimpeo", "madrazo", "fregadazo", "cachetada", "tortazo", "leñazo", "batazo", "trancazo", "golpiza", "guamazo", "verguiza", "trompada", "puñetazo", "garrotazo", "paliza", "ataque físico"]'),
+('Y00.XXXD', 'Agresión con objeto sin filo, contacto sucesivo', 'Sin especificar', '["golpiza recurrente", "seguir pegando", "reincidencia de golpes", "lesiones continuas", "tortura física", "abuso físico reiterado", "golpes constantes", "agresión prolongada", "seguir dándole", "ensañamiento", "segunda agresión", "múltiples golpes", "golpe sobre golpe", "maltrato persistente", "castigo físico", "golpeteo", "zarandeo"]'),
+('Y00.XXXS', 'Agresión con objeto sin filo, secuela', 'Sin especificar', '["secuelas de golpes", "trauma post agresión", "dolores crónicos por golpes", "moretones viejos", "chichones", "cicatrices de agresion", "daño permanente", "lesiones por agresión", "secuelas de paliza", "dolor postraumático", "secuelas físicas", "consecuencias de violencia", "magulladuras residuales", "daño en tejidos", "complicaciones por golpe", "traumatismo antiguo", "secuela de trompada"]');

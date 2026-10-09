@@ -1,3 +1,5 @@
--- Archivo SQL para el grupo CIE-10: X38
--- Aquí se insertarán los códigos que empiecen con X38
-
+INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+VALUES 
+('X38.XXXA', 'Inundación, contacto inicial', 'Sin especificar', '["inundación", "desastre natural", "ahogamiento", "agua en los pulmones", "accidente por agua", "creciente", "desborde", "tormenta", "emergencia acuática", "tragar agua", "aspiración de agua", "rescate en agua", "inmersión", "inundado", "peligro de ahogo"]'),
+('X38.XXXD', 'Inundación, contacto sucesivo', 'Sin especificar', '["secuelas de inundación", "tratamiento post-inundación", "infección por agua sucia", "enfermedades post-desastre", "neumonía por aspiración", "agua estancada", "problemas respiratorios tras inundación", "hongos por humedad", "contaminación por agua", "revisión médica post-desastre", "seguimiento de ahogamiento", "moho", "leptospirosis", "complicaciones por agua", "cuidados tras desborde"]'),
+('X38.XXXS', 'Inundación, secuela', 'Sin especificar', '["secuela de inundación", "daño pulmonar crónico", "cicatrices de ahogamiento", "trauma post-inundación", "fibrosis post-inmersión", "efectos a largo plazo", "daños tras desastre", "problemas de salud crónicos", "secuelas de ahogo", "discapacidad post-desastre", "daño respiratorio permanente", "consecuencias de tragedia natural", "condición post-inundación", "secuela respiratoria", "impacto en la salud a largo plazo"]');
