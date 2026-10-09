@@ -49,6 +49,7 @@ const analizarSintomas = async (req, res, next) => {
               cm.sustancia_activa,
               rd.dosis,
               r.diagnostico,
+              r.codigo_cie10,
               r.fecha_expedicion,
               IFNULL(b.cantidad_disponible, 0) AS cantidad_disponible,
               b.unidad,
@@ -62,14 +63,27 @@ const analizarSintomas = async (req, res, next) => {
           [idUsuario]
         );
 
-        // Filtrar coincidencias de diagnóstico en historial de forma tolerante a palabras clave
+        // Extraer los códigos CIE-10, términos oficiales y palabras dictadas por NLP
+        const codigosCie10NLP = resultadosFinales.map(d => d.codigo_cie10);
+        const terminosOficiales = resultadosFinales.flatMap(d => d.termino_medico.toLowerCase().split(' ').filter(w => w.length > 3));
+        const palabrasClaveNLP = extraccion.entidadesDetectadas.map(e => e.utteranceText.toLowerCase());
+
+        // Filtrar coincidencias: Prioridad 1: Código CIE-10. Prioridad 2: Texto coloquial y clínico
         historialReal = filasHistorial.filter((receta) => {
+          // 1. Cruce exacto por código CIE-10 (Si la receta lo tiene registrado)
+          if (receta.codigo_cie10 && codigosCie10NLP.includes(receta.codigo_cie10)) {
+            return true;
+          }
+
+          // 2. Cruce por texto (Contingencia si la receta NO tiene código CIE-10 o no empató)
           if (!receta.diagnostico) return false;
           const diagReceta = receta.diagnostico.toLowerCase();
-          return terminosEncontrados.some((termino) => {
-            const palabrasTermino = termino.split(' ').filter((w) => w.length > 3);
-            return palabrasTermino.some((palabra) => diagReceta.includes(palabra));
-          });
+          
+          // Verificamos si alguna palabra dictada ("codo") o algún término oficial ("cefalea") está en el diagnóstico del doctor
+          const coincidePalabraDictada = palabrasClaveNLP.some((palabra) => diagReceta.includes(palabra));
+          const coincideTerminoOficial = terminosOficiales.some((termino) => diagReceta.includes(termino));
+
+          return coincidePalabraDictada || coincideTerminoOficial;
         });
       } catch (dbError) {
         console.error('[Symptom Controller] Error al consultar historial médico:', dbError.message);
