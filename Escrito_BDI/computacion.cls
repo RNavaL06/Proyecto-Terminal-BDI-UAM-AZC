@@ -211,7 +211,7 @@
             \centering
             \small #1\\%Grado y nombre del asesor
             \textbf{\@rola}\\
-        \end{minipage}\\[2.5cm]
+        \end{minipage}\\[1cm]
     \end{center}
 }
 
@@ -221,7 +221,7 @@
             \centering
             \small #1\\%Grado y nombre del asesor
             \textbf{\@rolb}\\
-        \end{minipage}\\[2.5cm]
+        \end{minipage}\\[1cm]
     \end{center}
 }
 
@@ -231,7 +231,7 @@
             \centering
             \small #1\\%Grado y nombre del asesor
             \textbf{\@rolaalumno}\\
-        \end{minipage}\\[2.5cm]
+        \end{minipage}\\[1 cm]
     \end{center}
 }
 
@@ -241,7 +241,7 @@
             \centering
             \small #1\\%Grado y nombre del asesor
             \textbf{\@rolbalumno}\\
-        \end{minipage}\\[2.5cm]
+        \end{minipage}\\[1 cm]
     \end{center}
 }
 
@@ -312,19 +312,20 @@
 
 \thispagestyle{empty}
 \section*{\centering Declaratoria}
-\noindent \justifying{Yo, Dra. Angeles Belém Priego Sánchez, declaro que aprobé el contenido del presente Reporte de Proyecto de Integración y doy mi autorización para su publicación en la Biblioteca Digital, así como en el Repositorio Institucional de UAM Azcapotzalco.}\\[4cm]
+\noindent \justifying{Yo, Dra. Angeles Belém Priego Sánchez, declaro que aprobé el contenido del presente Reporte de Proyecto de Integración y doy mi autorización para su publicación en la Biblioteca Digital, así como en el Repositorio Institucional de UAM Azcapotzalco.}\\[1.5 cm]
 
 \asesorp{\@asesor}
 
-\noindent \justifying{Yo, Dr. Aron de la Cruz Vázquez, declaro que aprobé el contenido del presente Reporte de Proyecto de Integración y doy mi autorización para su publicación en la Biblioteca Digital, así como en el Repositorio Institucional de UAM Azcapotzalco.}\\[4cm]
+\noindent \justifying{Yo, Dr. Aron de la Cruz Vázquez, declaro que aprobé el contenido del presente Reporte de Proyecto de Integración y doy mi autorización para su publicación en la Biblioteca Digital, así como en el Repositorio Institucional de UAM Azcapotzalco.}\\[1.5 cm]
 
 \coasesorp{\@coasesor}
-\newpage
-\noindent \justifying{Yo, Cristian Emanuel Ceron Franco, doy mi autorización a la Coordinación de Servicios de Información de la Universidad Autónoma Metropolitana, Unidad Azcapotzalco, para publicar el presente documento en la Biblioteca Digital, así como en el Repositorio Institucional de UAM Azcapotzalco.}\\[4cm]
+
+
+\noindent \justifying{Yo, Cristian Emanuel Ceron Franco, doy mi autorización a la Coordinación de Servicios de Información de la Universidad Autónoma Metropolitana, Unidad Azcapotzalco, para publicar el presente documento en la Biblioteca Digital, así como en el Repositorio Institucional de UAM Azcapotzalco.}\\[1.5 cm]
 
 \alumnoap{\@alumnoa}
 
-\noindent \justifying{Yo, Ricardo Nava Lima, doy mi autorización a la Coordinación de Servicios de Información de la Universidad Autónoma Metropolitana, Unidad Azcapotzalco, para publicar el presente documento en la Biblioteca Digital, así como en el Repositorio Institucional de UAM Azcapotzalco.}\\[4cm]
+\noindent \justifying{Yo, Ricardo Nava Lima, doy mi autorización a la Coordinación de Servicios de Información de la Universidad Autónoma Metropolitana, Unidad Azcapotzalco, para publicar el presente documento en la Biblioteca Digital, así como en el Repositorio Institucional de UAM Azcapotzalco.}\\[1.5 cm]
 
 \alumnobp{\@alumnob}
 

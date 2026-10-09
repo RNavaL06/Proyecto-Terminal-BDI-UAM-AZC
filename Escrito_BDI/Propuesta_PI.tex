@@ -48,35 +48,64 @@
 \renewcommand{\lstlistlistingname}{Índice de códigos} % Cambia "List of Listings" por "Índice de códigos"
 
 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.13,0.13,1}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with, let, const, async, await, class, export, import, extends},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  morestring=[b]`,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{codeblue}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+}
+
 \lstset{
     captionpos=b,
     backgroundcolor=\color{gray!10},
-    basicstyle=\ttfamily\small,
+    basicstyle=\ttfamily\footnotesize,
     breaklines=true,
     frame=single,
     numbers=left,
-    numberstyle=\tiny\color{gray}
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{codeblue}\bfseries,
+    stringstyle=\color{codegreen},
+    commentstyle=\color{codegray}\itshape,
+    showstringspaces=false,
+    tabsize=2
 }
 
 \usepackage[utf8]{inputenc}
-\usepackage{graphicx} % Para incluir imágenes
-\usepackage{newfloat} % Para crear el entorno de diagramas
+\usepackage{graphicx} 
+\usepackage{float}    % <-- ¡IMPORTANTE! Cárgalo para que reconozca el parámetro [H]
+\usepackage{newfloat} 
 
 % 1. Definir el nuevo tipo de elemento flotante "diagram"
 \DeclareFloatingEnvironment[
-    fileext=lod,      % Extensión del archivo auxiliar (List of Diagrams)
-    listname={Índice de diagramas}, % Título del índice
-    name=Diagrama,    % Palabra que aparecerá en el formato (Diagrama 1:)
-    placement=htbp    % Posición por defecto
+    fileext=lod,      
+    listname={Índice de diagramas}, 
+    name=Diagrama,    
+    placement=htbp    
 ]{diagram}
+
+\usepackage[spanish]{babel}
+\addto\captionsspanish{%
+  \renewcommand{\listtablename}{Índice de tablas}%
+  \renewcommand{\tablename}{Tabla}% Por si quieres que diga "Tabla 1" en vez de "Cuadro 1"
+}
+
 
 \begin{document}
 	\portada %Esta línea se debe mantener
     %Escribe tu propuesta en el archivo cuerpo.tex
     \input{cuerpo}
 	%\responsabilidad  %Esta línea se debe mantener
-    %Añade las referencias que necesites en el archivo ./Referencias/piic.bib
-    {
-    \referencias %Esta línea se debe mantener
-    }
 \end{document}
