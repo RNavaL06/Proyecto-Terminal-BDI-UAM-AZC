@@ -27,8 +27,17 @@ export default function ResultadosDiagnostico({ resultados = [], historial = [] 
     ? palabrasUnicas.slice(0, 3).join(", ")
     : "los malestares que mencionaste";
 
-  // Función para Fuzzy Matching por palabras clave
-  const matchDiagnostico = (terminoIA, diagnosticoReceta) => {
+  // Función para Fuzzy Matching por palabras clave y Código CIE-10
+  const matchDiagnostico = (resultadoIA, itemHistorial) => {
+    // 1. Match perfecto por código CIE-10
+    if (resultadoIA.codigo_cie10 && itemHistorial.codigo_cie10 && resultadoIA.codigo_cie10 === itemHistorial.codigo_cie10) {
+      return true;
+    }
+
+    // 2. Fallback por Fuzzy Matching de texto
+    const terminoIA = resultadoIA.termino_medico;
+    const diagnosticoReceta = itemHistorial.diagnostico;
+    
     if (!diagnosticoReceta) return false;
     const cleanIA = terminoIA.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9 ]/g, '').split(' ').filter(w => w.length > 3);
     const cleanReceta = diagnosticoReceta.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9 ]/g, '').split(' ').filter(w => w.length > 3);
@@ -144,8 +153,8 @@ export default function ResultadosDiagnostico({ resultados = [], historial = [] 
         <div className="space-y-6">
           {resultados.map((resultadoIA, idxDiag) => {
             const diagIA = resultadoIA.termino_medico;
-            // Encontrar historial que haga match con tokens
-            const historialRelacionado = historial ? historial.filter(item => matchDiagnostico(diagIA, item.diagnostico)) : [];
+            // Encontrar historial que haga match por código CIE-10 o tokens
+            const historialRelacionado = historial ? historial.filter(item => matchDiagnostico(resultadoIA, item)) : [];
 
             return (
               <div key={idxDiag} className={`p-5 rounded-2xl border transition-all ${idxDiag === 0
