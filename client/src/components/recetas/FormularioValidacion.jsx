@@ -82,7 +82,7 @@ export default function FormularioValidacion({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8 animate-fade-in">
-      
+
       {/* Banner de Validación Humana Obligatoria */}
       <div className="bg-blue-50/70 border border-blue-200/80 rounded-3xl p-5 flex items-start gap-3.5">
         <ShieldCheck className="w-6 h-6 text-[#4f83f5] flex-shrink-0 mt-0.5" />
@@ -187,13 +187,14 @@ export default function FormularioValidacion({
 
           <div>
             <label className="block text-xs font-bold text-slate-600 mb-1.5 uppercase tracking-wider">
-              Código CIE-10 (Opcional)
+              Código CIE-10
             </label>
             <input
               type="text"
               name="codigo_cie10"
               value={formData.codigo_cie10}
               onChange={handleChange}
+              disabled="true"
               placeholder="Ej. J02.9"
               className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#4f83f5] focus:bg-white transition-all"
             />
@@ -222,7 +223,7 @@ export default function FormularioValidacion({
             <h3 className="text-base font-bold text-slate-800">Medicamentos Prescritos ({formData.medicamentos.length})</h3>
             <p className="text-xs text-slate-400">Verifica o añade los medicamentos que contiene la receta.</p>
           </div>
-          
+
           <button
             type="button"
             onClick={addMedicamento}
