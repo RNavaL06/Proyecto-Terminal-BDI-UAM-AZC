@@ -18,6 +18,9 @@ const { notFoundHandler, errorHandler } = require('./middlewares/errorHandler');
 
 const app = express();
 
+// Configuración requerida por Render para express-rate-limit (confiar en el balanceador de carga)
+app.set('trust proxy', 1);
+
 // Middlewares de seguridad y observabilidad
 app.use(helmet({
   crossOriginResourcePolicy: false,
