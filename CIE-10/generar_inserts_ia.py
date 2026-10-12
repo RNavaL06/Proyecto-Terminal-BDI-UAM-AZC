@@ -14,13 +14,15 @@ CAPITULO_POR_DEFECTO = 'Sin especificar'
 
 # Configurar IA
 genai.configure(api_key=API_KEY)
-# Usar gemini-1.5-flash (ideal para tareas repetitivas y de texto, muy rápido y económico)
 model = genai.GenerativeModel('gemini-3.1-flash-lite', generation_config={"response_mime_type": "application/json"})
 
-def procesar_lote_con_ia(lote_datos):
+# Tamaño máximo de códigos por petición para no exceder el límite de tokens de salida de la IA
+TAMANIO_LOTE_IA = 25
+
+def procesar_lote_con_ia(lote_datos, max_reintentos=3):
     """
     Toma una lista de diccionarios y pide a la IA que devuelva la misma lista 
-    con los 'keywords' coloquiales.
+    con los 'keywords' coloquiales. Incluye reintentos con pausa exponencial.
     """
     prompt = f"""
     Eres un médico experto en salud pública y entiendes a la perfección el lenguaje coloquial y los regionalismos de todos los países de Hispanoamérica (México, Argentina, Chile, Colombia, España, etc.).
@@ -37,13 +39,34 @@ def procesar_lote_con_ia(lote_datos):
     {json.dumps(lote_datos, ensure_ascii=False)}
     """
     
-    try:
-        response = model.generate_content(prompt)
-        data = json.loads(response.text)
-        return data
-    except Exception as e:
-        print(f"Error al contactar con la IA: {e}")
-        return None
+    for intento in range(1, max_reintentos + 1):
+        try:
+            response = model.generate_content(prompt)
+            texto = response.text.strip()
+            
+            # Limpiar posibles delimitadores markdown
+            if texto.startswith("```json"):
+                texto = texto[7:]
+            elif texto.startswith("```"):
+                texto = texto[3:]
+            if texto.endswith("```"):
+                texto = texto[:-3]
+            texto = texto.strip()
+            
+            data = json.loads(texto)
+            if isinstance(data, list):
+                return data
+            else:
+                print(f"   [Aviso] La IA no devolvió una lista JSON (intento {intento}/{max_reintentos}).")
+        except Exception as e:
+            print(f"   [Error] Intento {intento}/{max_reintentos} al contactar con la IA: {e}")
+            
+        if intento < max_reintentos:
+            tiempo_espera = 6 * intento
+            print(f"   Esperando {tiempo_espera}s antes de reintentar...")
+            time.sleep(tiempo_espera)
+
+    return None
 
 def generar_inserts_ia():
     print("Cargando el Excel...")
@@ -87,16 +110,35 @@ def generar_inserts_ia():
         
         print(f"[{procesados}/{total_grupos}] Consultando a la IA grupo {subgrupo} ({len(datos)} códigos)...")
         
-        # Preparamos el lote para enviar a la IA (si son demasiados los partimos, pero normalmente un subgrupo tiene < 50)
+        # Preparamos todos los códigos del subgrupo
         lote_peticion = []
         for _, row in datos.iterrows():
             codigo = str(row[col_codigo]).strip()
             termino = str(row[col_desc]).strip()
             lote_peticion.append({"codigo": codigo, "termino": termino})
             
-        resultado_ia = procesar_lote_con_ia(lote_peticion)
+        # Particionamos en sub-lotes pequeños para no exceder el límite de tokens
+        resultado_ia = []
+        fallo_en_subgrupo = False
+        total_sublotes = (len(lote_peticion) + TAMANIO_LOTE_IA - 1) // TAMANIO_LOTE_IA
         
-        if resultado_ia:
+        for idx in range(0, len(lote_peticion), TAMANIO_LOTE_IA):
+            chunk = lote_peticion[idx:idx + TAMANIO_LOTE_IA]
+            num_parte = (idx // TAMANIO_LOTE_IA) + 1
+            if total_sublotes > 1:
+                print(f"   -> Parte {num_parte}/{total_sublotes} ({len(chunk)} códigos)...")
+                
+            res_chunk = procesar_lote_con_ia(chunk)
+            if res_chunk is None:
+                fallo_en_subgrupo = True
+                break
+                
+            resultado_ia.extend(res_chunk)
+            
+            # Pausa breve entre peticiones para respetar el límite de la API (15 RPM)
+            time.sleep(4)
+        
+        if not fallo_en_subgrupo and resultado_ia:
             sql_content = "INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)\nVALUES \n"
             valores = []
             
@@ -119,9 +161,6 @@ def generar_inserts_ia():
                 f.write(sql_content)
                 
             print(f" -> Guardado exitosamente: {ruta_sql}")
-            
-            # Pausa para respetar el límite gratuito de la API (15 peticiones por minuto)
-            time.sleep(5) 
         else:
             print(f" -> Falló la respuesta en {subgrupo}. Quedará pendiente para la próxima vez.")
 
