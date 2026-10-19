@@ -5,7 +5,7 @@ const obtenerInventarioCompleto = async (idUsuario) => {
   const [rows] = await pool.query(
     `SELECT b.id_botiquin, b.id_catalogo, b.id_receta, b.cantidad_disponible, b.unidad,
             b.fecha_caducidad, b.lote, b.codigo_barras, b.notas, b.created_at, b.updated_at,
-            cm.nombre_comercial, cm.sustancia_activa, cm.formato, cm.laboratorio
+            cm.nombre_comercial, cm.sustancia_activa, cm.formato
      FROM botiquin b
      JOIN catalogo_medicamentos cm ON b.id_catalogo = cm.id_catalogo
      WHERE b.id_usuario = ?

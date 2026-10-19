@@ -157,7 +157,7 @@ const listarRecetasUsuario = async (idUsuario, page = 1, limit = 10) => {
 
 const obtenerRecetaPorId = async (idReceta, idUsuario) => {
   const [recetaRows] = await pool.query(
-    `SELECT r.*, m.nombre_medico, m.cedula_profesional, m.especialidad
+    `SELECT r.*, m.nombre_medico, m.cedula_profesional, m.telefono_contacto
      FROM recetas r
      LEFT JOIN medicos m ON r.id_medico = m.id_medico
      WHERE r.id_receta = ? AND r.id_usuario = ?`,

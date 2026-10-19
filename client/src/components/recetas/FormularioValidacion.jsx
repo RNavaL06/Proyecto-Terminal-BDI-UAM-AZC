@@ -187,7 +187,7 @@ export default function FormularioValidacion({
 
           <div>
             <label className="block text-xs font-bold text-slate-600 mb-1.5 uppercase tracking-wider">
-              Código CIE-10
+              Código CIE-10 (Opcional)
             </label>
             <input
               type="text"
@@ -195,7 +195,7 @@ export default function FormularioValidacion({
               value={formData.codigo_cie10}
               onChange={handleChange}
               disabled="true"
-              placeholder="Ej. J02.9"
+              placeholder="Este código se asigna automáticamente según el diagnóstico"
               className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#4f83f5] focus:bg-white transition-all"
             />
           </div>

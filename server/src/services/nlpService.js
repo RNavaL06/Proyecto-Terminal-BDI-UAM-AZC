@@ -15,8 +15,15 @@ let isInitialized = false;
  */
 const inicializarMotorNLP = async () => {
   try {
-    console.log('[NLP Service] Cargando catálogo CIE-10 desde MySQL...');
-    const [diagnosticos] = await pool.query('SELECT codigo_cie10, keywords FROM catalogo_cie10');
+    console.log('[NLP Service] Cargando catálogo CIE-10 (diagnósticos frecuentes) desde MySQL...');
+    let [diagnosticos] = await pool.query('SELECT codigo_cie10, keywords FROM catalogo_cie10 WHERE es_frecuente = 1');
+
+    // Salvaguarda: si aún no se ejecutan las marcas de frecuencia, cargar con límite seguro para no agotar la RAM
+    if (!diagnosticos || diagnosticos.length === 0) {
+      console.warn('[NLP Service] No se encontraron registros con es_frecuente = 1. Consultando catálogo con LIMIT 100 de seguridad...');
+      const [fallback] = await pool.query('SELECT codigo_cie10, keywords FROM catalogo_cie10 LIMIT 100');
+      diagnosticos = fallback;
+    }
 
     if (!diagnosticos || diagnosticos.length === 0) {
       console.warn('[NLP Service] No se encontraron registros en catalogo_cie10. Ejecuta el seed SQL.');

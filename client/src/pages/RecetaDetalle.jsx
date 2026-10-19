@@ -17,7 +17,8 @@ import {
   Clock,
   Bell,
   Activity,
-  Stethoscope
+  Stethoscope,
+  Phone
 } from 'lucide-react';
 
 export default function RecetaDetalle() {
@@ -275,6 +276,13 @@ export default function RecetaDetalle() {
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5"><Building2 className="w-3.5 h-3.5" /> Cédula Profesional</span>
                 <span className="text-sm font-black text-slate-700 block">{receta.cedula_profesional || 'No registrada'}</span>
               </div>
+
+              {receta.telefono_contacto && (
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5"><Phone className="w-3.5 h-3.5" /> Contacto</span>
+                  <span className="text-sm font-black text-slate-700 block">{receta.telefono_contacto}</span>
+                </div>
+              )}
             </div>
 
             {receta.indicaciones && (
