@@ -13,9 +13,12 @@ CREATE TABLE IF NOT EXISTS catalogo_cie10 (
     termino_medico VARCHAR(255) NOT NULL,
     capitulo VARCHAR(150) DEFAULT NULL,
     keywords JSON NOT NULL,
+    es_frecuente TINYINT(1) NOT NULL DEFAULT 0,
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     fecha_actualizacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
     INDEX idx_cie10_codigo (codigo_cie10),
-    INDEX idx_cie10_termino (termino_medico)
+    INDEX idx_cie10_termino (termino_medico),
+    INDEX idx_cie10_frecuente (es_frecuente),
+    FULLTEXT INDEX idx_cie10_busqueda (termino_medico)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

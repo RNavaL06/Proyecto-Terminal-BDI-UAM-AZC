@@ -38,7 +38,6 @@ CREATE TABLE IF NOT EXISTS medicos (
     id_medico INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nombre_medico VARCHAR(150) NOT NULL,
     cedula_profesional VARCHAR(50) UNIQUE DEFAULT NULL,
-    especialidad VARCHAR(100) DEFAULT NULL,
     telefono_contacto VARCHAR(50) DEFAULT NULL,
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     INDEX idx_medicos_nombre (nombre_medico),
@@ -52,10 +51,13 @@ CREATE TABLE IF NOT EXISTS catalogo_cie10 (
     termino_medico VARCHAR(255) NOT NULL,
     capitulo VARCHAR(150) DEFAULT NULL,
     keywords JSON NOT NULL,
+    es_frecuente TINYINT(1) NOT NULL DEFAULT 0,
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     fecha_actualizacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     INDEX idx_cie10_codigo (codigo_cie10),
-    INDEX idx_cie10_termino (termino_medico)
+    INDEX idx_cie10_termino (termino_medico),
+    INDEX idx_cie10_frecuente (es_frecuente),
+    FULLTEXT INDEX idx_cie10_busqueda (termino_medico)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 2.4 Catálogo Medicamentos Maestros
@@ -64,7 +66,6 @@ CREATE TABLE IF NOT EXISTS catalogo_medicamentos (
     nombre_comercial VARCHAR(150) NOT NULL,
     sustancia_activa VARCHAR(150) DEFAULT NULL,
     formato VARCHAR(100) DEFAULT NULL,
-    laboratorio VARCHAR(100) DEFAULT NULL,
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     INDEX idx_catmed_nombre (nombre_comercial),
     INDEX idx_catmed_sustancia (sustancia_activa)
@@ -157,12 +158,12 @@ VALUES
 ON DUPLICATE KEY UPDATE nombre_completo = VALUES(nombre_completo);
 
 -- 3.2 Médicos
-INSERT INTO medicos (id_medico, nombre_medico, cedula_profesional, especialidad, telefono_contacto)
+INSERT INTO medicos (id_medico, nombre_medico, cedula_profesional, telefono_contacto)
 VALUES 
-(1, 'Dr. Roberto Martínez Esquivel', 'CED-MED-8492011', 'Medicina General', '55-5318-9000'),
-(2, 'Dra. Elena Gómez Santillán', 'CED-MED-9182344', 'Otorrinolaringología', '55-5318-9123'),
-(3, 'Dr. Fernando Castro Navarrete', 'CED-MED-7362819', 'Gastroenterología', '55-5318-9456'),
-(4, 'Dra. Patricia Ortiz Mendoza', 'CED-MED-6281920', 'Medicina Interna', '55-5318-9789')
+(1, 'Dr. Roberto Martínez Esquivel', 'CED-MED-8492011', '55-5318-9000'),
+(2, 'Dra. Elena Gómez Santillán', 'CED-MED-9182344', '55-5318-9123'),
+(3, 'Dr. Fernando Castro Navarrete', 'CED-MED-7362819', '55-5318-9456'),
+(4, 'Dra. Patricia Ortiz Mendoza', 'CED-MED-6281920', '55-5318-9789')
 ON DUPLICATE KEY UPDATE nombre_medico = VALUES(nombre_medico);
 
 -- 3.3 Catálogo CIE-10
@@ -201,28 +202,28 @@ VALUES
 ON DUPLICATE KEY UPDATE termino_medico = VALUES(termino_medico);
 
 -- 3.4 Catálogo Medicamentos Maestros
-INSERT INTO catalogo_medicamentos (id_catalogo, nombre_comercial, sustancia_activa, formato, laboratorio)
+INSERT INTO catalogo_medicamentos (id_catalogo, nombre_comercial, sustancia_activa, formato)
 VALUES 
-(1, 'Aspirina Protect', 'Ácido Acetilsalicílico', 'Tabletas 100mg', 'Bayer'),
-(2, 'Tylenol 500', 'Paracetamol', 'Tabletas 500mg', 'Johnson & Johnson'),
-(3, 'Tempra Jarabe', 'Paracetamol', 'Jarabe Infantil 120ml', 'Reckitt Benckiser'),
-(4, 'Motrin 400', 'Ibuprofeno', 'Tabletas 400mg', 'Pfizer'),
-(5, 'Amoxil', 'Amoxicilina', 'Cápsulas 500mg', 'GlaxoSmithKline'),
-(6, 'Treda', 'Neomicina, Caolín, Pectina', 'Tabletas', 'Sanfer'),
-(7, 'Pepto-Bismol', 'Subsalicilato de Bismuto', 'Suspensión 236ml', 'Procter & Gamble'),
-(8, 'Aleve', 'Naproxeno Sódico', 'Tabletas 220mg', 'Bayer'),
-(9, 'Loratadina Genérico', 'Loratadina', 'Tabletas 10mg', 'Genéricos Mexicanos'),
-(10, 'Riopan Gel', 'Magaldrato con Dimeticona', 'Gel Oral 10ml', 'Takeda'),
-(11, 'Aderogyl 15', 'Vitaminas A, C y D', 'Ampolletas Bebibles', 'Sanofi'),
-(12, 'Nexium-Mups', 'Esomeprazol Magnésico', 'Tabletas 40mg', 'AstraZeneca'),
-(13, 'Dolo-Neurobión Forte', 'Diclofenaco con Complejo B', 'Tabletas', 'Procter & Gamble'),
-(14, 'Desenfriol-D', 'Paracetamol, Clorfenamina, Fenilefrina', 'Tabletas masticables', 'Bayer'),
-(15, 'Mucosolvan', 'Ambroxol Clorhidrato', 'Jarabe 120ml', 'Boehringer Ingelheim'),
-(16, 'Paracetamol Genérico', 'Paracetamol', 'Tabletas 500mg', 'Farmacias Similares'),
-(17, 'Ibuprofeno Genérico', 'Ibuprofeno', 'Tabletas 600mg', 'Genéricos Mexicanos'),
-(18, 'Omeprazol Genérico', 'Omeprazol', 'Cápsulas 20mg', 'Genéricos Mexicanos'),
-(19, 'Clamoxin', 'Amoxicilina con Ácido Clavulánico', 'Tabletas 500mg/125mg', 'Rayere'),
-(20, 'Ketanov', 'Ketorolaco Trometamina', 'Tabletas Sublinguales 30mg', 'Senosiain')
+(1, 'Aspirina Protect', 'Ácido Acetilsalicílico', 'Tabletas 100mg'),
+(2, 'Tylenol 500', 'Paracetamol', 'Tabletas 500mg'),
+(3, 'Tempra Jarabe', 'Paracetamol', 'Jarabe Infantil 120ml'),
+(4, 'Motrin 400', 'Ibuprofeno', 'Tabletas 400mg'),
+(5, 'Amoxil', 'Amoxicilina', 'Cápsulas 500mg'),
+(6, 'Treda', 'Neomicina, Caolín, Pectina', 'Tabletas'),
+(7, 'Pepto-Bismol', 'Subsalicilato de Bismuto', 'Suspensión 236ml'),
+(8, 'Aleve', 'Naproxeno Sódico', 'Tabletas 220mg'),
+(9, 'Loratadina Genérico', 'Loratadina', 'Tabletas 10mg'),
+(10, 'Riopan Gel', 'Magaldrato con Dimeticona', 'Gel Oral 10ml'),
+(11, 'Aderogyl 15', 'Vitaminas A, C y D', 'Ampolletas Bebibles'),
+(12, 'Nexium-Mups', 'Esomeprazol Magnésico', 'Tabletas 40mg'),
+(13, 'Dolo-Neurobión Forte', 'Diclofenaco con Complejo B', 'Tabletas'),
+(14, 'Desenfriol-D', 'Paracetamol, Clorfenamina, Fenilefrina', 'Tabletas masticables'),
+(15, 'Mucosolvan', 'Ambroxol Clorhidrato', 'Jarabe 120ml'),
+(16, 'Paracetamol Genérico', 'Paracetamol', 'Tabletas 500mg'),
+(17, 'Ibuprofeno Genérico', 'Ibuprofeno', 'Tabletas 600mg'),
+(18, 'Omeprazol Genérico', 'Omeprazol', 'Cápsulas 20mg'),
+(19, 'Clamoxin', 'Amoxicilina con Ácido Clavulánico', 'Tabletas 500mg/125mg'),
+(20, 'Ketanov', 'Ketorolaco Trometamina', 'Tabletas Sublinguales 30mg')
 ON DUPLICATE KEY UPDATE nombre_comercial = VALUES(nombre_comercial);
 
 -- 3.5 Recetas de Ejemplo

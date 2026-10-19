@@ -11,7 +11,6 @@ CREATE TABLE IF NOT EXISTS catalogo_medicamentos (
     nombre_comercial VARCHAR(150) NOT NULL,
     sustancia_activa VARCHAR(150) DEFAULT NULL,
     formato VARCHAR(100) DEFAULT NULL,
-    laboratorio VARCHAR(100) DEFAULT NULL,
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     INDEX idx_catmed_nombre (nombre_comercial),
