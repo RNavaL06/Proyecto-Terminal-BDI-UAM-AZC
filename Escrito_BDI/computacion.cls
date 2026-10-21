@@ -284,14 +284,14 @@
 				\textbf{\fontfamily{qtm}\selectfont{\@rolaalumno}}\\
 				\@alumnoa\\ 
 				\@matriculaa\\
-				\href{mailto:al\@matriculaa @azc.uam.mx}{al\@matriculaa @azc.uam.mx}
+				\href{mailto:al\@matriculaa @azc.uam.mx}{cecf.contacto@gmail.com}
 			\end{minipage}\hspace*{1cm}
 			\begin{minipage}{0.45\textwidth}
 				\centering
 				\textbf{\fontfamily{qtm}\selectfont{\@rolbalumno}}\\
 				\@alumnob\\ 
 				\@matriculab\\
-				\href{mailto:al\@matriculab @azc.uam.mx}{al\@matriculab @azc.uam.mx}
+				\href{mailto:al\@matriculab @azc.uam.mx}{navalimaricardo@gmail.com}
 			\end{minipage}\\[3.5cm]
             
 			%-------------------------------------------------------------------------------

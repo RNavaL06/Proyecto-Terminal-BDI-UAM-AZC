@@ -703,7 +703,7 @@ La Tabla \ref{tab:atributos_entidades} resume los atributos asignados, mientras 
 \endlastfoot
 \texttt{Usuarios} & identificador, nombre, correo\_electronico, google\_id. \\
 \hline
-\texttt{Medicos} & identificador, nombre\_completo, cedula\_profesional, especialidad. \\
+\texttt{Medicos} & identificador, nombre\_medico, cedula\_profesional, telefono\_contacto. \\
 \hline
 \texttt{Recetas} & identificador, fecha\_expedicion, diagnostico, url\_fotografia. \\
 \hline
@@ -829,20 +829,20 @@ La 3FN prohíbe que atributos no clave dependan de otros atributos no clave. En 
 \caption{Extracto de la tabla \texttt{Medicos} (Aislada por 3FN).}
 \label{tab:ejemplo_medicos} \\
 \hline
-\textbf{id\_medico} & \textbf{nombre\_completo} & \textbf{cedula\_profesional} & \textbf{especialidad} \\
+\textbf{id\_medico} & \textbf{nombre\_completo} & \textbf{cedula\_profesional} \\
 \hline
 \endfirsthead
 \hline
-\textbf{id\_medico} & \textbf{nombre\_completo} & \textbf{cedula\_profesional} & \textbf{especialidad} \\
+\textbf{id\_medico} & \textbf{nombre\_completo} & \textbf{cedula\_profesional} \\
 \hline
 \endhead
 \hline
 \endfoot
 \hline
 \endlastfoot
-1 & Dr. Roberto Gómez & 7654321 & Medicina General \\
+1 & Dr. Roberto Gómez & 7654321 \\
 \hline
-2 & Dra. Silvia Méndez & 9876543 & Pediatría \\
+2 & Dra. Silvia Méndez & 9876543  \\
 \hline
 \end{longtable}
 
@@ -877,7 +877,7 @@ En el Diagrama~\ref{dia:der_mysql} se ilustra visualmente la estructura de estas
 
 \begin{diagram}[H]
 \centering
-\includegraphics[width=0.97\textwidth]{Imagenes/entidad_relacion_bd.png}
+\includegraphics[width=0.95\textwidth]{Imagenes/entidad_relacion_bd.png}
 \caption{Diagrama Entidad-Relación (DER) del sistema BDI ilustrando las relaciones entre las once entidades.}
 \label{dia:der_mysql}
 \end{diagram}
@@ -1197,24 +1197,47 @@ Uno de los desafíos principales en la digitalización médica es la variabilida
 Para estandarizar clínicamente estas entradas, se desarrolló el motor de Inteligencia Artificial enfocado en el Procesamiento de Lenguaje Natural (NLP). Este módulo, impulsado por la librería de grado empresarial \texttt{node-nlp}, tiene como responsabilidad primaria la normalización del texto, la eliminación de ruido gramatical y la traducción de los síntomas a códigos de la \textbf{Clasificación Internacional de Enfermedades (CIE-10)}.
 
 \paragraph{Estructuración del Catálogo Clínico y Entidades Nombradas (NER)} \leavevmode \\
-La primera fase del proceso ocurre durante el arranque del servidor. El archivo de servicio \texttt{nlpService.js} (véase Anexo E) ejecuta una petición asíncrona hacia \emph{MySQL} para extraer el catálogo completo de enfermedades (\texttt{catalogo\_cie10}). Este catálogo contiene cientos de enfermedades, cada una asociada a un \texttt{codigo\_cie10} (ej. \texttt{R11.0} para Náusea) y a un arreglo JSON de palabras clave o \emph{keywords} (ej. \texttt{['asco', 'ganas de vomitar', 'estomago revuelto']}).
+La primera fase del proceso ocurre durante el arranque del servidor. El archivo de servicio \texttt{nlpService.js} (véase Anexo E) ejecuta una petición asíncrona hacia \emph{MySQL} para extraer los diagnósticos clínicos prioritarios de la tabla \texttt{catalogo\_cie10}. Si bien el catálogo completo de la OMS abarca más de 67,168 registros generados, cargar la totalidad de las entidades en memoria comprometería severamente la memoria RAM y degradaría la latencia en entornos en la nube con recursos acotados.
 
-Una vez recuperados, el algoritmo itera sobre los registros e inyecta dinámicamente las palabras clave en el gestor de Reconocimiento de Entidades Nombradas (\emph{Named Entity Recognition - NER}) de \texttt{node-nlp}, forzándolo a aprender el diccionario (\texttt{manager.train()}). En el Código \ref{lst:nlp_training} se detalla este flujo de extracción masiva, donde cada registro de la base de datos se transforma en entidades de entrenamiento para \texttt{node-nlp}, vinculando exitosamente el código de la enfermedad con su arreglo dinámico de sinónimos antes de arrancar la operación del motor.
-\\
-\clearpage
+Por esta razón, se diseñó una estrategia de indexación selectiva basada en evidencia epidemiológica nacional: mediante la bandera \texttt{es\_frecuente = 1}, el sistema filtra el universo de datos a un subconjunto optimizado de 1,440 códigos. Este conjunto corresponde a las 20 principales causas de enfermedad registradas por el Sistema Único de Información para la Vigilancia Epidemiológica (\textbf{SUIVE / Secretaría de Salud de México \cite{DGE_Morbilidad}}), complementado con la sintomatología cotidiana de atención primaria y uso de botiquín. Cada diagnóstico cuenta con su identificador oficial \texttt{codigo\_cie10} (ej. \texttt{R11.0} para Náusea, \texttt{A08.0} para Rotavirus) y un arreglo en formato JSON con expresiones coloquiales o \emph{keywords} asociadas (ej. \texttt{['asco', 'ganas de vomitar', 'estomago revuelto']}).
 
-\begin{lstlisting}[language=JavaScript, caption={Entrenamiento dinámico del motor NLP alimentado directamente por los arreglos JSON de la base de datos MySQL.}, label={lst:nlp_training}]
-const [diagnosticos] = await pool.query('SELECT codigo_cie10, keywords FROM catalogo_cie10');
+Una vez recuperados los registros, el algoritmo itera sobre la colección, valida y analiza el arreglo JSON e inyecta dinámicamente las palabras clave en el gestor de Reconocimiento de Entidades Nombradas (\emph{Named Entity Recognition - NER}) de \texttt{node-nlp}, forzándolo a aprender el diccionario (\texttt{manager.train()}). En el Código \ref{lst:nlp_training} se detalla este flujo de extracción, el cual cuenta con un mecanismo de salvaguarda ante bases de datos recién desplegadas y reduce el tiempo de entrenamiento a escasos 14 milisegundos con un consumo inferior a 10~MB de memoria RAM.
 
+\begin{lstlisting}[language=JavaScript, caption={Entrenamiento dinámico y optimizado del motor NLP alimentado por diagnósticos frecuentes (SUIVE) y sintomatología de botiquín.}, label={lst:nlp_training}]
+// Extraccion selectiva de diagnosticos prioritarios para NLP
+let [diagnosticos] = await pool.query(
+  'SELECT codigo_cie10, keywords FROM catalogo_cie10 WHERE es_frecuente = 1'
+);
+
+// Si no se ha ejecutado el marcado, se aplica un limite de seguridad
+if (!diagnosticos || diagnosticos.length === 0) {
+  const [fallback] = await pool.query(
+    'SELECT codigo_cie10, keywords FROM catalogo_cie10 LIMIT 100'
+  );
+  diagnosticos = fallback;
+}
+
+// Inyeccion dinamica en el diccionario del motor NER
 diagnosticos.forEach((diag) => {
-  const idEntidad = diag.codigo_cie10; // Ej: R10
-  let keywords = JSON.parse(diag.keywords); // Ej: ["panza", "retortijon"]
+  const idEntidad = diag.codigo_cie10; // Ej: A08.0, R10, J00
+  let keywords = diag.keywords;
+
+  // Normalizacion y parseo seguro del arreglo JSON de sinonimos
+  if (typeof keywords === 'string') {
+    try {
+      keywords = JSON.parse(keywords);
+    } catch (e) {
+      keywords = [];
+    }
+  }
 
   if (Array.isArray(keywords) && keywords.length > 0) {
-    // Se entrena al modelo asociando las palabras coloquiales al código oficial
+    // Asocia los terminos coloquiales y sintomas al codigo clinico oficial
     manager.addNamedEntityText(idEntidad, idEntidad, ['es'], keywords);
   }
 });
+
+// Compilacion del modelo en memoria
 await manager.train();
 \end{lstlisting}
 
@@ -1238,7 +1261,7 @@ Un paciente puede dictar múltiples malestares en una sola frase, o usar palabra
     \item \textbf{Límite de Interfaz (Top-3):} Finalmente, se aplica el método \texttt{slice(0, 3)} para retornar estrictamente las tres opciones clínicas más contundentes, evitando sobrecargar mentalmente al paciente.
 \end{enumerate}
 
-Este procedimiento matemático y lógico se refleja en el Código \ref{lst:nlp_relevancia}. Aquí se observa cómo el sistema calcula un nivel porcentual de certeza iterando sobre las coincidencias, aplica un estricto filtro de umbral mínimo del 50\%, y finalmente ejecuta un doble desempate apoyándose en la longitud de las coincidencias gramaticales antes de retornar únicamente el subconjunto de las tres opciones más probables. \\
+Este procedimiento matemático y lógico se refleja en el Código \ref{lst:nlp_relevancia}. Aquí se observa cómo el sistema calcula un nivel porcentual de certeza iterando sobre las coincidencias, aplica un estricto filtro de umbral mínimo del 50\%, y finalmente ejecuta un doble desempate apoyándose en la longitud de las coincidencias gramaticales antes de retornar únicamente el subconjunto de las tres opciones más probables. 
 
 \begin{lstlisting}[language=JavaScript, caption={Algoritmo matemático de ordenamiento, cálculo de probabilidad y limitación de diagnósticos clínicos.}, label={lst:nlp_relevancia}]
 // Fase 1: Promediar certeza y contar coincidencias
@@ -1269,6 +1292,27 @@ Gracias a esto, si el usuario dicta 'asco', el sistema lo normaliza a 'Náusea',
 \clearpage
 
 \subsection{Capa de Visualización}
+\subsubsection{Arquitectura y Diagrama de Componentes Web}
+
+La interfaz de usuario del Botiquín Digital Inteligente (BDI) se diseñó bajo una arquitectura modular basada en componentes utilizando la biblioteca \emph{React 19}. Esta estructura desacopla el estado global, la lógica de presentación y el consumo asíncrono de servicios, facilitando una experiencia de usuario reactiva, accesible y adaptada al enfoque \emph{Mobile-First}.
+
+En el Diagrama~\ref{dia:componentes_web} se ilustra la organización jerárquica de los componentes que integran la capa de visualización, divididos en cinco niveles de abstracción:
+
+\begin{diagram}[H]
+\centering
+\includegraphics[width=1\textwidth]{Imagenes/diagrama_componentes_web.png}
+\caption{Diagrama de componentes web y flujo de datos de la aplicación cliente en React.}
+\label{dia:componentes_web}
+\end{diagram}
+
+A partir de esta arquitectura jerárquica, los componentes interactúan mediante las siguientes capas:
+\begin{enumerate}
+    \item \textbf{Capa de Estado Global y Contextos:} Compuesta por \texttt{AuthContext} (que administra el ciclo de vida del token JWT y el inicio de sesión con Google OAuth o modo evaluación), \texttt{AccessibilityContext} (configuración de velocidad de síntesis de voz) y \texttt{TourContext} (orquestador del recorrido guiado para nuevos usuarios).
+    \item \textbf{Capa de Enrutamiento y Control de Navegación:} El componente raíz \texttt{App.jsx} evalúa las credenciales mediante el componente de orden superior \texttt{PrivateRoute}. Dependiendo del factor de forma del dispositivo, renderiza condicionalmente una barra superior (\texttt{Navbar}) para pantallas de escritorio o una barra inferior táctil (\texttt{BottomNav}) optimizada para pulgares en teléfonos inteligentes.
+    \item \textbf{Capa de Vistas Principales (\emph{Pages}):} Agrupa los controladores visuales correspondientes a cada funcionalidad del sistema: panel de control (\texttt{Dashboard.jsx}), digitalización de recetas (\texttt{EscanerReceta.jsx}), visor comparativo (\texttt{RecetaDetalle.jsx}), inventario físico (\texttt{Botiquin.jsx}), interacción por voz (\texttt{SintomasVoz.jsx}) y geolocalización comercial (\texttt{Farmacias.jsx}).
+    \item \textbf{Capa de Componentes de Dominio Especializados:} Subcomponentes reutilizables encargados de la interacción directa con el usuario, tales como \texttt{CameraCapture.jsx} (control de streams de video en vivo), \texttt{FormularioValidacion.jsx} (inspección humana de fármacos), \texttt{MapaFarmacias.jsx} (renderizado cartográfico con Leaflet) y \texttt{DictadorVoz.jsx} (reconocimiento fonético).
+    \item \textbf{Capa de Servicios y Hooks Personalizados:} Abstrae la comunicación con el servidor Node.js mediante el cliente HTTP Axios (\texttt{api.js}) y centraliza la lógica reactiva en ganchos personalizados (\texttt{useFarmacias}, \texttt{useBotiquin}), consumiendo al mismo tiempo las APIs nativas del navegador (\emph{Geolocation API}, \emph{Web Speech API} y \emph{MediaDevices}).
+\end{enumerate}
 
 \subsubsection{Módulo de Captura de Fotografía}
 
@@ -1396,6 +1440,7 @@ Esta separación de responsabilidades entre el servidor (que extrae y estructura
 \clearpage
 
 \section{Resultados}
+\label{sec:res}
 % Este archivo contiene la sección de Resultados estructurada y adaptada según el desarrollo.
 % Puedes incluirlo en tu archivo principal usando \input{resultados}
 
@@ -1418,7 +1463,7 @@ Al confirmar el guardado desde el cliente, el controlador del servidor procesó 
 \label{fig:mysql_recetas}
 \end{figure}
 
-El punto más importante de la evaluación fue en cómo se manejó la estructura de los medicamentos. Tal como se evidencia en la Figura \ref{fig:mysql_medicamentos}, el servidor pudo recorrer el JSON e ingresar varias filas individuales en la tabla de medicamentos. También el sistema gestionó correctamente los campos con datos vacíos (aceptando la falta de información como la dosis) y conectó la clave foránea correspondiente. Esto asegura que ningún medicamento quede sin referencia, permitiendo generar un historial clínico robusto.
+El punto más importante fue en cómo se manejó la estructura de los medicamentos. Tal como se evidencia en la Figura \ref{fig:mysql_medicamentos}, el servidor pudo recorrer el JSON e ingresar varias filas individuales en la tabla de medicamentos. También el sistema gestionó correctamente los campos con datos vacíos (aceptando la falta de información como la dosis) y conectó la clave foránea correspondiente. Esto asegura que ningún medicamento quede sin referencia, permitiendo generar un historial clínico robusto.
 
 \begin{figure}[H]
 \centering
@@ -1464,13 +1509,20 @@ Posteriormente, se verificó el método de lectura mediante una petición GET a 
 \label{fig:get_botiquin}
 \end{figure}
 
-Finalmente, se comprobaron las rutas de alteración de datos. Se ejecutó una petición PUT hacia \texttt{/api/botiquin/1} modificando la cantidad disponible en el inventario. El servidor procesó el cambio validando la propiedad del registro y devolvió el código 200 OK en 19 ms. De igual forma, se validó el borrado de información mediante una petición DELETE apuntando al mismo identificador, confirmando la operación con un código 200 OK en 12 ms y garantizando la correcta limpieza del historial, tal como se documenta en las pruebas presentadas en la Figura \ref{fig:put_delete_botiquin}.
+Finalmente, se comprobaron las rutas de alteración de datos. Se ejecutó una petición PUT hacia \texttt{/api/botiquin/1} modificando la cantidad disponible en el inventario. El servidor procesó el cambio validando la propiedad del registro y devolvió el código 200 OK en 19 ms. De igual forma, se validó el borrado de información mediante una petición DELETE apuntando al mismo identificador, confirmando la operación con un código 200 OK en 12 ms y garantizando la correcta limpieza del historial, tal como se documenta en las pruebas presentadas en la Figura \ref{fig:put_botiquin} y \ref{fig:delete_botiquin_02}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{Imagenes/put_delete_botiquin.png}
-\caption{Confirmación de la actualización exitosa del medicamento mediante PUT y eliminación segura del registro en la base de datos a través del método DELETE.}
-\label{fig:put_delete_botiquin}
+\includegraphics[width=1\textwidth]{Imagenes/put_botiquin.png}
+\caption{Confirmación de la actualización exitosa del medicamento mediante el método PUT}
+\label{fig:put_botiquin}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{Imagenes/delete_botiquin.png}
+\caption{Confirmación de la eliminación exitosa del medicamento a través del método DELETE.}
+\label{fig:delete_botiquin}
 \end{figure}
 
 Todas las rutas programadas operaron de acuerdo con los requerimientos del sistema. En la Tabla \ref{tab:tiempos_api} se presenta una matriz resumen con los tiempos de respuesta obtenidos durante las simulaciones, demostrando que todas las transacciones se ejecutaron por debajo del límite de latencia aceptable (2 segundos).
@@ -1505,30 +1557,51 @@ Para evaluar la capacidad del modelo LLM multimodal en la transcripción de rece
 
 Se sometió al sistema a tres escenarios de reconocimiento óptico (OCR) e interpretación:
 
-\textbf{1. Receta con escritura semi-estructurada:} Al procesar el primer documento médico, el modelo demostró una alta precisión aislando los tres medicamentos recetados, detectando correctamente las concentraciones y las frecuencias. Sin embargo, el modelo LLM presentó una alucinación menor al transcribir la fecha de expedición, interpretando el año \char`\"{}26\char`\"{} escrito a mano como \char`\"{}24\char`\"{}, como se observa a detalle en la transcripción de la Figura \ref{fig:receta1_json}.
+\textbf{1. Receta con escritura semi-estructurada:} Al procesar el primer documento médico mostrado en la figura \ref{fig:receta1} , el modelo demostró una alta precisión aislando los tres medicamentos recetados, detectando correctamente las concentraciones y las frecuencias. Sin embargo, el modelo LLM presentó una alucinación menor al transcribir la fecha de expedición, interpretando el año \char`\"{}26\char`\"{} escrito a mano como \char`\"{}24\char`\"{}, como se observa a detalle en la transcripción de la Figura \ref{fig:receta1_json}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{Imagenes/receta1.png}
+\caption{Fotografía original de la primera receta médica evaluada}
+\label{fig:receta1}
+\end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{Imagenes/receta1_json.png}
-\caption{Fotografía original de la primera receta médica evaluada y resultado JSON evidenciando la extracción exitosa de los fármacos y la variación en la lectura de la fecha.}
+\caption{Resultado JSON evidenciando la extracción exitosa de los fármacos y la variación en la lectura de la fecha.}
 \label{fig:receta1_json}
 \end{figure}
 
-\textbf{2. Receta impresa con indicaciones de contexto:} En el segundo escenario, que consistía principalmente en texto impreso, el rendimiento del algoritmo fue excelente. El modelo no solo estructuró los medicamentos de manera ideal, sino que el diseño de las instrucciones (el \emph{prompt}) logró capturar indicaciones médicas complicadas (como las fechas de reposo y los datos de infección en el codo) que se encontraban fuera del formato tabular. La Figura \ref{fig:receta2_json} documenta esta extracción perfecta.
+\textbf{2. Receta impresa con indicaciones de contexto:} En el segundo escenario, que consistía principalmente en texto como se aprecia en la figura \ref{fig:receta2}, el rendimiento del algoritmo fue excelente. El modelo no solo estructuró los medicamentos de manera ideal, sino que el diseño de las instrucciones (el \emph{prompt}) logró capturar indicaciones médicas complicadas (como las fechas de reposo y los datos de infección en el codo) que se encontraban fuera del formato tabular. La Figura \ref{fig:receta2_json} documenta esta extracción perfecta.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{Imagenes/receta2.png}
+\caption{Fotografía original de la segunda receta médica evaluada.}
+\label{fig:receta2}
+\end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{Imagenes/receta2_json.png}
-\caption{Fotografía original de la segunda receta médica evaluada y resultado JSON, demostrando el reconocimiento perfecto del texto impreso y la captura del contexto clínico adicional.}
+\caption{Resultado JSON demostrando el reconocimiento perfecto del texto impreso y la captura del contexto clínico adicional.}
 \label{fig:receta2_json}
 \end{figure}
 
-\textbf{3. Receta con caligrafía cursiva compleja:} El tercer escenario representó un gran desafío. Al procesar texto cursivo de difícil legibilidad, el modelo LLM cometió errores significativos. Omitió caracteres en el nombre del paciente, interpretó mal la fecha y falló en la interpretación de la posología del medicamento simplificando erróneamente \char`\"{}cada 12 hrs por 3 a 5 días\char`\"{} a \char`\"{}3 al día\char`\"{}, lo cual se hace evidente en los fallos mostrados en la Figura \ref{fig:receta3_json}.
+\textbf{3. Receta con caligrafía cursiva compleja:} El tercer escenario mostrado en la figura \ref{fig:receta3} representó un gran desafío. Al procesar texto cursivo de difícil legibilidad, el modelo LLM cometió errores significativos. Omitió caracteres en el nombre del paciente, interpretó mal la fecha y falló en la interpretación de la posología del medicamento simplificando erróneamente \char`\"{}cada 12 hrs por 3 a 5 días\char`\"{} a \char`\"{}3 al día\char`\"{}, lo cual se hace evidente en los fallos mostrados en la Figura \ref{fig:receta3_json}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{Imagenes/receta3.png}
+\caption{Fotografía de la tercera receta médica presentando alta dificultad caligráfica.}
+\label{fig:receta3}
+\end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{Imagenes/receta3_json.png}
-\caption{Fotografía de la tercera receta médica presentando alta dificultad caligráfica y su resultado JSON evidenciando fallos de interpretación generados por la complejidad de la escritura en las instrucciones de uso.}
+\caption{Resultado JSON evidenciando fallos de interpretación generados por la complejidad de la escritura en las instrucciones de uso.}
 \label{fig:receta3_json}
 \end{figure}
 
@@ -1567,7 +1640,7 @@ Al hacer clic sobre una sugerencia, este cambio de estado dispara automáticamen
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{Imagenes/mapa_actualizado.png}
+\includegraphics[width=0.7\textwidth]{Imagenes/mapa_actualizado.png}
 \caption{Panel lateral reflejando la actualización del arreglo de datos y mapa actualizado a la dirección buscada manualmente con etiquetas dinámicas sobre los marcadores geográficos.}
 \label{fig:mapa_actualizado}
 \end{figure}
@@ -1605,9 +1678,9 @@ Se verificó la capacidad del sistema para interpretar los síntomas bajo difere
 \label{fig:transcripcion_voz}
 \end{figure}
 
-Adicionalmente, se comprobaron escenarios tolerantes a fallos donde la persona usuaria bloquea el acceso al micrófono. El sistema no presentó excepciones no controladas de JavaScript. El flujo alterno funcionó permitiendo utilizar el área de texto como un formulario de ingreso manual sin bloquear la interfaz.
+Además, se revisaron situaciones que toleran fallos en las que el usuario impide el uso del micrófono. El sistema no mostró excepciones no manejadas de JavaScript. El flujo alternativo operó correctamente, permitiendo el uso del área de texto como un formulario para ingreso manual sin restringir la interfaz.
 
-Finalmente, el desarrollo de la síntesis de voz (\emph{Text-to-Speech}) permitió generar un guion de manera coherente. La velocidad de lectura preconfigurada en 0.9 resultó óptima para evitar una síntesis acelerada, garantizando que adultos mayores procesen la información de manera pausada y natural.
+Por último, el avance en la creación de voz sintética (\emph{Text-to-Speech}) facilitó la elaboración de un guion de forma lógica. La velocidad de lectura establecida en 0.9 fue ideal para prevenir una síntesis rápida, asegurando que las personas mayores comprendan la información con tranquilidad y de manera natural.
 
 
 \subsubsection{Módulo de Procesamiento de Lenguaje Natural (CIE-10 y NLP)}
@@ -1656,18 +1729,26 @@ La prueba de integración de la interfaz inicia en la pantalla principal. Al sel
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{Imagenes/escaner_principal.png}
-\caption{Interfaz principal para subir imagen de receta, lista para inicializar la conversión de la imagen a Base64.}
+\caption{Interfaz principal para subir o tomar imagen de receta o medicamento, lista para inicializar la conversión de la imagen a Base64.}
 \label{fig:escaner_principal}
 \end{figure}
 
-Para evitar el bloqueo del hilo principal durante la lectura de archivos pesados, la función \texttt{convertirABase64} encapsula el proceso en una Promesa. El algoritmo instancia \texttt{FileReader}, lee los bytes y limpia los metadatos iniciales mediante una expresión regular como se expone en la Figura \ref{fig:codigo_base64}.
+Para evitar el bloqueo del hilo principal durante la lectura de archivos pesados, la función \texttt{convertirABase64} mostrada en el fragmento de código \ref{lst:funcion_base64} encapsula el proceso en una Promesa. El algoritmo instancia \texttt{FileReader}, lee los bytes y limpia los metadatos iniciales mediante una expresión regular.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\textwidth]{Imagenes/codigo_base64.png}
-\caption{Función que convierte un archivo local a un \emph{string} Base64 purificado para ser enviado al \emph{backend}.}
-\label{fig:codigo_base64}
-\end{figure}
+\begin{lstlisting}[language=JavaScript, caption={Función que convierte un archivo en Base64 para ser enviado al backend}, label={lst:funcion_base64}]
+export const convertirABase64 = (archivo) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(archivo);
+    reader.onload = () => {
+      const base64String = reader.result.replace(/^data:image\/[a-z]+;base64,/, "");
+      resolve(base64String);
+    };
+    reader.onerror = (error) => reject(error);
+  });
+};
+
+\end{lstlisting}
 
 Inmediatamente después de disparar la petición, el sistema despliega un estado de carga a pantalla completa. La Figura \ref{fig:pantalla_carga} ejemplifica este comportamiento que demostró ser efectivo para bloquear la interacción del usuario y proteger el flujo evitando peticiones duplicadas.
 
@@ -1680,7 +1761,7 @@ Inmediatamente después de disparar la petición, el sistema despliega un estado
 
 
 \subsubsection{Interfaz Web y Responsividad}
-Al recibir la respuesta exitosa del servidor, la interfaz aplica el patrón \emph{Human-in-the-loop} desplegando el modal de validación de datos. Se comprobó la capa de retroalimentación visual: si se procesa una receta sin cédula profesional, el \emph{frontend} detona una alerta roja advirtiendo sobre la invalidez oficial del documento. Como se observa en la Figura \ref{fig:alerta_seguridad}, este comportamiento protege la fidelidad del expediente.
+Al recibir la respuesta exitosa del servidor, la interfaz aplica el patrón \emph{Human-in-the-loop} desplegando el modal de validación de datos. Se comprobó la capa de retroalimentación visual: si se procesa una receta sin cédula profesional, el \emph{frontend} detona una alerta advirtiendo sobre la invalidez oficial del documento. Como se observa en la Figura \ref{fig:alerta_seguridad}, este comportamiento protege la fidelidad del expediente.
 
 \begin{figure}[H]
 \centering
@@ -1698,7 +1779,7 @@ El listado de medicamentos devuelto por el servidor se presenta de manera intera
 \label{fig:listado_editable}
 \end{figure}
 
-En la sección de resultados del \emph{Fuzzy Matching} y NLP, la interfaz generó los tres contenedores esperados. En la cabecera, se probó exitosamente la visualización de avisos legales recordando que el software no sustituye el criterio médico. También, al existir coincidencia (\char`\"{}Cefalea\char`\"{}), la interfaz muestra correctamente que hay \char`\"{}Tylenol\char`\"{} con \char`\"{}24 unidades\char`\"{} en el inventario actual. En la Figura \ref{fig:resultados_fuzzy} se refleja el éxito del algoritmo de Fuzzy Matching.
+En la sección de resultados del \emph{Fuzzy Matching} y NLP, la interfaz generó los tres contenedores esperados. En la cabecera, se probó exitosamente la visualización de avisos legales recordando que el software no sustituye el criterio médico. También, al existir coincidencia (\char`\"{}Artralgia\char`\"{}), la interfaz muestra correctamente que hay \char`\"{}ciprofloxacino, omeprazol, meloxicam\char`\"{} con \char`\"{}0 unidades\char`\"{} en el inventario actual. En la Figura \ref{fig:resultados_fuzzy} se refleja el éxito del algoritmo de \emph{Fuzzy Matching}.
 
 \begin{figure}[H]
 \centering
@@ -1707,14 +1788,89 @@ En la sección de resultados del \emph{Fuzzy Matching} y NLP, la interfaz gener�
 \label{fig:resultados_fuzzy}
 \end{figure}
 
-Para comprobar la usabilidad general del \emph{frontend}, se verificó que los módulos se adaptaran a pantallas pequeñas (Mobile-First) simulando un \emph{viewport} vertical de 360x800 píxeles. Los elementos de la interfaz se redistribuyeron de forma ordenada. Los botones principales mantuvieron un tamaño adecuado previniendo pulsaciones accidentales, y la tabla comparativa de precios ajustó su contenido sin distorsionar el diseño general.
+Para evaluar la facilidad de uso del \emph{frontend}, se examinó que los módulos se ajustaran a pantallas pequeñas (\emph{Mobile-First}) simulando un \emph{viewport} vertical de 360x800 píxeles. Los componentes de la interfaz se reorganizaron de manera ordenada. Los botones principales conservaron un tamaño apropiado para evitar toques involuntarios, y la tabla de comparación de precios adaptó su contenido sin alterar el diseño general.
 
-Por último, en cuanto a prevención de errores, se simularon desconexiones repentinas y caídas de servidores. La aplicación abortó peticiones de red a tiempo y notificó el problema mediante tarjetas visuales integradas (sin usar ventanas emergentes obstructivas), demostrando una solidez excepcional en el manejo de excepciones para el usuario final.
+Finalmente, en relación a la prevención de fallos, se llevaron a cabo simulaciones de desconexiones inesperadas y de caídas de servidores. La aplicación canceló las solicitudes de red de manera oportuna y comunicó el inconveniente a través de tarjetas visuales integradas (sin recurrir a ventanas emergentes que interrumpen), mostrando una gran solidez en la gestión de excepciones para el usuario final.
 
 
 \clearpage
 
+% ============================================================================
+% SECCIÓN: ANÁLISIS Y DISCUSIÓN DE RESULTADOS
+% Proyecto: Botiquín Digital Inteligente (BDI)
+% ============================================================================
+
 \section{Análisis y discusión de resultados}
+\label{sec:analisis_discusion}
+
+El análisis de los logros obtenidos durante la creación y evaluación del BDI posibilita llevar a cabo una revisión crítica acerca de cómo se combinan sus componentes de software: la inferencia tanto visual como semántica a través de modelos \emph{LLM}, el sistema de procesamiento de lenguaje natural vinculado a la Clasificación Internacional de Enfermedades (CIE-10), la arquitectura de servicios RESTful que utiliza almacenamiento relacional en MySQL, y la interfaz de usuario adaptable que sigue la metodología \emph{Mobile-First}.
+
+A diferencia de lo que se mostró en la parte de Resultados, en esta sección se analizan los aciertos y errores encontrados, y las dificultades durante el diseño y la creación del sistema.
+
+% ----------------------------------------------------------------------------
+\subsection{Eficacia, Alucinaciones y Paradigma \emph{Human-in-the-Loop} en la Extracción con LLM Multimodal}
+\label{subsec:discusion_llm}
+
+La valoración multimodal del modelo \emph{LLM} en la extracción de recetas médicas mostró una notable variación en su eficacia, influenciada directamente por el estilo del documento físico:
+
+\begin{enumerate}
+    \item \textbf{Recetas semi-estructuradas y estructuradas:} En las situaciones ilustradas en la Figura \ref{fig:receta1} y la Figura \ref{fig:receta2}, el modelo mostró una destacada habilidad para separar medicamentos, niveles de concentración y dosis. Resalta sobre todo su capacidad para comprender instrucciones clínicas que no están en formatos tabulares convencionales, como períodos de descanso físico o explicaciones diagnósticas de procesos infecciosos, como se ilustra en la Figura \ref{fig:receta2_json}.Esta habilidad va más allá de las restricciones funcionales de los motores {OCR} tradicionales, que no tienen la capacidad de entender el contexto para conectar los párrafos explicativos con las instrucciones de tratamiento. Sin embargo, se observó una pequeña alucinación temporal al escribir el año en el manuscrito "26" como "24", tal como se puede ver en la Figura \ref{fig:receta1_json}. Esto demuestra la tendencia de los modelos generativos a crear secuencias basadas en probabilidades cuando hay una falta de claridad en un elemento numérico.
+    
+    \item \textbf{Caligrafía manuscrita médica cursiva:} En la tercera prueba, como se ilustra en la Figura \ref{fig:receta3}, el algoritmo mostró una notable disminución en su exactitud. Aparte de pasar por alto datos como el nombre del paciente, el modelo sufrió un cambio semántico grave, al modificar la indicación "cada 12 hrs por 3 a 5 días" a "3 al día", tal como se presenta en la Figura \ref{fig:receta3_json}. Esta variación se debe a que los modelos multimodales de uso general han sido ajustados principalmente para texto impreso o letras estándar en documentos digitales, evidenciando una debilidad frente a letras en cursiva, trazos que se cruzan y abreviaturas comunes en la escritura médica en papel.
+\end{enumerate}
+
+Un error en la dosificación como este implica un riesgo para la salud que no se puede aceptar si la información se agrega sin supervisión al archivo personal del paciente. Por ello, los datos que produce el \emph{backend} nunca se guardan de manera automática; en cambio, se dirige hacia la capa de presentación para asegurar que haya una mediación humana (\emph{Human-in-the-Loop}) (Figura \ref{fig:hitl}).
+
+Mediante el modal de validación interactivo que aparece en la Figura \ref{fig:listado_editable}, el usuario se convierte en el revisor final, teniendo la opción de ajustar las dosis, incorporar medicamentos que se hayan pasado por alto o eliminar ruidos de la captura. Además, la activación de alertas visuales de seguridad debido a la falta de cédula profesional, como se presenta en la Figura \ref{fig:alerta_seguridad}, alerta al paciente sobre la calidad del documento procesado sin interrumpir el funcionamiento del sistema. Así, la inteligencia artificial actúa únicamente como un facilitador en la captura y no como una entidad decisiva.
+
+% ----------------------------------------------------------------------------
+\subsection{Procesamiento Semántico (NLP), Accesibilidad y Resiliencia Acústica}
+\label{subsec:discusion_nlp}
+
+El módulo de procesamiento de lenguaje natural logró enfrentar uno de los principales desafíos en la informática de la salud: la diferencia de significado entre el lenguaje cotidiano del paciente y la terminología médica estándar. Los pacientes no mencionan sus síntomas usando palabras técnicas como \textbf{'cefalea'} o \textbf{'dolor abdominal y pélvico'}, sino que lo hacen a través de frases informales que incluyen regionalismos y expresiones coloquiales ("me duele mucho la cabeza y la panza").
+
+Las pruebas indicaron que el uso conjunto de la tokenización, lematización y la eliminación de palabras irrelevantes, como se observa en la Figura \ref{fig:tokenizacion_consola}, permitió limpiar de manera efectiva el ruido gramatical, obteniendo solo los vectores de interés anatómico. Con base en estas entidades, la concordancia semántica con la base de datos {CIE-10} logró asignar de manera exitosa los términos a los códigos estandarizados {R51} y {R10}, como se ilustra en la Figura \ref{fig:mapeo_nlp}.
+
+Sin embargo, cuando el usuario proporciona descripciones largas o síntomas complejos, suele haber una dispersión en el diagnóstico, lo que provoca diagnósticos secundarios que tienen poca representación clínica. Para mitigar este problema, la discusión técnica enfatiza la importancia del \textbf{filtro de relevancia y priorización probabilística} que se aplica en el servidor, como se ilustra en la Figura \ref{fig:nlp_probabilidad}. Al limitar la respuesta a las \emph{Top 3} ordenadas por frecuencia y relevancia, se evitan los falsos positivos mínimos que podrían causar ansiedad al paciente o afectar su relación con los tratamientos previos.
+
+En el ámbito de la interacción multimodal y accesibilidad:
+\begin{itemize}
+    \item \textbf{Resiliencia acústica:}La evaluación de la \emph{Web Speech API} mostró un rendimiento excelente. En entornos domésticos controlados, la transcripción alcanzó el 100\%, mientras que en situaciones con ruido severo de la calle mantuvo una precisión del 90\%, como se ilustra en la Figura \ref{fig:transcripcion_voz}, mostrando solo ligeros aumentos en la latencia de captura.
+    \item \textbf{Incorporación de personas mayores:} La modificación de la velocidad de síntesis de voz (\emph{Text-to-Speech}) a una tasa de $0.9$ compensó las limitaciones comunes de los motores de voz comerciales, brindando un ritmo pausado adecuado para personas de la tercera edad o con discapacidad visual.
+    \item \textbf{Degradación elegante:} Cuando se negaron los permisos del hardware para el micrófono, como se muestra en la Figura \ref{fig:permisos_microfono}, el sistema cambió de forma fluida a un formulario de entrada de texto, evitando la interrupción de la interfaz o el lanzamiento de excepciones no manejadas en JavaScript.
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\subsection{Rendimiento de la Arquitectura, Asimetría de Latencias y Tolerancia a Fallos}
+\label{subsec:discusion_arquitectura}
+
+El análisis de la infraestructura de comunicaciones y persistencia reveló una notable asimetría temporal entre las operaciones locales del servidor y los consumos de servicios de inteligencia artificial externos, lo que motivó decisiones de diseño específicas en la capa de visualización:
+
+\begin{enumerate}
+    \item \textbf{Asimetría de latencia transaccional:} Como se evidenció en la Tabla \ref{tab:tiempos_api}, los \emph{endpoints} internos creados utilizando \emph{Node.js}, \emph{Express.js} y \emph{MySQL} muestran un rendimiento excepcional. Las operaciones de lectura, actualización y eliminación en el inventario del botiquín variaron entre 8~ms y 19~ms, mientras que la autenticación a través de \emph{Google OAuth} y la generación del \emph{JSON Web Token} ({JWT}) requirieron 358~ms (Figura \ref{fig:post_auth_google}). Todas estas acciones se encuentran muy por debajo del límite de tolerancia interactivo (establecido en 2000~ms). Por otro lado, la inferencia visual del \emph{LLM} requiere varios segundos, debido a la transformación de la imagen en cadenas Base64, como se muestra en la Figura \ref{fig:payload_base64}, además del procesamiento en los servidores remotos del proveedor.
+    
+    Esta distinción respalda el uso de una pantalla de carga, tal como se muestra en la Figura \ref{fig:pantalla_carga}, y el uso de promesas asíncronas para manejar la lectura, como se puede ver en el \emph{Código} \ref{lst:funcion_base64}. Al deshabilitar temporalmente la interacción del usuario durante el procesamiento de la {IA}, se previenen problemas de competencia, pulsaciones múltiples de teclas y envíos accidentales que podrían sobrecargar el límite de la {API}.
+    
+    \item \textbf{Optimización de servicios geográficos y comerciales:} En la sección sobre la ubicación de las farmacias, la aplicación del patrón \emph{Debounce}, mostrado en la Figura \ref{fig:busqueda_debounce}, redujo el número de peticiones a la {API} de \emph{Geoapify}. En lugar de comenzar una búsqueda por cada tecla presionada, el retardo configurado combinó las búsquedas en una única llamada optimizada, lo que minimizó el consumo de la cuota sin comprometer la velocidad percibida. Por otra parte, la consulta de precios a través de \emph{SerpApi}, como se observa en la Figura \ref{fig:consulta_precios}, hizo más sencillo automatizar la búsqueda de la opción económica más adecuada; no obstante, se percibió como una limitación externa que los motores de búsqueda en línea favorecen promociones de cadenas de farmacias digitales, que no siempre reflejan la disponibilidad en los inventarios de las farmacias locales.
+    
+    \item \textbf{Tolerancia a fallos versus integridad de metadatos:} La estrategia de continuidad que se utiliza para documentos incompletos, tal como se muestra en la Figura \ref{fig:mysql_medicos_contingencia}, demuestra un esfuerzo deliberado en ingeniería. En los sistemas de salud en hospitales que deben cumplir con reglas estrictas (como la NOM-004-SSA3 o NOM-024-SSA3), la ausencia de una cédula o el nombre del médico puede provocar el rechazo de la transacción, con el fin de proteger la validez legal de los expedientes. No obstante, en un sistema de autocuidado personal que se usa en casa como el {BDI}, impedir el almacenamiento por la falta del encabezado original puede causar frustración al usuario y dejar sus tratamientos sin protección en el inventario. La inclusión de perfiles de contingencia ("Médico Desconocido" y "Sin Cédula") asegura que las referencias de las claves foráneas en {MySQL} se mantengan y que los medicamentos sean registrados, lo que permite que haya disponibilidad operativa sin comprometer el modelo de datos.
+\end{enumerate}
+
+% ----------------------------------------------------------------------------
+\subsection{Contraste con el Estado del Arte y Cumplimiento de Objetivos}
+\label{subsec:discusion_estado_arte}
+
+Al contrastar los resultados del {BDI} con las investigaciones y desarrollos analizados en los Antecedentes (sintetizados en la Tabla \ref{table:trabajosRelacionados}), es posible posicionar el aporte tecnológico de la propuesta:
+
+\begin{itemize}
+    \item \textbf{Frente a Velasco \cite{Velasco} y Nkolele \cite{nkolele}:} Ambos estudios mostraron que es posible clasificar textos narrativos en códigos {CIE-10}; no obstante, fueron diseñados como herramientas analíticas de \emph{back-office} para mejorar las estadísticas de morbilidad o las auditorías administrativas en hospitales. El {BDI} lleva esta idea directamente al usuario promedio, añadiendo un mapeo léxico con opciones de entrada por voz accesibles y conectándolo de manera bidireccional con el archivo de medicamentos que ya se tienen guardados.
+    
+    \item \textbf{Frente a Novel et al. \cite{novel}:} El trabajo mencionado empleó arquitecturas específicas de {OCR} y redes neuronales convolucionales para analizar recetas escritas a mano. Aunque un modelo especializado puede reducir errores en tipos de escritura particulares, no tiene adaptabilidad semántica. La implementación de un \emph{LLM} multimodal en el {BDI} mostró una ventaja significativa: la habilidad de comprender el contexto de instrucciones orales menos evidentes (como dietas o días libres). Sin embargo, los resultados de este estudio indican que, sin importar si se utilizan {CNN} tradicionales o modelos modernos, la escritura médica deteriorada sigue siendo un obstáculo no resuelto, lo que justifica sin duda la intervención humana ({HITL}).
+    
+    \item \textbf{Frente a DrugXafe \cite{DrugXafe}:} Mientras que DrugXafe se limita a una app móvil nativa que depende de sistemas de trazabilidad industrial ({DataMatrix}), el {BDI} verificó la eficacia de una arquitectura web adaptable construida con \emph{React}, que puede usarse desde cualquier navegador sin necesidad de descargar, mejorando la administración del botiquín con geolocalización y comparación de costos de medicamentos.
+    
+    \item \textbf{Frente a Ada Health \cite{AdaHealthApp} y DPTM \cite{DPTM}:} Mientras Ada Health funciona como un sofisticado motor para diagnósticos diferenciales probabilísticos y el {DPTM} actúa como un diccionario léxico que se consulta de manera manual, el {BDI} se sitúa en una posición intermedia y tiene una responsabilidad clara: no busca sustituir la opinión del médico ni hacer recomendaciones por sí mismo, sino proporcionar al usuario una herramienta activa para el autocuidado que está enfocada únicamente en ayudar a organizar y entender los tratamientos que ya le han sido diagnosticados.
+\end{itemize}
 
 \clearpage
 
@@ -1731,9 +1887,7 @@ Por último, en cuanto a prevención de errores, se simularon desconexiones repe
 
 \subsection*{Anexo A: llmAdapter.js}
 \begin{lstlisting}[language=JavaScript, breaklines=true]
-/**
- * server/src/services/llmAdapter.js
- */
+
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const Groq = require('groq-sdk');
 const config = require('../config/env');
@@ -1775,10 +1929,9 @@ module.exports = { procesarVisionLLM };
 
 \subsection*{Anexo B: jsonParser.js}
 \begin{lstlisting}[language=JavaScript, breaklines=true]
-/**
- * server/src/utils/jsonParser.js
- * Extrae y parsea objetos JSON devueltos por LLMs de manera tolerante a fallos.
- */
+
+// Extrae y parsea objetos JSON devueltos por LLMs de manera tolerante a fallos.
+
 const extraerJsonSeguro = (texto) => {
   if (!texto || typeof texto !== 'string') {
     throw new Error('La respuesta del modelo está vacía o es inválida.');
@@ -1852,7 +2005,7 @@ export const useFarmacias = () => {
     if (seccionActiva === 'precios' && !listening && transcript && terminoPrecios === transcript) {
       handleCotizarPrecios(transcript);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [listening, seccionActiva]);
 
   const toggleVoz = () => {
@@ -1977,7 +2130,6 @@ export const useFarmacias = () => {
     } else {
       handleUsarGPS();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
@@ -2057,12 +2209,7 @@ export const useFarmacias = () => {
 const { getJson } = require('serpapi');
 const config = require('../config/env');
 
-/**
- * Consulta ofertas comerciales de medicamentos en Google Shopping México vía SerpApi.
- * 
- * @param {string} medicamentoNombre - Término de búsqueda (ej. "Paracetamol 500mg")
- * @returns {Promise<Array<Object>>} Lista de ofertas normalizadas
- */
+// Consulta ofertas comerciales de medicamentos en Google Shopping México vía SerpApi
 const buscarPreciosMedicamento = async (medicamentoNombre) => {
   const apiKey = config.serpapi.apiKey;
 
@@ -2138,9 +2285,7 @@ const buscarPreciosMedicamento = async (medicamentoNombre) => {
   }
 };
 
-/**
- * Calcula la distancia en metros entre dos coordenadas geográficas mediante la fórmula de Haversine.
- */
+// Calcula la distancia en metros entre dos coordenadas geográficas mediante la fórmula de Haversine.
 const calcularDistanciaMetros = (lat1, lon1, lat2, lon2) => {
   if (!lat1 || !lon1 || !lat2 || !lon2) return null;
   const R = 6371e3;
@@ -2157,15 +2302,6 @@ const calcularDistanciaMetros = (lat1, lon1, lat2, lon2) => {
   return Math.round(R * c);
 };
 
-/**
- * Busca farmacias físicas cercanas utilizando SerpApi (Google Maps Engine).
- * Retorna nombre, coordenadas, puntuación (rating), número de reseñas,
- * teléfono, estado abierto/cerrado y horario completo.
- * 
- * @param {number} lat - Latitud
- * @param {number} lng - Longitud
- * @returns {Promise<Array<Object>>}
- */
 const buscarFarmaciasCercanas = async (lat, lng) => {
   const apiKey = config.serpapi.apiKey;
   if (!apiKey || apiKey === 'YOUR_SERPAPI_KEY_HERE') {
@@ -2245,9 +2381,7 @@ const manager = new NlpManager({
 
 let isInitialized = false;
 
-/**
- * Carga el catálogo de diagnósticos CIE-10 desde MySQL y entrena el motor NER.
- */
+// Carga el catálogo de diagnósticos CIE-10 desde MySQL y entrena el motor NER
 const inicializarMotorNLP = async () => {
   try {
     console.log('[NLP Service] Cargando catálogo CIE-10 desde MySQL...');
@@ -2283,12 +2417,7 @@ const inicializarMotorNLP = async () => {
   }
 };
 
-/**
- * Procesa una frase del usuario para identificar entidades y códigos CIE-10 correspondientes.
- * 
- * @param {string} frase - Texto o transcripción de síntomas
- * @returns {Promise<Object>} { resultadosBrutos, entidadesDetectadas }
- */
+// Procesa una frase del usuario para identificar entidades y códigos CIE-10 correspondientes
 const buscarDiagnosticos = async (frase) => {
   if (!isInitialized) {
     await inicializarMotorNLP();
@@ -2332,11 +2461,11 @@ const { buscarDiagnosticos } = require('../services/nlpService');
 const { aplicarFiltroRelevancia } = require('../utils/filtroRelevancia');
 const pool = require('../config/db');
 
-/**
+/*
  * Analiza la descripción de síntomas en lenguaje natural mediante el motor NLP,
- * clasifica a CIE-10, aplica filtro de relevancia determinista (Top-3) y cruza
+ * clasifica a CIE-10, aplica filtro de relevancia (Top-3) y cruza
  * los hallazgos con el historial clínico y el stock físico del botiquín.
- */
+*/
 const analizarSintomas = async (req, res, next) => {
   const { frase } = req.body;
   const idUsuario = req.usuario ? req.usuario.id_usuario : null;
@@ -2349,7 +2478,7 @@ const analizarSintomas = async (req, res, next) => {
   }
 
   try {
-    // 1. Extracción de entidades clínicas mediante NLP NER
+    // Extracción de entidades clínicas mediante NLP NER
     const extraccion = await buscarDiagnosticos(frase);
 
     if (extraccion.resultadosBrutos.length === 0) {
@@ -2361,13 +2490,13 @@ const analizarSintomas = async (req, res, next) => {
       });
     }
 
-    // 2. Aplicar algoritmo de relevancia (Scoring >= 50% y Top-3)
+    // Aplicar algoritmo de relevancia (Scoring >= 50% y Top-3)
     const resultadosFinales = aplicarFiltroRelevancia(
       extraccion.resultadosBrutos,
       extraccion.entidadesDetectadas
     );
 
-    // 3. Extraer historial clínico del paciente cruzado con diagnósticos y existencias en botiquín
+    // Extraer historial clínico del paciente cruzado con diagnósticos y existencias en botiquín
     let historialReal = [];
     const terminosEncontrados = resultadosFinales.map((d) => d.termino_medico.toLowerCase());
 
