@@ -13,13 +13,21 @@ if (config.db.uri) {
   try {
     const dbUrl = new URL(config.db.uri);
     poolConfig.host = dbUrl.hostname;
-    poolConfig.port = dbUrl.port || 3306;
+    poolConfig.port = parseInt(dbUrl.port || '3306', 10);
     poolConfig.user = dbUrl.username;
     poolConfig.password = decodeURIComponent(dbUrl.password);
     poolConfig.database = dbUrl.pathname.slice(1);
     poolConfig.ssl = { rejectUnauthorized: false }; // Requerido para Aiven y otros servicios Cloud
   } catch (error) {
     console.error('[MySQL Error] Error al parsear DB_URI:', error.message);
+    poolConfig.host = config.db.host;
+    poolConfig.port = config.db.port;
+    poolConfig.user = config.db.user;
+    poolConfig.password = config.db.password;
+    poolConfig.database = config.db.database;
+    if (config.db.host && !['localhost', '127.0.0.1'].includes(config.db.host)) {
+      poolConfig.ssl = { rejectUnauthorized: false };
+    }
   }
 } else {
   poolConfig.host = config.db.host;
@@ -27,6 +35,9 @@ if (config.db.uri) {
   poolConfig.user = config.db.user;
   poolConfig.password = config.db.password;
   poolConfig.database = config.db.database;
+  if (config.db.host && !['localhost', '127.0.0.1'].includes(config.db.host)) {
+    poolConfig.ssl = { rejectUnauthorized: false };
+  }
 }
 
 const pool = mysql.createPool(poolConfig);
