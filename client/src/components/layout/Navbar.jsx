@@ -122,9 +122,8 @@ export default function Navbar() {
             <div className="hidden sm:flex flex-col justify-center">
               <div className="flex items-baseline gap-1">
                 <span className="text-xl font-black tracking-tight leading-none text-slate-900">BDI</span>
-                <span className="text-xl font-bold tracking-tight leading-none text-[#4f83f5]">Salud</span>
               </div>
-              <span className="text-[9px] font-bold tracking-[0.2em] uppercase mt-1 leading-none text-slate-400">Botiquín Digital</span>
+              <span className="text-[9px] font-bold tracking-wider uppercase mt-1 leading-none text-slate-400">Botiquín Digital Inteligente</span>
             </div>
           </Link>
 

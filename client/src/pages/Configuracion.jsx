@@ -97,7 +97,7 @@ export default function Configuracion() {
           <Settings className="w-8 h-8 text-[#f27a71]" /> Configuración
         </h1>
         <p className="text-sm text-slate-500 mt-1">
-          Adapta el Botiquín Digital a tus necesidades visuales, auditivas y de alertas.
+          Adapta el Botiquín Digital Inteligente a tus necesidades visuales, auditivas y de alertas.
         </p>
       </div>
 

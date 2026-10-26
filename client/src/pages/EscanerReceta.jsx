@@ -5,14 +5,14 @@ import FormularioValidacion from '../components/recetas/FormularioValidacion';
 import api from '../services/api';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
-import { 
-  Camera, 
-  Upload, 
-  RefreshCw, 
-  Sparkles, 
-  AlertCircle, 
-  FileText, 
-  Package, 
+import {
+  Camera,
+  Upload,
+  RefreshCw,
+  Sparkles,
+  AlertCircle,
+  FileText,
+  Package,
   Image as ImageIcon,
   CheckCircle2
 } from 'lucide-react';
@@ -148,7 +148,7 @@ export default function EscanerReceta() {
       });
       await Swal.fire({
         title: '¡Medicamento Guardado!',
-        text: 'El medicamento se ha añadido correctamente a tu botiquín digital.',
+        text: 'El medicamento se ha añadido correctamente a tu Botiquín Digital.',
         icon: 'success',
         confirmButtonColor: '#4f83f5',
         confirmButtonText: 'Ver Botiquín',
@@ -190,7 +190,7 @@ export default function EscanerReceta() {
 
   return (
     <div className="max-w-3xl mx-auto px-3 sm:px-6 py-4 sm:py-8 space-y-6 animate-fade-in">
-      
+
       {/* Encabezado */}
       <div className="text-center space-y-1">
         <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#4f83f5]">
@@ -216,11 +216,10 @@ export default function EscanerReceta() {
             setDatosExtraidos(null);
             setCajaData(null);
           }}
-          className={`flex-1 py-2 px-3 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
-            activeTab === 'receta'
+          className={`flex-1 py-2 px-3 rounded-full flex items-center justify-center text-xs font-bold transition-all ${activeTab === 'receta'
               ? 'bg-blue-50 text-[#4f83f5] shadow-sm'
               : 'text-slate-400 hover:text-slate-600'
-          }`}
+            }`}
         >
           <FileText className="w-3.5 h-3.5 mr-1.5" />
           Receta
@@ -233,11 +232,10 @@ export default function EscanerReceta() {
             setDatosExtraidos(null);
             setCajaData(null);
           }}
-          className={`flex-1 py-2 px-3 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
-            activeTab === 'caja'
+          className={`flex-1 py-2 px-3 rounded-full flex items-center justify-center text-xs font-bold transition-all ${activeTab === 'caja'
               ? 'bg-blue-50 text-[#4f83f5] shadow-sm'
               : 'text-slate-400 hover:text-slate-600'
-          }`}
+            }`}
         >
           <Package className="w-3.5 h-3.5 mr-1.5" />
           Caja / Fármaco
@@ -321,7 +319,7 @@ export default function EscanerReceta() {
                     <Camera className="w-4 h-4" />
                     Abrir Cámara en Vivo
                   </button>
-                  
+
                   <label className="btn-secondary w-full py-3.5 px-4 text-xs sm:text-sm font-bold shadow-md cursor-pointer flex items-center justify-center gap-2">
                     <input
                       type="file"

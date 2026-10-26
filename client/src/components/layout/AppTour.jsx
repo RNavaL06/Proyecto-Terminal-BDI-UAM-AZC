@@ -10,7 +10,7 @@ export default function AppTour() {
     {
       target: 'body',
       placement: 'center',
-      title: '¡Bienvenido al Botiquín Digital!',
+      title: '¡Bienvenido al Botiquín Digital Inteligente!',
       content: 'Este es un recorrido rápido para enseñarte cómo utilizar las herramientas de la aplicación. Usa el botón "Siguiente" para continuar.',
       disableBeacon: true,
     },

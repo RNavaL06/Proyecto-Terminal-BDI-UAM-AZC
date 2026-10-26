@@ -56,7 +56,7 @@ export default function Login() {
           
           {/* Título Principal */}
           <h1 className="text-2xl sm:text-3xl font-black text-[#2e2b3c] tracking-wider uppercase mb-2 text-center leading-tight">
-            Botiquín Digital
+            Botiquín Digital Inteligente
           </h1>
           
           {/* Línea Divisoria Decorativa */}
