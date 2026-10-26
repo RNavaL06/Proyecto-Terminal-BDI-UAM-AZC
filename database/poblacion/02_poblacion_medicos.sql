@@ -8,8 +8,6 @@ USE bdi_final_db;
 INSERT INTO medicos (id_medico, nombre_medico, cedula_profesional, telefono_contacto)
 VALUES 
 (1, 'Dr. Roberto Martínez Esquivel', 'CED-MED-8492011', '55-5318-9000'),
-(2, 'Dra. Elena Gómez Santillán', 'CED-MED-9182344', '55-5318-9123'),
-(3, 'Dr. Fernando Castro Navarrete', 'CED-MED-7362819', '55-5318-9456'),
-(4, 'Dra. Patricia Ortiz Mendoza', 'CED-MED-6281920', '55-5318-9789')
+(2, 'Dr. Fernando Castro Navarrete', 'CED-MED-7362819', '55-5318-9456')
 ON DUPLICATE KEY UPDATE 
     nombre_medico = VALUES(nombre_medico);

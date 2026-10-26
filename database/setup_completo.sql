@@ -146,60 +146,79 @@ CREATE TABLE IF NOT EXISTS busquedas_precios (
     INDEX idx_busquedas_medicamento (medicamento_nombre)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- 2.9 Suscripciones Push
+CREATE TABLE IF NOT EXISTS suscripciones_push (
+    id_suscripcion INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT UNSIGNED NOT NULL,
+    endpoint TEXT NOT NULL,
+    keys_p256dh TEXT NOT NULL,
+    keys_auth TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_suscripciones_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 2.10 Recordatorios
+CREATE TABLE IF NOT EXISTS recordatorios (
+    id_recordatorio INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT UNSIGNED NOT NULL,
+    id_catalogo INT UNSIGNED NULL,
+    id_receta_detalle INT UNSIGNED NULL,
+    medicamento_nombre VARCHAR(255) NOT NULL,
+    formato VARCHAR(100) DEFAULT 'Desconocido',
+    frecuencia_horas INT NOT NULL COMMENT 'Cada cuántas horas',
+    fecha_inicio DATETIME NOT NULL,
+    fecha_fin DATETIME NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_recordatorios_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+    CONSTRAINT fk_recordatorios_catalogo FOREIGN KEY (id_catalogo) REFERENCES catalogo_medicamentos(id_catalogo) ON DELETE SET NULL,
+    CONSTRAINT fk_recordatorios_detalle FOREIGN KEY (id_receta_detalle) REFERENCES recetas_detalles(id_receta_detalle) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 2.11 Tomas Diarias
+CREATE TABLE IF NOT EXISTS tomas_diarias (
+    id_toma INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_recordatorio INT UNSIGNED NOT NULL,
+    id_usuario INT UNSIGNED NOT NULL,
+    fecha_hora_programada DATETIME NOT NULL,
+    estado ENUM('pendiente', 'tomado', 'omitido') DEFAULT 'pendiente',
+    fecha_hora_toma DATETIME NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_tomas_recordatorio FOREIGN KEY (id_recordatorio) REFERENCES recordatorios(id_recordatorio) ON DELETE CASCADE,
+    CONSTRAINT fk_tomas_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- 3. Población Inicial de Datos
 -- ----------------------------------------------------------
 
--- 3.1 Usuarios
+-- 3.1 Usuarios (Exclusivamente usuario de prueba Modo Demo)
 INSERT INTO usuarios (id_usuario, google_id, correo_electronico, nombre_completo, foto_perfil, rol, notif_activas, notif_umbral_dias)
 VALUES 
-(1, '108291029102910291001', 'juan.perez.paciente@gmail.com', 'Juan Pérez Morales', 'https://lh3.googleusercontent.com/a/default-user', 'paciente', 1, 30),
-(2, '209382039203920392002', 'maria.gonzalez@gmail.com', 'Dra. María González Rivas', 'https://lh3.googleusercontent.com/a/default-user', 'admin', 1, 15),
-(3, '308472048204820482003', 'carlos.ramirez.demo@gmail.com', 'Carlos Ramírez Soto', 'https://lh3.googleusercontent.com/a/default-user', 'paciente', 0, 7)
-ON DUPLICATE KEY UPDATE nombre_completo = VALUES(nombre_completo);
+(1, 'demo_google_id_uam', 'version.demo@bdi.salud', 'Versión Demo', 'https://cdn-icons-png.flaticon.com/512/2950/2950993.png', 'paciente', 1, 30)
+ON DUPLICATE KEY UPDATE 
+    google_id = VALUES(google_id),
+    correo_electronico = VALUES(correo_electronico),
+    nombre_completo = VALUES(nombre_completo),
+    foto_perfil = VALUES(foto_perfil),
+    notif_activas = VALUES(notif_activas),
+    notif_umbral_dias = VALUES(notif_umbral_dias);
 
--- 3.2 Médicos
+-- 3.2 Médicos (Asociados a las recetas del paciente de prueba)
 INSERT INTO medicos (id_medico, nombre_medico, cedula_profesional, telefono_contacto)
 VALUES 
 (1, 'Dr. Roberto Martínez Esquivel', 'CED-MED-8492011', '55-5318-9000'),
-(2, 'Dra. Elena Gómez Santillán', 'CED-MED-9182344', '55-5318-9123'),
-(3, 'Dr. Fernando Castro Navarrete', 'CED-MED-7362819', '55-5318-9456'),
-(4, 'Dra. Patricia Ortiz Mendoza', 'CED-MED-6281920', '55-5318-9789')
+(2, 'Dr. Fernando Castro Navarrete', 'CED-MED-7362819', '55-5318-9456')
 ON DUPLICATE KEY UPDATE nombre_medico = VALUES(nombre_medico);
 
 -- 3.3 Catálogo CIE-10
-INSERT INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords)
+-- NOTA: El catálogo maestro se encuentra poblado con los 1,440 códigos oficiales
+-- basados en el SUIVE 2025 ("Veinte principales causas de enfermedad Nacional").
+-- Se utiliza INSERT IGNORE garantizando únicamente la presencia de los diagnósticos
+-- requeridos por las recetas de prueba sin modificar ni duplicar los 1,440 existentes.
+INSERT IGNORE INTO catalogo_cie10 (codigo_cie10, termino_medico, capitulo, keywords, es_frecuente)
 VALUES 
-('R51', 'Cefalea', 'Síntomas y signos generales', '["cabeza", "migraña", "punzadas", "sien", "jaqueca", "dolor de cabeza", "pesadez de cabeza"]'),
-('R10', 'Dolor abdominal y pélvico', 'Síntomas del aparato digestivo', '["panza", "estomago", "vientre", "retortijon", "colico", "dolor de panza", "dolor de estomago", "retortijones"]'),
-('R11.0', 'Náusea', 'Síntomas del aparato digestivo', '["nausea", "ganas", "vomitar", "asco", "revuelto", "estomago revuelto", "mareo estomacal"]'),
-('R11.1', 'Vómito', 'Síntomas del aparato digestivo', '["vomito", "vomite", "volver", "arrojar", "regresar la comida", "devolver"]'),
-('R07.0', 'Dolor de garganta', 'Síntomas del aparato respiratorio', '["garganta", "tragar", "anginas", "ardor de garganta", "raspa", "carraspeo", "dolor al tragar"]'),
-('J02.9', 'Faringitis aguda, no especificada', 'Enfermedades del aparato respiratorio', '["faringitis", "garganta inflamada", "infeccion de garganta", "placas en garganta", "ardor al pasar saliva"]'),
-('R07.4', 'Dolor en el pecho', 'Síntomas del aparato circulatorio y respiratorio', '["pecho", "corazon", "opresion", "torax", "punzada en el pecho", "aprieta el pecho"]'),
-('M54.9', 'Dorsalgia, no especificada', 'Enfermedades del sistema osteomuscular', '["espalda", "lumbar", "cintura", "dolor de espalda", "columna", "cadera"]'),
-('R50.9', 'Fiebre, no especificada', 'Síntomas y signos generales', '["fiebre", "calentura", "temperatura", "hirviendo", "caliente", "escalofrios", "cuerpo caliente"]'),
-('A09', 'Diarrea y gastroenteritis infecciosa', 'Enfermedades infecciosas intestinales', '["diarrea", "chorrillo", "flojo", "liquido", "evacuacion liquida", "infeccion estomacal", "soltura"]'),
-('J06.9', 'Infección aguda de las vías respiratorias', 'Enfermedades del aparato respiratorio', '["gripa", "gripe", "catarro", "resfriado", "moco", "mocos", "nariz tapada", "congestion nasal"]'),
-('R05', 'Tos', 'Síntomas del aparato respiratorio', '["tos", "toser", "carraspeo", "flema", "flemas", "tos seca", "tos con flema", "ataque de tos"]'),
-('R06.0', 'Disnea', 'Síntomas del aparato respiratorio', '["falta de aire", "respirar", "ahogo", "asfixia", "sofoco", "fatiga al respirar"]'),
-('R42', 'Mareo y desvanecimiento', 'Síntomas y signos generales', '["mareo", "mareado", "vueltas", "vertigo", "aturdido", "se me mueve el piso"]'),
-('R55', 'Síncope y colapso', 'Síntomas y signos generales', '["desmayo", "desmaye", "desvanecimiento", "perdi el conocimiento", "inconsciente"]'),
-('R04.0', 'Epistaxis', 'Síntomas del aparato respiratorio', '["sangrado", "sangre", "nariz", "hemorragia nasal", "sangrado de nariz"]'),
-('T14.0', 'Contusión, no especificada', 'Traumatismos y envenenamientos', '["moreton", "golpe", "magulladura", "hematoma", "morado", "chichon"]'),
-('R60.9', 'Edema, no especificado', 'Síntomas y signos generales', '["hinchazon", "hinchado", "inflamado", "retencion", "liquidos", "pies hinchados"]'),
-('I10', 'Hipertensión esencial (primaria)', 'Enfermedades del sistema circulatorio', '["presion alta", "hipertension", "presion", "subio la presion", "pulso acelerado"]'),
-('E14', 'Diabetes mellitus, no especificada', 'Enfermedades endocrinas y metabólicas', '["azucar", "diabetes", "glucosa", "azucar alta", "sed excesiva"]'),
-('R12', 'Pirosis', 'Síntomas del aparato digestivo', '["agruras", "acidez", "quemazon", "reflujo", "ardor de estomago", "agrura"]'),
-('M79.1', 'Mialgia', 'Enfermedades del sistema osteomuscular', '["musculo", "musculos", "cuerpo cortado", "macullado", "dolor de cuerpo", "adolorido"]'),
-('M25.5', 'Artralgia', 'Enfermedades del sistema osteomuscular', '["articulaciones", "coyunturas", "huesos", "rodilla", "codo", "dolor de articulaciones"]'),
-('G47.0', 'Insomnio', 'Enfermedades del sistema nervioso', '["dormir", "insomnio", "sueño", "desvelo", "no puedo dormir", "despertar a medianoche"]'),
-('F41.9', 'Trastorno de ansiedad, no especificado', 'Trastornos mentales y del comportamiento', '["ansiedad", "nervios", "nerviosismo", "estres", "angustia", "desesperacion"]'),
-('R53', 'Malestar y fatiga', 'Síntomas y signos generales', '["cansancio", "fatiga", "debilidad", "agotamiento", "pesadez", "sin energias", "flojera"]'),
-('L29.9', 'Prurito, no especificado', 'Enfermedades de la piel', '["comezon", "picazon", "rascar", "urticaria", "ronchas", "piquiña"]'),
-('K59.0', 'Estreñimiento', 'Síntomas del aparato digestivo', '["estreñimiento", "tapado", "no puedo obrar", "baño", "constipacion", "duro del estomago"]'),
-('R30.0', 'Disuria', 'Síntomas del aparato urinario', '["orinar", "ardor al orinar", "pipi", "mal de orin", "dolor en vejiga"]'),
-('H10.9', 'Conjuntivitis, no especificada', 'Enfermedades del ojo', '["ojo rojo", "ojos", "lagañas", "irritado", "comezon en los ojos", "lagrimeo"]')
-ON DUPLICATE KEY UPDATE termino_medico = VALUES(termino_medico);
+('J02.9', 'Faringitis aguda, no especificada', 'Enfermedades del aparato respiratorio', '["faringitis", "garganta inflamada", "infeccion de garganta", "placas en garganta", "ardor al pasar saliva"]', 1),
+('K29.00', 'Gastritis aguda sin hemorragia', 'Sin especificar', '["ardor de estomago", "acidez", "dolor de guata", "dolor de panza", "dolor de barriga", "gastritis leve", "reflujo", "pesadez estomacal", "indigestión aguda", "malestar estomacal", "fuego en el estomago", "acidez estomacal", "gastritis repentina", "dolor en la boca del estomago", "agrieras"]', 1),
+('K29.70', 'Gastritis, no especificada, sin hemorragia', 'Sin especificar', '["gastritis", "dolor de estomago", "ardor de panza", "dolor en la guata", "malestar en la boca del estomago", "acidez", "pesadez", "inflamación estomacal", "problemas al estomago", "gastritis sin diagnostico", "gastritis a secas", "dolor de barriga", "malestar digestivo", "fuego en el estomago", "ardor estomacal"]', 1);
 
 -- 3.4 Catálogo Medicamentos Maestros
 INSERT INTO catalogo_medicamentos (id_catalogo, nombre_comercial, sustancia_activa, formato)
@@ -226,24 +245,24 @@ VALUES
 (20, 'Ketanov', 'Ketorolaco Trometamina', 'Tabletas Sublinguales 30mg')
 ON DUPLICATE KEY UPDATE nombre_comercial = VALUES(nombre_comercial);
 
--- 3.5 Recetas de Ejemplo
+-- 3.5 Recetas de Ejemplo (Asociadas al usuario de prueba Modo Demo)
 INSERT INTO recetas (id_receta, id_usuario, id_medico, paciente_nombre, fecha_expedicion, diagnostico, codigo_cie10, indicaciones, imagen_base64, estado)
 VALUES 
 (
-    1, 1, 1, 'Juan Pérez Morales', '2026-08-15', 'Infección respiratoria alta (Faringitis Aguda)', 'J02.9',
+    1, 1, 1, 'Versión Demo', '2026-08-15', 'Infección respiratoria alta (Faringitis Aguda)', 'J02.9',
     'Reposo en casa por 3 días, ingesta abundante de líquidos templados y evitar cambios bruscos de temperatura.',
     'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNDAwIDUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2Y4ZmFmYyIgc3Ryb2tlPSIjY2JkNWUxIiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI4Ii8+PHJlY3QgeD0iMjAiIHk9IjIwIiB3aWR0aD0iMzYwIiBoZWlnaHQ9IjYwIiBmaWxsPSIjZTBmMmZlIiByeD0iNCIvPjx0ZXh0IHg9IjIwMCIgeT0iNTAiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2cHgiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMDM2OWExIj5DTEtOSUNBIE1FRElDQSBCREkgLSBSRUNFVEE8L3RleHQ+PHRleHQgeD0iNDAiIHk9IjEyMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTJweCIgZmlsbD0iIzQ3NTU2OSI+UGFjaWVudGU6IEp1YW4gUMOpcmV6IE1vcmFsZXM8L3RleHQ+PHRleHQgeD0iNDAiIHk9IjE0NSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTJweCIgZmlsbD0iIzQ3NTU2OSI+TcOpZGljbzogRHIuIFJvYmVydG8gTWFydMOtbmV6IChDRUQtODQ5MjAxMSk8L3RleHQ+PHRleHQgeD0iNDAiIHk9IjE3MCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTJweCIgZmlsbD0iIzQ3NTU2OSI+RGlhZ27Ds3N0aWNvOiBGYXJpbmdpdGlzIEFndWRhIChDSUUtMTA6IEowMi45KTwvdGV4dD48bGluZSB4MT0iNDAiIHkxPSIxOTUiIHgyPSIzNjAiIHkyPSIxOTUiIHN0cm9rZT0iI2NiZDVlMSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iNDAiIHk9IjIyMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTNweCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMwZjE3MmEiPlByZXNjcmlwY2nDs246PC90ZXh0Pjx0ZXh0IHg9IjUwIiB5PSIyNDUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjExcHgiIGZpbGw9IiMzMzQxNTUiPjEuIEFtb3hpbCA1MDBtZyAtIDEgY8OhcHN1bGEgYy84aCB4IDcgZMOtYXM8L3RleHQ+PHRleHQgeD0iNTAiIHk9IjI3MCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTFweCIgZmlsbD0iIzMzNDE1NSI+Mi4gVHlsZW5vbCA1MDBtZyAtIDEgdGFibGV0YSBjLzhoIGVuIGNhc28gZGUgZmllYnJlPC90ZXh0Pjwvc3ZnPg==',
     'procesada'
 ),
 (
-    2, 1, 3, 'Juan Pérez Morales', '2026-09-02', 'Gastritis aguda y pirosis', 'R12',
+    2, 1, 2, 'Versión Demo', '2026-09-02', 'Gastritis aguda y pirosis', 'K29.00',
     'Dieta blanda baja en grasas e irritantes por 10 días.',
     'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNDAwIDUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2Y4ZmFmYyIgc3Ryb2tlPSIjY2JkNWUxIiBzdHJva2Utd2lkdGg9IjIiIHJ4PSI4Ii8+PHJlY3QgeD0iMjAiIHk9IjIwIiB3aWR0aD0iMzYwIiBoZWlnaHQ9IjYwIiBmaWxsPSIjZTBmMmZlIiByeD0iNCIvPjx0ZXh0IHg9IjIwMCIgeT0iNTAiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2cHgiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMDM2OWExIj5DTElOSUNBIEdBU1RST0VOVEVST0xPR0lBPC90ZXh0Pjx0ZXh0IHg9IjQwIiB5PSIxMjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEycHgiIGZpbGw9IiM0NzU1NjkiPlBhY2llbnRlOiBKdWFuIFDDqXJleiBNb3JhbGVzPC90ZXh0Pjx0ZXh0IHg9IjQwIiB5PSIxNDUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEycHgiIGZpbGw9IiM0NzU1NjkiPk3DqWRpY286IERyLiBGZXJuYW5kbyBDYXN0cm8gKENFRC03MzYyODE5KTwvdGV4dD48bGluZSB4MT0iNDAiIHkxPSIxODAiIHgyPSIzNjAiIHkyPSIxODAiIHN0cm9rZT0iI2NiZDVlMSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iNTAiIHk9IjIxMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTFweCIgZmlsbD0iIzMzNDE1NSI+MS4gUmlvcGFuIEdlbCAtIDEgc29icmUgZGVzcHXDqXMgZGUgY29tZXI8L3RleHQ+PHRleHQgeD0iNTAiIHk9IjIzNSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTFweCIgZmlsbD0iIzMzNDE1NSI+Mi4gT21lcHJhem9sIDIwbWcgLSAxIGPDoXBzdWxhIGVuIGF5dW5hczwvdGV4dD48L3N2Zz4=',
     'procesada'
 )
 ON DUPLICATE KEY UPDATE diagnostico = VALUES(diagnostico);
 
--- 3.6 Detalles de Receta
+-- 3.6 Detalles de Receta (4 fármacos prescritos)
 INSERT INTO recetas_detalles (id_receta_detalle, id_receta, id_catalogo, dosis, instrucciones_uso, frecuencia, duracion)
 VALUES 
 (1, 1, 5, '500mg', 'Tomar 1 cápsula vía oral con alimentos', 'Cada 8 horas', '7 días'),
@@ -253,23 +272,53 @@ VALUES
 ON DUPLICATE KEY UPDATE dosis = VALUES(dosis);
 
 -- 3.7 Botiquín Físico
+-- Contiene tanto los medicamentos prescritos en recetas como fármacos de libre venta (OTC)
 INSERT INTO botiquin (id_botiquin, id_usuario, id_catalogo, id_receta, cantidad_disponible, unidad, fecha_caducidad, lote, codigo_barras, notas, estado)
 VALUES 
-(1, 1, 5, 1, 14, 'capsulas', DATE_ADD(CURDATE(), INTERVAL 240 DAY), 'LOT-AMX-2027', '7501234567890', 'Tratamiento de faringitis', 'vigente'),
-(2, 1, 2, 1, 4, 'tabletas', DATE_ADD(CURDATE(), INTERVAL 18 DAY), 'LOT-TYL-9981', '7509876543210', 'Quedan pocas tabletas de Tylenol', 'por_vencer'),
-(3, 1, 1, NULL, 20, 'tabletas', DATE_SUB(CURDATE(), INTERVAL 15 DAY), 'LOT-ASP-1029', '7501112223334', 'Aspirinas del año pasado', 'caducado'),
-(4, 1, 10, 2, 8, 'sobres', DATE_ADD(CURDATE(), INTERVAL 180 DAY), 'LOT-RIO-4455', '7503334445556', 'Gel para acidez estomacal', 'vigente'),
-(5, 1, 4, NULL, 2, 'tabletas', DATE_ADD(CURDATE(), INTERVAL 120 DAY), 'LOT-MOT-7788', '7507778889990', 'Motrin por agotarse (stock bajo)', 'vigente')
-ON DUPLICATE KEY UPDATE cantidad_disponible = VALUES(cantidad_disponible);
+-- 1. Medicamentos derivados de Receta 1 (Faringitis)
+(1, 1, 5, 1, 14, 'capsulas', DATE_ADD(CURDATE(), INTERVAL 240 DAY), 'LOT-AMX-2027', '7501234567890', 'Caja del tratamiento de faringitis (Receta 1)', 'vigente'),
+(2, 1, 2, 1, 4, 'tabletas', DATE_ADD(CURDATE(), INTERVAL 18 DAY), 'LOT-TYL-9981', '7509876543210', 'Quedan pocas tabletas de Tylenol (Receta 1, por vencer)', 'por_vencer'),
 
--- 3.8 Historial de Búsquedas
+-- 2. Medicamentos derivados de Receta 2 (Gastritis / Pirosis)
+(3, 1, 10, 2, 8, 'sobres', DATE_ADD(CURDATE(), INTERVAL 180 DAY), 'LOT-RIO-4455', '7503334445556', 'Gel para acidez estomacal (Receta 2)', 'vigente'),
+(4, 1, 18, 2, 14, 'capsulas', DATE_ADD(CURDATE(), INTERVAL 300 DAY), 'LOT-OME-2027', '7504445556667', 'Omeprazol para gastritis en ayunas (Receta 2)', 'vigente'),
+
+-- 3. Medicamentos de libre venta / uso común (sin receta)
+(5, 1, 1, NULL, 20, 'tabletas', DATE_SUB(CURDATE(), INTERVAL 15 DAY), 'LOT-ASP-1029', '7501112223334', 'Aspirina Protect compradas el año pasado (caducado)', 'caducado'),
+(6, 1, 4, NULL, 2, 'tabletas', DATE_ADD(CURDATE(), INTERVAL 120 DAY), 'LOT-MOT-7788', '7507778889990', 'Motrin 400 para dolor muscular (stock bajo por agotarse)', 'vigente'),
+(7, 1, 7, NULL, 1, 'frascos', DATE_ADD(CURDATE(), INTERVAL 210 DAY), 'LOT-PEP-3321', '7508889991112', 'Pepto-Bismol suspensión estomacal', 'vigente')
+ON DUPLICATE KEY UPDATE 
+    cantidad_disponible = VALUES(cantidad_disponible),
+    fecha_caducidad = VALUES(fecha_caducidad),
+    estado = VALUES(estado);
+
+-- 3.8 Recordatorios y Tomas Diarias (Asociados al tratamiento de Amoxil de la Receta 1)
+INSERT IGNORE INTO recordatorios (id_recordatorio, id_usuario, id_catalogo, id_receta_detalle, medicamento_nombre, formato, frecuencia_horas, fecha_inicio, fecha_fin)
+VALUES (
+    1, 1, 5, 1, 'Amoxil 500mg', 'Cápsulas', 8, NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY)
+);
+
+INSERT IGNORE INTO tomas_diarias (id_toma, id_recordatorio, id_usuario, fecha_hora_programada, estado, fecha_hora_toma)
+VALUES 
+    (1, 1, 1, DATE_ADD(NOW(), INTERVAL -2 HOUR), 'tomado', DATE_ADD(NOW(), INTERVAL -2 HOUR)),
+    (2, 1, 1, DATE_ADD(NOW(), INTERVAL 5 MINUTE), 'pendiente', NULL),
+    (3, 1, 1, DATE_ADD(NOW(), INTERVAL 6 HOUR), 'pendiente', NULL)
+ON DUPLICATE KEY UPDATE estado = VALUES(estado);
+
+-- 3.9 Historial de Búsquedas (Cotizaciones de Google Shopping)
 INSERT INTO busquedas_precios (id_busqueda, id_usuario, medicamento_nombre, resultados, fuente)
 VALUES 
 (
     1, 1, 'Paracetamol 500mg',
     '[{"title": "Paracetamol 500 mg 20 tabletas", "price": "$28.50", "store": "Farmacias del Ahorro", "link": "https://www.fahorro.com", "thumbnail": "https://via.placeholder.com/150"}, {"title": "Tylenol Caplets 500mg 20 pzas", "price": "$89.00", "store": "Farmacia San Pablo", "link": "https://www.farmaciasanpablo.com.mx", "thumbnail": "https://via.placeholder.com/150"}]',
     'google_shopping'
+),
+(
+    2, 1, 'Amoxicilina 500mg',
+    '[{"title": "Amoxicilina 500 mg 12 cápsulas", "price": "$45.00", "store": "Farmacias Similares", "link": "https://farmaciasdesimilares.com", "thumbnail": "https://via.placeholder.com/150"}, {"title": "Amoxil 500mg 15 caps", "price": "$185.00", "store": "Farmacias Guadalajara", "link": "https://www.farmaciasguadalajara.com", "thumbnail": "https://via.placeholder.com/150"}]',
+    'google_shopping'
 )
 ON DUPLICATE KEY UPDATE medicamento_nombre = VALUES(medicamento_nombre);
 
 SELECT 'Instalación y población completa de bdi_final_db finalizada con éxito.' AS estado_instalacion;
+
